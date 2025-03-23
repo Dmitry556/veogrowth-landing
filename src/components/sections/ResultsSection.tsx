@@ -1,42 +1,9 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import CustomCard from '../ui/CustomCard';
 import { Quote } from 'lucide-react';
 
 const ResultsSection: React.FC = () => {
-  const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target as HTMLElement;
-            target.classList.add('counting');
-            observer.unobserve(target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    
-    counterRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-    
-    return () => {
-      counterRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
-  
-  const metrics = [
-    { value: 10000, label: "Positive responses generated in 2024", suffix: "+" },
-    { value: 40, label: "B2B clients helped", suffix: "+" },
-    { value: 105, label: "K in missed pipeline per month of delay", suffix: "$" },
-  ];
-  
   const testimonials = [
     {
       quote: "Their team helped us build $4.2M in pipeline this year alone.",
@@ -69,28 +36,6 @@ const ResultsSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {metrics.map((metric, index) => (
-            <div key={index} className="text-center">
-              <div className="relative w-24 h-24 mx-auto mb-4">
-                <div className="absolute inset-0 bg-gradient-primary rounded-full opacity-20 animate-pulse"></div>
-                <div className="absolute inset-2 bg-black rounded-full"></div>
-                <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-white">
-                  <span
-                    ref={el => counterRefs.current[index] = el}
-                    className="counting-value"
-                    data-value={metric.value}
-                  >
-                    0
-                  </span>
-                  <span>{metric.suffix}</span>
-                </div>
-              </div>
-              <p className="text-body text-white/70">{metric.label}</p>
-            </div>
-          ))}
-        </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (
             <CustomCard key={index} variant="glass" className="relative">
@@ -114,7 +59,7 @@ const ResultsSection: React.FC = () => {
                 Case Study
               </div>
               <h3 className="text-h3 font-bold mb-4">
-                How we helped build $3M in pipeline for a SaaS company selling a $99 product
+                How we helped build $8M in pipeline for b2b virtual assistant agency
               </h3>
               <p className="text-body text-white/70 mb-6">
                 Their data-first approach found leads our internal team missed completely.
@@ -123,7 +68,7 @@ const ResultsSection: React.FC = () => {
                 <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" alt="CEO" className="w-10 h-10 rounded mr-3" />
                 <div>
                   <p className="text-body font-medium">CEO</p>
-                  <p className="text-caption text-white/60">SMB Software Company</p>
+                  <p className="text-caption text-white/60">offshore staffing agency</p>
                 </div>
               </div>
             </div>
@@ -175,26 +120,6 @@ const ResultsSection: React.FC = () => {
           </div>
         </div>
       </div>
-      
-      <style>{`
-        .counting-value {
-          counter-reset: count 0;
-          animation: none;
-        }
-        
-        .counting.counting-value {
-          animation: count 2s forwards ease-out;
-        }
-        
-        .counting.counting-value::after {
-          content: counter(count);
-        }
-        
-        @keyframes count {
-          from { counter-increment: count 0; }
-          to { counter-increment: count attr(data-value); }
-        }
-      `}</style>
     </section>
   );
 };

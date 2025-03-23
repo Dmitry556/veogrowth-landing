@@ -37,6 +37,9 @@ const Index = () => {
     
     observeElements();
     
+    // Update document title
+    document.title = "Veogrowth - Generate Pipeline Without Hiring More Sales Reps";
+    
     return () => {
       document.body.classList.remove('noise-overlay');
     };

@@ -72,7 +72,9 @@ const DashboardSection: React.FC = () => {
               All clients receive login credentials to access their campaign dashboard after the initial test campaign proves successful.
             </p>
             
-            <CustomButton>Access Demo Dashboard</CustomButton>
+            <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
+              Launch my free campaign
+            </CustomButton>
           </div>
           
           <div className="relative">
@@ -113,7 +115,6 @@ const DashboardSection: React.FC = () => {
                   </div>
                   <div className="h-32 relative">
                     {/* Stylized line chart */}
-                    <div className="absolute bottom-0 left-0 w-full h-px bg-white/20"></div>
                     <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
                       <path
                         d="M0,90 C50,80 100,40 150,30 C180,25 250,50 300,10"

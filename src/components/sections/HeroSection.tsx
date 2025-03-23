@@ -115,10 +115,18 @@ const HeroSection: React.FC = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <CustomButton size="lg" className="flex items-center">
-                Start Free Trial <ChevronRight className="ml-2" size={18} />
+              <CustomButton 
+                size="lg" 
+                className="flex items-center"
+                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              >
+                Launch my free campaign <ChevronRight className="ml-2" size={18} />
               </CustomButton>
-              <CustomButton size="lg" variant="outline">
+              <CustomButton 
+                size="lg" 
+                variant="outline"
+                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              >
                 Let's Talk Pipeline
               </CustomButton>
             </div>
@@ -126,10 +134,10 @@ const HeroSection: React.FC = () => {
             <div className="mt-12">
               <p className="text-caption text-white/60 mb-4">Trusted by innovative companies</p>
               <div className="flex flex-wrap gap-8 items-center">
-                <img src="https://placehold.co/120x40/2A2A2A/CCCCCC?text=COMPANY" alt="Company logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="https://placehold.co/120x40/2A2A2A/CCCCCC?text=BRAND" alt="Brand logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="https://placehold.co/120x40/2A2A2A/CCCCCC?text=STARTUP" alt="Startup logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="https://placehold.co/120x40/2A2A2A/CCCCCC?text=ENTERPRISE" alt="Enterprise logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
+                <img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
+                <img src="https://logo.clearbit.com/slack.com" alt="Slack logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
+                <img src="https://logo.clearbit.com/dropbox.com" alt="Dropbox logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
               </div>
             </div>
           </div>

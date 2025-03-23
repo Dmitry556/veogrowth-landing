@@ -82,7 +82,9 @@ const FaqSection: React.FC = () => {
           <p className="text-body text-white/70 mb-6">
             Ready to build real pipeline? Schedule your free 15-minute setup call today.
           </p>
-          <CustomButton>Let's Talk Pipeline →</CustomButton>
+          <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
+            Let's Talk Pipeline →
+          </CustomButton>
         </div>
       </div>
     </section>

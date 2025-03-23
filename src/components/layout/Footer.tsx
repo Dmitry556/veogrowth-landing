@@ -11,9 +11,15 @@ const Footer: React.FC = () => {
         <div className="glass-card rounded-3xl py-16 px-8 text-center max-w-4xl mx-auto">
           <h2 className="text-h2 font-bold mb-6 letter-spacing-tight">Ready to supercharge your growth?</h2>
           <p className="text-body-large text-white/80 mb-8 max-w-2xl mx-auto">
-            Join thousands of companies using Growth Engine X to drive unprecedented revenue growth.
+            Join thousands of companies using Veogrowth to drive unprecedented revenue growth.
           </p>
-          <CustomButton size="lg" className="mx-auto">Get Started Today</CustomButton>
+          <CustomButton 
+            size="lg" 
+            className="mx-auto"
+            onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+          >
+            Launch my free campaign
+          </CustomButton>
         </div>
       </div>
       
@@ -22,7 +28,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
             <a href="#" className="text-xl font-bold text-white mb-6 block">
-              <span className="gradient-text">Growth</span>Engine X
+              <span className="gradient-text">Veo</span>growth
             </a>
             <p className="text-caption text-white/60 mb-6">
               The ultimate platform for businesses looking to scale their growth operations and drive unprecedented revenue.
@@ -82,7 +88,7 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-caption text-white/40 mb-4 md:mb-0">
-            © {new Date().getFullYear()} Growth Engine X. All rights reserved.
+            © {new Date().getFullYear()} Veogrowth. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-caption text-white/40 hover:text-white transition-colors">Privacy</a>

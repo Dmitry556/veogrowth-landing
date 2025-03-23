@@ -1,6 +1,5 @@
 
 import React, { useEffect, useRef } from 'react';
-import { CircleCheck } from 'lucide-react';
 
 const ProcessSection: React.FC = () => {
   const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -96,14 +95,6 @@ const ProcessSection: React.FC = () => {
               <div className="md:w-1/2 md:pl-8">
                 <h3 className="text-h3 font-bold mb-3">{step.title}</h3>
                 <p className="text-body text-white/70 mb-4">{step.description}</p>
-                <div className="flex flex-wrap gap-3">
-                  {Array.from({ length: Math.min(3, index + 2) }).map((_, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center bg-white/5 rounded-full px-3 py-1 text-caption">
-                      <CircleCheck className="mr-1 text-green-400" size={14} />
-                      <span>Feature {featureIndex + 1}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           ))}

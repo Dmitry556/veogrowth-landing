@@ -32,7 +32,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <a href="#" className="text-xl font-bold text-white">
-                <span className="gradient-text">Growth</span>Engine X
+                <span className="gradient-text">Veo</span>growth
               </a>
             </div>
             
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
             </nav>
             
             <div className="hidden md:block">
-              <CustomButton>Start Free Trial</CustomButton>
+              <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>Launch my free campaign</CustomButton>
             </div>
             
             <button className="md:hidden text-white" onClick={toggleMenu}>
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
           <a href="#results" className="block text-caption text-white/80 hover:text-white transition-colors py-2" onClick={toggleMenu}>Results</a>
           <a href="#process" className="block text-caption text-white/80 hover:text-white transition-colors py-2" onClick={toggleMenu}>Process</a>
           <a href="#faq" className="block text-caption text-white/80 hover:text-white transition-colors py-2" onClick={toggleMenu}>FAQ</a>
-          <CustomButton className="w-full justify-center">Start Free Trial</CustomButton>
+          <CustomButton className="w-full justify-center" onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>Launch my free campaign</CustomButton>
         </div>
       </div>
     </header>
