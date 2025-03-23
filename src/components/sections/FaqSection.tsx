@@ -12,24 +12,28 @@ const FaqSection: React.FC = () => {
   
   const faqs = [
     {
-      question: "How long does it take to set up Growth Engine X?",
-      answer: "Most customers are fully set up within 1-2 weeks. Our one-click data connectors make integration with your existing tools fast and easy, and our onboarding team provides white-glove support throughout the process."
+      question: "How is this different from other outbound agencies?",
+      answer: "We're a B2B data company first. Our differentiator is our custom data pipeline that finds signals other agencies miss. Plus, we start with a free test that validates your offer works before you pay us anything."
     },
     {
-      question: "Which marketing and sales tools do you integrate with?",
-      answer: "We integrate with over 50 popular tools including Google Analytics, Facebook Ads, Google Ads, LinkedIn Ads, HubSpot, Salesforce, Marketo, Shopify, Stripe, and many more. If you use a tool that's not on our list, our API allows for custom integrations."
+      question: "How many leads can I expect?",
+      answer: "On average, our clients get 1 positive response per 350 contacts. Our top performers get 8-20 leads per day consistently. We'll set realistic expectations during our call based on your industry and offer."
     },
     {
-      question: "How does Growth Engine X attribute revenue to marketing efforts?",
-      answer: "We use a multi-touch attribution model that tracks every customer interaction across channels and assigns appropriate credit to each touchpoint. Unlike simple last-click models, our approach reveals the true value of each marketing channel throughout the entire customer journey."
+      question: "Do I need to change my domain or email setup?",
+      answer: "No. We handle everything, including domain setup, warming, and deliverability. For ongoing clients ($2,500/month), we purchase new domains branded similar to your main domain and warm them for 2 weeks before launching campaigns."
     },
     {
-      question: "Is Growth Engine X suitable for my industry?",
-      answer: "Growth Engine X is designed to work for B2B and B2C companies across industries. We have customers in SaaS, e-commerce, financial services, healthcare, education, and more. The platform is flexible enough to adapt to your specific business model and sales cycle."
+      question: "What if it doesn't work for my business?",
+      answer: "Then you don't pay us. We start with a free test campaign that validates your offer works with cold email. If it doesn't, we'll tell you outbound might not be your best channel."
     },
     {
-      question: "How much does Growth Engine X cost?",
-      answer: "Our pricing is based on the size of your business and the specific features you need. Plans start at $2,000/month for growing businesses and scale up for larger enterprises. We offer a 14-day free trial so you can see the value before you commit."
+      question: "What's included in the monthly service?",
+      answer: "Our $2,500 monthly service includes custom domain setup and warming, ongoing list building, campaign management, copy creation (with your approval), weekly reporting every Friday, and regular campaign review calls. We operate on a month-to-month basis with no long-term contracts."
+    },
+    {
+      question: "How much visibility do I have into campaigns?",
+      answer: "Complete transparency. You approve all copy before campaigns launch, receive detailed weekly reports, and have access to all campaign data. We hold regular review calls to discuss performance and strategy adjustments."
     }
   ];
 
@@ -40,13 +44,13 @@ const FaqSection: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-caption font-medium mb-6">
-            FAQs
+            Common Questions
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            Common questions
+            Frequently Asked Questions
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Everything you need to know about Growth Engine X and how it can transform your business.
+            Everything you need to know about our pipeline generation service and how it can transform your business.
           </p>
         </div>
         
@@ -76,9 +80,9 @@ const FaqSection: React.FC = () => {
         
         <div className="text-center mt-16">
           <p className="text-body text-white/70 mb-6">
-            Still have questions? We're here to help.
+            Ready to build real pipeline? Schedule your free 15-minute setup call today.
           </p>
-          <CustomButton>Contact Sales</CustomButton>
+          <CustomButton>Let's Talk Pipeline →</CustomButton>
         </div>
       </div>
     </section>

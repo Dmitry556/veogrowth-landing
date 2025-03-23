@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import CustomCard from '../ui/CustomCard';
 import { Quote } from 'lucide-react';
@@ -31,23 +32,23 @@ const ResultsSection: React.FC = () => {
   }, []);
   
   const metrics = [
-    { value: 287, label: "Average revenue increase", suffix: "%" },
-    { value: 12, label: "Average ROI multiplier", suffix: "x" },
-    { value: 63, label: "Time saved on reporting", suffix: "%" },
+    { value: 10000, label: "Positive responses generated in 2024", suffix: "+" },
+    { value: 40, label: "B2B clients helped", suffix: "+" },
+    { value: 105, label: "K in missed pipeline per month of delay", suffix: "$" },
   ];
   
   const testimonials = [
     {
-      quote: "Growth Engine X completely transformed how we track and optimize our marketing efforts. We can now see exactly which channels drive revenue.",
-      author: "Sarah Johnson",
-      role: "CMO at TechStream",
-      image: "https://placehold.co/60x60/2A2A2A/CCCCCC?text=SJ"
+      quote: "Their team helped us build $4.2M in pipeline this year alone.",
+      author: "VP of Marketing",
+      role: "SaaS Company",
+      image: "https://placehold.co/60x60/2A2A2A/CCCCCC?text=VP"
     },
     {
-      quote: "Our marketing and sales teams finally speak the same language. The ROI insights helped us double our growth while cutting spend by 30%.",
-      author: "Michael Chen",
-      role: "VP of Growth at ScaleUp",
-      image: "https://placehold.co/60x60/2A2A2A/CCCCCC?text=MC"
+      quote: "We've been using this system for 7 months and have closed 4 major accounts directly from cold email.",
+      author: "Head of Growth",
+      role: "B2B Tech Company",
+      image: "https://placehold.co/60x60/2A2A2A/CCCCCC?text=HG"
     }
   ];
 
@@ -58,13 +59,13 @@ const ResultsSection: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-caption font-medium mb-6">
-            The Results
+            Proven Results
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            Real companies, real growth
+            Proven Results for Our Clients
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Our customers see unprecedented growth after connecting their data and teams with Growth Engine X.
+            We've generated 10,000+ positive responses for 40+ clients in 2024 alone.
           </p>
         </div>
         
@@ -113,16 +114,16 @@ const ResultsSection: React.FC = () => {
                 Case Study
               </div>
               <h3 className="text-h3 font-bold mb-4">
-                How TechNova increased revenue by 347% in 6 months
+                How we helped build $3M in pipeline for a SaaS company selling a $99 product
               </h3>
               <p className="text-body text-white/70 mb-6">
-                Learn how this B2B SaaS company used Growth Engine X to align their marketing and sales efforts, optimize their channel mix, and drive unprecedented growth.
+                Their data-first approach found leads our internal team missed completely.
               </p>
               <div className="flex items-center">
-                <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=TN" alt="TechNova logo" className="w-10 h-10 rounded mr-3" />
+                <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" alt="CEO" className="w-10 h-10 rounded mr-3" />
                 <div>
-                  <p className="text-body font-medium">TechNova</p>
-                  <p className="text-caption text-white/60">B2B SaaS • 120 employees</p>
+                  <p className="text-body font-medium">CEO</p>
+                  <p className="text-caption text-white/60">SMB Software Company</p>
                 </div>
               </div>
             </div>
@@ -132,12 +133,12 @@ const ResultsSection: React.FC = () => {
                   <div className="bg-black/30 rounded-lg p-4">
                     <p className="text-caption text-white/60 mb-1">Before</p>
                     <p className="text-h3 font-bold">$850K</p>
-                    <p className="text-caption text-white/60">Quarterly revenue</p>
+                    <p className="text-caption text-white/60">Quarterly pipeline</p>
                   </div>
                   <div className="bg-black/30 rounded-lg p-4">
                     <p className="text-caption text-white/60 mb-1">After</p>
-                    <p className="text-h3 font-bold text-gradient">$2.95M</p>
-                    <p className="text-caption text-white/60">Quarterly revenue</p>
+                    <p className="text-h3 font-bold text-gradient">$3M</p>
+                    <p className="text-caption text-white/60">Quarterly pipeline</p>
                   </div>
                 </div>
                 <div className="h-32 relative mb-8">

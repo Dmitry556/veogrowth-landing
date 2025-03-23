@@ -107,11 +107,11 @@ const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-stagger">
             <h1 className="text-display font-bold leading-display tracking-tight mb-6">
-              Scale your <span className="gradient-text">growth</span> with unmatched precision
+              Your SDRs Are Missing <span className="gradient-text">68%</span> of Potential Pipeline
             </h1>
             
             <p className="text-body-large text-white/80 leading-body tracking-slight mb-8 max-w-lg">
-              Growth Engine X connects your marketing, sales, and customer data to drive unprecedented revenue growth with AI-powered insights.
+              We help B2B companies generate 4.2M+ in pipeline without hiring more sales reps. Most outbound agencies claim they can get you leads. We've actually done it for dozens of companies in diverse industries - and we have the data to prove it.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -119,7 +119,7 @@ const HeroSection: React.FC = () => {
                 Start Free Trial <ChevronRight className="ml-2" size={18} />
               </CustomButton>
               <CustomButton size="lg" variant="outline">
-                Book a Demo
+                Let's Talk Pipeline
               </CustomButton>
             </div>
             
@@ -148,7 +148,7 @@ const HeroSection: React.FC = () => {
                         <path d="M21 7L13 15L9 11L3 17M21 7H15M21 7V13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <h3 className="text-h3 font-bold mb-2">Growth Analytics</h3>
+                    <h3 className="text-h3 font-bold mb-2">Pipeline Growth</h3>
                     <p className="text-center text-white/70 mb-6">Real-time insights to drive your business forward</p>
                     <div className="w-full bg-black/20 rounded-lg p-4 mb-4">
                       <div className="h-2 w-3/4 bg-gradient-primary rounded-full"></div>
@@ -161,7 +161,7 @@ const HeroSection: React.FC = () => {
                       </div>
                       <div className="text-center">
                         <p className="text-2xl font-bold gradient-text">$4.2M</p>
-                        <p className="text-caption text-white/60">Revenue</p>
+                        <p className="text-caption text-white/60">Pipeline</p>
                       </div>
                       <div className="text-center">
                         <p className="text-2xl font-bold gradient-text">12.8x</p>

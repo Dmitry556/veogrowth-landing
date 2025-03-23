@@ -1,29 +1,34 @@
 
 import React from 'react';
 import CustomCard from '../ui/CustomCard';
-import { AlertTriangle, Unlink, Database, FileQuestion } from 'lucide-react';
+import { AlertTriangle, Unlink, Database, FileQuestion, DollarSign } from 'lucide-react';
 
 const ProblemSection: React.FC = () => {
   const problems = [
     {
       icon: <AlertTriangle className="text-amber-400" />,
-      title: "Data Silos",
-      description: "Your marketing, sales, and customer data live in different tools, making it impossible to see the complete picture."
+      title: "Low Response Rates",
+      description: "Your cold outreach generates under 1% response rates, wasting valuable time and resources."
     },
     {
-      icon: <Unlink className="text-rose-400" />,
-      title: "Disconnected Teams",
-      description: "Sales and marketing teams work with different metrics and tools, leading to misalignment and missed opportunities."
+      icon: <DollarSign className="text-rose-400" />,
+      title: "Wasted Budget",
+      description: "You're spending on tools that promise leads but consistently fail to deliver meaningful results."
     },
     {
-      icon: <Database className="text-blue-400" />,
-      title: "Manual Reporting",
-      description: "Teams waste hours each week manually combining data from different sources to create reports."
+      icon: <Unlink className="text-blue-400" />,
+      title: "Burnt Domains",
+      description: "Poor email deliverability has damaged your sending reputation and landing emails in spam."
     },
     {
       icon: <FileQuestion className="text-purple-400" />,
-      title: "Unclear Attribution",
-      description: "It's nearly impossible to determine which marketing efforts actually drive revenue and deserve more investment."
+      title: "Generic Messaging",
+      description: "Your messaging gets ignored by decision-makers because it lacks personalization that resonates."
+    },
+    {
+      icon: <Database className="text-green-400" />,
+      title: "Data Gaps",
+      description: "Incomplete targeting data prevents you from reaching the right accounts and decision-makers."
     }
   ];
 
@@ -35,18 +40,18 @@ const ProblemSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
-              The Challenge
+              The Pipeline Problem
             </div>
             <h2 className="text-h2 font-bold tracking-tight mb-6">
-              Growth today is broken by disconnected tools and data
+              The Pipeline Problem You're Facing
             </h2>
             <p className="text-body-large text-white/70 mb-10 leading-body max-w-lg">
-              Companies struggle to connect marketing efforts to actual revenue, while teams work in silos with incompatible tools and metrics.
+              Your sales team is working hard, but your competitor's pipeline keeps growing faster.
             </p>
             
             <div className="p-6 rounded-2xl border border-white/5 bg-white/5">
               <p className="text-body-large font-medium italic text-white/90">
-                "What if your marketing and sales data worked together seamlessly, showing you <span className="text-blue-400">exactly what drives revenue</span> and where to invest next?"
+                "What if you could turn cold email into your <span className="text-blue-400">most reliable lead source</span> - without hiring a single SDR?"
               </p>
             </div>
           </div>

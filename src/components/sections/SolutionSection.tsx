@@ -7,27 +7,21 @@ const SolutionSection: React.FC = () => {
   const solutions = [
     {
       icon: <LineChart className="text-blue-400" />,
-      title: "Unified Analytics",
-      description: "Connect all your marketing, sales, and customer data in one place for a complete view of your growth engine.",
+      title: "Custom Data Pipeline",
+      description: "We build hyper-targeted lists with 10+ data points per prospect - not just names and emails. Our data waterfall finds decision-makers other agencies miss entirely.",
       gradient: "from-blue-600/20 to-blue-400/5"
     },
     {
       icon: <ArrowUpRight className="text-green-400" />,
-      title: "Revenue Attribution",
-      description: "Understand exactly which marketing channels and campaigns drive real revenue, not just leads.",
+      title: "Inbox-Optimized Infrastructure",
+      description: "We manage 2,500+ warming inboxes with 90%+ deliverability rates. Each domain is prepared for 3+ weeks before sending a single email, ensuring your messages land in primary inboxes.",
       gradient: "from-green-600/20 to-green-400/5"
     },
     {
       icon: <Zap className="text-amber-400" />,
-      title: "Predictive Insights",
-      description: "AI-powered recommendations show you where to invest next for the highest ROI on your marketing spend.",
+      title: "AI-Powered Personalization",
+      description: "Our AI systems create truly personalized messages that reference specific details about each prospect's business, generating response rates 3.7x higher than industry average.",
       gradient: "from-amber-500/20 to-amber-300/5"
-    },
-    {
-      icon: <Cpu className="text-purple-400" />,
-      title: "Automated Reporting",
-      description: "Save hours each week with automated reports and dashboards tailored to each stakeholder.",
-      gradient: "from-purple-600/20 to-purple-400/5"
     }
   ];
 
@@ -38,17 +32,17 @@ const SolutionSection: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-caption font-medium mb-6">
-            The Solution
+            The Difference
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            A complete growth platform that connects everything
+            How We're Different: We're a Data Company That Sends Emails
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Growth Engine X brings together all your data, tools, and teams in one platform to drive unprecedented revenue growth.
+            While other agencies guess what works, we rely on data to design custom campaigns that consistently deliver:
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
             <CustomCard 
               key={index} 
@@ -77,21 +71,21 @@ const SolutionSection: React.FC = () => {
                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                         <div className="w-3 h-3 rounded-full bg-green-500"></div>
                       </div>
-                      <div className="text-caption text-white/60">Growth Engine X Dashboard</div>
+                      <div className="text-caption text-white/60">Pipeline Growth Dashboard</div>
                       <div></div>
                     </div>
                     <div className="bg-black/40 p-6">
                       <div className="grid grid-cols-3 gap-4 mb-6">
                         <div className="bg-white/5 rounded-lg p-4">
-                          <p className="text-caption text-white/60 mb-2">Revenue</p>
-                          <p className="text-h3 font-bold text-gradient">$1.8M</p>
+                          <p className="text-caption text-white/60 mb-2">Pipeline</p>
+                          <p className="text-h3 font-bold text-gradient">$4.2M</p>
                           <div className="flex items-center mt-1">
                             <ArrowUpRight className="text-green-400" size={14} />
                             <span className="text-green-400 text-xs ml-1">+24%</span>
                           </div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4">
-                          <p className="text-caption text-white/60 mb-2">Conversion</p>
+                          <p className="text-caption text-white/60 mb-2">Response Rate</p>
                           <p className="text-h3 font-bold text-gradient">8.7%</p>
                           <div className="flex items-center mt-1">
                             <ArrowUpRight className="text-green-400" size={14} />
@@ -99,17 +93,17 @@ const SolutionSection: React.FC = () => {
                           </div>
                         </div>
                         <div className="bg-white/5 rounded-lg p-4">
-                          <p className="text-caption text-white/60 mb-2">CAC</p>
-                          <p className="text-h3 font-bold text-gradient">$142</p>
+                          <p className="text-caption text-white/60 mb-2">ROI</p>
+                          <p className="text-h3 font-bold text-gradient">12.8x</p>
                           <div className="flex items-center mt-1">
-                            <ArrowUpRight className="text-green-400" size={14} transform="rotate(90)" />
-                            <span className="text-green-400 text-xs ml-1">-18%</span>
+                            <ArrowUpRight className="text-green-400" size={14} />
+                            <span className="text-green-400 text-xs ml-1">+18%</span>
                           </div>
                         </div>
                       </div>
                       <div className="bg-white/5 rounded-lg p-4 mb-6">
                         <div className="flex justify-between items-center mb-4">
-                          <p className="text-body font-medium">Revenue by Channel</p>
+                          <p className="text-body font-medium">Response by Campaign</p>
                           <div className="text-caption text-white/60">Last 30 days</div>
                         </div>
                         <div className="h-32 flex items-end justify-between gap-2">
@@ -121,12 +115,12 @@ const SolutionSection: React.FC = () => {
                           <div className="w-1/6 h-[25%] bg-gradient-to-t from-teal-500 to-teal-400 rounded-t-sm"></div>
                         </div>
                         <div className="flex justify-between mt-2 text-caption text-white/60">
-                          <span>Social</span>
-                          <span>Search</span>
-                          <span>Email</span>
-                          <span>Direct</span>
-                          <span>Referral</span>
-                          <span>Other</span>
+                          <span>Campaign A</span>
+                          <span>Campaign B</span>
+                          <span>Campaign C</span>
+                          <span>Campaign D</span>
+                          <span>Campaign E</span>
+                          <span>Campaign F</span>
                         </div>
                       </div>
                       <div className="text-caption text-white/40 text-center">Interactive dashboard with real-time data and insights</div>

@@ -32,23 +32,28 @@ const ProcessSection: React.FC = () => {
   const steps = [
     {
       number: "01",
-      title: "Connect Your Data",
-      description: "Integrate all your marketing, sales, and customer data sources with our one-click connectors. No code required."
+      title: "FREE Campaign Validation",
+      description: "We launch a free campaign using our inboxes and data to validate your offer - you only pay if it works. 15-minute setup."
     },
     {
       number: "02",
-      title: "Map Your Customer Journey",
-      description: "Use our visual builder to map your customer journey from first touch to revenue, with automatic tracking."
+      title: "Target Identification",
+      description: "Our data team builds your custom list with 10+ verification points to ensure perfect prospect matching within 48 hours."
     },
     {
       number: "03",
-      title: "Activate AI Insights",
-      description: "Our AI analyzes your data to identify patterns and opportunities, then generates actionable recommendations."
+      title: "Messaging Strategy",
+      description: "We create and test messaging variants based on what's working now in your specific industry. You review and approve all copy before campaigns launch."
     },
     {
       number: "04",
-      title: "Optimize & Scale",
-      description: "Implement the insights to optimize your channels, reallocate budget, and scale what's working."
+      title: "Scale What Works",
+      description: "Once we find the formula that works, we scale horizontally with no limits on sending capacity. Monthly service is $2,500 after your successful test campaign."
+    },
+    {
+      number: "05",
+      title: "Ongoing Support & Optimization",
+      description: "You'll receive comprehensive weekly reports every Friday, along with campaign review calls to analyze data and refine strategy."
     }
   ];
 
@@ -62,10 +67,10 @@ const ProcessSection: React.FC = () => {
             The Process
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            Getting started is simple
+            How It Works: Start with a Free Campaign Test
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Our streamlined onboarding process gets you from data chaos to growth clarity in just four steps.
+            Our streamlined onboarding process gets you from initial setup to generating qualified leads in just five steps.
           </p>
         </div>
         
@@ -92,7 +97,7 @@ const ProcessSection: React.FC = () => {
                 <h3 className="text-h3 font-bold mb-3">{step.title}</h3>
                 <p className="text-body text-white/70 mb-4">{step.description}</p>
                 <div className="flex flex-wrap gap-3">
-                  {Array.from({ length: Math.min(4, index + 2) }).map((_, featureIndex) => (
+                  {Array.from({ length: Math.min(3, index + 2) }).map((_, featureIndex) => (
                     <div key={featureIndex} className="flex items-center bg-white/5 rounded-full px-3 py-1 text-caption">
                       <CircleCheck className="mr-1 text-green-400" size={14} />
                       <span>Feature {featureIndex + 1}</span>
