@@ -1,7 +1,7 @@
 
 import React from 'react';
 import CustomCard from '../ui/CustomCard';
-import { LineChart, ArrowUpRight, Zap, CpuChip } from 'lucide-react';
+import { LineChart, ArrowUpRight, Zap, Cpu } from 'lucide-react';
 
 const SolutionSection: React.FC = () => {
   const solutions = [
@@ -24,7 +24,7 @@ const SolutionSection: React.FC = () => {
       gradient: "from-amber-500/20 to-amber-300/5"
     },
     {
-      icon: <CpuChip className="text-purple-400" />,
+      icon: <Cpu className="text-purple-400" />,
       title: "Automated Reporting",
       description: "Save hours each week with automated reports and dashboards tailored to each stakeholder.",
       gradient: "from-purple-600/20 to-purple-400/5"

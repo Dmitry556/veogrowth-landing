@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import CustomCard from '../ui/CustomCard';
 import { Quote } from 'lucide-react';
@@ -176,7 +175,7 @@ const ResultsSection: React.FC = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         .counting-value {
           counter-reset: count 0;
           animation: none;
