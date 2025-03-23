@@ -131,15 +131,7 @@ const HeroSection: React.FC = () => {
               </CustomButton>
             </div>
             
-            <div className="mt-12">
-              <p className="text-caption text-white/60 mb-4">Trusted by innovative companies</p>
-              <div className="flex flex-wrap gap-8 items-center">
-                <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
-                <img src="https://logo.clearbit.com/hubspot.com" alt="HubSpot logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
-                <img src="https://logo.clearbit.com/slack.com" alt="Slack logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
-                <img src="https://logo.clearbit.com/dropbox.com" alt="Dropbox logo" className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
-              </div>
-            </div>
+            {/* "Trusted by innovative companies" section has been removed */}
           </div>
           
           <div className="relative">
