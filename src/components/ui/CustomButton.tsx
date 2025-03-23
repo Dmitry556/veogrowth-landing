@@ -28,13 +28,9 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
     };
     
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      // Only call the onClick handler that was passed in through props
       if (onClick) {
         onClick();
-      }
-      
-      // Handle any default onClick behavior from props
-      if (props.onClick) {
-        props.onClick(e);
       }
     };
     
