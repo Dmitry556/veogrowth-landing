@@ -99,12 +99,12 @@ const DashboardSection: React.FC = () => {
                     <p className="text-h3 font-bold">8,472</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4">
-                    <p className="text-caption text-white/60 mb-1">Open Rate</p>
-                    <p className="text-h3 font-bold">42.8%</p>
+                    <p className="text-caption text-white/60 mb-1">Reply Rate</p>
+                    <p className="text-h3 font-bold">3.2%</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4">
-                    <p className="text-caption text-white/60 mb-1">Responses</p>
-                    <p className="text-h3 font-bold text-green-400">27</p>
+                    <p className="text-caption text-white/60 mb-1">Positive Responses</p>
+                    <p className="text-h3 font-bold text-green-400">116</p>
                   </div>
                 </div>
                 
@@ -136,18 +136,36 @@ const DashboardSection: React.FC = () => {
                 <div className="bg-white/5 rounded-lg p-4 mb-4">
                   <p className="text-body font-medium mb-3">Recent Responses</p>
                   <div className="space-y-3">
-                    {[1, 2, 3].map((_, i) => (
-                      <div key={i} className="flex items-center justify-between py-2 border-b border-white/10">
-                        <div>
-                          <p className="text-body font-medium">John D.</p>
-                          <p className="text-caption text-white/60">VP of Sales, TechCorp</p>
-                        </div>
-                        <div className="flex items-center text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
-                          <Check size={14} className="mr-1" />
-                          <span className="text-caption">Positive</span>
-                        </div>
+                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                      <div>
+                        <p className="text-body font-medium">Sarah Chen</p>
+                        <p className="text-caption text-white/60">CTO, InnovaTech</p>
                       </div>
-                    ))}
+                      <div className="flex items-center text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+                        <Check size={14} className="mr-1" />
+                        <span className="text-caption">Positive</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                      <div>
+                        <p className="text-body font-medium">Michael Rodriguez</p>
+                        <p className="text-caption text-white/60">Head of Growth, NextWave</p>
+                      </div>
+                      <div className="flex items-center text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+                        <Check size={14} className="mr-1" />
+                        <span className="text-caption">Positive</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                      <div>
+                        <p className="text-body font-medium">Priya Sharma</p>
+                        <p className="text-caption text-white/60">COO, GreenSolutions</p>
+                      </div>
+                      <div className="flex items-center text-green-400 bg-green-400/10 px-2 py-1 rounded-full">
+                        <Check size={14} className="mr-1" />
+                        <span className="text-caption">Positive</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 

@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="glass-card rounded-3xl py-16 px-8 text-center max-w-4xl mx-auto">
           <h2 className="text-h2 font-bold mb-6 letter-spacing-tight">Ready to supercharge your growth?</h2>
           <p className="text-body-large text-white/80 mb-8 max-w-2xl mx-auto">
-            Join thousands of companies using Veogrowth to drive unprecedented revenue growth.
+            Run free campaigns to test if your offer works with outbound. Partner with us only if you like the results
           </p>
           <CustomButton 
             size="lg" 
@@ -25,13 +25,13 @@ const Footer: React.FC = () => {
       
       {/* Main Footer */}
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
             <a href="#" className="text-xl font-bold text-white mb-6 block">
               <span className="gradient-text">Veo</span>growth
             </a>
             <p className="text-caption text-white/60 mb-6">
-              The ultimate platform for businesses looking to scale their growth operations and drive unprecedented revenue.
+              The agency partner for businesses looking to scale their growth operations and drive unprecedented revenue.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white/60 hover:text-white transition-colors">
@@ -60,17 +60,6 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Blog</a></li>
               <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Press</a></li>
               <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-body font-semibold text-white mb-6">Resources</h3>
-            <ul className="space-y-3">
-              <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Documentation</a></li>
-              <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">API Reference</a></li>
-              <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Community</a></li>
-              <li><a href="#" className="text-caption text-white/60 hover:text-white transition-colors">Webinars</a></li>
             </ul>
           </div>
           
