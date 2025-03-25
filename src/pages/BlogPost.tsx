@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, Share2, MessageSquare, User, ArrowLeft, ArrowRight } from 'lucide-react';
@@ -15,11 +14,10 @@ import { Badge } from '@/components/ui/badge';
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const articleRef = useRef<HTMLElement>(null);
   
-  // In a real application, you would fetch this data based on the ID
-  // Here we're just simulating a blog post
   const blogPost: BlogPost = {
     id: '1',
     title: 'Scaling Your Outbound Campaigns: Strategies That Actually Work',
@@ -116,8 +114,7 @@ const outboundTeam = {
       { id: 'conclusion', title: 'Conclusion: Sustainable Scaling' }
     ]
   };
-  
-  // Related posts (would typically be fetched from API based on category, tags, etc.)
+
   const relatedPosts: BlogPost[] = [
     {
       id: '2',
@@ -163,9 +160,10 @@ const outboundTeam = {
     }
   ];
 
-  // Handle scroll for reading progress bar
   useEffect(() => {
     const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+      
       if (articleRef.current) {
         const element = articleRef.current;
         const totalHeight = element.scrollHeight - element.clientHeight;
@@ -182,7 +180,6 @@ const outboundTeam = {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Simulate loading delay for animations
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoaded(true);
@@ -191,13 +188,11 @@ const outboundTeam = {
     return () => clearTimeout(timer);
   }, []);
 
-  // Render date in readable format
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
-  // For sharing the article
   const shareArticle = () => {
     if (navigator.share) {
       navigator.share({
@@ -207,7 +202,6 @@ const outboundTeam = {
       })
       .catch(err => console.error('Error sharing:', err));
     } else {
-      // Fallback for browsers that don't support the Web Share API
       navigator.clipboard.writeText(window.location.href)
         .then(() => alert('Link copied to clipboard!'))
         .catch(err => console.error('Error copying link:', err));
@@ -218,14 +212,12 @@ const outboundTeam = {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       
-      {/* Reading progress bar */}
       <div 
         className="fixed top-0 left-0 z-50 h-1 bg-gradient-primary transition-all duration-300 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
       
       <main className="pt-32 pb-20">
-        {/* Back to blog link */}
         <div className="container mx-auto px-4 sm:px-6 mb-8">
           <Link to="/blog" className="inline-flex items-center text-white/70 hover:text-white transition-colors">
             <ArrowLeft size={16} className="mr-2" />
@@ -233,7 +225,6 @@ const outboundTeam = {
           </Link>
         </div>
         
-        {/* Hero image with gradient overlay */}
         <section 
           className={cn(
             "relative w-full h-[40vh] md:h-[50vh] mb-8 overflow-hidden opacity-0 transform translate-y-4",
@@ -245,23 +236,20 @@ const outboundTeam = {
             className="absolute inset-0 bg-cover bg-center transform transition-transform duration-1000 ease-out"
             style={{ 
               backgroundImage: `url(${blogPost.imageUrl})`,
-              transform: `translateY(${scrollPosition * 0.1}px)` // Parallax effect
+              transform: `translateY(${scrollPosition * 0.1}px)`
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
         </section>
         
-        {/* Article content container */}
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Table of contents (desktop) */}
             <aside className="hidden lg:block lg:col-span-3 relative">
               <div className="sticky top-32">
                 <TableOfContents items={blogPost.tableOfContents} />
               </div>
             </aside>
             
-            {/* Main article content */}
             <article 
               ref={articleRef}
               className={cn(
@@ -270,9 +258,7 @@ const outboundTeam = {
               )}
               style={{ animationDelay: '200ms' }}
             >
-              {/* Article header */}
               <header className="mb-10">
-                {/* Category */}
                 <Badge 
                   variant="outline" 
                   className="mb-4 bg-primary/10 text-primary border-primary/20 backdrop-blur-sm"
@@ -280,14 +266,11 @@ const outboundTeam = {
                   {blogPost.category.charAt(0).toUpperCase() + blogPost.category.slice(1)}
                 </Badge>
                 
-                {/* Title */}
                 <h1 className="text-h1 font-bold tracking-tight leading-heading mb-6">
                   {blogPost.title}
                 </h1>
                 
-                {/* Author info and metadata */}
                 <div className="flex flex-wrap items-center gap-6 text-white/70">
-                  {/* Author with avatar */}
                   <div className="flex items-center">
                     <Avatar className="h-10 w-10 mr-3 border border-white/10">
                       <AvatarImage src={blogPost.author.avatarUrl} alt={blogPost.author.name} />
@@ -301,19 +284,16 @@ const outboundTeam = {
                     </div>
                   </div>
                   
-                  {/* Date */}
                   <div className="flex items-center">
                     <Calendar size={16} className="mr-2" />
                     <span>{formatDate(blogPost.publishDate)}</span>
                   </div>
                   
-                  {/* Reading time */}
                   <div className="flex items-center">
                     <Clock size={16} className="mr-2" />
                     <span>{blogPost.readingTime}</span>
                   </div>
                   
-                  {/* Share button */}
                   <Button 
                     variant="ghost" 
                     size="sm" 
@@ -325,7 +305,6 @@ const outboundTeam = {
                   </Button>
                 </div>
                 
-                {/* Mobile table of contents toggle */}
                 <div className="lg:hidden mt-8">
                   <details className="glass-card p-4">
                     <summary className="font-medium cursor-pointer">Table of Contents</summary>
@@ -336,15 +315,12 @@ const outboundTeam = {
                 </div>
               </header>
               
-              {/* Article content */}
               <div 
                 className="prose prose-invert prose-lg max-w-none"
                 dangerouslySetInnerHTML={{ __html: blogPost.content }}
               ></div>
               
-              {/* Article footer */}
               <footer className="mt-16 pt-8 border-t border-white/10">
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-8">
                   <Badge variant="outline" className="bg-primary/5">outbound</Badge>
                   <Badge variant="outline" className="bg-primary/5">sales</Badge>
@@ -352,18 +328,15 @@ const outboundTeam = {
                   <Badge variant="outline" className="bg-primary/5">growth</Badge>
                 </div>
                 
-                {/* Share section */}
                 <div className="flex items-center justify-between mb-8">
                   <div className="font-medium">Share this article</div>
                   <div className="flex gap-3">
                     <Button variant="outline" size="icon" onClick={shareArticle}>
                       <Share2 size={18} />
                     </Button>
-                    {/* Add other social share buttons as needed */}
                   </div>
                 </div>
                 
-                {/* Author bio */}
                 <div className="glass-card p-6 mb-12">
                   <div className="flex items-center gap-4 mb-4">
                     <Avatar className="h-12 w-12 border border-white/10">
@@ -381,7 +354,6 @@ const outboundTeam = {
                   </p>
                 </div>
                 
-                {/* Comments section */}
                 <section className="mt-12">
                   <h3 className="text-h3 font-semibold mb-6">Discussion</h3>
                   
@@ -412,7 +384,6 @@ const outboundTeam = {
           </div>
         </div>
         
-        {/* Related articles section */}
         <section className="container mx-auto px-4 sm:px-6 mt-20">
           <h2 className="text-h2 font-bold mb-10">Related Articles</h2>
           
