@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -116,6 +117,72 @@
   
   .animate-stagger > *:nth-child(5) {
     animation: fade-in 0.5s 0.6s ease-out forwards;
+  }
+  
+  /* Blog Typography */
+  .prose {
+    @apply text-white;
+  }
+  
+  .prose h2 {
+    @apply text-h2 font-bold mt-12 mb-6 tracking-tight;
+  }
+  
+  .prose h3 {
+    @apply text-h3 font-semibold mt-10 mb-4;
+  }
+  
+  .prose p {
+    @apply my-6 leading-body text-white/80;
+  }
+  
+  .prose a {
+    @apply text-blue-400 hover:text-blue-300 no-underline border-b border-blue-400/30 hover:border-blue-300;
+  }
+  
+  .prose blockquote {
+    @apply pl-6 border-l-4 border-gradient-primary bg-white/5 py-4 px-6 my-8 rounded-r-lg;
+  }
+  
+  .prose blockquote p {
+    @apply text-white/90 italic;
+  }
+  
+  .prose ul, .prose ol {
+    @apply my-6 ml-6 space-y-2;
+  }
+  
+  .prose li {
+    @apply text-white/80 leading-body;
+  }
+  
+  .prose ul li {
+    @apply relative pl-6;
+  }
+  
+  .prose ul li::before {
+    content: "";
+    @apply absolute left-0 top-[0.6em] w-3 h-3 rounded-full bg-gradient-primary opacity-70;
+  }
+  
+  .prose pre {
+    @apply my-8 p-4 rounded-lg bg-black/30 border border-white/10 overflow-x-auto shadow-card;
+  }
+  
+  .prose code {
+    @apply text-blue-300 bg-blue-900/20 px-1.5 py-0.5 rounded;
+  }
+  
+  .prose pre code {
+    @apply text-white/90 bg-transparent p-0;
+  }
+  
+  .prose img {
+    @apply rounded-lg shadow-lg my-8;
+  }
+  
+  .prose hr {
+    @apply border-white/10 my-10;
   }
 }
 

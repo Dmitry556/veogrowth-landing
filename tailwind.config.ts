@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,6 +63,66 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						maxWidth: '65ch',
+						color: 'white',
+						h1: {
+							color: 'white',
+						},
+						h2: {
+							color: 'white',
+						},
+						h3: {
+							color: 'white',
+						},
+						strong: {
+							color: 'white',
+						},
+						a: {
+							color: '#3b82f6',
+							'&:hover': {
+								color: '#60a5fa',
+							},
+						},
+						blockquote: {
+							borderLeftColor: '#3b82f6',
+							backgroundColor: 'rgba(255, 255, 255, 0.05)',
+							color: 'rgba(255, 255, 255, 0.9)',
+						},
+						hr: {
+							borderColor: 'rgba(255, 255, 255, 0.1)',
+						},
+						ul: {
+							li: {
+								'&::marker': {
+									color: '#3b82f6',
+								},
+							},
+						},
+						ol: {
+							li: {
+								'&::marker': {
+									color: '#3b82f6',
+								},
+							},
+						},
+						pre: {
+							backgroundColor: 'rgba(0, 0, 0, 0.3)',
+							borderColor: 'rgba(255, 255, 255, 0.1)',
+							borderWidth: '1px',
+							borderRadius: '0.5rem',
+						},
+						code: {
+							color: '#93c5fd',
+							backgroundColor: 'rgba(147, 197, 253, 0.1)',
+							borderRadius: '0.25rem',
+							padding: '0.2em 0.4em',
+						},
+					},
+				},
 			},
 			fontFamily: {
 				sans: ['Inter var', 'Inter', 'SF Pro Display', 'SF Pro', 'system-ui', 'sans-serif'],
@@ -146,5 +207,8 @@ export default {
 			},
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		require("@tailwindcss/typography")
+	],
 } satisfies Config;
