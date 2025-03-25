@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -125,7 +124,8 @@ export default {
 				},
 				'float': {
 					'0%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-5px)' },
+					'33%': { transform: 'translateY(-3px)' },
+					'66%': { transform: 'translateY(3px)' },
 					'100%': { transform: 'translateY(0px)' },
 				},
 			},
@@ -137,7 +137,7 @@ export default {
 				'count-up': 'count-up 2s forwards',
 				'draw-line': 'draw-line 1.5s ease-out forwards',
 				'gradient-shift': 'gradient-shift 3s ease infinite',
-				'float': 'float 3s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
