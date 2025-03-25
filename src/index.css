@@ -141,7 +141,7 @@
   }
   
   .prose blockquote {
-    @apply pl-6 border-l-4 border-gradient-primary bg-white/5 py-4 px-6 my-8 rounded-r-lg;
+    @apply pl-6 border-l-4 border-blue-500 bg-white/5 py-4 px-6 my-8 rounded-r-lg;
   }
   
   .prose blockquote p {
