@@ -19,22 +19,178 @@ const Blog = () => {
 
   const postsPerPage = 6;
 
+  // Get current date in YYYY-MM-DD format
+  const currentDate = new Date().toISOString().split('T')[0];
+
   // Simulate blog posts data that would normally come from an API
   const blogPosts: BlogPost[] = [
     {
       id: '1',
-      title: 'Scaling Your Outbound Campaigns: Strategies That Actually Work',
-      excerpt: 'Learn how top-performing companies are scaling their outbound efforts without sacrificing quality or burning out their teams.',
-      category: 'strategy',
+      title: 'How to Create Poke-the-Bear Questions That Get Replies',
+      excerpt: 'Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions.',
+      category: 'cold-email',
       author: {
-        name: 'Sophia Chen',
-        avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
-        title: 'Growth Director, TechVentures'
+        name: 'Dmitry Pinchuk',
+        avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+        title: 'Co-founder at Veogrowth'
       },
-      publishDate: '2023-10-15',
-      readingTime: '8 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      featured: true
+      publishDate: currentDate,
+      readingTime: '6 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      featured: true,
+      content: `# How to Create Poke-the-Bear Questions That Get Replies
+
+Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions that make prospects stop and think.
+
+Enter the "Poke-the-Bear" question technique—a proven method to cut through inbox noise and get decision-makers to respond.
+
+## What Are Poke-the-Bear Questions?
+
+Poke-the-Bear questions target your prospect's hidden pain points—problems they might not even realize they have. Unlike leading questions that feel manipulative, these questions get prospects to think differently about their current situation.
+
+The concept (popularized by cold email expert Josh Braun) is simple: instead of asking if someone wants a solution, you make them question whether their current approach is actually working.
+
+## Why Standard Questions Fail
+
+Most cold emails ask predictable questions that prospects have seen hundreds of times:
+
+❌ "Would you be interested in learning more about our solution?"
+❌ "Do you need help with [problem]?"
+❌ "Can I get 15 minutes on your calendar?"
+
+These questions require zero thought and can be answered with an automatic "no." They fail because they:
+
+1. Feel like obvious sales tactics
+2. Don't create any cognitive dissonance
+3. Don't make prospects reconsider their status quo
+
+## The Poke-the-Bear Framework
+
+To create effective Poke-the-Bear questions, follow this simple framework:
+
+1. **Identify the gap**: What does your prospect not know that could hurt them?
+2. **Focus on consequences**: What risks are they unknowingly taking?
+3. **Challenge assumptions**: What "truths" are they accepting without question?
+4. **Ask neutrally**: Phrase as a genuine inquiry, not a leading statement
+
+## 10 Examples That Drive Responses
+
+Here are real Poke-the-Bear questions that have generated positive replies across different industries:
+
+### For Sales Teams
+"How do you know your SDRs aren't spending 8+ hours weekly on activities your competitors have automated?"
+
+### For Marketing Leaders
+"How are you measuring if your content actually influences pipeline, or just creates vanity metrics?"
+
+### For HR Directors
+"What process confirms your top candidates aren't accepting other offers while your approval workflows run?"
+
+### For E-commerce
+"How do you know which abandoned carts represent actual lost revenue versus normal shopping behavior?"
+
+### For SaaS Companies
+"What system ensures customers struggling with your product get help before they cancel?"
+
+### For Financial Services
+"How do you verify your clients aren't keeping assets with competitors that you could be managing?"
+
+### For Agencies
+"What confirms the leads you're generating actually match your clients' ideal customer profile?"
+
+### For Manufacturing
+"How do you know your quality control process isn't missing the issues customers care most about?"
+
+### For Healthcare
+"What verifies your patient follow-up process isn't causing preventable readmissions?"
+
+### For Real Estate
+"How do you track which properties you've shown aren't selling because of easily fixable issues?"
+
+## Implementing in Cold Emails
+
+The perfect placement for a Poke-the-Bear question is after your opening line. For example:
+
+---
+
+**Subject:** measurement question
+
+Hi {First_Name},
+
+LinkedIn showed you took over as Marketing Director at {Company} last month. Congrats on the role.
+
+How are you currently determining if your marketing analytics are tracking metrics that actually drive revenue, or just measuring activity?
+
+We've helped companies like {Competitor} connect their marketing data directly to revenue outcomes, increasing attribution accuracy by 37%.
+
+If improving your marketing ROI visibility is a priority this quarter, would sharing our approach be helpful?
+
+Best,
+{Your Name}
+
+---
+
+## Common Mistakes to Avoid
+
+❌ **Making it accusatory**: "Don't you realize your current approach is flawed?"
+❌ **Being too generic**: "How do you know your process is working?"
+❌ **Using industry jargon**: "How are you optimizing your multi-touch attribution paradigm?"
+❌ **Obvious sales fishing**: "Wouldn't you like to save time and money?"
+
+## Why This Works: The Psychology
+
+Poke-the-Bear questions work because they:
+
+1. **Create cognitive dissonance**: They highlight gaps between what prospects believe and reality
+2. **Trigger loss aversion**: They activate the fear of missing something important
+3. **Build credibility**: They position you as an expert who sees what others miss
+4. **Feel conversational**: They read like something a trusted advisor would ask
+
+## Testing Your Questions
+
+Before deploying in campaigns, test your Poke-the-Bear questions with these criteria:
+
+1. Does it highlight a risk the prospect hasn't considered?
+2. Would it make them pause and think "that's a good question"?
+3. Is it specific to their role and industry?
+4. Does it avoid feeling like a sales tactic?
+
+If you answer yes to all four, you've created an effective Poke-the-Bear question.
+
+## Beyond the First Reply
+
+Once you get a response, don't ruin it by immediately pushing for a meeting. Instead:
+
+1. Acknowledge their answer
+2. Provide a brief but valuable insight
+3. Ask a follow-up question that deepens the conversation
+4. Only then suggest next steps if appropriate
+
+The goal is a conversation, not just a meeting booking.
+
+## Start Creating Your Questions
+
+The best Poke-the-Bear questions come from deep industry knowledge. What do you know that your prospects don't? What assumptions are they making that could be hurting them?
+
+Create a list of 5-10 customized questions for your specific audience, test them on a small batch of prospects, and refine based on response rates.
+
+When you hit on the right question, you'll see your response rates jump dramatically—often from below 1% to 3-5% or higher.
+
+---
+
+**Need more help with your cold email campaigns?** Our team has generated over 10,000 positive responses in 2024 alone. Contact us for a free campaign test where we'll validate your offer works before you pay a penny.`,
+      tableOfContents: [
+        { id: 'what-are-poke-the-bear-questions', title: 'What Are Poke-the-Bear Questions?' },
+        { id: 'why-standard-questions-fail', title: 'Why Standard Questions Fail' },
+        { id: 'the-poke-the-bear-framework', title: 'The Poke-the-Bear Framework' },
+        { id: '10-examples-that-drive-responses', title: '10 Examples That Drive Responses' },
+        { id: 'implementing-in-cold-emails', title: 'Implementing in Cold Emails' },
+        { id: 'common-mistakes-to-avoid', title: 'Common Mistakes to Avoid' },
+        { id: 'why-this-works-the-psychology', title: 'Why This Works: The Psychology' },
+        { id: 'testing-your-questions', title: 'Testing Your Questions' },
+        { id: 'beyond-the-first-reply', title: 'Beyond the First Reply' },
+        { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' }
+      ]
     },
     {
       id: '2',
