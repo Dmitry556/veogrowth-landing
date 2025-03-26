@@ -132,6 +132,10 @@
     @apply text-h3 font-semibold mt-10 mb-4;
   }
   
+  .prose h4 {
+    @apply text-xl font-semibold mt-8 mb-3;
+  }
+  
   .prose p {
     @apply my-6 leading-body text-white/80;
   }
@@ -165,6 +169,14 @@
     @apply absolute left-0 top-[0.6em] w-3 h-3 rounded-full bg-gradient-primary opacity-70;
   }
   
+  .prose ol {
+    @apply list-decimal pl-5;
+  }
+  
+  .prose ol li {
+    @apply pl-2;
+  }
+  
   .prose pre {
     @apply my-8 p-4 rounded-lg bg-black/30 border border-white/10 overflow-x-auto shadow-card;
   }
@@ -183,6 +195,19 @@
   
   .prose hr {
     @apply border-white/10 my-10;
+  }
+  
+  /* Pro Tip callout boxes */
+  .prose .glass-card {
+    @apply my-8 p-6 rounded-xl bg-blue-900/20 border border-blue-500/30;
+  }
+  
+  .prose .glass-card p.font-medium {
+    @apply text-blue-400 text-lg mb-2;
+  }
+  
+  .prose .glass-card p:not(.font-medium) {
+    @apply text-white/90 mt-2;
   }
 }
 

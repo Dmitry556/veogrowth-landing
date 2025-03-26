@@ -19,20 +19,22 @@ const BlogPostPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const articleRef = useRef<HTMLElement>(null);
   
-  const blogPost: BlogPost = {
-    id: '1',
-    title: 'How to Create Poke-the-Bear Questions That Get Replies',
-    excerpt: "Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions that make prospects stop and think.",
-    category: 'cold-email',
-    author: {
-      name: 'Dmitry Pinchuk',
-      avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
-      title: 'Co-founder at Veogrowth'
-    },
-    publishDate: new Date().toISOString().split('T')[0],
-    readingTime: '6 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    content: `
+  // Updated to include both blog posts
+  const blogPosts: Record<string, BlogPost> = {
+    "1": {
+      id: '1',
+      title: 'How to Create Poke-the-Bear Questions That Get Replies',
+      excerpt: "Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions that make prospects stop and think.",
+      category: 'cold-email',
+      author: {
+        name: 'Dmitry Pinchuk',
+        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        title: 'Co-founder at Veogrowth'
+      },
+      publishDate: new Date().toISOString().split('T')[0],
+      readingTime: '6 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      content: `
       <h2 id="what-are-poke-the-bear-questions">What Are Poke-the-Bear Questions?</h2>
       <p>Poke-the-Bear questions target your prospect's hidden pain points—problems they might not even realize they have. Unlike leading questions that feel manipulative, these questions get prospects to think differently about their current situation.</p>
       <p>The concept (popularized by cold email expert Josh Braun) is simple: instead of asking if someone wants a solution, you make them question whether their current approach is actually working.</p>
@@ -145,20 +147,259 @@ const BlogPostPage = () => {
       <p>When you hit on the right question, you'll see your response rates jump dramatically—often from below 1% to 3-5% or higher.</p>
       <p><strong>Need more help with your cold email campaigns?</strong> Our team has generated over 10,000 positive responses in 2024 alone. Contact us for a free campaign test where we'll validate your offer works before you pay a penny.</p>
     `,
-    tableOfContents: [
-      { id: 'what-are-poke-the-bear-questions', title: 'What Are Poke-the-Bear Questions?' },
-      { id: 'why-standard-questions-fail', title: 'Why Standard Questions Fail' },
-      { id: 'the-poke-the-bear-framework', title: 'The Poke-the-Bear Framework' },
-      { id: '10-examples-that-drive-responses', title: '10 Examples That Drive Responses' },
-      { id: 'implementing-in-cold-emails', title: 'Implementing in Cold Emails' },
-      { id: 'common-mistakes-to-avoid', title: 'Common Mistakes to Avoid' },
-      { id: 'why-this-works-the-psychology', title: 'Why This Works: The Psychology' },
-      { id: 'testing-your-questions', title: 'Testing Your Questions' },
-      { id: 'beyond-the-first-reply', title: 'Beyond the First Reply' },
-      { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' }
-    ]
+      tableOfContents: [
+        { id: 'what-are-poke-the-bear-questions', title: 'What Are Poke-the-Bear Questions?' },
+        { id: 'why-standard-questions-fail', title: 'Why Standard Questions Fail' },
+        { id: 'the-poke-the-bear-framework', title: 'The Poke-the-Bear Framework' },
+        { id: '10-examples-that-drive-responses', title: '10 Examples That Drive Responses' },
+        { id: 'implementing-in-cold-emails', title: 'Implementing in Cold Emails' },
+        { id: 'common-mistakes-to-avoid', title: 'Common Mistakes to Avoid' },
+        { id: 'why-this-works-the-psychology', title: 'Why This Works: The Psychology' },
+        { id: 'testing-your-questions', title: 'Testing Your Questions' },
+        { id: 'beyond-the-first-reply', title: 'Beyond the First Reply' },
+        { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' }
+      ]
+    },
+    "8": {
+      id: '8',
+      title: 'How to Set Up a Cold Email Campaign That Actually Works',
+      excerpt: "Most cold email campaigns fail before they even start. After analyzing over 1.5 million emails and generating 10,000+ positive responses in 2024, we've identified exactly what separates campaigns that generate pipeline from those that waste your budget.",
+      category: 'cold-email',
+      author: {
+        name: 'Dmitry Pinchuk',
+        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        title: 'Co-founder at Veogrowth'
+      },
+      publishDate: new Date().toISOString().split('T')[0],
+      readingTime: '8 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      content: `
+      <h2 id="the-three-questions-every-cold-email-campaign-must-answer">The Three Questions Every Cold Email Campaign Must Answer</h2>
+      <p>Before launching any campaign, you need clear answers to these fundamental questions:</p>
+      <ol>
+        <li><strong>How are you going to send emails?</strong> (Infrastructure)</li>
+        <li><strong>Who are you going to send the emails to?</strong> (List building)</li>
+        <li><strong>What are you going to say to those people?</strong> (Copywriting)</li>
+      </ol>
+      <p>Let's tackle each one with actionable steps.</p>
+      
+      <h2 id="part-1-email-infrastructure-that-lands-in-the-primary-inbox">Part 1: Email Infrastructure That Lands in the Primary Inbox</h2>
+      <h3>The Foundation: Inbox Setup</h3>
+      
+      <p>The difference between landing in spam and the primary inbox often comes down to your sending infrastructure. Follow these exact steps:</p>
+      
+      <h4>Step 1: Choose the Right Sending Accounts</h4>
+      <ul>
+        <li><strong>Use Google Workspace or Microsoft Outlook accounts</strong> (not marketing automation platforms)</li>
+        <li>Set up 2 inboxes per domain maximum</li>
+        <li>Use separate domains from your main company domain</li>
+        <li>Instantly.ai or Smartlead.ai are reliable platforms for managing multiple inboxes</li>
+      </ul>
+      
+      <h4>Step 2: Prepare Your Infrastructure</h4>
+      <ul>
+        <li>Set up proper authentication (SPF, DKIM, and DMARC records)</li>
+        <li>Forward your sending domains to your main website</li>
+        <li>Enable custom tracking if necessary (though open rates are increasingly unreliable)</li>
+      </ul>
+      
+      <h4>Step 3: Warm Up Your Domains</h4>
+      <ul>
+        <li>Warm each inbox for a minimum of 3 weeks before sending</li>
+        <li>Start with 30 emails per day per inbox</li>
+        <li>Maintain a 10+ minute delay between emails</li>
+        <li>Keep 50% of your sending capacity in reserve for backup</li>
+      </ul>
+      
+      <div class="glass-card p-4 my-6 border-l-4 border-blue-500">
+        <p class="font-medium">Pro Tip:</p>
+        <p>May through July 2024 saw significant deliverability challenges. If you experience sudden drops in open rates, switch to your reserve inboxes rather than troubleshooting.</p>
+      </div>
+      
+      <h2 id="part-2-build-lists-that-actually-convert">Part 2: Build Lists That Actually Convert</h2>
+      <p>List quality directly impacts deliverability and response rates. Here's how to build lists that convert:</p>
+      
+      <h3>Step 1: Define Your ICP with Precision</h3>
+      <p>Apply the "10 Things I Hate About You" Rule: If you can't find 10 potential issues with your list criteria, you don't know your target well enough.</p>
+      
+      <p>For example, when targeting marketing leaders at banks:</p>
+      <ul>
+        <li>Some titles may include sales AND marketing responsibilities</li>
+        <li>Industry filters often include fintech and consultancies</li>
+        <li>Bank size varies dramatically (100 vs. 10,000 employees)</li>
+      </ul>
+      
+      <h3>Step 2: Source Your Contacts</h3>
+      <ul>
+        <li><strong>LinkedIn-based tools</strong>: Apollo.io is excellent for initial lists, but has export limits</li>
+        <li><strong>Advanced option</strong>: Use Clay.com with email finders like Prospeo, LeadMagic, or TryKitt.ai</li>
+        <li><strong>Non-LinkedIn prospects</strong>: D7 lead finder or Google Maps scraping via Apify</li>
+        <li><strong>Event-based lists</strong>: Often produce 3X higher response rates than cold outreach</li>
+      </ul>
+      
+      <h3>Step 3: Verify Your Data</h3>
+      <p>Implement an email validation waterfall:</p>
+      <ol>
+        <li>Clean contact data and standardize formatting</li>
+        <li>Run emails through verification tools (Debounce, MillionVerifier)</li>
+        <li>Double-verify questionable emails before sending</li>
+        <li>Remove catch-all domains that can't be properly verified</li>
+      </ol>
+      
+      <div class="glass-card p-4 my-6 border-l-4 border-blue-500">
+        <p class="font-medium">Pro Tip:</p>
+        <p>An email validation waterfall can reduce bounce rates by up to 70%, dramatically improving deliverability.</p>
+      </div>
+      
+      <h2 id="part-3-copywriting-that-gets-responses">Part 3: Copywriting That Gets Responses</h2>
+      <p>After analyzing thousands of campaigns, here's what works consistently:</p>
+      
+      <h3>Step 1: Follow the Four-Sentence Framework</h3>
+      <ol>
+        <li><strong>First sentence</strong>: Why you're reaching out and why now</li>
+        <li><strong>Second sentence</strong>: Explain how you help (value proposition)</li>
+        <li><strong>Third sentence</strong>: Show social proof (specific results)</li>
+        <li><strong>Fourth sentence</strong>: Clear call to action</li>
+      </ol>
+      
+      <h3>Step 2: Apply These Proven Principles</h3>
+      <ul>
+        <li>Keep emails under 90 words (shorter = better)</li>
+        <li>Use metrics with decimal points (went from 400 to 1200 visitors is more believable than boosted by 60X in 90 days)</li>
+        <li>Make subject lines 2-3 words and conversational</li>
+        <li>Remove corporate jargon completely</li>
+        <li>Create cognitive dissonance with "Poke the Bear" questions</li>
+        <li>Use one specific case study rather than generic claims</li>
+      </ul>
+      
+      <h3>Step 3: Structure Your Sequence</h3>
+      <ul>
+        <li>Limit to 4 emails maximum</li>
+        <li>Space emails 3-4 days apart</li>
+        <li>Use this sequence structure:
+          <ul>
+            <li>Email 1: Introduction and main value proposition</li>
+            <li>Email 2: Thread to Email 1, add context</li>
+            <li>Email 3: New thread, different value proposition</li>
+            <li>Email 4: Thread to Email 3, brief final check-in</li>
+          </ul>
+        </li>
+      </ul>
+      
+      <blockquote>
+        <p><strong>Example First Email:</strong></p>
+        <p><strong>Subject:</strong> process question</p>
+        <p>Hey {First_Name} – saw you brought on 3 new SDRs last month according to LinkedIn. Congrats on the team growth.</p>
+        <p>How are you currently making sure their emails aren't landing in spam folders instead of generating meetings?</p>
+        <p>We've helped companies like Instantly.ai generate $4.2M in pipeline by solving the exact deliverability problems that plague most outbound teams.</p>
+        <p>If making sure your new team members are actually reaching prospects is a priority, would connecting for 15 minutes be helpful?</p>
+      </blockquote>
+      
+      <h2 id="part-4-launch-and-optimization">Part 4: Launch and Optimization</h2>
+      <p>Now it's time to put everything together:</p>
+      
+      <h3>Step 1: Pre-Launch Checklist</h3>
+      <ul>
+        <li>Confirm all domains have been warming for 3+ weeks</li>
+        <li>Verify your email list (target 0.5% bounce rate maximum)</li>
+        <li>Test your emails by sending to yourself first</li>
+        <li>Prepare follow-up processes for positive responses</li>
+      </ul>
+      
+      <h3>Step 2: Start Small and Scale</h3>
+      <ul>
+        <li>Begin with 500-1000 contacts to test your approach</li>
+        <li>Track positive response rate and meeting booked rate (not open rate)</li>
+        <li>Aim for at least 1 positive response per 300 contacts</li>
+        <li>Only scale when you've validated your messaging works</li>
+      </ul>
+      
+      <h3>Step 3: Continual Improvement</h3>
+      <p>Instead of sending more emails to the same people, test these variables:</p>
+      <ol>
+        <li>Different value propositions (save time vs. save money vs. make money)</li>
+        <li>Different triggers (new in role, hiring, tech installed)</li>
+        <li>Different sequence structures</li>
+        <li>Different list-building approaches</li>
+      </ol>
+      
+      <h2 id="when-to-kill-a-campaign-and-when-to-keep-going">When to Kill a Campaign (And When to Keep Going)</h2>
+      <p>Many teams give up too early or persist with failing campaigns too long. Here's when to make the call:</p>
+      
+      <p><strong>Kill the campaign if:</strong></p>
+      <ul>
+        <li>You've contacted 1,000+ prospects with no positive responses</li>
+        <li>Your bounce rate exceeds 5% despite verification</li>
+        <li>You're seeing spam complaints</li>
+      </ul>
+      
+      <p><strong>Keep optimizing if:</strong></p>
+      <ul>
+        <li>You're getting positive responses but below your target rate</li>
+        <li>You're getting "not interested" responses (shows you're landing in inboxes)</li>
+        <li>You haven't tested at least 3 different value propositions</li>
+      </ul>
+      
+      <h2 id="case-study-how-we-generated-52-leads-in-one-day">Case Study: How We Generated 52 Leads in One Day</h2>
+      <p>For one enterprise client, we achieved 52 qualified leads in a single day using this exact approach:</p>
+      
+      <ol>
+        <li><strong>Infrastructure</strong>: Rotated between Google and Outlook inboxes with ESP matching</li>
+        <li><strong>List building</strong>: Created hyper-specific segments based on LinkedIn engagement</li>
+        <li><strong>Copywriting</strong>: Used AI to analyze each prospect's last three posts</li>
+        <li><strong>Optimization</strong>: Tested 8 different campaigns simultaneously</li>
+      </ol>
+      
+      <p>The winning approach wasn't what we expected – a simple two-sentence email that asked a direct question about their current process outperformed all our more complex approaches.</p>
+      
+      <h2 id="common-cold-email-mistakes-to-avoid">Common Cold Email Mistakes to Avoid</h2>
+      <p>After analyzing thousands of campaigns, these are the most common mistakes:</p>
+      
+      <ol>
+        <li><strong>Sending too many emails per inbox</strong> (stick to 20-40/day)</li>
+        <li><strong>Using your main domain</strong> for cold outreach</li>
+        <li><strong>Not verifying emails</strong> before sending</li>
+        <li><strong>Writing emails that are too long</strong> (keep under 90words)</li>
+        <li><strong>Using corporate jargon</strong> instead of simple language</li>
+        <li><strong>Following up too many times</strong> (4 emails maximum)</li>
+        <li><strong>Not testing different value propositions</strong></li>
+        <li><strong>Focusing on open rates</strong> instead of response rates</li>
+        <li><strong>Using calendar links</strong> in initial emails instead of starting conversations</li>
+        <li><strong>Giving up before testing enough variables</strong></li>
+      </ol>
+      
+      <h2 id="the-next-steps">The Next Steps</h2>
+      <p>Setting up a cold email campaign that works isn't about finding secret hacks – it's about executing the fundamentals with precision:</p>
+      
+      <ol>
+        <li>Build proper infrastructure that lands in the inbox</li>
+        <li>Create lists with verified contacts who match your ICP</li>
+        <li>Write concise, value-focused copy that creates curiosity</li>
+        <li>Test methodically and optimize based on response rates</li>
+      </ol>
+      
+      <p>If you'd like to skip the trial and error, we offer a free campaign test where we'll validate your offer works with cold email before you pay a penny. It takes just 15 minutes to set up, and you'll see actual leads hitting your inbox within 3 weeks.</p>
+      
+      <p>Ready to build a cold email campaign that actually works? <a href="#">Contact us for your free campaign test →</a></p>
+    `,
+      tableOfContents: [
+        { id: 'the-three-questions-every-cold-email-campaign-must-answer', title: 'The Three Questions Every Cold Email Campaign Must Answer' },
+        { id: 'part-1-email-infrastructure-that-lands-in-the-primary-inbox', title: 'Part 1: Email Infrastructure That Lands in the Primary Inbox' },
+        { id: 'part-2-build-lists-that-actually-convert', title: 'Part 2: Build Lists That Actually Convert' },
+        { id: 'part-3-copywriting-that-gets-responses', title: 'Part 3: Copywriting That Gets Responses' },
+        { id: 'part-4-launch-and-optimization', title: 'Part 4: Launch and Optimization' },
+        { id: 'when-to-kill-a-campaign-and-when-to-keep-going', title: 'When to Kill a Campaign (And When to Keep Going)' },
+        { id: 'case-study-how-we-generated-52-leads-in-one-day', title: 'Case Study: How We Generated 52 Leads in One Day' },
+        { id: 'common-cold-email-mistakes-to-avoid', title: 'Common Cold Email Mistakes to Avoid' },
+        { id: 'the-next-steps', title: 'The Next Steps' }
+      ]
+    }
   };
-
+  
+  // Get the current blog post based on the ID from the URL
+  const blogPost = id ? blogPosts[id] : blogPosts["1"];
+  
+  // Sample related posts (you may want to filter these based on the current post)
   const relatedPosts: BlogPost[] = [
     {
       id: '2',
