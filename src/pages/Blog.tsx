@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowUp, Calendar, Clock, Share2 } from 'lucide-react';
 import Header from '@/components/layout/Header';
@@ -19,10 +18,8 @@ const Blog = () => {
 
   const postsPerPage = 6;
 
-  // Get current date in YYYY-MM-DD format
   const currentDate = new Date().toISOString().split('T')[0];
 
-  // Simulate blog posts data that would normally come from an API
   const blogPosts: BlogPost[] = [
     {
       id: '1',
@@ -31,7 +28,7 @@ const Blog = () => {
       category: 'cold-email',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
         title: 'Co-founder at Veogrowth'
       },
       publishDate: currentDate,
@@ -278,27 +275,21 @@ When you hit on the right question, you'll see your response rates jump dramatic
     }
   ];
 
-  // Get unique categories for filter
   const categories = ['all', ...Array.from(new Set(blogPosts.map(post => post.category)))];
 
-  // Filter posts by category
   const filteredPosts = activeCategory === 'all' 
     ? blogPosts 
     : blogPosts.filter(post => post.category === activeCategory);
 
-  // Get featured post
   const featuredPost = blogPosts.find(post => post.featured);
 
-  // Get regular posts (excluding featured)
   const regularPosts = filteredPosts.filter(post => !post.featured || activeCategory !== 'all');
 
-  // Calculate pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = regularPosts.slice(indexOfFirstPost, indexOfLastPost);
   const totalPages = Math.ceil(regularPosts.length / postsPerPage);
 
-  // Handle scroll for animations and back-to-top button
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -308,9 +299,7 @@ When you hit on the right question, you'll see your response rates jump dramatic
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Simulate loading state for staggered animations
   useEffect(() => {
-    // Short timeout to trigger animation after component mount
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
@@ -318,20 +307,16 @@ When you hit on the right question, you'll see your response rates jump dramatic
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle category change
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
-    setCurrentPage(1); // Reset to first page when category changes
+    setCurrentPage(1);
   };
 
-  // Handle page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top of blog list
     document.getElementById('blog-list')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -341,7 +326,6 @@ When you hit on the right question, you'll see your response rates jump dramatic
       <Header />
       
       <main className="pt-32 pb-20">
-        {/* Blog Header */}
         <section className="container mx-auto px-4 sm:px-6 mb-16">
           <h1 className="text-h1 font-bold tracking-tight leading-heading gradient-text text-center mb-4">
             Insights
@@ -351,7 +335,6 @@ When you hit on the right question, you'll see your response rates jump dramatic
           </p>
         </section>
 
-        {/* Category Filter */}
         <div className="container mx-auto px-4 sm:px-6 mb-12">
           <BlogCategoryFilter 
             categories={categories} 
@@ -360,14 +343,12 @@ When you hit on the right question, you'll see your response rates jump dramatic
           />
         </div>
 
-        {/* Featured Post (only show on first page and when no category filter) */}
         {currentPage === 1 && activeCategory === 'all' && featuredPost && (
           <section className="container mx-auto px-4 sm:px-6 mb-16">
             <FeaturedBlogCard post={featuredPost} isVisible={isLoaded} />
           </section>
         )}
         
-        {/* Blog List */}
         <section id="blog-list" className="container mx-auto px-4 sm:px-6 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.map((post, index) => (
@@ -380,14 +361,12 @@ When you hit on the right question, you'll see your response rates jump dramatic
             ))}
           </div>
           
-          {/* Newsletter Section (between posts) */}
           {currentPage === 1 && regularPosts.length > 3 && (
             <div className="my-16">
               <NewsletterSubscribe />
             </div>
           )}
           
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="mt-16">
               <BlogPagination 
@@ -399,7 +378,6 @@ When you hit on the right question, you'll see your response rates jump dramatic
           )}
         </section>
         
-        {/* Back to top button - appears after scrolling */}
         <button 
           className={cn(
             "fixed bottom-8 right-8 bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 shadow-md transition-all duration-300 backdrop-blur-sm z-10",
