@@ -27,7 +27,7 @@ const Blog = () => {
     {
       id: '1',
       title: 'How to Create Poke-the-Bear Questions That Get Replies',
-      excerpt: 'Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions.',
+      excerpt: "Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions.",
       category: 'cold-email',
       author: {
         name: 'Dmitry Pinchuk',
