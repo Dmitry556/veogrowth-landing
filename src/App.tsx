@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import SchemaMarkup from "./components/schema/SchemaMarkup";
 
 // Create a client for React Query
 const queryClient = new QueryClient();
@@ -17,6 +18,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <SchemaMarkup />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

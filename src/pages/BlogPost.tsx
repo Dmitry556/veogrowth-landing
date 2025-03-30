@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { generateArticleSchema, schemaToString } from '@/utils/schema';
 
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -461,9 +462,33 @@ const BlogPostPage = () => {
       }
     };
 
+    // Add JSON-LD schema markup for the current blog post
+    const injectSchema = () => {
+      const existingScript = document.getElementById('schema-script-article');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      
+      if (blogPost) {
+        const script = document.createElement('script');
+        script.id = 'schema-script-article';
+        script.type = 'application/ld+json';
+        script.innerHTML = schemaToString(generateArticleSchema(blogPost));
+        document.head.appendChild(script);
+      }
+    };
+
+    injectSchema();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      const script = document.getElementById('schema-script-article');
+      if (script) {
+        script.remove();
+      }
+    };
+  }, [blogPost]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
