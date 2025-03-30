@@ -31,6 +31,12 @@ export const measureWebVitals = () => {
   }
 };
 
+// Define the proper type for LayoutShift entries
+interface LayoutShiftEntry extends PerformanceEntry {
+  value: number;
+  hadRecentInput: boolean;
+}
+
 // Track Cumulative Layout Shift (CLS)
 export const observeLayoutShifts = () => {
   try {
@@ -39,9 +45,10 @@ export const observeLayoutShifts = () => {
       
       new PerformanceObserver((entryList) => {
         for (const entry of entryList.getEntries()) {
-          if (!entry.hadRecentInput) {
-            // @ts-ignore - TypeScript doesn't know about the value property on layout shift entries
-            cls += entry.value;
+          // Cast to our properly typed interface
+          const layoutShift = entry as LayoutShiftEntry;
+          if (!layoutShift.hadRecentInput) {
+            cls += layoutShift.value;
           }
         }
         console.log(`⚠️ Cumulative Layout Shift (CLS): ${cls.toFixed(3)}`);
