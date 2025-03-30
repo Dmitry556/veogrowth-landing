@@ -10,6 +10,7 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
 import DashboardSection from '@/components/sections/DashboardSection';
 import FaqSection from '@/components/sections/FaqSection';
+import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
 const Index = () => {
   useEffect(() => {
@@ -40,8 +41,28 @@ const Index = () => {
     // Update document title
     document.title = "Veogrowth - Generate Pipeline Without Hiring More Sales Reps";
     
+    // Add JSON-LD schema markup to head
+    const injectSchema = () => {
+      const existingScript = document.getElementById('schema-script-home');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      
+      const script = document.createElement('script');
+      script.id = 'schema-script-home';
+      script.type = 'application/ld+json';
+      script.innerHTML = schemaToString(generateHomePageSchema());
+      document.head.appendChild(script);
+    };
+    
+    injectSchema();
+    
     return () => {
       document.body.classList.remove('noise-overlay');
+      const script = document.getElementById('schema-script-home');
+      if (script) {
+        script.remove();
+      }
     };
   }, []);
 
