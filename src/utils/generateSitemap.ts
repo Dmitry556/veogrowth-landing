@@ -174,6 +174,3 @@ export const generateSitemap = async () => {
     console.error('Error generating sitemap:', error);
   }
 };
-
-// Example of how to call this function during build or via a scheduled job
-// generateSitemap();

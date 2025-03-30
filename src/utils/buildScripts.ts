@@ -1,4 +1,5 @@
 
+
 import { generateSitemap } from './generateSitemap';
 
 // Function to run all pre-build scripts
@@ -16,3 +17,4 @@ runPreBuildScripts().catch(error => {
   console.error('Error running pre-build scripts:', error);
   process.exit(1);
 });
+
