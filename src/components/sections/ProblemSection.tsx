@@ -61,11 +61,7 @@ const ProblemSection: React.FC = () => {
               <CustomCard 
                 key={index} 
                 className="flex flex-col h-full animate-float"
-                style={{ 
-                  animationDelay: `${index * 0.2}s`,
-                  height: 'auto', // Explicit height helps prevent CLS
-                  minHeight: '180px' // Minimum height for consistency
-                }}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
                   {problem.icon}

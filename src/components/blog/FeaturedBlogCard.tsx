@@ -32,13 +32,7 @@ const FeaturedBlogCard = ({ post, isVisible }: FeaturedBlogCardProps) => {
           <Link to={`/blog/${post.id}`}>
             <div 
               className="absolute inset-0 bg-cover bg-center transform transition-transform duration-500 group-hover:scale-[1.02]"
-              style={{ 
-                backgroundImage: `url(${post.imageUrl})`,
-                // Fixed dimensions prevent layout shift
-                width: '100%',
-                height: '100%'
-              }}
-              aria-label={`Featured image for ${post.title}`}
+              style={{ backgroundImage: `url(${post.imageUrl})` }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
             
@@ -69,13 +63,7 @@ const FeaturedBlogCard = ({ post, isVisible }: FeaturedBlogCardProps) => {
             {/* Author */}
             <div className="flex items-center">
               <Avatar className="h-10 w-10 mr-3 border border-white/10">
-                <AvatarImage 
-                  src={post.author.avatarUrl} 
-                  alt={post.author.name} 
-                  width={40} 
-                  height={40}
-                  loading="lazy"
-                />
+                <AvatarImage src={post.author.avatarUrl} alt={post.author.name} />
                 <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>

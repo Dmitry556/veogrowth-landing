@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import CustomButton from '../ui/CustomButton';
 import { ChevronRight } from 'lucide-react';
@@ -129,6 +130,8 @@ const HeroSection: React.FC = () => {
                 Let's Talk Pipeline
               </CustomButton>
             </div>
+            
+            {/* "Trusted by innovative companies" section has been removed */}
           </div>
           
           <div className="relative">
