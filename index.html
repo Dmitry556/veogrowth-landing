@@ -8,6 +8,38 @@
     <meta name="description" content="Discover how to create successful cold email campaigns and high-converting outbound strategies that drive B2B sales and generate pipeline." />
     <meta name="author" content="Veogrowth" />
 
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Inline critical CSS -->
+    <style>
+      /* Critical above-the-fold CSS */
+      body {
+        margin: 0;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: hsl(240, 10%, 3.9%);
+        color: hsl(0, 0%, 98%);
+      }
+      .noise-overlay::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 10;
+      }
+    </style>
+    
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png" type="image/png">
+    
+    <!-- Cache control meta tags -->
+    <meta http-equiv="Cache-Control" content="max-age=31536000, public">
+
+    <!-- Open Graph and Twitter tags -->
     <meta property="og:title" content="B2B Outbound Strategy Experts | Veogrowth" />
     <meta property="og:description" content="From cold email campaigns to Poke-the-Bear questions, learn proven B2B outbound techniques that deliver measurable pipeline growth." />
     <meta property="og:type" content="website" />
@@ -25,5 +57,19 @@
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Defer non-critical scripts -->
+    <script defer>
+      // Enable web vitals monitoring in production
+      if (window.location.hostname !== 'localhost') {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            const script = document.createElement('script');
+            script.src = '/src/utils/performance-monitor.js';
+            document.body.appendChild(script);
+          }, 3000);
+        });
+      }
+    </script>
   </body>
 </html>
