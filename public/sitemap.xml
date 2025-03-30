@@ -1,0 +1,69 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Home Page -->
+  <url>
+    <loc>https://veogrowth.com/</loc>
+    <lastmod>2024-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Blog Main Page -->
+  <url>
+    <loc>https://veogrowth.com/blog</loc>
+    <lastmod>2024-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Blog Posts -->
+  <url>
+    <loc>https://veogrowth.com/blog/1</loc>
+    <lastmod>2024-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/8</loc>
+    <lastmod>2024-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/2</loc>
+    <lastmod>2023-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/3</loc>
+    <lastmod>2023-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/4</loc>
+    <lastmod>2023-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/5</loc>
+    <lastmod>2023-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/6</loc>
+    <lastmod>2023-07-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/7</loc>
+    <lastmod>2023-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
