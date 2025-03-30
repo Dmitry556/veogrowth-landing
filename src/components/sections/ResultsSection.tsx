@@ -42,7 +42,14 @@ const ResultsSection: React.FC = () => {
               <Quote className="absolute top-4 right-4 text-blue-400 opacity-20" size={48} />
               <p className="text-body italic mb-6">{testimonial.quote}</p>
               <div className="flex items-center">
-                <img src={testimonial.image} alt={testimonial.author} className="w-12 h-12 rounded-full mr-4" />
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.author} 
+                  className="w-12 h-12 rounded-full mr-4"
+                  width="48"
+                  height="48"
+                  loading="lazy"
+                />
                 <div>
                   <p className="text-body font-medium">{testimonial.author}</p>
                   <p className="text-caption text-white/60">{testimonial.role}</p>
@@ -65,7 +72,14 @@ const ResultsSection: React.FC = () => {
                 Their data-first approach found leads our internal team missed completely.
               </p>
               <div className="flex items-center">
-                <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" alt="CEO" className="w-10 h-10 rounded mr-3" />
+                <img 
+                  src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" 
+                  alt="CEO" 
+                  className="w-10 h-10 rounded mr-3"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                />
                 <div>
                   <p className="text-body font-medium">CEO</p>
                   <p className="text-caption text-white/60">offshore staffing agency</p>
