@@ -158,10 +158,12 @@ const Blog = () => {
   );
   
   useEffect(() => {
+    // Fade in animation
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     
+    // Add schema markup
     const injectSchema = () => {
       const existingScript = document.getElementById('schema-script-blog');
       if (existingScript) {
@@ -216,9 +218,8 @@ const Blog = () => {
         {/* Category Filters */}
         <section className="mb-12">
           <BlogCategoryFilter 
-            categories={['all', 'cold-email', 'sales', 'marketing', 'analytics']}
-            activeCategory={selectedCategory}
-            onChange={setSelectedCategory}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
           />
         </section>
         
