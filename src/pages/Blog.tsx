@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -145,6 +146,9 @@ const Blog = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const postsPerPage = 6;
   
+  // Extract unique categories from blog posts for the filter
+  const categories = ['all', ...new Set(sampleBlogPosts.map(post => post.category))];
+  
   const filteredPosts = selectedCategory === 'all'
     ? sampleBlogPosts
     : sampleBlogPosts.filter(post => post.category === selectedCategory);
@@ -218,8 +222,9 @@ const Blog = () => {
         {/* Category Filters */}
         <section className="mb-12">
           <BlogCategoryFilter 
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
+            categories={categories}
+            activeCategory={selectedCategory}
+            onChange={setSelectedCategory}
           />
         </section>
         
