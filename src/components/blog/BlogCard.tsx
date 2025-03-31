@@ -34,27 +34,17 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
         animationDelay 
       }}
     >
-      {/* Image container with zoom effect */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-t-2xl">
-        <Link to={`/blog/${post.id}`}>
-          <div 
-            className="absolute inset-0 bg-cover bg-center transform transition-transform duration-500 group-hover:scale-[1.02]"
-            style={{ backgroundImage: `url(${post.imageUrl})` }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          
-          {/* Category badge */}
-          <Badge 
-            variant="outline" 
-            className="absolute top-4 left-4 bg-primary/30 text-white border-primary/40 backdrop-blur-sm"
-          >
-            {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-          </Badge>
-        </Link>
-      </div>
+      {/* Image container removed */}
       
       {/* Card content */}
       <div className="p-6">
+        <Badge 
+          variant="outline" 
+          className="mb-4 bg-primary/10 text-primary border-primary/20 backdrop-blur-sm"
+        >
+          {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+        </Badge>
+        
         <Link to={`/blog/${post.id}`} className="block group-hover:text-blue-400 transition-colors">
           <h3 className="text-h3 font-semibold leading-tight mb-3 line-clamp-2">{post.title}</h3>
         </Link>
