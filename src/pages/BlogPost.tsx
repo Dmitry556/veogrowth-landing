@@ -271,7 +271,7 @@ const BlogPostPage = () => {
       <p>Example first email:</p>
       <blockquote>
         <p>Subject: [Company Name] + [Your Company]</p>
-        <p>Hi [First Name],</p>
+        <p>Hi [First_Name],</p>
         <p>I noticed [Company] recently [specific trigger relevant to your solution]. Companies like yours typically face [specific challenge] during this time.</p>
         <p>We've helped [similar company] overcome this by [specific solution], resulting in [specific outcome with metrics].</p>
         <p>Would it make sense to share how we could apply a similar approach for [Company]?</p>
@@ -600,6 +600,8 @@ const BlogPostPage = () => {
     }
   };
   
+  const blogPost = id ? blogPosts[id] : null;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -659,8 +661,8 @@ const BlogPostPage = () => {
   const shareArticle = () => {
     if (navigator.share) {
       navigator.share({
-        title: blogPost.title,
-        text: blogPost.excerpt,
+        title: blogPost?.title || '',
+        text: blogPost?.excerpt || '',
         url: window.location.href
       })
       .catch(err => console.error('Error sharing:', err));
@@ -671,8 +673,6 @@ const BlogPostPage = () => {
     }
   };
 
-  const blogPost = id ? blogPosts[id] : null;
-
   useEffect(() => {
     if (id && !blogPost) {
       toast({
@@ -682,7 +682,7 @@ const BlogPostPage = () => {
       });
       setTimeout(() => navigate('/blog'), 1500);
     }
-  }, [id, navigate, toast]);
+  }, [id, navigate, toast, blogPost]);
 
   if (!blogPost) {
     return (
@@ -696,50 +696,18 @@ const BlogPostPage = () => {
     );
   }
 
-  const relatedPosts: BlogPost[] = [
-    {
-      id: '2',
-      title: 'The Psychology Behind High-Converting Cold Emails',
-      excerpt: 'Discover the psychological principles that make recipients more likely to respond positively to your outreach.',
-      category: 'cold-email',
-      author: {
-        name: 'Marcus Johnson',
-        avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
-        title: 'CMO, GrowthWorks'
-      },
-      publishDate: '2023-09-28',
-      readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '3',
-      title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
-      excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
-      category: 'sales',
-      author: {
-        name: 'Aisha Patel',
-        avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
-        title: 'Sales Director, RevOps Inc'
-      },
-      publishDate: '2023-09-12',
-      readingTime: '10 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '4',
-      title: 'Data-Driven Lead Generation: Beyond the Basics',
-      excerpt: 'How to leverage data analytics to improve targeting, personalization, and conversion rates in your outbound campaigns.',
-      category: 'analytics',
-      author: {
-        name: 'Wei Zhang',
-        avatarUrl: 'https://randomuser.me/api/portraits/men/76.jpg',
-        title: 'Head of Data, LeadScience'
-      },
-      publishDate: '2023-08-22',
-      readingTime: '7 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    }
-  ].filter(post => post.id !== id);
+  const relatedPosts: BlogPost[] = Object.values(blogPosts)
+    .filter(post => post.id !== id)
+    .filter(post => post.category === blogPost.category || post.author.name === blogPost.author.name)
+    .slice(0, 3);
+
+  if (relatedPosts.length < 3) {
+    const additionalPosts = Object.values(blogPosts)
+      .filter(post => post.id !== id && !relatedPosts.some(relatedPost => relatedPost.id === post.id))
+      .slice(0, 3 - relatedPosts.length);
+    
+    relatedPosts.push(...additionalPosts);
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
