@@ -726,23 +726,6 @@ const BlogPostPage = () => {
           </Link>
         </div>
         
-        <section 
-          className={cn(
-            "relative w-full h-[40vh] md:h-[50vh] mb-8 overflow-hidden opacity-0 transform translate-y-4",
-            isLoaded && "animate-fade-in"
-          )}
-          style={{ animationDelay: '0ms' }}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center transform transition-transform duration-1000 ease-out"
-            style={{ 
-              backgroundImage: `url(${blogPost.imageUrl})`,
-              transform: `translateY(${scrollPosition * 0.1}px)`
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent"></div>
-        </section>
-        
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <aside className="hidden lg:block lg:col-span-3 relative">
