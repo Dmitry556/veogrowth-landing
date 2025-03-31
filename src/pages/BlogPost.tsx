@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, Share2, MessageSquare, User, ArrowLeft, ArrowRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -12,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { generateArticleSchema, schemaToString } from '@/utils/schema';
+import { useToast } from '@/components/ui/use-toast';
 
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,8 +19,9 @@ const BlogPostPage = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const articleRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
+  const { toast } = useToast();
   
-  // Updated to include both blog posts
   const blogPosts: Record<string, BlogPost> = {
     "1": {
       id: '1',
@@ -159,6 +160,208 @@ const BlogPostPage = () => {
         { id: 'testing-your-questions', title: 'Testing Your Questions' },
         { id: 'beyond-the-first-reply', title: 'Beyond the First Reply' },
         { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' }
+      ]
+    },
+    "3": {
+      id: '3',
+      title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
+      excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
+      category: 'sales',
+      author: {
+        name: 'Aisha Patel',
+        avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
+        title: 'Sales Director, RevOps Inc'
+      },
+      publishDate: '2023-09-12',
+      readingTime: '10 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      content: `
+      <h2 id="introduction">Introduction: The Outbound Challenge</h2>
+      <p>Building a reliable outbound sales machine is one of the most challenging—yet rewarding—endeavors for B2B companies. Unlike inbound marketing, which can take months to gain traction, a well-executed outbound strategy can generate pipeline within weeks.</p>
+      <p>This guide walks through the exact process we've used to help over 50 B2B SaaS companies build outbound engines that consistently generate seven figures in pipeline.</p>
+      
+      <h2 id="foundation">Foundation: Setting Realistic Expectations</h2>
+      <p>Before diving into tactics, let's align on expectations:</p>
+      <ul>
+        <li>Outbound is a numbers game that requires persistence</li>
+        <li>Results compound over time as you optimize</li>
+        <li>Your first campaign will likely underperform</li>
+        <li>Sustainable results require process, not quick hacks</li>
+      </ul>
+      
+      <p>With that in mind, let's build your outbound machine.</p>
+      
+      <h2 id="step-1">Step 1: Define Your Ideal Customer Profile</h2>
+      <p>The foundation of your outbound machine is a precisely defined ICP. This isn't about broad demographics—it's about identifying the exact companies and roles that would benefit most from your solution.</p>
+      
+      <h3>Action Items:</h3>
+      <ol>
+        <li>Analyze your top 10 customers (revenue, retention, satisfaction)</li>
+        <li>Interview them to understand their buying process</li>
+        <li>Identify commonalities in industry, size, tech stack, and challenges</li>
+        <li>Document the economic buyer, technical buyer, and user personas</li>
+      </ol>
+      
+      <p>A common mistake is targeting too broadly. It's better to start with a narrow ICP and expand than to waste resources on poor-fit prospects.</p>
+      
+      <h2 id="step-2">Step 2: Build Your Outbound Infrastructure</h2>
+      <p>Your outbound infrastructure must prioritize deliverability while enabling scale:</p>
+      
+      <h3>Email Infrastructure:</h3>
+      <ul>
+        <li>Set up dedicated sending domains (separate from your main domain)</li>
+        <li>Implement proper email authentication (SPF, DKIM, DMARC)</li>
+        <li>Warm up your domains gradually over 3-4 weeks</li>
+        <li>Choose a reliable sending platform (Outreach, Apollo, etc.)</li>
+      </ul>
+      
+      <h3>LinkedIn Infrastructure:</h3>
+      <ul>
+        <li>Optimize sales reps' profiles for your target personas</li>
+        <li>Implement profile view tracking</li>
+        <li>Set up LinkedIn Sales Navigator with saved searches</li>
+        <li>Create a connection request template library</li>
+      </ul>
+      
+      <h2 id="step-3">Step 3: Develop Your Lead Generation Process</h2>
+      <p>Consistent pipeline requires consistent prospecting. Here's how to build a systematic approach:</p>
+      
+      <h3>Daily Prospecting Rhythm:</h3>
+      <ol>
+        <li>Set a daily prospecting goal (e.g., 50 new contacts per rep)</li>
+        <li>Allocate dedicated prospecting time blocks</li>
+        <li>Create ideal customer lists from multiple sources:
+          <ul>
+            <li>LinkedIn Sales Navigator</li>
+            <li>ZoomInfo or similar data providers</li>
+            <li>Conference attendee lists</li>
+            <li>Industry publications and awards</li>
+          </ul>
+        </li>
+        <li>Implement a data enrichment process to verify contact information</li>
+      </ol>
+      
+      <h2 id="step-4">Step 4: Design Your Multi-Channel Sequences</h2>
+      <p>The most effective outbound campaigns leverage multiple channels in a coordinated sequence:</p>
+      
+      <h3>Sequence Framework:</h3>
+      <ol>
+        <li>Day 1: Personalized email + LinkedIn profile view</li>
+        <li>Day 3: LinkedIn connection request</li>
+        <li>Day 5: Follow-up email referencing LinkedIn</li>
+        <li>Day 8: LinkedIn message (if connected)</li>
+        <li>Day 12: Pattern interrupt email</li>
+        <li>Day 18: Final value-add email</li>
+      </ol>
+      
+      <p>The key is maintaining a consistent presence without being overwhelming. Each touch should add incremental value rather than simply asking for time.</p>
+      
+      <h2 id="step-5">Step 5: Craft Compelling Messaging</h2>
+      <p>Your outbound messaging must cut through the noise. Here's how to create messages that generate responses:</p>
+      
+      <h3>Messaging Framework:</h3>
+      <ol>
+        <li>Lead with a personalized insight or trigger</li>
+        <li>Connect their challenge to your solution</li>
+        <li>Provide specific, quantified value</li>
+        <li>Include social proof from similar companies</li>
+        <li>End with a clear, low-friction call to action</li>
+      </ol>
+      
+      <p>Example first email:</p>
+      <blockquote>
+        <p>Subject: [Company Name] + [Your Company]</p>
+        <p>Hi [First Name],</p>
+        <p>I noticed [Company] recently [specific trigger relevant to your solution]. Companies like yours typically face [specific challenge] during this time.</p>
+        <p>We've helped [similar company] overcome this by [specific solution], resulting in [specific outcome with metrics].</p>
+        <p>Would it make sense to share how we could apply a similar approach for [Company]?</p>
+        <p>[Your Name]</p>
+      </blockquote>
+      
+      <h2 id="step-6">Step 6: Build Your Sales Development Team</h2>
+      <p>As you scale your outbound machine, you'll need dedicated SDRs. Here's how to build and manage your team:</p>
+      
+      <h3>Team Structure:</h3>
+      <ul>
+        <li>1 SDR per $1M annual revenue target</li>
+        <li>1 SDR Manager for every 6-8 SDRs</li>
+        <li>Clear qualification criteria and handoff process</li>
+        <li>Documented training program and onboarding</li>
+      </ul>
+      
+      <h3>Compensation Structure:</h3>
+      <ul>
+        <li>Base salary + performance-based variable</li>
+        <li>Metrics: meetings set, meetings held, opportunities created</li>
+        <li>Accelerators for exceeding targets</li>
+        <li>Recognition program for top performers</li>
+      </ul>
+      
+      <h2 id="step-7">Step 7: Implement Tracking and Optimization</h2>
+      <p>The difference between good and great outbound machines is continuous optimization:</p>
+      
+      <h3>Key Metrics to Track:</h3>
+      <ul>
+        <li>Email open rates, reply rates, meeting rates</li>
+        <li>LinkedIn acceptance rates and response rates</li>
+        <li>Opportunity creation rate by campaign</li>
+        <li>Pipeline velocity and conversion rates</li>
+        <li>Cost per meeting and cost per opportunity</li>
+      </ul>
+      
+      <h3>Testing Framework:</h3>
+      <ul>
+        <li>A/B test one variable at a time</li>
+        <li>Run tests for at least 2 weeks</li>
+        <li>Require statistical significance before implementing changes</li>
+        <li>Document findings in a central knowledge base</li>
+      </ul>
+      
+      <h2 id="case-study">Case Study: Zero to $1.2M Pipeline in 90 Days</h2>
+      <p>Let's examine how a B2B SaaS company implemented this framework and generated $1.2M in pipeline in just 90 days:</p>
+      
+      <h3>Company Profile:</h3>
+      <ul>
+        <li>HR technology solution for mid-market companies</li>
+        <li>Average deal size: $48,000 ARR</li>
+        <li>Starting point: No outbound program, 2 AEs handling inbound</li>
+      </ul>
+      
+      <h3>Implementation Timeline:</h3>
+      <ul>
+        <li>Weeks 1-2: Defined ICP, built infrastructure</li>
+        <li>Weeks 3-4: Created sequences, trained initial SDR</li>
+        <li>Weeks 5-8: Launched initial campaigns, refined messaging</li>
+        <li>Weeks 9-12: Scaled successful sequences, added second SDR</li>
+      </ul>
+      
+      <h3>Results:</h3>
+      <ul>
+        <li>2,400 prospects contacted</li>
+        <li>187 positive responses (7.8% response rate)</li>
+        <li>64 meetings held</li>
+        <li>25 opportunities created ($1.2M pipeline)</li>
+        <li>5 closed deals within 90 days ($240k ARR)</li>
+      </ul>
+      
+      <h2 id="conclusion">Conclusion: The Compound Effect</h2>
+      <p>Building an outbound sales machine is not a one-time project—it's an ongoing process of refinement. The companies that succeed approach outbound with scientific rigor, viewing each campaign as an experiment that provides valuable data.</p>
+      <p>As you implement these steps, remember that outbound results compound over time. Each optimization improves your efficiency, allowing you to generate more pipeline with the same resources.</p>
+      <p>The most valuable asset you'll build isn't just a pipeline—it's a systematic approach to customer acquisition that can scale with your business.</p>
+      <p>Ready to build your own outbound sales machine? We offer a free 30-minute strategy session to help you identify your biggest outbound opportunities. <a href="#">Schedule yours today →</a></p>
+      `,
+      tableOfContents: [
+        { id: 'introduction', title: 'Introduction: The Outbound Challenge' },
+        { id: 'foundation', title: 'Foundation: Setting Realistic Expectations' },
+        { id: 'step-1', title: 'Step 1: Define Your Ideal Customer Profile' },
+        { id: 'step-2', title: 'Step 2: Build Your Outbound Infrastructure' },
+        { id: 'step-3', title: 'Step 3: Develop Your Lead Generation Process' },
+        { id: 'step-4', title: 'Step 4: Design Your Multi-Channel Sequences' },
+        { id: 'step-5', title: 'Step 5: Craft Compelling Messaging' },
+        { id: 'step-6', title: 'Step 6: Build Your Sales Development Team' },
+        { id: 'step-7', title: 'Step 7: Implement Tracking and Optimization' },
+        { id: 'case-study', title: 'Case Study: Zero to $1.2M Pipeline in 90 Days' },
+        { id: 'conclusion', title: 'Conclusion: The Compound Effect' }
       ]
     },
     "8": {
@@ -397,55 +600,6 @@ const BlogPostPage = () => {
     }
   };
   
-  // Get the current blog post based on the ID from the URL
-  const blogPost = id ? blogPosts[id] : blogPosts["1"];
-  
-  // Sample related posts (you may want to filter these based on the current post)
-  const relatedPosts: BlogPost[] = [
-    {
-      id: '2',
-      title: 'The Psychology Behind High-Converting Cold Emails',
-      excerpt: 'Discover the psychological principles that make recipients more likely to respond positively to your outreach.',
-      category: 'cold-email',
-      author: {
-        name: 'Marcus Johnson',
-        avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
-        title: 'CMO, GrowthWorks'
-      },
-      publishDate: '2023-09-28',
-      readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '3',
-      title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
-      excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
-      category: 'sales',
-      author: {
-        name: 'Aisha Patel',
-        avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
-        title: 'Sales Director, RevOps Inc'
-      },
-      publishDate: '2023-09-12',
-      readingTime: '10 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    },
-    {
-      id: '4',
-      title: 'Data-Driven Lead Generation: Beyond the Basics',
-      excerpt: 'How to leverage data analytics to improve targeting, personalization, and conversion rates in your outbound campaigns.',
-      category: 'analytics',
-      author: {
-        name: 'Wei Zhang',
-        avatarUrl: 'https://randomuser.me/api/portraits/men/76.jpg',
-        title: 'Head of Data, LeadScience'
-      },
-      publishDate: '2023-08-22',
-      readingTime: '7 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-    }
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
@@ -462,7 +616,6 @@ const BlogPostPage = () => {
       }
     };
 
-    // Add JSON-LD schema markup for the current blog post
     const injectSchema = () => {
       const existingScript = document.getElementById('schema-script-article');
       if (existingScript) {
@@ -517,6 +670,76 @@ const BlogPostPage = () => {
         .catch(err => console.error('Error copying link:', err));
     }
   };
+
+  const blogPost = id ? blogPosts[id] : null;
+
+  useEffect(() => {
+    if (id && !blogPost) {
+      toast({
+        title: "Blog post not found",
+        description: "The requested blog post doesn't exist. Redirecting to blog page...",
+        variant: "destructive"
+      });
+      setTimeout(() => navigate('/blog'), 1500);
+    }
+  }, [id, navigate, toast]);
+
+  if (!blogPost) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Header />
+        <main className="pt-32 pb-20 container mx-auto px-4 sm:px-6 text-center">
+          <p className="text-white/70">Looking for blog post...</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  const relatedPosts: BlogPost[] = [
+    {
+      id: '2',
+      title: 'The Psychology Behind High-Converting Cold Emails',
+      excerpt: 'Discover the psychological principles that make recipients more likely to respond positively to your outreach.',
+      category: 'cold-email',
+      author: {
+        name: 'Marcus Johnson',
+        avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+        title: 'CMO, GrowthWorks'
+      },
+      publishDate: '2023-09-28',
+      readingTime: '6 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: '3',
+      title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
+      excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
+      category: 'sales',
+      author: {
+        name: 'Aisha Patel',
+        avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
+        title: 'Sales Director, RevOps Inc'
+      },
+      publishDate: '2023-09-12',
+      readingTime: '10 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: '4',
+      title: 'Data-Driven Lead Generation: Beyond the Basics',
+      excerpt: 'How to leverage data analytics to improve targeting, personalization, and conversion rates in your outbound campaigns.',
+      category: 'analytics',
+      author: {
+        name: 'Wei Zhang',
+        avatarUrl: 'https://randomuser.me/api/portraits/men/76.jpg',
+        title: 'Head of Data, LeadScience'
+      },
+      publishDate: '2023-08-22',
+      readingTime: '7 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    }
+  ].filter(post => post.id !== id);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
