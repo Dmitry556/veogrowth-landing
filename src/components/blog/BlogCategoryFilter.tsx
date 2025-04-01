@@ -22,7 +22,7 @@ const BlogCategoryFilter = ({ categories, activeCategory, onChange }: BlogCatego
               : "bg-white/5 hover:bg-white/10 text-white/80 hover:text-white"
           )}
         >
-          {category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)}
+          {category}
         </button>
       ))}
     </div>
