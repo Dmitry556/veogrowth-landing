@@ -15,7 +15,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '1',
     title: 'How to Create Poke-the-Bear Questions That Get Replies',
     excerpt: "Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions that make prospects stop and think.",
-    category: 'cold-email',
+    category: 'Copywriting',
     author: {
       name: 'Dmitry Pinchuk',
       avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
@@ -30,7 +30,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '2',
     title: 'The Psychology Behind High-Converting Cold Emails',
     excerpt: 'Discover the psychological principles that make recipients more likely to respond positively to your outreach.',
-    category: 'cold-email',
+    category: 'Copywriting',
     author: {
       name: 'Marcus Johnson',
       avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
@@ -44,7 +44,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '3',
     title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
     excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
-    category: 'sales',
+    category: 'Sales',
     author: {
       name: 'Aisha Patel',
       avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
@@ -58,7 +58,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '4',
     title: 'Data-Driven Lead Generation: Beyond the Basics',
     excerpt: 'How to leverage data analytics to improve targeting, personalization, and conversion rates in your outbound campaigns.',
-    category: 'analytics',
+    category: 'Tech Stack',
     author: {
       name: 'Wei Zhang',
       avatarUrl: 'https://randomuser.me/api/portraits/men/76.jpg',
@@ -72,7 +72,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '5',
     title: 'Cold Email Teardown: Analyzing a $100k/Month Campaign',
     excerpt: 'A deep dive into a real-world cold email sequence that generated six-figure revenue for a B2B SaaS company.',
-    category: 'cold-email',
+    category: 'Copywriting',
     author: {
       name: 'Elena Rodriguez',
       avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
@@ -86,7 +86,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '6',
     title: 'The Future of Outbound: AI, Automation, and Personalization',
     excerpt: 'Exploring the emerging trends and technologies that will shape the next generation of outbound sales and marketing.',
-    category: 'sales',
+    category: 'Tech Stack',
     author: {
       name: 'Rajesh Kumar',
       avatarUrl: 'https://randomuser.me/api/portraits/men/21.jpg',
@@ -100,7 +100,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '7',
     title: 'Account-Based Marketing for Startups: A Practical Guide',
     excerpt: 'How early-stage companies can leverage ABM strategies to target high-value accounts and accelerate growth.',
-    category: 'marketing',
+    category: 'List Building',
     author: {
       name: 'Sophie Dubois',
       avatarUrl: 'https://randomuser.me/api/portraits/women/12.jpg',
@@ -114,7 +114,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '8',
     title: 'How to Set Up a Cold Email Campaign That Actually Works',
     excerpt: "Most cold email campaigns fail before they even start. After analyzing over 1.5 million emails and generating 10,000+ positive responses in 2024, we've identified exactly what separates campaigns that generate pipeline from those that waste your budget.",
-    category: 'cold-email',
+    category: 'Clay',
     author: {
       name: 'Dmitry Pinchuk',
       avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
@@ -128,7 +128,7 @@ const sampleBlogPosts: BlogPost[] = [
     id: '9',
     title: 'The Art of the Follow-Up: Nudging Prospects Without Annoying Them',
     excerpt: 'Master the subtle techniques of following up with leads to increase conversions without being pushy or intrusive.',
-    category: 'sales',
+    category: 'Sales',
     author: {
       name: 'Carlos Ramirez',
       avatarUrl: 'https://randomuser.me/api/portraits/men/55.jpg',

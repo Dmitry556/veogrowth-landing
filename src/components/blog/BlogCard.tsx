@@ -34,15 +34,12 @@ const BlogCard = ({ post, index, isVisible }: BlogCardProps) => {
         animationDelay 
       }}
     >
-      {/* Image container removed */}
-      
-      {/* Card content */}
       <div className="p-6">
         <Badge 
           variant="outline" 
           className="mb-4 bg-primary/10 text-primary border-primary/20 backdrop-blur-sm"
         >
-          {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+          {post.category}
         </Badge>
         
         <Link to={`/blog/${post.id}`} className="block group-hover:text-blue-400 transition-colors">
