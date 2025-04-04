@@ -14,7 +14,7 @@ const PricingSection: React.FC = () => {
       badge: "FREE",
       features: [
         "Email campaign using our inboxes and domains",
-        "Custom prospect list (up to 100 contacts)",
+        "Custom prospect list (up to 1500 contacts)",
         "AI-powered messaging strategy",
         "7-day test campaign",
         "Only pay if it generates results",
