@@ -107,7 +107,7 @@ const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-stagger">
             <h1 className="text-display font-bold leading-display tracking-tight mb-6">
-              Your SDRs Are Missing <span className="gradient-text">68%</span> of Potential Pipeline
+              Build Pipeline With Cold Email That Finally Works
             </h1>
             
             <p className="text-body-large text-white/80 leading-body tracking-slight mb-8 max-w-lg">
