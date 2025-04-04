@@ -114,7 +114,7 @@ const ResultsSection: React.FC = () => {
                 Case Study
               </div>
               <h3 className="text-h3 font-bold mb-4">
-                How we helped build $8M in pipeline for b2b virtual assistant agency
+                How we helped build $8M in pipeline for Teleforce360.com
               </h3>
               <p className="text-body text-white/70 mb-6">
                 Their data-first approach found leads our internal team missed completely.
@@ -122,8 +122,8 @@ const ResultsSection: React.FC = () => {
               <div className="flex items-center">
                 <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" alt="CEO" className="w-10 h-10 rounded mr-3" />
                 <div>
-                  <p className="text-body font-medium">CEO</p>
-                  <p className="text-caption text-white/60">offshore staffing agency</p>
+                  <p className="text-body font-medium">Asaf Oz, CEO & Owner</p>
+                  <p className="text-caption text-white/60">Teleforce360.com</p>
                 </div>
               </div>
             </div>
