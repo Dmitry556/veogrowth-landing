@@ -10,7 +10,6 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
 import DashboardSection from '@/components/sections/DashboardSection';
 import FaqSection from '@/components/sections/FaqSection';
-import RoiCalculatorSection from '@/components/sections/RoiCalculatorSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
 const Index = () => {
@@ -84,7 +83,6 @@ const Index = () => {
       <main>
         <HeroSection />
         <ProblemSection />
-        <RoiCalculatorSection />
         <SolutionSection />
         <ResultsSection />
         <ProcessSection />
