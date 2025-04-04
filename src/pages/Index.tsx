@@ -55,7 +55,17 @@ const Index = () => {
       document.head.appendChild(script);
     };
     
+    // Add Vimeo Player script
+    const loadVimeoScript = () => {
+      if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
+        const vimeoScript = document.createElement('script');
+        vimeoScript.src = "https://player.vimeo.com/api/player.js";
+        document.body.appendChild(vimeoScript);
+      }
+    };
+    
     injectSchema();
+    loadVimeoScript();
     
     return () => {
       document.body.classList.remove('noise-overlay');
