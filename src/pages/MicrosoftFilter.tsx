@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import CustomButton from "@/components/ui/CustomButton";
@@ -71,99 +72,110 @@ const MicrosoftFilterPage = () => {
 
   // Process CSV data function
   const processCsvData = async (data: any[]) => {
-    const emails = data.map(row => {
-      // Find email column by checking common headers or by guessing based on content
-      const emailColName = findEmailColumn(row);
-      return row[emailColName];
-    }).filter(email => email && email.includes('@'));
-    
-    const results = {
-      total: emails.length,
-      problematic: 0,
-      safe: 0,
-      processedRows: [...data]
-    };
-    
-    // Process in chunks to avoid overwhelming the browser
-    const CHUNK_SIZE = 50;
-    const chunks = [];
-    for (let i = 0; i < emails.length; i += CHUNK_SIZE) {
-      chunks.push(emails.slice(i, i + CHUNK_SIZE));
-    }
-    
-    let processedCount = 0;
-    
-    // Process each chunk
-    for (const chunk of chunks) {
-      await Promise.all(chunk.map(async (email) => {
-        // Extract domain from email
-        const domain = email.split('@')[1]?.trim().toLowerCase();
-        if (!domain) return;
-        
-        try {
-          // Use CORS proxy to avoid CORS issues
-          const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`);
-          const dnsData = await response.json();
-          
-          // Check if MX record contains any problematic providers
-          const problematicProviders = [
-            "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
-            "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
-            "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
-            "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
-            "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
-            "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
-            "watchguard", "webroot", "opentext", "zerospam", "zix"
-          ];
-          
-          let isProblematic = false;
-          let mxProvider = "unknown";
-          
-          if (dnsData && dnsData.Answer) {
-            for (const record of dnsData.Answer) {
-              const mxValue = record.data.toLowerCase();
-              for (const provider of problematicProviders) {
-                if (mxValue.includes(provider)) {
-                  isProblematic = true;
-                  mxProvider = provider;
-                  break;
-                }
-              }
-              if (isProblematic) break;
-            }
-          }
-          
-          // Update the original data with MX info
-          const rowIndex = data.findIndex(row => {
-            const emailColName = findEmailColumn(row);
-            return row[emailColName] === email;
-          });
-          
-          if (rowIndex !== -1) {
-            results.processedRows[rowIndex].mxProvider = mxProvider;
-            results.processedRows[rowIndex].isProblematic = isProblematic;
-          }
-          
-          // Update counts
-          if (isProblematic) {
-            results.problematic++;
-          } else {
-            results.safe++;
-          }
-        } catch (error) {
-          console.error(`Error processing ${domain}:`, error);
-        }
-        
-        // Update progress
-        processedCount++;
-        updateProgressBar(processedCount, emails.length);
-      }));
+    try {
+      const emails = data.map(row => {
+        // Find email column by checking common headers or by guessing based on content
+        const emailColName = findEmailColumn(row);
+        return row[emailColName];
+      }).filter(email => email && email.includes('@'));
       
-      // Small delay between chunks to prevent browser from becoming unresponsive
-      await new Promise(resolve => setTimeout(resolve, 100));
+      const results = {
+        total: emails.length,
+        problematic: 0,
+        safe: 0,
+        processedRows: [...data]
+      };
+      
+      // Process in chunks to avoid overwhelming the browser
+      const CHUNK_SIZE = 50;
+      const chunks = [];
+      for (let i = 0; i < emails.length; i += CHUNK_SIZE) {
+        chunks.push(emails.slice(i, i + CHUNK_SIZE));
+      }
+      
+      let processedCount = 0;
+      
+      // Process each chunk
+      for (const chunk of chunks) {
+        await Promise.all(chunk.map(async (email) => {
+          // Extract domain from email
+          const domain = email.split('@')[1]?.trim().toLowerCase();
+          if (!domain) return;
+          
+          try {
+            // Use CORS proxy to avoid CORS issues
+            const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`);
+            const dnsData = await response.json();
+            
+            // Check if MX record contains any problematic providers
+            const problematicProviders = [
+              "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
+              "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
+              "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
+              "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
+              "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
+              "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
+              "watchguard", "webroot", "opentext", "zerospam", "zix"
+            ];
+            
+            let isProblematic = false;
+            let mxProvider = "unknown";
+            
+            if (dnsData && dnsData.Answer) {
+              for (const record of dnsData.Answer) {
+                const mxValue = record.data.toLowerCase();
+                for (const provider of problematicProviders) {
+                  if (mxValue.includes(provider)) {
+                    isProblematic = true;
+                    mxProvider = provider;
+                    break;
+                  }
+                }
+                if (isProblematic) break;
+              }
+            }
+            
+            // Update the original data with MX info
+            const rowIndex = data.findIndex(row => {
+              const emailColName = findEmailColumn(row);
+              return row[emailColName] === email;
+            });
+            
+            if (rowIndex !== -1) {
+              results.processedRows[rowIndex].mxProvider = mxProvider;
+              results.processedRows[rowIndex].isProblematic = isProblematic;
+            }
+            
+            // Update counts
+            if (isProblematic) {
+              results.problematic++;
+            } else {
+              results.safe++;
+            }
+          } catch (error) {
+            console.error(`Error processing ${domain}:`, error);
+          }
+          
+          // Update progress
+          processedCount++;
+          updateProgressBar(processedCount, emails.length);
+        }));
+        
+        // Small delay between chunks to prevent browser from becoming unresponsive
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+      
+      return results;
+    } catch (error) {
+      console.error("Error processing CSV data:", error);
+      toast({
+        title: "Processing Error",
+        description: "There was an error processing your file. Please check the format and try again.",
+        variant: "destructive",
+      });
+      setStep('upload');
+      throw error;
     }
-    
-    return results;
   };
 
   // Handle file upload
