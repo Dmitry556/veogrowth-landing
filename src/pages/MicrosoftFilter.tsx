@@ -6,12 +6,13 @@ import CustomCard from "@/components/ui/CustomCard";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Upload, Download, AlertCircle, CheckCircle, FileText } from "lucide-react";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
+import { Upload, Download, AlertCircle, CheckCircle, FileText, Check } from "lucide-react";
 import Papa from 'papaparse';
 
 const MicrosoftFilterPage = () => {
   const { toast } = useToast();
-  const [step, setStep] = useState<'upload' | 'processing' | 'results'>('upload');
+  const [step, setStep] = useState<'upload' | 'column-select' | 'processing' | 'results'>('upload');
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState<{
     total: number;
@@ -20,9 +21,15 @@ const MicrosoftFilterPage = () => {
     processedRows: any[];
   } | null>(null);
   const [email, setEmail] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(true);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [progressText, setProgressText] = useState('Processing 0 of 0 emails...');
+  const [csvData, setCsvData] = useState<any[]>([]);
+  const [csvHeaders, setCsvHeaders] = useState<string[]>([]);
+  const [previewRows, setPreviewRows] = useState<any[]>([]);
+  const [selectedEmailColumn, setSelectedEmailColumn] = useState<string>('');
+  const [processingError, setProcessingError] = useState<string | null>(null);
 
   useEffect(() => {
     // Check for saved email
@@ -39,8 +46,15 @@ const MicrosoftFilterPage = () => {
     }
   }, []);
 
+  // Helper function to validate email
+  const validateEmail = (email: string): boolean => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   // Helper function to find email column
   const findEmailColumn = (row: any) => {
+    if (selectedEmailColumn) return selectedEmailColumn;
+    
     const possibleHeaders = ['email', 'email address', 'e-mail', 'mail', 'emailaddress'];
     
     // If this is a header row, look for email column
@@ -72,12 +86,14 @@ const MicrosoftFilterPage = () => {
 
   // Process CSV data function
   const processCsvData = async (data: any[]) => {
+    setProcessingError(null);
+    
     try {
+      const emailColumnToUse = selectedEmailColumn || findEmailColumn(data[0]);
+      
       const emails = data.map(row => {
-        // Find email column by checking common headers or by guessing based on content
-        const emailColName = findEmailColumn(row);
-        return row[emailColName];
-      }).filter(email => email && email.includes('@'));
+        return row[emailColumnToUse];
+      }).filter(email => email && typeof email === 'string' && email.includes('@'));
       
       const results = {
         total: emails.length,
@@ -87,7 +103,7 @@ const MicrosoftFilterPage = () => {
       };
       
       // Process in chunks to avoid overwhelming the browser
-      const CHUNK_SIZE = 50;
+      const CHUNK_SIZE = 10; // Reduced chunk size for better feedback
       const chunks = [];
       for (let i = 0; i < emails.length; i += CHUNK_SIZE) {
         chunks.push(emails.slice(i, i + CHUNK_SIZE));
@@ -97,85 +113,148 @@ const MicrosoftFilterPage = () => {
       
       // Process each chunk
       for (const chunk of chunks) {
-        await Promise.all(chunk.map(async (email) => {
-          // Extract domain from email
-          const domain = email.split('@')[1]?.trim().toLowerCase();
-          if (!domain) return;
-          
-          try {
-            // Use CORS proxy to avoid CORS issues
-            const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`);
-            const dnsData = await response.json();
+        try {
+          await Promise.all(chunk.map(async (email) => {
+            // Extract domain from email
+            const domain = email.split('@')[1]?.trim().toLowerCase();
+            if (!domain) return;
             
-            // Check if MX record contains any problematic providers
-            const problematicProviders = [
-              "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
-              "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
-              "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
-              "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
-              "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
-              "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
-              "watchguard", "webroot", "opentext", "zerospam", "zix"
-            ];
-            
-            let isProblematic = false;
-            let mxProvider = "unknown";
-            
-            if (dnsData && dnsData.Answer) {
-              for (const record of dnsData.Answer) {
-                const mxValue = record.data.toLowerCase();
-                for (const provider of problematicProviders) {
-                  if (mxValue.includes(provider)) {
-                    isProblematic = true;
-                    mxProvider = provider;
-                    break;
+            try {
+              // Use CORS proxy to avoid CORS issues
+              const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`);
+              
+              // Check if response is ok
+              if (!response.ok) {
+                throw new Error(`DNS lookup failed: ${response.status} ${response.statusText}`);
+              }
+              
+              const dnsData = await response.json();
+              
+              // Check if MX record contains any problematic providers
+              const problematicProviders = [
+                "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
+                "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
+                "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
+                "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
+                "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
+                "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
+                "watchguard", "webroot", "opentext", "zerospam", "zix"
+              ];
+              
+              let isProblematic = false;
+              let mxProvider = "unknown";
+              
+              if (dnsData && dnsData.Answer) {
+                for (const record of dnsData.Answer) {
+                  const mxValue = record.data.toLowerCase();
+                  for (const provider of problematicProviders) {
+                    if (mxValue.includes(provider)) {
+                      isProblematic = true;
+                      mxProvider = provider;
+                      break;
+                    }
                   }
+                  if (isProblematic) break;
                 }
-                if (isProblematic) break;
+              }
+              
+              // Update the original data with MX info
+              const rowIndex = data.findIndex(row => {
+                return row[emailColumnToUse] === email;
+              });
+              
+              if (rowIndex !== -1) {
+                results.processedRows[rowIndex].mxProvider = mxProvider;
+                results.processedRows[rowIndex].isProblematic = isProblematic;
+              }
+              
+              // Update counts
+              if (isProblematic) {
+                results.problematic++;
+              } else {
+                results.safe++;
+              }
+            } catch (error) {
+              console.error(`Error processing ${domain}:`, error);
+              // Still mark the row but with error info
+              const rowIndex = data.findIndex(row => {
+                return row[emailColumnToUse] === email;
+              });
+              
+              if (rowIndex !== -1) {
+                results.processedRows[rowIndex].mxProvider = "error";
+                results.processedRows[rowIndex].isProblematic = false;
               }
             }
             
-            // Update the original data with MX info
-            const rowIndex = data.findIndex(row => {
-              const emailColName = findEmailColumn(row);
-              return row[emailColName] === email;
-            });
-            
-            if (rowIndex !== -1) {
-              results.processedRows[rowIndex].mxProvider = mxProvider;
-              results.processedRows[rowIndex].isProblematic = isProblematic;
-            }
-            
-            // Update counts
-            if (isProblematic) {
-              results.problematic++;
-            } else {
-              results.safe++;
-            }
-          } catch (error) {
-            console.error(`Error processing ${domain}:`, error);
-          }
+            // Update progress
+            processedCount++;
+            updateProgressBar(processedCount, emails.length);
+          }));
           
-          // Update progress
-          processedCount++;
-          updateProgressBar(processedCount, emails.length);
-        }));
+        } catch (error) {
+          console.error("Chunk processing error:", error);
+          setProcessingError("Error processing some emails. Please try again or with a smaller file.");
+        }
         
         // Small delay between chunks to prevent browser from becoming unresponsive
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise(resolve => setTimeout(resolve, 250)); // Increased delay for stability
       }
       
       return results;
     } catch (error) {
       console.error("Error processing CSV data:", error);
-      toast({
-        title: "Processing Error",
-        description: "There was an error processing your file. Please check the format and try again.",
-        variant: "destructive",
-      });
-      setStep('upload');
+      setProcessingError("Error processing your file. Please check the format and try again.");
       throw error;
     }
+  };
+
+  // Column selection handler
+  const handleColumnSelect = (columnName: string) => {
+    setSelectedEmailColumn(columnName);
+  };
+
+  // Continue with processing after column selection
+  const handleContinueProcessing = () => {
+    if (!selectedEmailColumn) {
+      toast({
+        title: "Column Required",
+        description: "Please select which column contains email addresses.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setStep('processing');
+    setProgress(0);
+    
+    processCsvData(csvData)
+      .then((processedData) => {
+        // Show results
+        setResults(processedData);
+        setStep('results');
+        
+        // Show notification
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('Processing Complete', {
+            body: 'Your email list has been processed and is ready for download.'
+          });
+        }
+
+        toast({
+          title: "Processing Complete",
+          description: `Your list of ${processedData.total} emails has been analyzed successfully.`,
+        });
+      })
+      .catch((error) => {
+        console.error('Error processing data:', error);
+        toast({
+          title: "Processing Error",
+          description: "There was an error processing your file. Please try again.",
+          variant: "destructive",
+        });
+        setStep('upload');
+      });
   };
 
   // Handle file upload
@@ -189,43 +268,43 @@ const MicrosoftFilterPage = () => {
       });
       return;
     }
-
-    // Set processing state
-    setStep('processing');
-    setProgress(0);
     
     // Parse CSV
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
-      complete: async function(results) {
+      complete: function(results) {
         try {
-          // Process the data
-          const processedData = await processCsvData(results.data);
+          // Store the full data
+          setCsvData(results.data);
           
-          // Show results
-          setResults(processedData);
-          setStep('results');
-          
-          // Show notification
-          if ('Notification' in window && Notification.permission === 'granted') {
-            new Notification('Processing Complete', {
-              body: 'Your email list has been processed and is ready for download.'
+          // Get headers
+          if (results.data.length > 0) {
+            setCsvHeaders(Object.keys(results.data[0]));
+            
+            // Auto-detect email column
+            const detectedEmailColumn = findEmailColumn(results.data[0]);
+            setSelectedEmailColumn(detectedEmailColumn);
+            
+            // Get preview rows (up to 5)
+            setPreviewRows(results.data.slice(0, 5));
+            
+            // Move to column selection step
+            setStep('column-select');
+          } else {
+            toast({
+              title: "Empty File",
+              description: "The CSV file appears to be empty.",
+              variant: "destructive",
             });
           }
-
-          toast({
-            title: "Processing Complete",
-            description: `Your list of ${processedData.total} emails has been analyzed successfully.`,
-          });
         } catch (error) {
-          console.error('Error processing data:', error);
+          console.error("Error processing CSV:", error);
           toast({
-            title: "Processing Error",
-            description: "There was an error processing your file. Please try again.",
+            title: "File Processing Error",
+            description: "There was an error processing your file. Please check the format and try again.",
             variant: "destructive",
           });
-          setStep('upload');
         }
       },
       error: function(error) {
@@ -235,7 +314,6 @@ const MicrosoftFilterPage = () => {
           description: "Could not parse the CSV file. Please check the format and try again.",
           variant: "destructive",
         });
-        setStep('upload');
       }
     });
   };
@@ -244,15 +322,18 @@ const MicrosoftFilterPage = () => {
   const downloadProcessedCsv = (filteredOnly: boolean) => {
     if (!results) return;
     
-    // Check if email is provided
-    if (!email || !email.includes('@')) {
+    // Check if email is provided and valid
+    if (!email || !validateEmail(email)) {
+      setIsEmailValid(false);
       toast({
-        title: "Email Required",
+        title: "Invalid Email",
         description: "Please enter a valid email address to download your results.",
         variant: "destructive",
       });
       return;
     }
+    
+    setIsEmailValid(true);
     
     // Store email in localStorage for convenience
     localStorage.setItem('userEmail', email);
@@ -315,6 +396,17 @@ const MicrosoftFilterPage = () => {
     fileInputRef.current?.click();
   };
 
+  const resetTool = () => {
+    setStep('upload');
+    setResults(null);
+    setProgress(0);
+    setSelectedEmailColumn('');
+    setCsvData([]);
+    setCsvHeaders([]);
+    setPreviewRows([]);
+    setProcessingError(null);
+  };
+
   return (
     <div className="min-h-screen bg-background relative pt-20 pb-20">
       <div className="container mx-auto px-6 py-16">
@@ -357,6 +449,85 @@ const MicrosoftFilterPage = () => {
             </CustomCard>
           )}
 
+          {/* Column Selection Section */}
+          {step === 'column-select' && (
+            <CustomCard variant="glass" className="mb-8">
+              <h2 className="text-h3 font-semibold mb-4">Select Email Column</h2>
+              <p className="mb-6 text-white/70">
+                Please confirm which column contains email addresses. We've auto-detected it, but please verify.
+              </p>
+              
+              {/* Column selector */}
+              <div className="mb-6">
+                <Label className="mb-2 block">Email Column</Label>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {csvHeaders.map((header) => (
+                    <button
+                      key={header}
+                      onClick={() => handleColumnSelect(header)}
+                      className={`px-3 py-1.5 rounded-md text-sm flex items-center gap-1.5 ${
+                        selectedEmailColumn === header 
+                          ? 'bg-blue-500 text-white' 
+                          : 'bg-white/10 hover:bg-white/20'
+                      }`}
+                    >
+                      {selectedEmailColumn === header && <Check size={14} />}
+                      {header}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              {/* CSV Preview */}
+              <div className="mb-6 overflow-auto max-h-64">
+                <h3 className="text-lg font-medium mb-2">Preview</h3>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      {csvHeaders.map((header) => (
+                        <TableHead 
+                          key={header} 
+                          className={selectedEmailColumn === header ? 'bg-blue-500/30' : ''}
+                        >
+                          {header}
+                        </TableHead>
+                      ))}
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {previewRows.map((row, idx) => (
+                      <TableRow key={idx}>
+                        {csvHeaders.map((header) => (
+                          <TableCell 
+                            key={`${idx}-${header}`}
+                            className={selectedEmailColumn === header ? 'bg-blue-500/10' : ''}
+                          >
+                            {row[header]}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+
+              <div className="flex flex-row gap-4">
+                <CustomButton 
+                  onClick={handleContinueProcessing} 
+                  className="flex items-center justify-center gap-2"
+                >
+                  Continue Processing
+                </CustomButton>
+                <CustomButton 
+                  onClick={resetTool} 
+                  variant="outline"
+                >
+                  Cancel
+                </CustomButton>
+              </div>
+            </CustomCard>
+          )}
+          
           {/* Processing Section */}
           {step === 'processing' && (
             <CustomCard variant="glass" className="mb-8">
@@ -368,6 +539,15 @@ const MicrosoftFilterPage = () => {
                 <Progress value={progress} className="h-3" />
               </div>
               <p className="text-white/60 text-center">{progressText}</p>
+
+              {processingError && (
+                <div className="mt-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg text-white">
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="text-red-400 shrink-0 mt-1" size={18} />
+                    <p>{processingError}</p>
+                  </div>
+                </div>
+              )}
             </CustomCard>
           )}
 
@@ -405,9 +585,15 @@ const MicrosoftFilterPage = () => {
                           id="user-email" 
                           placeholder="youremail@example.com" 
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="glass-input"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            setIsEmailValid(true);
+                          }}
+                          className={`glass-input ${!isEmailValid ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                         />
+                        {!isEmailValid && (
+                          <p className="text-red-500 text-sm">Please enter a valid email address</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -419,7 +605,7 @@ const MicrosoftFilterPage = () => {
                       size="default"
                     >
                       <Download size={18} />
-                      Download Microsoft-Excluded List
+                      Download Microsoft-Excluded List ({results.safe.toLocaleString()})
                     </CustomButton>
                     <CustomButton 
                       onClick={() => downloadProcessedCsv(false)} 
@@ -440,7 +626,7 @@ const MicrosoftFilterPage = () => {
                   Upload a different CSV file to analyze a new list of email addresses.
                 </p>
                 <CustomButton 
-                  onClick={() => setStep('upload')}
+                  onClick={resetTool}
                   variant="outline" 
                   className="w-full sm:w-auto"
                 >
