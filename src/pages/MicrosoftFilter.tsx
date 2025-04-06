@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
-import { Upload, Download, AlertCircle, CheckCircle, FileText, Check } from "lucide-react";
+import { Upload, Download, AlertCircle, CheckCircle, FileText, Check, Bug } from "lucide-react";
 import Papa from 'papaparse';
 
 const MicrosoftFilterPage = () => {
@@ -30,6 +30,8 @@ const MicrosoftFilterPage = () => {
   const [previewRows, setPreviewRows] = useState<any[]>([]);
   const [selectedEmailColumn, setSelectedEmailColumn] = useState<string>('');
   const [processingError, setProcessingError] = useState<string | null>(null);
+  const [isTestingDns, setIsTestingDns] = useState(false);
+  const [testDnsResult, setTestDnsResult] = useState<string | null>(null);
 
   useEffect(() => {
     // Check for saved email
@@ -84,16 +86,138 @@ const MicrosoftFilterPage = () => {
     setProgressText(`Processing ${current} of ${total} emails...`);
   };
 
+  // Perform DNS lookup with retry mechanism
+  const performDnsLookup = async (domain: string, maxRetries = 3): Promise<any> => {
+    let retries = 0;
+    
+    while (retries < maxRetries) {
+      try {
+        console.log(`Attempting DNS lookup for ${domain} (attempt ${retries + 1}/${maxRetries})`);
+        
+        // Construct properly encoded URL for DNS lookup
+        const apiUrl = `https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`;
+        console.log(`API URL: ${apiUrl}`);
+        
+        const response = await fetch(apiUrl);
+        
+        // Check if response is ok
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`DNS lookup failed with status ${response.status}: ${errorText}`);
+          throw new Error(`DNS lookup failed: ${response.status} ${response.statusText}`);
+        }
+        
+        const dnsData = await response.json();
+        console.log(`DNS lookup successful for ${domain}:`, dnsData);
+        
+        return { success: true, data: dnsData };
+      } catch (error) {
+        console.error(`Error during DNS lookup for ${domain} (attempt ${retries + 1}/${maxRetries}):`, error);
+        retries++;
+        
+        // If we're not at max retries yet, wait before trying again
+        if (retries < maxRetries) {
+          console.log(`Waiting before retry ${retries + 1}...`);
+          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second between retries
+        }
+      }
+    }
+    
+    // If we get here, all retries failed
+    console.error(`All ${maxRetries} DNS lookup attempts failed for ${domain}`);
+    return { success: false, error: "Failed after multiple attempts" };
+  };
+
+  // Test a single DNS lookup
+  const testDnsLookup = async () => {
+    setIsTestingDns(true);
+    setTestDnsResult(null);
+    
+    try {
+      const testDomain = "gmail.com";
+      console.log(`Testing DNS lookup with domain: ${testDomain}`);
+      
+      const result = await performDnsLookup(testDomain);
+      
+      if (result.success) {
+        console.log("Test DNS lookup successful. Full response:", result.data);
+        
+        // Check if we can identify MX records
+        let mxRecords: string[] = [];
+        
+        if (result.data && result.data.Answer) {
+          mxRecords = result.data.Answer.map((record: any) => record.data.toLowerCase());
+        }
+        
+        console.log("Extracted MX records:", mxRecords);
+        
+        // Check for problematic providers in the test result
+        const problematicProviders = [
+          "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook"
+        ];
+        
+        let isProblematic = false;
+        let detectedProvider = "none";
+        
+        for (const record of mxRecords) {
+          for (const provider of problematicProviders) {
+            if (record.includes(provider)) {
+              isProblematic = true;
+              detectedProvider = provider;
+              break;
+            }
+          }
+          if (isProblematic) break;
+        }
+        
+        const resultMessage = `
+          Test lookup successful for gmail.com
+          MX Records found: ${mxRecords.length}
+          First record: ${mxRecords[0] || 'None'}
+          Provider detection: ${detectedProvider}
+          Problematic: ${isProblematic ? 'YES' : 'NO'}
+        `;
+        
+        setTestDnsResult(resultMessage);
+        toast({
+          title: "DNS Test Successful",
+          description: "Check the console and result panel for details.",
+        });
+      } else {
+        setTestDnsResult(`Test failed: ${result.error}`);
+        toast({
+          title: "DNS Test Failed",
+          description: "See console for error details.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error during test DNS lookup:", error);
+      setTestDnsResult(`Test error: ${error instanceof Error ? error.message : String(error)}`);
+      toast({
+        title: "DNS Test Error",
+        description: "An unexpected error occurred. See console for details.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsTestingDns(false);
+    }
+  };
+
   // Process CSV data function
   const processCsvData = async (data: any[]) => {
     setProcessingError(null);
+    console.log("Starting CSV processing...");
     
     try {
       const emailColumnToUse = selectedEmailColumn || findEmailColumn(data[0]);
+      console.log(`Using email column: ${emailColumnToUse}`);
       
       const emails = data.map(row => {
         return row[emailColumnToUse];
       }).filter(email => email && typeof email === 'string' && email.includes('@'));
+      
+      console.log(`Found ${emails.length} valid email addresses to process`);
       
       const results = {
         total: emails.length,
@@ -103,13 +227,26 @@ const MicrosoftFilterPage = () => {
       };
       
       // Process in chunks to avoid overwhelming the browser
-      const CHUNK_SIZE = 10; // Reduced chunk size for better feedback
+      const CHUNK_SIZE = 5; // Smaller chunk size for better feedback
       const chunks = [];
       for (let i = 0; i < emails.length; i += CHUNK_SIZE) {
         chunks.push(emails.slice(i, i + CHUNK_SIZE));
       }
       
+      console.log(`Split processing into ${chunks.length} chunks of up to ${CHUNK_SIZE} emails each`);
+      
       let processedCount = 0;
+      
+      // Define problematic providers list
+      const problematicProviders = [
+        "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
+        "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
+        "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
+        "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
+        "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
+        "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
+        "watchguard", "webroot", "opentext", "zerospam", "zix"
+      ];
       
       // Process each chunk
       for (const chunk of chunks) {
@@ -117,45 +254,56 @@ const MicrosoftFilterPage = () => {
           await Promise.all(chunk.map(async (email) => {
             // Extract domain from email
             const domain = email.split('@')[1]?.trim().toLowerCase();
-            if (!domain) return;
+            if (!domain) {
+              console.log(`Skipping invalid email: ${email}`);
+              return;
+            }
+            
+            console.log(`Processing email domain: ${domain}`);
             
             try {
-              // Use CORS proxy to avoid CORS issues
-              const response = await fetch(`https://corsproxy.io/?${encodeURIComponent(`https://dns.google/resolve?name=${domain}&type=MX`)}`);
-              
-              // Check if response is ok
-              if (!response.ok) {
-                throw new Error(`DNS lookup failed: ${response.status} ${response.statusText}`);
-              }
-              
-              const dnsData = await response.json();
-              
-              // Check if MX record contains any problematic providers
-              const problematicProviders = [
-                "outlook", "microsoft", "office365", "protection.outlook", "mail.protection.outlook", 
-                "zoho", "barracuda", "ironport", "cisco", "fortinet", "fortimail", 
-                "hornetsecurity", "libraesva", "forcepoint", "mailguard", "mailroute", 
-                "symantec", "broadcom", "messagelabs", "mimecast", "mcafee", "mxlogic", 
-                "proofpoint", "retarus", "securence", "skyeye", "sonicwall", "sophos", 
-                "spambrella", "spamtitan", "titanhq", "trendmicro", "trustwave", 
-                "watchguard", "webroot", "opentext", "zerospam", "zix"
-              ];
+              // Perform DNS lookup with retry mechanism
+              const dnsResult = await performDnsLookup(domain);
               
               let isProblematic = false;
               let mxProvider = "unknown";
+              let mxRecords: string[] = [];
               
-              if (dnsData && dnsData.Answer) {
-                for (const record of dnsData.Answer) {
-                  const mxValue = record.data.toLowerCase();
+              if (dnsResult.success && dnsResult.data && dnsResult.data.Answer) {
+                mxRecords = dnsResult.data.Answer.map((record: any) => record.data.toLowerCase());
+                console.log(`Found ${mxRecords.length} MX records for ${domain}:`, mxRecords);
+                
+                // Check for problematic providers
+                for (const record of mxRecords) {
                   for (const provider of problematicProviders) {
-                    if (mxValue.includes(provider)) {
+                    if (record.includes(provider)) {
                       isProblematic = true;
                       mxProvider = provider;
+                      console.log(`Found problematic provider '${provider}' in record: ${record}`);
                       break;
                     }
                   }
                   if (isProblematic) break;
                 }
+                
+                if (!isProblematic) {
+                  console.log(`No problematic providers found for ${domain}`);
+                  // Try to extract the actual provider name from the MX record
+                  if (mxRecords.length > 0) {
+                    const firstMx = mxRecords[0];
+                    const parts = firstMx.split(' ');
+                    // The last part should be the hostname
+                    const hostname = parts[parts.length - 1];
+                    // Extract domain part from hostname
+                    const hostParts = hostname.split('.');
+                    if (hostParts.length >= 2) {
+                      mxProvider = hostParts[hostParts.length - 2];
+                    }
+                  }
+                }
+              } else {
+                console.warn(`DNS lookup failed for ${domain}`, dnsResult.error);
+                mxProvider = "unknown";
               }
               
               // Update the original data with MX info
@@ -166,6 +314,7 @@ const MicrosoftFilterPage = () => {
               if (rowIndex !== -1) {
                 results.processedRows[rowIndex].mxProvider = mxProvider;
                 results.processedRows[rowIndex].isProblematic = isProblematic;
+                console.log(`Updated row ${rowIndex} with mxProvider: ${mxProvider}, isProblematic: ${isProblematic}`);
               }
               
               // Update counts
@@ -184,6 +333,7 @@ const MicrosoftFilterPage = () => {
               if (rowIndex !== -1) {
                 results.processedRows[rowIndex].mxProvider = "error";
                 results.processedRows[rowIndex].isProblematic = false;
+                console.log(`Marked row ${rowIndex} as error due to exception`);
               }
             }
             
@@ -198,7 +348,8 @@ const MicrosoftFilterPage = () => {
         }
         
         // Small delay between chunks to prevent browser from becoming unresponsive
-        await new Promise(resolve => setTimeout(resolve, 250)); // Increased delay for stability
+        console.log("Waiting between chunks to prevent browser freezing...");
+        await new Promise(resolve => setTimeout(resolve, 500)); // Increased delay for stability
       }
       
       return results;
@@ -405,6 +556,7 @@ const MicrosoftFilterPage = () => {
     setCsvHeaders([]);
     setPreviewRows([]);
     setProcessingError(null);
+    setTestDnsResult(null);
   };
 
   return (
@@ -445,6 +597,27 @@ const MicrosoftFilterPage = () => {
                   <p className="text-body font-medium mb-2">Drag and drop your CSV file here</p>
                   <p className="text-white/60">or click to browse</p>
                 </div>
+              </div>
+              
+              {/* Test DNS Button */}
+              <div className="mt-8 border-t border-white/10 pt-4">
+                <h3 className="text-lg font-medium mb-2">Debug Tools</h3>
+                <CustomButton 
+                  onClick={testDnsLookup} 
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center justify-center gap-2"
+                  disabled={isTestingDns}
+                >
+                  <Bug size={16} />
+                  {isTestingDns ? 'Testing...' : 'Test DNS Lookup'}
+                </CustomButton>
+                
+                {testDnsResult && (
+                  <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg text-sm font-mono whitespace-pre-wrap">
+                    {testDnsResult}
+                  </div>
+                )}
               </div>
             </CustomCard>
           )}
