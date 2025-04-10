@@ -5,13 +5,21 @@ import { ChevronRight } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import LazyVideo from '../ui/LazyVideo';
 
-// Replace animation-heavy canvas with a simpler, optimized version
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const { setRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
     triggerOnce: true,
   });
+  
+  // Mark the heading as the LCP element for browsers that support it
+  useEffect(() => {
+    if (headingRef.current && 'elementTiming' in headingRef.current) {
+      headingRef.current.setAttribute('elementtiming', 'hero-heading');
+      headingRef.current.setAttribute('fetchpriority', 'high');
+    }
+  }, []);
   
   // Optimized canvas animation
   useEffect(() => {
@@ -41,8 +49,9 @@ const HeroSection: React.FC = () => {
     
     resizeObserver.observe(canvas);
     
-    // Optimized particle settings - fewer particles and simplified animation
-    const particleCount = Math.min(20, window.innerWidth < 768 ? 10 : 20);
+    // Further optimized particle settings - even fewer particles
+    const isMobile = window.innerWidth < 768;
+    const particleCount = Math.min(isMobile ? 5 : 10, 10);
     const particles: {
       x: number;
       y: number;
@@ -58,15 +67,15 @@ const HeroSection: React.FC = () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
-        color: i % 2 === 0 ? 'rgba(59, 130, 246, 0.3)' : 'rgba(139, 92, 246, 0.3)',
+        speedX: (Math.random() - 0.5) * 0.1, // Slower movement
+        speedY: (Math.random() - 0.5) * 0.1, // Slower movement
+        color: i % 2 === 0 ? 'rgba(59, 130, 246, 0.2)' : 'rgba(139, 92, 246, 0.2)',
       });
     }
     
     let animationFrameId: number;
     let lastTime = 0;
-    const fps = 24; // Limit to 24fps for better performance
+    const fps = 15; // Even lower fps for better performance
     const interval = 1000 / fps;
     
     // Animation loop with throttling
@@ -99,44 +108,51 @@ const HeroSection: React.FC = () => {
         ctx.fill();
       });
       
-      // Draw connections with reduced calculations
-      if (window.innerWidth > 768) {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      // Skip drawing connections on mobile
+      if (!isMobile) {
+        // Draw connections with minimal calculations (only between adjacent particles)
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
         ctx.lineWidth = 0.5;
         
-        for (let i = 0; i < particles.length; i += 2) {
-          const nextIndex = i + 1 >= particles.length ? 0 : i + 1;
-          const dx = particles[i].x - particles[nextIndex].x;
-          const dy = particles[i].y - particles[nextIndex].y;
+        for (let i = 0; i < particles.length - 1; i++) {
+          const dx = particles[i].x - particles[i+1].x;
+          const dy = particles[i].y - particles[i+1].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < 100) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[nextIndex].x, particles[nextIndex].y);
+            ctx.lineTo(particles[i+1].x, particles[i+1].y);
             ctx.stroke();
           }
         }
       }
     };
     
-    // Start the animation
-    animationFrameId = requestAnimationFrame(animate);
+    // Start the animation after a short delay to prioritize content rendering
+    const animationDelay = setTimeout(() => {
+      animationFrameId = requestAnimationFrame(animate);
+    }, 500);
     
     return () => {
+      clearTimeout(animationDelay);
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
     };
   }, [isIntersecting]);
 
   return (
-    <section ref={setRef} className="relative min-h-screen flex items-center pt-32 overflow-hidden">
+    <section ref={setRef} className="hero-section relative min-h-screen flex items-center pt-32 overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 z-0" aria-hidden="true" />
       
       <div className="container mx-auto px-6 z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h1 className="text-display font-bold leading-display tracking-tight mb-6">
+          <div className="hero-content">
+            <h1 
+              ref={headingRef}
+              className="hero-heading"
+              id="main-heading"
+            >
               Build Pipeline With Cold Email That Finally Works
             </h1>
             
@@ -149,6 +165,7 @@ const HeroSection: React.FC = () => {
                 size="lg" 
                 className="flex items-center"
                 onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                aria-label="Launch my free campaign"
               >
                 Launch my free campaign <ChevronRight className="ml-2" size={18} />
               </CustomButton>
@@ -156,6 +173,7 @@ const HeroSection: React.FC = () => {
                 size="lg" 
                 variant="outline"
                 onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                aria-label="Let's Talk Pipeline"
               >
                 Let's Talk Pipeline
               </CustomButton>
@@ -171,7 +189,7 @@ const HeroSection: React.FC = () => {
                     <div className="w-64 h-64 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl"></div>
                   </div>
                   <div className="relative h-full w-full p-8 flex flex-col items-center justify-center">
-                    {/* Replace Vimeo embed with lazy-loaded facade */}
+                    {/* Optimized video placeholder */}
                     <LazyVideo
                       videoId="101"
                       title="Pipeline Growth"
@@ -179,7 +197,7 @@ const HeroSection: React.FC = () => {
                       height={315}
                       className="mb-6"
                     />
-                    <h2 className="text-h3 font-bold mb-2">Pipeline Growth</h2>
+                    <h3 className="text-h3 font-bold mb-2">Pipeline Growth</h3>
                     <p className="text-center text-white mb-6">Real-time insights to drive your business forward</p>
                     <div className="w-full bg-black/20 rounded-lg p-4 mb-4">
                       <div className="h-2 w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
