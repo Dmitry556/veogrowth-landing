@@ -68,13 +68,12 @@ root.render(
 );
 
 // Add passive event listeners for scroll performance
-// Fix TypeScript error by properly defining the document object type
-((document): Document => {
-  document.addEventListener('touchstart', () => {}, { passive: true });
-  document.addEventListener('touchmove', () => {}, { passive: true });
-  document.addEventListener('wheel', () => {}, { passive: true });
-  return document;
-})(document as Document);
+// Fix TypeScript error by explicitly typing the document
+(function addPassiveListeners(doc: Document) {
+  doc.addEventListener('touchstart', () => {}, { passive: true });
+  doc.addEventListener('touchmove', () => {}, { passive: true });
+  doc.addEventListener('wheel', () => {}, { passive: true });
+})(document);
 
 // Load non-critical resources after main content
 if ('requestIdleCallback' in window) {
