@@ -83,10 +83,13 @@ if ('requestIdleCallback' in window) {
   }, { timeout: 2000 });
 } else {
   // Fallback for browsers without requestIdleCallback
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loadNonCriticalCSS();
-      loadDeferredScripts();
-    }, 200);
-  });
+  // Use a properly typed window object with an IIFE
+  (function(win: Window) {
+    win.addEventListener('load', () => {
+      setTimeout(() => {
+        loadNonCriticalCSS();
+        loadDeferredScripts();
+      }, 200);
+    });
+  })(window as Window);
 }
