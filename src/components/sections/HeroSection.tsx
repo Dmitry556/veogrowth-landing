@@ -1,20 +1,21 @@
 
-import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CustomButton from '../ui/CustomButton';
 import { ChevronRight } from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
+import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import LazyVideo from '../ui/LazyVideo';
 
 // Replace animation-heavy canvas with a simpler, optimized version
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const { ref: sectionRef, inView } = useInView({
-    triggerOnce: true,
+  const { setRef, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
+    triggerOnce: true,
   });
   
+  // Optimized canvas animation
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || !isIntersecting) return;
     
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d', { alpha: true });
@@ -35,13 +36,13 @@ const HeroSection: React.FC = () => {
     
     // Use ResizeObserver instead of resize event for better performance
     const resizeObserver = new ResizeObserver(() => {
-      setCanvasDimensions();
+      requestAnimationFrame(setCanvasDimensions);
     });
     
     resizeObserver.observe(canvas);
     
     // Optimized particle settings - fewer particles and simplified animation
-    const particleCount = Math.min(30, window.innerWidth < 768 ? 15 : 30);
+    const particleCount = Math.min(20, window.innerWidth < 768 ? 10 : 20);
     const particles: {
       x: number;
       y: number;
@@ -65,7 +66,7 @@ const HeroSection: React.FC = () => {
     
     let animationFrameId: number;
     let lastTime = 0;
-    const fps = 30; // Limit to 30fps for better performance
+    const fps = 24; // Limit to 24fps for better performance
     const interval = 1000 / fps;
     
     // Animation loop with throttling
@@ -98,23 +99,22 @@ const HeroSection: React.FC = () => {
         ctx.fill();
       });
       
-      // Draw a reduced number of connections for better performance
+      // Draw connections with reduced calculations
       if (window.innerWidth > 768) {
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
         ctx.lineWidth = 0.5;
         
         for (let i = 0; i < particles.length; i += 2) {
-          for (let j = i + 1; j < Math.min(i + 5, particles.length); j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < 80) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
+          const nextIndex = i + 1 >= particles.length ? 0 : i + 1;
+          const dx = particles[i].x - particles[nextIndex].x;
+          const dy = particles[i].y - particles[nextIndex].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[nextIndex].x, particles[nextIndex].y);
+            ctx.stroke();
           }
         }
       }
@@ -127,25 +127,11 @@ const HeroSection: React.FC = () => {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [isIntersecting]);
 
-  // Function to load Vimeo player only when needed
-  const handleLoadVideo = () => {
-    if (!videoLoaded) {
-      setVideoLoaded(true);
-      
-      // Dynamically load Vimeo script only when needed
-      const script = document.createElement('script');
-      script.src = 'https://player.vimeo.com/api/player.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  };
-  
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-32 overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
+    <section ref={setRef} className="relative min-h-screen flex items-center pt-32 overflow-hidden">
+      <canvas ref={canvasRef} className="absolute inset-0 z-0" aria-hidden="true" />
       
       <div className="container mx-auto px-6 z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -154,7 +140,7 @@ const HeroSection: React.FC = () => {
               Build Pipeline With Cold Email That Finally Works
             </h1>
             
-            <p className="text-body-large text-white/80 leading-body tracking-slight mb-8 max-w-lg">
+            <p className="text-body-large text-white leading-body tracking-slight mb-8 max-w-lg">
               We help B2B companies generate 4.2M+ in pipeline without hiring more sales reps. Most outbound agencies claim they can get you leads. We've actually done it for dozens of companies in diverse industries - and we have the data to prove it.
             </p>
             
@@ -185,16 +171,16 @@ const HeroSection: React.FC = () => {
                     <div className="w-64 h-64 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl"></div>
                   </div>
                   <div className="relative h-full w-full p-8 flex flex-col items-center justify-center">
-                    <div 
-                      className="w-20 h-20 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center mb-6 shadow-lg"
-                      onClick={handleLoadVideo}
-                    >
-                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 7L13 15L9 11L3 17M21 7H15M21 7V13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <h3 className="text-h3 font-bold mb-2">Pipeline Growth</h3>
-                    <p className="text-center text-white/70 mb-6">Real-time insights to drive your business forward</p>
+                    {/* Replace Vimeo embed with lazy-loaded facade */}
+                    <LazyVideo
+                      videoId="101"
+                      title="Pipeline Growth"
+                      width={560}
+                      height={315}
+                      className="mb-6"
+                    />
+                    <h2 className="text-h3 font-bold mb-2">Pipeline Growth</h2>
+                    <p className="text-center text-white mb-6">Real-time insights to drive your business forward</p>
                     <div className="w-full bg-black/20 rounded-lg p-4 mb-4">
                       <div className="h-2 w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                       <div className="mt-2 h-2 w-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
@@ -202,15 +188,15 @@ const HeroSection: React.FC = () => {
                     <div className="flex justify-between w-full px-6">
                       <div className="text-center">
                         <p className="text-2xl font-bold text-white">87%</p>
-                        <p className="text-caption text-white/60">Conversion</p>
+                        <p className="text-caption text-white">Conversion</p>
                       </div>
                       <div className="text-center">
                         <p className="text-2xl font-bold text-white">$4.2M</p>
-                        <p className="text-caption text-white/60">Pipeline</p>
+                        <p className="text-caption text-white">Pipeline</p>
                       </div>
                       <div className="text-center">
                         <p className="text-2xl font-bold text-white">12.8x</p>
-                        <p className="text-caption text-white/60">ROI</p>
+                        <p className="text-caption text-white">ROI</p>
                       </div>
                     </div>
                   </div>

@@ -5,17 +5,17 @@ import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
-// Lazy load non-critical sections
-const ProblemSection = lazy(() => import('@/components/sections/ProblemSection'));
-const SolutionSection = lazy(() => import('@/components/sections/SolutionSection'));
-const ResultsSection = lazy(() => import('@/components/sections/ResultsSection'));
-const ProcessSection = lazy(() => import('@/components/sections/ProcessSection'));
-const PricingSection = lazy(() => import('@/components/sections/PricingSection'));
-const DashboardSection = lazy(() => import('@/components/sections/DashboardSection'));
-const FaqSection = lazy(() => import('@/components/sections/FaqSection'));
+// Lazy load non-critical sections with increased threshold for better performance
+const SectionLoader = () => <div className="py-12 flex justify-center"><div className="spinner"></div></div>;
 
-// Simple loading component for lazy-loaded sections
-const SectionLoader = () => <div className="py-24 flex justify-center"><div className="w-8 h-8 border-2 border-t-blue-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div></div>;
+// Use dynamic imports with chunks
+const ProblemSection = lazy(() => import(/* webpackChunkName: "problem-section" */ '@/components/sections/ProblemSection'));
+const SolutionSection = lazy(() => import(/* webpackChunkName: "solution-section" */ '@/components/sections/SolutionSection'));
+const ResultsSection = lazy(() => import(/* webpackChunkName: "results-section" */ '@/components/sections/ResultsSection'));
+const ProcessSection = lazy(() => import(/* webpackChunkName: "process-section" */ '@/components/sections/ProcessSection'));
+const PricingSection = lazy(() => import(/* webpackChunkName: "pricing-section" */ '@/components/sections/PricingSection'));
+const DashboardSection = lazy(() => import(/* webpackChunkName: "dashboard-section" */ '@/components/sections/DashboardSection'));
+const FaqSection = lazy(() => import(/* webpackChunkName: "faq-section" */ '@/components/sections/FaqSection'));
 
 const Index = () => {
   useEffect(() => {
@@ -36,34 +36,16 @@ const Index = () => {
       document.head.appendChild(script);
     };
     
-    injectSchema();
-    
-    // Use Intersection Observer for animations
-    const observeElements = () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: '50px' }
-      );
-      
-      document.querySelectorAll('.fade-in-element').forEach((el) => {
-        observer.observe(el);
-      });
-    };
-    
-    // Add minimal delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      observeElements();
-    }, 100);
+    // Use requestIdleCallback for non-critical operations
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        injectSchema();
+      }, { timeout: 1000 });
+    } else {
+      setTimeout(injectSchema, 500);
+    }
     
     return () => {
-      clearTimeout(timer);
       const script = document.getElementById('schema-script-home');
       if (script) {
         script.remove();
@@ -78,36 +60,52 @@ const Index = () => {
       <main>
         <HeroSection />
         
-        <Suspense fallback={<SectionLoader />}>
-          <ProblemSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <SolutionSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ResultsSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ProcessSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <PricingSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <DashboardSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <FaqSection />
-        </Suspense>
+        <LazySection component={ProblemSection} id="problems" />
+        <LazySection component={SolutionSection} id="solutions" />
+        <LazySection component={ResultsSection} id="results" />
+        <LazySection component={ProcessSection} id="process" />
+        <LazySection component={PricingSection} id="pricing" />
+        <LazySection component={DashboardSection} id="dashboard" />
+        <LazySection component={FaqSection} id="faq" />
       </main>
       
       <Footer />
+    </div>
+  );
+};
+
+// Optimized lazy section loader
+const LazySection = ({ component: Component, id }: { component: React.ComponentType, id: string }) => {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px' } // Preload when within 200px
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div id={id} ref={sectionRef}>
+      {isVisible ? (
+        <Suspense fallback={<SectionLoader />}>
+          <Component />
+        </Suspense>
+      ) : (
+        <SectionLoader />
+      )}
     </div>
   );
 };

@@ -1,0 +1,78 @@
+
+/* Critical CSS for above-the-fold content */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border selection:bg-blue-800/30 selection:text-white;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: 
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 400px),
+      radial-gradient(circle at left, rgba(139, 92, 246, 0.05), transparent 400px),
+      var(--tw-gradient-stops);
+  }
+}
+
+/* Critical accessibility improvements - increase contrast ratios */
+.text-white\/80 {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.text-white\/40 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Critical component styles */
+.glass {
+  @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-xl;
+}
+  
+.glass-card {
+  @apply bg-card/70 backdrop-blur-lg border border-white/10 shadow-card transition duration-300 hover:shadow-card-hover;
+}
+
+/* Critical animation for loading state */
+@keyframes spinner {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: spinner 1s ease-in-out infinite;
+}
