@@ -69,11 +69,11 @@ root.render(
 
 // Add passive event listeners for scroll performance
 // Fix TypeScript error by explicitly typing the document
-(function addPassiveListeners(doc: Document) {
+(function(doc: Document) {
   doc.addEventListener('touchstart', () => {}, { passive: true });
   doc.addEventListener('touchmove', () => {}, { passive: true });
   doc.addEventListener('wheel', () => {}, { passive: true });
-})(document);
+})(document as Document);
 
 // Load non-critical resources after main content
 if ('requestIdleCallback' in window) {
