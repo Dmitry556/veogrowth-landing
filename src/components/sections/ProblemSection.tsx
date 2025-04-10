@@ -1,9 +1,42 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import CustomCard from '../ui/CustomCard';
 import { AlertTriangle, Unlink, Database, FileQuestion, DollarSign } from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
+
+// Memoize the problem card to prevent unnecessary re-renders
+const ProblemCard = memo(({ problem, index }: { problem: any, index: number }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '50px',
+  });
+
+  return (
+    <div 
+      ref={ref}
+      className={`transition-opacity duration-500 ${inView ? 'opacity-100' : 'opacity-0'}`}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <CustomCard className="flex flex-col h-full">
+        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
+          {problem.icon}
+        </div>
+        <h3 className="text-body font-semibold mb-2">{problem.title}</h3>
+        <p className="text-caption text-white/70">{problem.description}</p>
+      </CustomCard>
+    </div>
+  );
+});
+
+ProblemCard.displayName = 'ProblemCard';
 
 const ProblemSection: React.FC = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const problems = [
     {
       icon: <AlertTriangle className="text-amber-400" />,
@@ -38,7 +71,10 @@ const ProblemSection: React.FC = () => {
       
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div>
+          <div 
+            ref={ref}
+            className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
             <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
               The Pipeline Problem
             </div>
@@ -58,17 +94,7 @@ const ProblemSection: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {problems.map((problem, index) => (
-              <CustomCard 
-                key={index} 
-                className="flex flex-col h-full animate-float"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
-                  {problem.icon}
-                </div>
-                <h3 className="text-body font-semibold mb-2">{problem.title}</h3>
-                <p className="text-caption text-white/70">{problem.description}</p>
-              </CustomCard>
+              <ProblemCard key={index} problem={problem} index={index} />
             ))}
           </div>
         </div>

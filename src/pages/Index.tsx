@@ -1,43 +1,24 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
-import ProblemSection from '@/components/sections/ProblemSection';
-import SolutionSection from '@/components/sections/SolutionSection';
-import ResultsSection from '@/components/sections/ResultsSection';
-import ProcessSection from '@/components/sections/ProcessSection';
-import PricingSection from '@/components/sections/PricingSection';
-import DashboardSection from '@/components/sections/DashboardSection';
-import FaqSection from '@/components/sections/FaqSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
+
+// Lazy load non-critical sections
+const ProblemSection = lazy(() => import('@/components/sections/ProblemSection'));
+const SolutionSection = lazy(() => import('@/components/sections/SolutionSection'));
+const ResultsSection = lazy(() => import('@/components/sections/ResultsSection'));
+const ProcessSection = lazy(() => import('@/components/sections/ProcessSection'));
+const PricingSection = lazy(() => import('@/components/sections/PricingSection'));
+const DashboardSection = lazy(() => import('@/components/sections/DashboardSection'));
+const FaqSection = lazy(() => import('@/components/sections/FaqSection'));
+
+// Simple loading component for lazy-loaded sections
+const SectionLoader = () => <div className="py-24 flex justify-center"><div className="w-8 h-8 border-2 border-t-blue-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div></div>;
 
 const Index = () => {
   useEffect(() => {
-    // Add smooth fade-in for page load
-    document.body.classList.add('noise-overlay');
-    
-    // Animation for scroll-triggered elements
-    const observeElements = () => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-fade-in');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      
-      document.querySelectorAll('.fade-in-element').forEach((el) => {
-        observer.observe(el);
-      });
-    };
-    
-    observeElements();
-    
     // Update document title
     document.title = "Veogrowth - Generate Pipeline Without Hiring More Sales Reps";
     
@@ -55,20 +36,34 @@ const Index = () => {
       document.head.appendChild(script);
     };
     
-    // Add Vimeo Player script
-    const loadVimeoScript = () => {
-      if (!document.querySelector('script[src="https://player.vimeo.com/api/player.js"]')) {
-        const vimeoScript = document.createElement('script');
-        vimeoScript.src = "https://player.vimeo.com/api/player.js";
-        document.body.appendChild(vimeoScript);
-      }
+    injectSchema();
+    
+    // Use Intersection Observer for animations
+    const observeElements = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '50px' }
+      );
+      
+      document.querySelectorAll('.fade-in-element').forEach((el) => {
+        observer.observe(el);
+      });
     };
     
-    injectSchema();
-    loadVimeoScript();
+    // Add minimal delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      observeElements();
+    }, 100);
     
     return () => {
-      document.body.classList.remove('noise-overlay');
+      clearTimeout(timer);
       const script = document.getElementById('schema-script-home');
       if (script) {
         script.remove();
@@ -82,13 +77,34 @@ const Index = () => {
       
       <main>
         <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
-        <ResultsSection />
-        <ProcessSection />
-        <PricingSection />
-        <DashboardSection />
-        <FaqSection />
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ProblemSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <SolutionSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ResultsSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ProcessSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <PricingSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <DashboardSection />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <FaqSection />
+        </Suspense>
       </main>
       
       <Footer />
