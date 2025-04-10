@@ -2,12 +2,13 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
+import './critical.css'
 
 // Create a function to load non-critical CSS
 const loadNonCriticalCSS = () => {
+  // Preload non-critical CSS
   const links = [
-    // Add any additional non-critical CSS files here
+    '/assets/index.css'
   ];
   
   links.forEach(href => {
@@ -20,7 +21,7 @@ const loadNonCriticalCSS = () => {
   });
 };
 
-// Mount the app
+// Mount the app with optimized rendering
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
@@ -30,11 +31,10 @@ createRoot(document.getElementById("root")!).render(
 // Load non-critical CSS after the page has loaded
 window.addEventListener('load', () => {
   // Wait a short moment to ensure main content is displayed
-  setTimeout(loadNonCriticalCSS, 100);
+  requestIdleCallback(() => loadNonCriticalCSS());
 });
 
 // Add passive event listeners for scroll performance
-document.addEventListener('touchstart', function() {}, { passive: true });
-document.addEventListener('touchmove', function() {}, { passive: true });
-document.addEventListener('wheel', function() {}, { passive: true });
-
+document.addEventListener('touchstart', () => {}, { passive: true });
+document.addEventListener('touchmove', () => {}, { passive: true });
+document.addEventListener('wheel', () => {}, { passive: true });

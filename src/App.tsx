@@ -7,12 +7,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SchemaMarkup from "./components/schema/SchemaMarkup";
 
-// Create a client for React Query
+// Create a client for React Query with performance optimizations
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false, // Improves performance by preventing refetches on focus
-      retry: false, // Prevents excessive retries which can cause performance issues
+      refetchOnWindowFocus: false,
+      retry: false,
+      staleTime: 60000, // 1 minute cache
     },
   },
 });
@@ -24,10 +25,10 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const MicrosoftFilter = lazy(() => import("./pages/MicrosoftFilter"));
 
-// Loading fallback
+// Optimized loading fallback
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
-    <div className="w-16 h-16 border-4 border-t-blue-500 border-r-transparent border-b-purple-500 border-l-transparent rounded-full animate-spin"></div>
+    <div className="spinner"></div>
   </div>
 );
 
