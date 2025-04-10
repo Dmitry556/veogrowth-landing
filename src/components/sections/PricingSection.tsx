@@ -1,9 +1,62 @@
 
-import React from 'react';
+import React, { memo } from 'react';
 import CustomCard from '../ui/CustomCard';
 import CustomButton from '../ui/CustomButton';
 import { Check, ChevronRight } from 'lucide-react';
 import { Badge } from '../ui/badge';
+
+// Memoize each pricing card to prevent unnecessary re-renders
+const PricingCard = memo(({ plan }: { plan: any }) => {
+  return (
+    <div 
+      className={`transform transition-all duration-300 hover:-translate-y-2 ${plan.popular ? 'md:-translate-y-4' : ''}`}
+    >
+      <CustomCard 
+        variant={plan.popular ? "gradient" : "default"}
+        className={`h-full flex flex-col border ${plan.className} ${plan.popular ? 'border-blue-500/30' : ''}`}
+      >
+        <div className="mb-6">
+          {plan.badge && (
+            <div className="mb-4">
+              <Badge className={`bg-gradient-to-r ${plan.badgeColor} text-white border-none px-3 py-1`}>
+                {plan.badge}
+              </Badge>
+            </div>
+          )}
+          <h3 className="text-h3 font-bold mb-2">{plan.name}</h3>
+          <div className="flex items-end mb-2">
+            <span className="text-h2 font-bold">{plan.price}</span>
+            <span className="text-body text-white/60 ml-1">{plan.description}</span>
+          </div>
+        </div>
+        
+        <div className="grow mb-6">
+          <ul className="space-y-3">
+            {plan.features.map((feature: string, i: number) => (
+              <li key={i} className="flex items-start">
+                <Check className="mr-2 text-green-400 shrink-0 mt-1" size={16} />
+                <span className="text-body text-white/80">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div>
+          <CustomButton 
+            variant={plan.popular ? "primary" : "outline"} 
+            className="w-full flex justify-center items-center"
+            size="lg"
+          >
+            {plan.buttonText}
+            <ChevronRight size={16} />
+          </CustomButton>
+        </div>
+      </CustomCard>
+    </div>
+  );
+});
+
+PricingCard.displayName = 'PricingCard';
 
 const PricingSection: React.FC = () => {
   const pricingPlans = [
@@ -74,7 +127,7 @@ const PricingSection: React.FC = () => {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 fade-in-element">
           <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-caption font-medium mb-6">
             Pricing & Packages
           </div>
@@ -88,56 +141,11 @@ const PricingSection: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {pricingPlans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`transform transition-all duration-300 hover:-translate-y-2 ${plan.popular ? 'md:-translate-y-4' : ''}`}
-            >
-              <CustomCard 
-                variant={plan.popular ? "gradient" : "default"}
-                className={`h-full flex flex-col border ${plan.className} ${plan.popular ? 'border-blue-500/30' : ''}`}
-              >
-                <div className="mb-6">
-                  {plan.badge && (
-                    <div className="mb-4">
-                      <Badge className={`bg-gradient-to-r ${plan.badgeColor} text-white border-none px-3 py-1`}>
-                        {plan.badge}
-                      </Badge>
-                    </div>
-                  )}
-                  <h3 className="text-h3 font-bold mb-2">{plan.name}</h3>
-                  <div className="flex items-end mb-2">
-                    <span className="text-h2 font-bold">{plan.price}</span>
-                    <span className="text-body text-white/60 ml-1">{plan.description}</span>
-                  </div>
-                </div>
-                
-                <div className="grow mb-6">
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <Check className="mr-2 text-green-400 shrink-0 mt-1" size={16} />
-                        <span className="text-body text-white/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div>
-                  <CustomButton 
-                    variant={plan.popular ? "primary" : "outline"} 
-                    className="w-full flex justify-center items-center"
-                    size="lg"
-                  >
-                    {plan.buttonText}
-                    <ChevronRight size={16} />
-                  </CustomButton>
-                </div>
-              </CustomCard>
-            </div>
+            <PricingCard key={index} plan={plan} />
           ))}
         </div>
         
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 fade-in-element">
           <p className="text-body-large text-white/70 mb-8">
             Every month of delay costs you approximately $105,000 in missed pipeline opportunities.
           </p>

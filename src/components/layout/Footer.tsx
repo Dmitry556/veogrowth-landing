@@ -27,26 +27,26 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
           <div>
-            <a href="#" className="text-xl font-bold text-white mb-6 block">
-              <span className="gradient-text">Veo</span>growth
+            <a href="/" className="text-xl font-bold text-white mb-6 block">
+              <span className="text-blue-400">Veo</span>growth
             </a>
             <p className="text-caption text-white/60 mb-6">
               The agency partner for businesses looking to scale their growth operations and drive unprecedented revenue.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
+              <a href="#" aria-label="Twitter" className="text-white/60 hover:text-white transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
+              <a href="#" aria-label="Facebook" className="text-white/60 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
+              <a href="#" aria-label="Instagram" className="text-white/60 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
+              <a href="#" aria-label="LinkedIn" className="text-white/60 hover:text-white transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-white/60 hover:text-white transition-colors">
+              <a href="#" aria-label="GitHub" className="text-white/60 hover:text-white transition-colors">
                 <Github size={20} />
               </a>
             </div>

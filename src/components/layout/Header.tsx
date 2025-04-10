@@ -12,11 +12,14 @@ const Header: React.FC = () => {
   const location = useLocation();
   
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
+    // Use requestAnimationFrame for better scroll performance
+    requestAnimationFrame(() => {
+      setScrollPosition(window.scrollY);
+    });
   };
   
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
@@ -43,7 +46,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link to="/" className="text-xl font-bold text-white">
-                <span className="gradient-text">Veo</span>growth
+                <span className="text-blue-400">Veo</span>growth
               </Link>
             </div>
             
@@ -69,7 +72,12 @@ const Header: React.FC = () => {
               <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>Launch my free campaign</CustomButton>
             </div>
             
-            <button className="md:hidden text-white" onClick={toggleMenu}>
+            <button 
+              className="md:hidden text-white" 
+              onClick={toggleMenu} 
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -77,7 +85,10 @@ const Header: React.FC = () => {
       </div>
       
       {/* Mobile menu */}
-      <div className={`glass absolute top-full left-0 right-0 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div 
+        className={`glass absolute top-full left-0 right-0 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        aria-hidden={!isMenuOpen}
+      >
         <div className="px-4 py-5 space-y-5">
           {!isBlogPage ? (
             <>
