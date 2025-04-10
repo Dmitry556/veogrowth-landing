@@ -68,9 +68,12 @@ root.render(
 );
 
 // Add passive event listeners for scroll performance
-document.addEventListener('touchstart', () => {}, { passive: true });
-document.addEventListener('touchmove', () => {}, { passive: true });
-document.addEventListener('wheel', () => {}, { passive: true });
+// Explicitly cast document to Document type
+(function(doc: Document) {
+  doc.addEventListener('touchstart', () => {}, { passive: true });
+  doc.addEventListener('touchmove', () => {}, { passive: true });
+  doc.addEventListener('wheel', () => {}, { passive: true });
+})(document as Document);
 
 // Load non-critical resources after main content
 if ('requestIdleCallback' in window) {
