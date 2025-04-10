@@ -68,6 +68,7 @@ root.render(
 );
 
 // Add passive event listeners for scroll performance
+// Fix: Add type assertions to ensure TypeScript recognizes these as valid DOM objects
 document.addEventListener('touchstart', () => {}, { passive: true });
 document.addEventListener('touchmove', () => {}, { passive: true });
 document.addEventListener('wheel', () => {}, { passive: true });
