@@ -1,14 +1,18 @@
 
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
-// Lazy load non-critical sections with increased threshold for better performance
-const SectionLoader = () => <div className="py-12 flex justify-center"><div className="spinner"></div></div>;
+// More efficient section loader
+const SectionLoader = () => (
+  <div className="py-12 flex justify-center">
+    <div className="spinner"></div>
+  </div>
+);
 
-// Use dynamic imports with chunks
+// Use dynamic imports with optimized chunks
 const ProblemSection = lazy(() => import(/* webpackChunkName: "problem-section" */ '@/components/sections/ProblemSection'));
 const SolutionSection = lazy(() => import(/* webpackChunkName: "solution-section" */ '@/components/sections/SolutionSection'));
 const ResultsSection = lazy(() => import(/* webpackChunkName: "results-section" */ '@/components/sections/ResultsSection'));
@@ -17,9 +21,35 @@ const PricingSection = lazy(() => import(/* webpackChunkName: "pricing-section" 
 const DashboardSection = lazy(() => import(/* webpackChunkName: "dashboard-section" */ '@/components/sections/DashboardSection'));
 const FaqSection = lazy(() => import(/* webpackChunkName: "faq-section" */ '@/components/sections/FaqSection'));
 
-const Index = () => {
+// Optimized intersection observer for lazy loading
+const useOptimizedIntersection = (options = {}) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  
   useEffect(() => {
-    // Update document title
+    if (!element) return;
+    
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: '300px 0px', threshold: 0.01, ...options });
+    
+    observer.observe(element);
+    
+    return () => observer.disconnect();
+  }, [element, options]);
+  
+  return { isVisible, setRef: setElement };
+};
+
+const Index = () => {
+  // Track if this is the first render to optimize schema injection
+  const isFirstRender = React.useRef(true);
+
+  useEffect(() => {
+    // Update document title with high priority
     document.title = "Veogrowth - Generate Pipeline Without Hiring More Sales Reps";
     
     // Add JSON-LD schema markup to head
@@ -34,15 +64,37 @@ const Index = () => {
       script.type = 'application/ld+json';
       script.innerHTML = schemaToString(generateHomePageSchema());
       document.head.appendChild(script);
+      
+      // Add high-priority preconnects
+      const preconnects = [
+        'https://fonts.googleapis.com',
+        'https://fonts.gstatic.com',
+        'https://i.vimeocdn.com'
+      ];
+      
+      preconnects.forEach(url => {
+        if (!document.querySelector(`link[rel="preconnect"][href="${url}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'preconnect';
+          link.href = url;
+          link.crossOrigin = 'anonymous';
+          document.head.appendChild(link);
+        }
+      });
     };
     
-    // Use requestIdleCallback for non-critical operations
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => {
-        injectSchema();
-      }, { timeout: 1000 });
+    if (isFirstRender.current) {
+      injectSchema();
+      isFirstRender.current = false;
     } else {
-      setTimeout(injectSchema, 500);
+      // Use requestIdleCallback for non-critical operations on re-renders
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          injectSchema();
+        }, { timeout: 1000 });
+      } else {
+        setTimeout(injectSchema, 500);
+      }
     }
     
     return () => {
@@ -74,31 +126,12 @@ const Index = () => {
   );
 };
 
-// Optimized lazy section loader
+// Optimized lazy section loader with better memory management
 const LazySection = ({ component: Component, id }: { component: React.ComponentType, id: string }) => {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const sectionRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px 0px' } // Preload when within 200px
-    );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
-    return () => observer.disconnect();
-  }, []);
+  const { isVisible, setRef } = useOptimizedIntersection();
 
   return (
-    <div id={id} ref={sectionRef}>
+    <div id={id} ref={setRef}>
       {isVisible ? (
         <Suspense fallback={<SectionLoader />}>
           <Component />

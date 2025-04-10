@@ -45,7 +45,7 @@
   }
 }
 
-/* Critical accessibility improvements - increase contrast ratios */
+/* Improve accessibility color contrast */
 .text-white\/80 {
   color: rgba(255, 255, 255, 0.95);
 }
@@ -63,7 +63,24 @@
   @apply bg-card/70 backdrop-blur-lg border border-white/10 shadow-card transition duration-300 hover:shadow-card-hover;
 }
 
-/* Critical animation for loading state */
+/* Critical text styles */
+.text-display {
+  @apply text-4xl md:text-5xl lg:text-6xl;
+}
+
+.leading-display {
+  line-height: 1.1;
+}
+
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.text-body-large {
+  @apply text-lg md:text-xl;
+}
+
+/* Optimize animation for loading state */
 @keyframes spinner {
   to { transform: rotate(360deg); }
 }
@@ -75,4 +92,29 @@
   border-radius: 50%;
   border-top-color: #3b82f6;
   animation: spinner 1s ease-in-out infinite;
+}
+
+/* Add critical button styles */
+.btn {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground shadow hover:bg-primary/90;
+}
+
+.btn-lg {
+  @apply px-5 py-3 text-base;
+}
+
+/* Hero section critical styles */
+.hero-heading {
+  @apply font-bold leading-tight tracking-tight mb-6 text-display;
+  content-visibility: auto;
+}
+
+/* Optimize LCP */
+.hero-content {
+  display: block;
+  content-visibility: auto;
 }
