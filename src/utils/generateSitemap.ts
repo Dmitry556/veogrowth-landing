@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import path from 'path';
 import { BlogPost } from '@/types/blog';
@@ -35,6 +36,20 @@ const getBlogPosts = (): BlogPost[] => {
       },
       readingTime: '8 min read',
       imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: '3',
+      title: 'How We Find Competitor & Lookalike Insights Using Public Data',
+      excerpt: "Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with or their ideal customers is pure gold.",
+      category: 'research',
+      author: {
+        name: 'Dmitry Pinchuk',
+        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        title: 'Co-founder at Veogrowth'
+      },
+      publishDate: '2023-09-15',
+      readingTime: '5 min read',
+      imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '2',
