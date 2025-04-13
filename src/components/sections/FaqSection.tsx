@@ -2,14 +2,9 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import CustomButton from '../ui/CustomButton';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const FaqSection: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  
-  const toggleFaq = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-  
   const faqs = [
     {
       question: "How is this different from other outbound agencies?",
@@ -55,27 +50,26 @@ const FaqSection: React.FC = () => {
         </div>
         
         <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div key={index} className="mb-4">
-              <button
-                className="w-full text-left py-6 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center"
-                onClick={() => toggleFaq(index)}
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="border-0"
               >
-                <span className="text-body font-medium pr-4">{faq.question}</span>
-                <span className="text-white/60">
-                  {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
-                </span>
-              </button>
-              
-              <div className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96 py-6 px-6' : 'max-h-0 py-0 px-6'}`}>
-                <p className="text-body text-white/70">{faq.answer}</p>
-              </div>
-              
-              {index < faqs.length - 1 && (
-                <div className="h-px bg-white/5"></div>
-              )}
-            </div>
-          ))}
+                <AccordionTrigger className="py-6 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center text-left">
+                  <span className="text-body font-medium pr-4">{faq.question}</span>
+                </AccordionTrigger>
+                <AccordionContent className="py-6 px-6">
+                  <p className="text-body text-white/70">{faq.answer}</p>
+                </AccordionContent>
+                
+                {index < faqs.length - 1 && (
+                  <div className="h-px bg-white/5"></div>
+                )}
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
         
         <div className="text-center mt-16">

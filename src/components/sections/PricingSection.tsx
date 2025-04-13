@@ -81,8 +81,8 @@ const PricingSection: React.FC = () => {
     },
     {
       name: "Meeting Packages",
-      price: "Starting at $X00",
-      description: "per meeting",
+      price: "",
+      description: "Per meeting",
       badge: "RECOMMENDED",
       features: [
         "Purchase packages of 5, 10, or 20+ meetings",

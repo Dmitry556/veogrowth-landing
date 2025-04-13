@@ -73,7 +73,7 @@ const DashboardSection: React.FC = () => {
             </p>
             
             <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
-              Launch my free campaign
+              Get 2 Free Meetings
             </CustomButton>
           </div>
           
@@ -93,10 +93,14 @@ const DashboardSection: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                   <div className="bg-white/5 rounded-lg p-4">
-                    <p className="text-caption text-white/60 mb-1">Emails Sent</p>
-                    <p className="text-h3 font-bold">8,472</p>
+                    <p className="text-caption text-white/60 mb-1">Meetings Scheduled</p>
+                    <p className="text-h3 font-bold">12</p>
+                  </div>
+                  <div className="bg-white/5 rounded-lg p-4">
+                    <p className="text-caption text-white/60 mb-1">Meetings Completed</p>
+                    <p className="text-h3 font-bold">9</p>
                   </div>
                   <div className="bg-white/5 rounded-lg p-4">
                     <p className="text-caption text-white/60 mb-1">Reply Rate</p>
