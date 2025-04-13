@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -42,6 +41,43 @@ const sampleBlogPosts: BlogPost[] = [
   },
   {
     id: '3',
+    title: 'How We Find Competitor & Lookalike Insights Using Public Data',
+    excerpt: "Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with or their ideal customers is pure gold.",
+    category: 'Research',
+    author: {
+      name: 'Dmitry Pinchuk',
+      avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+      title: 'Co-founder at Veogrowth'
+    },
+    publishDate: '2023-09-15',
+    readingTime: '5 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    content: `
+      <p>Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with, or who their ideal customers actually look like, is pure gold. Guessing isn't reliable, but we found that using publicly available data, often with a bit of smart automation, helps us get much closer to understanding a prospect's world.</p>
+      
+      <p>When we try to figure out competitors, we learned early on not to rely on just one database. Different platforms often have different pieces of the puzzle. We noticed that public company profile pages, like those on ZoomInfo, Crunchbase, or even Owler, frequently list companies they see as competitors. One source might be incomplete, but checking several gives us a much better picture. Our usual process involves setting up simple web scrapers – we often use tools like Zenrows running inside Clay – designed to visit these public pages for the companies we're researching. These scrapers look for and pull out any names listed in competitor sections. Sometimes, if the lists are long or varied, we might even use a bit of AI to analyze all the names pulled from different sites and highlight which competitors show up most often.</p>
+      
+      <p>Finding companies that resemble a prospect's best customers – their lookalikes – requires a different approach. For this, we lean heavily on what the company itself shows us. Their own website is often the best source. If they feature specific customer logos or detailed case studies, that tells us exactly the kind of success story they value and likely want to repeat. We again use tools, sometimes AI agents like Claygent or simple scrapers, to automatically pull those specific customer names featured on the prospect's website. Once we have that list of their 'star' customers, we can use those names as seeds. We might feed them into lookalike tools, like Ocean.io, or apply filtering logic within Clay based on matching industry and company size, to find other businesses that share very similar characteristics.</p>
+      
+      <p>The point of all this isn't about digging up secrets. It's simply about using the information that's already out there in a more structured way. Doing this research upfront means our cold emails can feel much less random. Instead of a vague opener like "We help companies like yours," we have the foundation to say something more specific and grounded, like, "Saw on your site you work with [Case Study Name], we often help companies similar to them achieve..." or perhaps, "As you often compete with [Competitor Name], have you considered...?". This extra step connects our message directly to their world, making the outreach feel more informed and relevant right from the start.</p>
+    `,
+    tableOfContents: [
+      {
+        id: 'competitor-research',
+        title: 'Competitor Research Methods'
+      },
+      {
+        id: 'lookalike-analysis',
+        title: 'Lookalike Customer Analysis'
+      },
+      {
+        id: 'practical-application',
+        title: 'Practical Application in Outreach'
+      }
+    ]
+  },
+  {
+    id: '4',
     title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
     excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
     category: 'Sales',
@@ -53,20 +89,6 @@ const sampleBlogPosts: BlogPost[] = [
     publishDate: '2023-09-12',
     readingTime: '10 min read',
     imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: '4',
-    title: 'Data-Driven Lead Generation: Beyond the Basics',
-    excerpt: 'How to leverage data analytics to improve targeting, personalization, and conversion rates in your outbound campaigns.',
-    category: 'Tech Stack',
-    author: {
-      name: 'Wei Zhang',
-      avatarUrl: 'https://randomuser.me/api/portraits/men/76.jpg',
-      title: 'Head of Data, LeadScience'
-    },
-    publishDate: '2023-08-22',
-    readingTime: '7 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
   {
     id: '5',
@@ -146,7 +168,6 @@ const Blog = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const postsPerPage = 6;
   
-  // Extract unique categories from blog posts for the filter
   const categories = ['all', ...new Set(sampleBlogPosts.map(post => post.category))];
   
   const filteredPosts = selectedCategory === 'all'
@@ -162,12 +183,10 @@ const Blog = () => {
   );
   
   useEffect(() => {
-    // Fade in animation
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
     
-    // Add schema markup
     const injectSchema = () => {
       const existingScript = document.getElementById('schema-script-blog');
       if (existingScript) {
@@ -210,7 +229,6 @@ const Blog = () => {
           </p>
         </section>
         
-        {/* Featured Post */}
         <section className="mb-16">
           <h2 className="text-h2 font-semibold mb-6">Featured Article</h2>
           <FeaturedBlogCard 
@@ -219,7 +237,6 @@ const Blog = () => {
           />
         </section>
         
-        {/* Category Filters */}
         <section className="mb-12">
           <BlogCategoryFilter 
             categories={categories}
@@ -228,7 +245,6 @@ const Blog = () => {
           />
         </section>
         
-        {/* Blog Post List */}
         <section className="mb-16">
           <h2 className="text-h2 font-semibold mb-6">All Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -243,7 +259,6 @@ const Blog = () => {
           </div>
         </section>
         
-        {/* Pagination */}
         {totalPages > 1 && (
           <BlogPagination 
             currentPage={currentPage}
@@ -252,7 +267,6 @@ const Blog = () => {
           />
         )}
         
-        {/* Newsletter Subscribe */}
         <section className="mt-16">
           <NewsletterSubscribe />
         </section>
