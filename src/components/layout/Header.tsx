@@ -71,7 +71,7 @@ const Header: React.FC = () => {
             </nav>
             
             <div className="hidden md:block">
-              <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>Launch my free campaign</CustomButton>
+              <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>Get 2 Free Meetings</CustomButton>
             </div>
             
             <button 
@@ -116,7 +116,7 @@ const Header: React.FC = () => {
                 closeMenu();
               }}
             >
-              Launch my free campaign
+              Get 2 Free Meetings
             </CustomButton>
           </div>
         </div>

@@ -13,27 +13,27 @@ const FaqSection: React.FC = () => {
   const faqs = [
     {
       question: "How is this different from other outbound agencies?",
-      answer: "We're a B2B data company first. Our differentiator is our custom data pipeline that finds signals other agencies miss. Plus, we start with a free test that validates your offer works before you pay us anything."
+      answer: "We're a B2B data company first. Our differentiator is our custom data pipeline that finds signals other agencies miss. Plus, we start with free qualified meetings so you can validate our approach before paying anything."
     },
     {
-      question: "How many leads can I expect?",
-      answer: "On average, our clients get 1 positive response per 350 contacts. Our top performers get 8-20 leads per day consistently. We'll set realistic expectations during our call based on your industry and offer."
+      question: "What qualifies as a \"qualified meeting\"?",
+      answer: "A qualified meeting is a scheduled and attended video call with a decision-maker who matches your exact ICP criteria. We agree on these criteria during our initial consultation to ensure we're targeting the right prospects for your business."
+    },
+    {
+      question: "How does your performance-based pricing work?",
+      answer: "After your 2 free meetings, you can purchase meeting packages at a fixed per-meeting price. You only pay for meetings that actually happen - no retainers or long-term contracts required. Meeting packages start at 5 meetings and can scale to fit your growth needs."
+    },
+    {
+      question: "Is there any minimum commitment?",
+      answer: "Your only commitment is the one-time setup fee after your 2 free meetings. This covers our costs for creating your custom data pipeline and email infrastructure. After that, you can purchase meeting packages as needed."
+    },
+    {
+      question: "What if my company doesn't have a large enough target market?",
+      answer: "Our approach works best for B2B companies with a total addressable market (TAM) of at least 5,000 prospects. This ensures we have enough data to build effective targeting. If you're unsure about your TAM, we can help you evaluate your market potential."
     },
     {
       question: "Do I need to change my domain or email setup?",
-      answer: "No. We handle everything, including domain setup, warming, and deliverability. For ongoing clients ($2,500/month), we purchase new domains branded similar to your main domain and warm them for 2 weeks before launching campaigns."
-    },
-    {
-      question: "What if it doesn't work for my business?",
-      answer: "Then you don't pay us. We start with a free test campaign that validates your offer works with cold email. If it doesn't, we'll tell you outbound might not be your best channel."
-    },
-    {
-      question: "What's included in the monthly service?",
-      answer: "Our $2,500 monthly service includes custom domain setup and warming, ongoing list building, campaign management, copy creation (with your approval), weekly reporting every Friday, and regular campaign review calls. We operate on a month-to-month basis with no long-term contracts."
-    },
-    {
-      question: "How much visibility do I have into campaigns?",
-      answer: "Complete transparency. You approve all copy before campaigns launch, receive detailed weekly reports, and have access to all campaign data. We hold regular review calls to discuss performance and strategy adjustments."
+      answer: "No. We handle everything, including domain setup, warming, and deliverability. For ongoing clients, we purchase new domains branded similar to your main domain and warm them for 2 weeks before launching campaigns."
     }
   ];
 
@@ -50,7 +50,7 @@ const FaqSection: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Everything you need to know about our pipeline generation service and how it can transform your business.
+            Everything you need to know about our meeting generation service and how it can transform your business.
           </p>
         </div>
         
@@ -80,10 +80,10 @@ const FaqSection: React.FC = () => {
         
         <div className="text-center mt-16">
           <p className="text-body text-white/70 mb-6">
-            Ready to build real pipeline? Schedule your free 15-minute setup call today.
+            Ready to get qualified meetings without risk? Schedule your free consultation today.
           </p>
           <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
-            Let's Talk Pipeline →
+            Get 2 Free Meetings →
           </CustomButton>
         </div>
       </div>
