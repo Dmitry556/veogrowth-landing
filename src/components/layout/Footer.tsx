@@ -10,16 +10,16 @@ const Footer: React.FC = () => {
       {/* CTA Section */}
       <div className="container mx-auto px-6 mb-24">
         <div className="glass-card rounded-3xl py-16 px-8 text-center max-w-4xl mx-auto">
-          <h2 className="text-h2 font-bold mb-6 letter-spacing-tight">Ready to supercharge your growth?</h2>
+          <h2 className="text-h2 font-bold mb-6 letter-spacing-tight">Ready to get qualified meetings without risk?</h2>
           <p className="text-body-large text-white mb-8 max-w-2xl mx-auto">
-            Run free campaigns to test if your offer works with outbound. Partner with us only if you like the results
+            Start with 2 free qualified meetings. Only pay for more meetings when you're ready to scale.
           </p>
           <CustomButton 
             size="lg" 
             className="mx-auto"
             onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
           >
-            Launch my free campaign
+            Get 2 Free Meetings
           </CustomButton>
         </div>
       </div>

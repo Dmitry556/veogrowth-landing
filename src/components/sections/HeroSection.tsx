@@ -157,7 +157,7 @@ const HeroSection: React.FC = () => {
             </h1>
             
             <p className="text-body-large text-white leading-body tracking-slight mb-8 max-w-lg">
-              We help B2B companies generate 4.2M+ in pipeline without hiring more sales reps. Most outbound agencies claim they can get you leads. We've actually done it for dozens of companies in diverse industries - and we have the data to prove it.
+              Get your first 2 qualified sales meetings free, then only pay for results. We've helped B2B companies generate nearly a billion dollars in pipeline through qualified meetings that convert.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -165,9 +165,9 @@ const HeroSection: React.FC = () => {
                 size="lg" 
                 className="flex items-center"
                 onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-                aria-label="Launch my free campaign"
+                aria-label="Get 2 Free Meetings"
               >
-                Launch my free campaign <ChevronRight className="ml-2" size={18} />
+                Get 2 Free Meetings <ChevronRight className="ml-2" size={18} />
               </CustomButton>
               <CustomButton 
                 size="lg" 
@@ -213,8 +213,8 @@ const HeroSection: React.FC = () => {
                         <p className="text-caption text-white">Pipeline</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-white">12.8x</p>
-                        <p className="text-caption text-white">ROI</p>
+                        <p className="text-2xl font-bold text-white">980M+</p>
+                        <p className="text-caption text-white">Total Pipeline</p>
                       </div>
                     </div>
                   </div>

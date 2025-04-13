@@ -31,8 +31,8 @@ const ProcessSection: React.FC = () => {
   const steps = [
     {
       number: "01",
-      title: "FREE Campaign Validation",
-      description: "We launch a free campaign using our inboxes and data to validate your offer - you only pay if it works. 15-minute setup."
+      title: "TWO FREE Meetings",
+      description: "We'll schedule your first 2 qualified sales meetings completely free. No setup fees, no commitments - just real prospects that match your exact ICP criteria."
     },
     {
       number: "02",
@@ -46,8 +46,8 @@ const ProcessSection: React.FC = () => {
     },
     {
       number: "04",
-      title: "Scale What Works",
-      description: "Once we find the formula that works, we scale horizontally with no limits on sending capacity. Monthly service is $2,500 after your successful test campaign."
+      title: "Scale With Predictable ROI",
+      description: "Once you've experienced the quality of our meetings, purchase meeting packages at a fixed per-meeting price that's typically lower than your cost-per-meeting from paid ads."
     },
     {
       number: "05",
@@ -66,10 +66,10 @@ const ProcessSection: React.FC = () => {
             The Process
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            How It Works: Start with a Free Campaign Test
+            How It Works: Start with Two Free Meetings
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Our streamlined onboarding process gets you from initial setup to generating qualified leads in just five steps.
+            Our streamlined process gets you from initial setup to generating qualified meetings in just five steps.
           </p>
         </div>
         

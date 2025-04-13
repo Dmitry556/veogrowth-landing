@@ -37,6 +37,26 @@ const ResultsSection: React.FC = () => {
           </p>
         </div>
         
+        {/* New metrics display */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+          <CustomCard variant="glass" className="p-6 text-center">
+            <p className="text-h3 font-bold text-gradient mb-2">87%</p>
+            <p className="text-caption text-white/70">Conversion Rate</p>
+          </CustomCard>
+          <CustomCard variant="glass" className="p-6 text-center">
+            <p className="text-h3 font-bold text-gradient mb-2">$4.2M</p>
+            <p className="text-caption text-white/70">Pipeline Generated</p>
+          </CustomCard>
+          <CustomCard variant="glass" className="p-6 text-center">
+            <p className="text-h3 font-bold text-gradient mb-2">12.8x</p>
+            <p className="text-caption text-white/70">Client ROI</p>
+          </CustomCard>
+          <CustomCard variant="glass" className="p-6 text-center">
+            <p className="text-h3 font-bold text-gradient mb-2">980M+</p>
+            <p className="text-caption text-white/70">Total Pipeline Generated</p>
+          </CustomCard>
+        </div>
+        
         {/* New Case Study Card with Video */}
         <div className="mb-8">
           <CustomCard variant="glass" className="relative overflow-hidden">

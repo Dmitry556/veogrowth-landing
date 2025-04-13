@@ -46,6 +46,7 @@ const PricingCard = memo(({ plan }: { plan: any }) => {
             variant={plan.popular ? "primary" : "outline"} 
             className="w-full flex justify-center items-center"
             size="lg"
+            onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
           >
             {plan.buttonText}
             <ChevronRight size={16} />
@@ -61,59 +62,57 @@ PricingCard.displayName = 'PricingCard';
 const PricingSection: React.FC = () => {
   const pricingPlans = [
     {
-      name: "FREE Campaign Test",
+      name: "FREE",
       price: "$0",
-      description: "Upfront",
+      description: "",
       badge: "FREE",
       features: [
-        "Email campaign using our inboxes and domains",
-        "Custom prospect list (up to 1500 contacts)",
-        "AI-powered messaging strategy",
-        "7-day test campaign",
-        "Only pay if it generates results",
-        "15-minute setup call"
+        "Get two qualified meetings that match your ICP criteria",
+        "Custom prospect targeting",
+        "No setup fees",
+        "No commitments",
+        "Process starts within 48 hours",
+        "Includes meeting recordings & notes"
       ],
-      buttonText: "Start Free Test",
+      buttonText: "Get 2 Free Meetings",
       popular: false,
       className: "bg-white/5 border-blue-500/10 hover:border-blue-500/30",
       badgeColor: "from-blue-500 to-blue-700"
     },
     {
-      name: "Standard Plan",
-      price: "$2,500",
-      description: "/month",
+      name: "Meeting Packages",
+      price: "Starting at $X00",
+      description: "per meeting",
       badge: "RECOMMENDED",
       features: [
-        "Custom branded domains (similar to your main domain)",
-        "2-week domain warming period",
-        "Unlimited prospects per month",
-        "Multiple campaign variants",
-        "Weekly reports (every Friday)",
-        "Monthly strategy calls",
-        "Campaign dashboard access",
-        "Messaging approval workflow",
-        "Month-to-month (no long contracts)"
+        "Purchase packages of 5, 10, or 20+ meetings",
+        "One-time setup fee after free meetings",
+        "Custom-branded email infrastructure",
+        "Guaranteed deliverability",
+        "Only pay for meetings that happen",
+        "ICP-focused targeting",
+        "Weekly performance reports",
+        "30-day timeline for first meetings"
       ],
-      buttonText: "Get Started",
+      buttonText: "Get Meeting Packages",
       popular: true,
       className: "border-blue-500/20 hover:border-blue-500/40",
       badgeColor: "from-blue-500 to-purple-500"
     },
     {
-      name: "Enterprise Plan",
+      name: "Enterprise Packages",
       price: "Custom",
       description: "Pricing",
       badge: "CUSTOM",
       features: [
-        "Everything in Standard",
-        "Dedicated account manager",
-        "Multiple simultaneous campaigns",
-        "Custom data integrations",
-        "Weekly strategy calls",
-        "Advanced AI personalization",
+        "Higher volume meeting packages",
+        "Priority scheduling",
+        "Dedicated campaign manager",
+        "Multi-channel outreach",
+        "Advanced targeting parameters",
         "CRM integration",
-        "Performance guarantees",
-        "Custom reporting"
+        "Weekly strategy calls",
+        "Detailed attribution tracking"
       ],
       buttonText: "Contact Sales",
       popular: false,
@@ -132,10 +131,10 @@ const PricingSection: React.FC = () => {
             Pricing & Packages
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            Simple, transparent pricing
+            Simple, results-based pricing
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Start with a free test campaign before committing to a monthly plan. We're confident you'll see results.
+            Start with 2 free meetings before purchasing additional meeting packages. Only pay for qualified meetings that actually happen.
           </p>
         </div>
         
@@ -169,7 +168,7 @@ const PricingSection: React.FC = () => {
                 <li className="flex items-start">
                   <Check className="mr-2 text-green-400 shrink-0 mt-1" size={16} />
                   <span className="text-body text-white/80">
-                    We've generated 10,000+ positive responses for 40+ clients in 2024
+                    Performance-based pricing model where you only pay for results
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -186,8 +185,12 @@ const PricingSection: React.FC = () => {
               <p className="text-body text-white/80 mb-6">
                 Waiting costs you significant pipeline opportunities. The sooner you start, the sooner you can tap into new revenue sources.
               </p>
-              <CustomButton size="lg" className="w-full justify-center">
-                Let's Talk Pipeline <ChevronRight className="ml-1" size={16} />
+              <CustomButton 
+                size="lg" 
+                className="w-full justify-center"
+                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              >
+                Get 2 Free Meetings <ChevronRight className="ml-1" size={16} />
               </CustomButton>
             </div>
           </div>
