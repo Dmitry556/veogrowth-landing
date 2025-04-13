@@ -72,7 +72,7 @@ const ProblemSection: React.FC = () => {
       <div className="container mx-auto px-6">
         <div 
           ref={ref}
-          className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-10`}
+          className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-10 text-center`}
         >
           <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
             The Pipeline Problem
@@ -89,17 +89,13 @@ const ProblemSection: React.FC = () => {
           ))}
         </div>
         
-        {/* Quote and paragraph in the new order */}
+        {/* Quote without the paragraph */}
         <div className="max-w-2xl mx-auto">
-          <div className="p-6 rounded-2xl border border-white/5 bg-white/5 mb-6">
+          <div className="p-6 rounded-2xl border border-white/5 bg-white/5">
             <p className="text-body-large font-medium italic text-white/90">
               "What if you could turn cold email into your <span className="text-blue-400">most reliable lead source</span> - without hiring a single SDR?"
             </p>
           </div>
-          
-          <p className="text-body-large text-white/70 text-center leading-body">
-            Your sales team is working hard, but your competitor's pipeline keeps growing faster.
-          </p>
         </div>
       </div>
     </section>
