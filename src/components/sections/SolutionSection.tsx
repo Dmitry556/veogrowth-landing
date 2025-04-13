@@ -1,7 +1,7 @@
 
 import React from 'react';
 import CustomCard from '../ui/CustomCard';
-import { LineChart, ArrowUpRight, Zap, Cpu } from 'lucide-react';
+import { LineChart, ArrowUpRight, Zap, DollarSign } from 'lucide-react';
 
 const SolutionSection: React.FC = () => {
   const solutions = [
@@ -22,6 +22,12 @@ const SolutionSection: React.FC = () => {
       title: "AI-Powered Personalization",
       description: "Our AI systems create truly personalized messages that reference specific details about each prospect's business, generating response rates 3.7x higher than industry average.",
       gradient: "from-amber-500/20 to-amber-300/5"
+    },
+    {
+      icon: <DollarSign className="text-purple-400" />,
+      title: "Performance-Based Pricing",
+      description: "You only pay for qualified meetings that actually happen. No retainers, no wasted budget on campaigns that don't deliver, and no long-term commitments before you see results.",
+      gradient: "from-purple-500/20 to-purple-300/5"
     }
   ];
 
@@ -42,7 +48,7 @@ const SolutionSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {solutions.map((solution, index) => (
             <CustomCard 
               key={index} 
