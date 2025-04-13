@@ -70,33 +70,36 @@ const ProblemSection: React.FC = () => {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <div 
-            ref={ref}
-            className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-          >
-            <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
-              The Pipeline Problem
-            </div>
-            <h2 className="text-h2 font-bold tracking-tight mb-6">
-              The Pipeline Problem You're Facing
-            </h2>
-            <p className="text-body-large text-white/70 mb-10 leading-body max-w-lg">
-              Your sales team is working hard, but your competitor's pipeline keeps growing faster.
+        <div 
+          ref={ref}
+          className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-10`}
+        >
+          <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
+            The Pipeline Problem
+          </div>
+          <h2 className="text-h2 font-bold tracking-tight mb-10">
+            The Pipeline Problem You're Facing
+          </h2>
+        </div>
+        
+        {/* 5-column layout for problems */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
+          {problems.map((problem, index) => (
+            <ProblemCard key={index} problem={problem} index={index} />
+          ))}
+        </div>
+        
+        {/* Quote and paragraph in the new order */}
+        <div className="max-w-2xl mx-auto">
+          <div className="p-6 rounded-2xl border border-white/5 bg-white/5 mb-6">
+            <p className="text-body-large font-medium italic text-white/90">
+              "What if you could turn cold email into your <span className="text-blue-400">most reliable lead source</span> - without hiring a single SDR?"
             </p>
-            
-            <div className="p-6 rounded-2xl border border-white/5 bg-white/5">
-              <p className="text-body-large font-medium italic text-white/90">
-                "What if you could turn cold email into your <span className="text-blue-400">most reliable lead source</span> - without hiring a single SDR?"
-              </p>
-            </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {problems.map((problem, index) => (
-              <ProblemCard key={index} problem={problem} index={index} />
-            ))}
-          </div>
+          <p className="text-body-large text-white/70 text-center leading-body">
+            Your sales team is working hard, but your competitor's pipeline keeps growing faster.
+          </p>
         </div>
       </div>
     </section>
