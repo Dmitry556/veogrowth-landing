@@ -47,7 +47,7 @@ const getBlogPosts = (): BlogPost[] => {
         avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
         title: 'Co-founder at Veogrowth'
       },
-      publishDate: '2023-09-15',
+      publishDate: '2023-09-11',
       readingTime: '5 min read',
       imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
