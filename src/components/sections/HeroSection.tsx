@@ -1,8 +1,9 @@
+
 import React, { useEffect, useRef } from 'react';
 import CustomButton from '../ui/CustomButton';
 import { ChevronRight } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
-import LazyVideo from '../ui/LazyVideo';
+import { Play } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -178,13 +179,71 @@ const HeroSection: React.FC = () => {
                     <div className="w-64 h-64 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl"></div>
                   </div>
                   <div className="relative h-full w-full p-6 md:p-8 flex flex-col items-center justify-center">
-                    <LazyVideo
-                      videoId="101"
-                      title="Pipeline Growth"
-                      width={560}
-                      height={315}
-                      className="mb-8 rounded-xl shadow-lg"
-                    />
+                    {/* Dashboard visualization replacing video player */}
+                    <div className="mb-8 rounded-xl shadow-lg bg-black/50 border border-white/10 w-full max-w-[560px] aspect-video overflow-hidden">
+                      <div className="p-4 border-b border-white/10">
+                        <div className="flex items-center">
+                          <div className="flex space-x-2">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          </div>
+                          <div className="mx-auto text-center text-white/80 text-sm">Pipeline Dashboard</div>
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <div className="flex justify-between mb-6">
+                          <div className="text-white text-sm">Pipeline Growth</div>
+                          <div className="text-green-500 text-sm">+24.8%</div>
+                        </div>
+                        
+                        {/* Chart visualization */}
+                        <div className="w-full h-[140px] mb-6">
+                          <div className="relative w-full h-full">
+                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20"></div>
+                            <div className="absolute bottom-1/3 left-0 w-full h-[1px] bg-white/10"></div>
+                            <div className="absolute bottom-2/3 left-0 w-full h-[1px] bg-white/10"></div>
+                            
+                            {/* Chart bars */}
+                            <div className="absolute bottom-0 left-[5%] w-[8px] h-[30%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[15%] w-[8px] h-[40%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[25%] w-[8px] h-[25%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[35%] w-[8px] h-[60%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[45%] w-[8px] h-[35%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[55%] w-[8px] h-[70%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[65%] w-[8px] h-[50%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[75%] w-[8px] h-[90%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            <div className="absolute bottom-0 left-[85%] w-[8px] h-[75%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
+                            
+                            {/* Trend line */}
+                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                              <path 
+                                d="M5,70 L15,60 L25,75 L35,40 L45,65 L55,30 L65,50 L75,10 L85,25 L95,15" 
+                                fill="none" 
+                                stroke="rgba(59, 130, 246, 0.5)" 
+                                strokeWidth="1"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        
+                        {/* Data rows */}
+                        <div className="space-y-3">
+                          <div className="flex justify-between items-center text-sm">
+                            <div className="text-white/80">Meetings Booked</div>
+                            <div className="text-white">124</div>
+                          </div>
+                          <div className="flex justify-between items-center text-sm">
+                            <div className="text-white/80">Response Rate</div>
+                            <div className="text-white">26.8%</div>
+                          </div>
+                          <div className="flex justify-between items-center text-sm">
+                            <div className="text-white/80">Total Pipeline</div>
+                            <div className="text-white">$4.2M</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <h3 className="text-h3 font-bold mb-3 text-center">Add Pipeline, Not Headcount</h3>
                     <p className="text-center text-white/90 text-lg mb-8">Pay Only For Qualified Meetings</p>
                     <div className="w-full bg-black/30 rounded-lg p-5 mb-6 shadow-inner">
