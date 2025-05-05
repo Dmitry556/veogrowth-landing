@@ -146,11 +146,7 @@ const HeroSection: React.FC = () => {
             </h1>
             
             <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-10 max-w-lg">
-              We built a new way to run cold outbound at scale—and it finally just works.*
-            </p>
-            
-            <p className="text-sm text-white/70 leading-relaxed tracking-slight mb-10 max-w-lg">
-              *By just works, we mean it fills your calendars with high-intent sales calls and generates you a bunch of new revenue. We're on track to win over $500M in pipeline for B2Bs this year.
+              We've helped 25+ B2B companies generate nearly a billion dollars in pipeline.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5">
