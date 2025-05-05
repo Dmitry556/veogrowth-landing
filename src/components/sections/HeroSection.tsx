@@ -139,33 +139,24 @@ const HeroSection: React.FC = () => {
           <div className="hero-content max-w-2xl">
             <h1 
               ref={headingRef}
-              className="hero-heading text-h1 font-bold leading-tight tracking-tight mb-8 max-w-xl"
+              className="text-display font-extrabold leading-tight tracking-tight mb-8 max-w-xl bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
               id="main-heading"
             >
-              Build Pipeline With Cold Email That Finally Works
+              We built a new way to run cold outbound at scale—and it finally just works.
             </h1>
             
-            <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-10 max-w-lg">
-              We've helped 25+ B2B companies generate nearly a billion dollars in pipeline.
+            <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-6 max-w-lg">
+              By just works, we mean it fills your calendars with high-intent sales calls and generates you a bunch of new revenue. We're on track to win over $600M in pipeline for startups this year.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5">
               <CustomButton 
                 size="lg" 
-                className="flex items-center justify-center font-medium"
+                className="flex items-center justify-center font-bold text-lg"
                 onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-                aria-label="Get 2 Free Meetings"
+                aria-label="Get started"
               >
-                Get 2 Free Meetings <ChevronRight className="ml-2" size={18} />
-              </CustomButton>
-              <CustomButton 
-                size="lg" 
-                variant="outline"
-                className="font-medium"
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-                aria-label="Let's Talk Pipeline"
-              >
-                Let's Talk Pipeline
+                Get started <ChevronRight className="ml-2" size={18} />
               </CustomButton>
             </div>
           </div>
@@ -256,7 +247,7 @@ const HeroSection: React.FC = () => {
                         <p className="text-caption text-white/90">Pipeline</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-3xl font-bold text-white">980M+</p>
+                        <p className="text-3xl font-bold text-white">$600M+</p>
                         <p className="text-caption text-white/90">Total Pipeline</p>
                       </div>
                     </div>
