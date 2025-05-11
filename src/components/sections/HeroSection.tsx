@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import CustomButton from '../ui/CustomButton';
 import { ChevronRight } from 'lucide-react';
@@ -146,7 +145,7 @@ const HeroSection: React.FC = () => {
             </h1>
             
             <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-6 max-w-lg">
-              By just works, we mean it fills your calendars with high-intent sales calls and generates you a bunch of new revenue. We're on track to win over $600M in pipeline for startups this year.
+              By just works, we mean it scales your pipeline predictably without risk - you only pay for qualified meetings that happen. We're on track to win over $600M in pipeline for B2Bs this year.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5">
