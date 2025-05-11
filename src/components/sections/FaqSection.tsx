@@ -16,7 +16,7 @@ const FaqSection: React.FC = () => {
     },
     {
       question: "How does your performance-based pricing work?",
-      answer: "After your 2 free meetings, you can purchase meeting packages at a fixed per-meeting price. You only pay for meetings that actually happen - no retainers or long-term contracts required. Meeting packages start at 5 meetings and can scale to fit your growth needs."
+      answer: "After your 2 free meetings, you can purchase meeting packages at a fixed per-meeting price. You only pay for meetings that actually happen - no retainers or long-term contracts required. Unlike most B2B agencies that charge regardless of results, our model ensures you only invest in real opportunities. Meeting packages start at 5 meetings and can scale to fit your growth needs."
     },
     {
       question: "Is there any minimum commitment?",
