@@ -41,10 +41,10 @@ const SolutionSection: React.FC = () => {
             The Difference
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            How We're Different: We're a Data Company That Sends Emails
+            How We're Different: Pay-Per-Meeting Lead Generation
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            While other agencies guess what works, we rely on data to design custom campaigns that consistently deliver:
+            Most agencies lock you into yearly contracts or charge retainers even when they fail to deliver. We don't. You only pay for qualified meetings that actually happen - period. While other agencies guess what works, we rely on data to design custom campaigns that consistently deliver:
           </p>
         </div>
         
