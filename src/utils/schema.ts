@@ -23,6 +23,30 @@ export const generateOrganizationSchema = () => {
   };
 };
 
+// Professional Service schema for Veogrowth
+export const generateProfessionalServiceSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "VeoGrowth",
+    "description": "B2B lead generation agency with a pay-per-meeting model where clients only pay for qualified meetings that actually happen.",
+    "serviceType": "Lead Generation",
+    "priceRange": "$$",
+    "areaServed": "Global",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "B2B Lead Generation Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Pay-Per-Meeting Lead Generation",
+          "description": "Performance-based lead generation where you only pay for qualified meetings with decision-makers."
+        }
+      ]
+    }
+  };
+};
+
 // Website schema for Veogrowth
 export const generateWebsiteSchema = () => {
   return {
@@ -67,7 +91,8 @@ export const generateArticleSchema = (post: BlogPost) => {
 export const generateHomePageSchema = () => {
   return [
     generateOrganizationSchema(),
-    generateWebsiteSchema()
+    generateWebsiteSchema(),
+    generateProfessionalServiceSchema()
   ];
 };
 
