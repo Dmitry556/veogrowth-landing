@@ -210,8 +210,17 @@
   }
   
   /* Logo Slider Animation */
+  @keyframes scrollLogo {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
   .logo-row {
-    animation: scroll 40s linear infinite;
+    animation: scrollLogo 40s linear infinite;
   }
   
   .logo-row:hover {
