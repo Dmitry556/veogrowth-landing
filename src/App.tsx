@@ -24,6 +24,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const MicrosoftFilter = lazy(() => import("./pages/MicrosoftFilter"));
+const SDRCostWhitepaper = lazy(() => import("./pages/SDRCostWhitepaper"));
 
 // Optimized loading fallback
 const PageLoader = () => (
@@ -46,6 +47,7 @@ const App = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogPost />} />
               <Route path="/tools/microsoft-filter" element={<MicrosoftFilter />} />
+              <Route path="/resources/true-cost-of-sdr" element={<SDRCostWhitepaper />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
