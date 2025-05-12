@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
+import LogoSlider from '@/components/sections/LogoSlider';
 
 // More efficient section loader
 const SectionLoader = () => (
@@ -111,6 +112,9 @@ const Index = () => {
       
       <main>
         <HeroSection />
+        
+        {/* Logo Slider - Added between HeroSection and ProblemSection */}
+        <LogoSlider />
         
         <LazySection component={ProblemSection} id="problems" />
         <LazySection component={SolutionSection} id="solutions" />
