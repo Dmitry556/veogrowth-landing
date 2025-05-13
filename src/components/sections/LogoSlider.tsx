@@ -44,6 +44,16 @@ const logoRows = [
 ];
 
 const LogoSlider = () => {
+  // Custom height adjustment for specific logos
+  const getLogoHeight = (logoId: string) => {
+    // Logos that need to be larger
+    if (["jpmorgan", "marriott", "meta", "vimeo"].includes(logoId)) {
+      return "h-[40px]";
+    }
+    // Default height for all other logos
+    return "h-[30px]";
+  };
+
   return (
     <section className="py-8 bg-background overflow-hidden border-t border-b border-white/5" id="clients">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
@@ -74,7 +84,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[30px] w-auto object-contain filter invert opacity-80 hover:opacity-100"
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
                     loading="lazy"
                   />
                 </div>
@@ -88,7 +98,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[30px] w-auto object-contain filter invert opacity-80 hover:opacity-100"
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
                     loading="lazy"
                   />
                 </div>
@@ -112,7 +122,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[30px] w-auto object-contain filter invert opacity-80 hover:opacity-100"
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
                     loading="lazy"
                   />
                 </div>
@@ -126,7 +136,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[30px] w-auto object-contain filter invert opacity-80 hover:opacity-100"
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
                     loading="lazy"
                   />
                 </div>
