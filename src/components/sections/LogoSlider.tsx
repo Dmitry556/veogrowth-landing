@@ -8,7 +8,7 @@ interface Logo {
   alt: string;
 }
 
-// Create two rows of logos with top row featuring most recognizable brands
+// Create two rows of logos with optimized display
 const logoRows = [
   // Top row (right-to-left): Most recognizable brands first
   [
@@ -34,9 +34,9 @@ const logoRows = [
 
 const LogoSlider = () => {
   return (
-    <section className="py-12 bg-background overflow-hidden border-t border-b border-white/5" id="clients">
+    <section className="py-8 bg-background overflow-hidden border-t border-b border-white/5" id="clients">
       <div className="container mx-auto px-4">
-        <h2 className="text-h2 font-bold tracking-tight text-center mb-8">
+        <h2 className="text-xl font-semibold tracking-tight text-center mb-6">
           COMPANIES WE'VE BOOKED MEETINGS FOR OUR CLIENTS WITH
         </h2>
         
@@ -45,7 +45,7 @@ const LogoSlider = () => {
           <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-background to-transparent"></div>
           <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-background to-transparent"></div>
           
-          <div className="logo-slider space-y-10">
+          <div className="logo-slider space-y-8">
             {/* First row - Right to Left */}
             <div 
               className="flex space-x-16"
@@ -64,7 +64,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[38px] w-auto object-contain filter invert"
+                    className="h-[32px] w-auto object-contain filter invert"
                     loading="lazy"
                   />
                 </div>
@@ -78,7 +78,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[38px] w-auto object-contain filter invert"
+                    className="h-[32px] w-auto object-contain filter invert"
                     loading="lazy"
                   />
                 </div>
@@ -103,7 +103,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[38px] w-auto object-contain filter invert"
+                    className="h-[32px] w-auto object-contain filter invert"
                     loading="lazy"
                   />
                 </div>
@@ -117,7 +117,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-[38px] w-auto object-contain filter invert"
+                    className="h-[32px] w-auto object-contain filter invert"
                     loading="lazy"
                   />
                 </div>
