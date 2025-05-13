@@ -84,7 +84,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
                     loading="lazy"
                   />
                 </div>
@@ -98,7 +98,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
                     loading="lazy"
                   />
                 </div>
@@ -122,7 +122,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
                     loading="lazy"
                   />
                 </div>
@@ -136,7 +136,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-80 hover:opacity-100`}
+                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
                     loading="lazy"
                   />
                 </div>
