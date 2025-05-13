@@ -133,13 +133,15 @@ const LogoSlider = () => {
         </div>
       </div>
       
-      {/* Inline keyframes to guarantee animation works */}
-      <style jsx>{`
-        @keyframes scrollLogo {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
+      {/* Standard style tag without jsx property */}
+      <style>
+        {`
+          @keyframes scrollLogo {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}
+      </style>
     </section>
   );
 };
