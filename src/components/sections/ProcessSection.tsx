@@ -2,7 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 
 const ProcessSection: React.FC = () => {
-  const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const stepsRef = useRef<HTMLDivElement[]>([]);
+  
+  // Reset refs array when component mounts
+  useEffect(() => {
+    stepsRef.current = stepsRef.current.slice(0, steps.length);
+  }, []);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,17 +84,14 @@ const ProcessSection: React.FC = () => {
           {steps.map((step, index) => (
             <div 
               key={index}
-              ref={el => stepsRef.current[index] = el}
-              className="flex flex-col md:flex-row items-start md:items-center mb-16 md:mb-24 opacity-0"
-              style={{ transitionDelay: `${index * 0.2}s` }}
+              ref={el => el && (stepsRef.current[index] = el)}
+              className="flex flex-col md:flex-row items-start md:items-center mb-16 md:mb-24 transition-opacity duration-500 ease-in-out"
+              style={{ opacity: 0, transitionDelay: `${index * 0.2}s` }}
             >
               <div className="flex items-center md:w-1/2 md:justify-end md:pr-8 z-10 mb-6 md:mb-0">
-                <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center shadow-glow relative">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center shadow-lg relative">
                   <span className="text-body font-bold text-white">{step.number}</span>
                 </div>
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute h-[calc(100%-4rem)] w-px bg-gradient-to-b from-blue-500/50 via-purple-500/50 to-transparent"></div>
-                )}
               </div>
               
               <div className="md:w-1/2 md:pl-8">
@@ -100,6 +102,17 @@ const ProcessSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 };
