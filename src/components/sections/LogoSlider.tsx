@@ -48,28 +48,28 @@ const LogoSlider = () => {
   const getLogoStyle = (logoId: string) => {
     switch(logoId) {
       case "deloitte": 
-        return "h-[35px] w-auto object-contain opacity-100 filter invert brightness-[0.8]";
+        return "h-[35px] w-auto object-contain opacity-100 filter brightness-0 invert";
       case "jpmorgan":
-        return "h-[40px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.2]";
+        return "h-[40px] w-auto object-contain opacity-100 bg-transparent mix-blend-luminosity";
       case "marriott":
-        return "h-[45px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.2]";
+        return "h-[45px] w-auto object-contain opacity-100 bg-transparent mix-blend-luminosity";
       case "target":
-        return "h-[30px] w-auto object-contain opacity-100 mix-blend-screen contrast-[1.2]";
+        return "h-[30px] w-auto object-contain opacity-100 mix-blend-screen contrast-[1.3]";
       case "cisco":
-        return "h-[40px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.3]";
+        return "h-[40px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.5]";
       case "prudential":
-        return "h-[35px] w-auto object-contain opacity-100 mix-blend-screen filter drop-shadow-[0_0_1px_rgba(255,255,255,0.3)]";
-      case "meta":
-        return "h-[40px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
-      case "vimeo":
-        return "h-[40px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
+        return "h-[35px] w-auto object-contain opacity-100 mix-blend-screen filter drop-shadow-[0_0_1px_rgba(255,255,255,0.5)]";
+      case "lockheed":
+        return "h-[35px] w-auto object-contain opacity-100 bg-transparent mix-blend-luminosity";
+      case "pfizer":
+        return "h-[35px] w-auto object-contain opacity-100 bg-transparent mix-blend-luminosity";
       default:
         return "h-[30px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
     }
   };
 
   return (
-    <section className="py-8 bg-background overflow-hidden border-t border-b border-white/5" id="clients">
+    <section className="py-8 bg-background overflow-hidden border-t border-b border-white/5" id="clients" key="logo-slider-v3">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <h2 className="text-xl font-medium tracking-normal text-center mb-6">
           COMPANIES WE'VE BOOKED MEETINGS FOR OUR CLIENTS WITH
@@ -165,6 +165,24 @@ const LogoSlider = () => {
           @keyframes scrollLogo {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+          }
+          
+          #clients img {
+            visibility: visible !important;
+            opacity: 1 !important;
+            background-color: transparent !important;
+          }
+          
+          #clients img[alt="Deloitte"] {
+            filter: brightness(0) invert(1) !important;
+          }
+          
+          #clients img[alt="JP Morgan"],
+          #clients img[alt="Pfizer"],
+          #clients img[alt="Marriott"],
+          #clients img[alt="Lockheed Martin"] {
+            background-color: transparent !important;
+            mix-blend-mode: luminosity !important;
           }
         `}
       </style>
