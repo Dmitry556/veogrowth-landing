@@ -44,14 +44,28 @@ const logoRows = [
 ];
 
 const LogoSlider = () => {
-  // Custom height adjustment for specific logos
-  const getLogoHeight = (logoId: string) => {
-    // Logos that need to be larger
-    if (["jpmorgan", "marriott", "meta", "vimeo"].includes(logoId)) {
-      return "h-[40px]";
+  // Comprehensive styling function for different logo types
+  const getLogoStyle = (logoId: string) => {
+    switch(logoId) {
+      case "deloitte": 
+        return "h-[35px] w-auto object-contain opacity-100 filter invert brightness-[0.8]";
+      case "jpmorgan":
+        return "h-[40px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.2]";
+      case "marriott":
+        return "h-[45px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.2]";
+      case "target":
+        return "h-[30px] w-auto object-contain opacity-100 mix-blend-screen contrast-[1.2]";
+      case "cisco":
+        return "h-[40px] w-auto object-contain opacity-100 mix-blend-screen brightness-[1.3]";
+      case "prudential":
+        return "h-[35px] w-auto object-contain opacity-100 mix-blend-screen filter drop-shadow-[0_0_1px_rgba(255,255,255,0.3)]";
+      case "meta":
+        return "h-[40px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
+      case "vimeo":
+        return "h-[40px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
+      default:
+        return "h-[30px] w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen";
     }
-    // Default height for all other logos
-    return "h-[30px]";
   };
 
   return (
@@ -84,7 +98,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
+                    className={getLogoStyle(logo.id)}
                     loading="lazy"
                   />
                 </div>
@@ -98,7 +112,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
+                    className={getLogoStyle(logo.id)}
                     loading="lazy"
                   />
                 </div>
@@ -122,7 +136,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
+                    className={getLogoStyle(logo.id)}
                     loading="lazy"
                   />
                 </div>
@@ -136,7 +150,7 @@ const LogoSlider = () => {
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className={`${getLogoHeight(logo.id)} w-auto object-contain opacity-90 hover:opacity-100 mix-blend-screen`}
+                    className={getLogoStyle(logo.id)}
                     loading="lazy"
                   />
                 </div>
