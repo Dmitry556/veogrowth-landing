@@ -61,8 +61,21 @@ const ProcessSection: React.FC = () => {
     }
   ];
 
+  // Define the keyframe animation as a style object
+  const fadeInKeyframes = `
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  `;
+
   return (
     <section id="process" className="py-24 relative overflow-hidden">
+      <style>{fadeInKeyframes}</style>
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       
       <div className="container mx-auto px-6">
@@ -102,17 +115,6 @@ const ProcessSection: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-      `}</style>
     </section>
   );
 };
