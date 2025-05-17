@@ -25,9 +25,9 @@ const EmailCard: React.FC<EmailCardProps> = ({ subject, greeting, body, sender, 
   return (
     <CustomCard 
       variant="glass" 
-      className="min-w-[300px] w-full h-full md:h-[300px] flex flex-col shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
+      className="min-w-[300px] w-full h-full md:min-h-[300px] flex flex-col shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1"
     >
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full p-6">
         <div className="border-b border-white/5 pb-4 mb-4">
           <div className="flex items-center mb-1">
             <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
@@ -40,7 +40,7 @@ const EmailCard: React.FC<EmailCardProps> = ({ subject, greeting, body, sender, 
             <p className="text-caption text-white/80">{greeting}</p>
           )}
         </div>
-        <div className="flex-grow mb-4">
+        <div className="flex-grow mb-4 overflow-y-auto scrollbar-hidden">
           <p className="text-body text-white/90 whitespace-pre-line">{body}</p>
         </div>
         <div className="mt-auto pt-2 border-t border-white/5">
@@ -54,6 +54,7 @@ const EmailCard: React.FC<EmailCardProps> = ({ subject, greeting, body, sender, 
 const EmailCarouselSection: React.FC = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [isClient, setIsClient] = useState(false);
+  const [api, setApi] = useState<any>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -142,8 +143,8 @@ const EmailCarouselSection: React.FC = () => {
         </div>
         
         {isMobile ? (
-          // Mobile vertical scroll layout
-          <div className="space-y-4 px-2">
+          // Mobile vertical scroll layout with improved spacing and padding
+          <div className="space-y-6 px-2">
             {emailResponses.map((email, index) => (
               <div key={index} className="px-1">
                 <EmailCard 
@@ -157,20 +158,22 @@ const EmailCarouselSection: React.FC = () => {
             ))}
           </div>
         ) : (
-          // Desktop carousel layout
+          // Enhanced desktop carousel layout
           <div className="relative px-10">
             <Carousel
+              setApi={setApi}
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
-                dragFree: true,
+                dragFree: false,
+                containScroll: "trimSnaps",
               }}
-              className="w-full"
+              className="w-full select-none touch-none"
             >
-              <CarouselContent className="py-4">
+              <CarouselContent className="-ml-4 py-6 select-none">
                 {emailResponses.map((email, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                    <div className="p-1 h-full">
+                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 select-none">
+                    <div className="p-1 h-full select-none">
                       <EmailCard 
                         subject={email.subject}
                         greeting={email.greeting}
@@ -182,8 +185,22 @@ const EmailCarouselSection: React.FC = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-2 bg-black/50 border-white/10 hover:bg-black/70" />
-              <CarouselNext className="hidden md:flex -right-2 bg-black/50 border-white/10 hover:bg-black/70" />
+              <CarouselPrevious className="hidden md:flex left-0 md:left-2 bg-black/60 border-white/10 hover:bg-black/80 size-10 opacity-90 hover:opacity-100" />
+              <CarouselNext className="hidden md:flex right-0 md:right-2 bg-black/60 border-white/10 hover:bg-black/80 size-10 opacity-90 hover:opacity-100" />
+              <div className="flex justify-center gap-1 mt-4">
+                {emailResponses.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`w-2 h-2 rounded-full ${
+                      api?.selectedScrollSnap() === index
+                        ? "bg-white"
+                        : "bg-white/30"
+                    } transition-all duration-200`}
+                    onClick={() => api?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </Carousel>
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mt-12"></div>
           </div>
