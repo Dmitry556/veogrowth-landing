@@ -1,10 +1,17 @@
 
-import React, { useEffect, lazy, Suspense, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
-import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 import LogoSlider from '@/components/sections/LogoSlider';
+import ProblemSection from '@/components/sections/ProblemSection';
+import SolutionSection from '@/components/sections/SolutionSection';
+import ResultsSection from '@/components/sections/ResultsSection';
+import ProcessSection from '@/components/sections/ProcessSection';
+import PricingSection from '@/components/sections/PricingSection';
+import DashboardSection from '@/components/sections/DashboardSection';
+import FaqSection from '@/components/sections/FaqSection';
+import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
 // More efficient section loader
 const SectionLoader = () => (
@@ -12,15 +19,6 @@ const SectionLoader = () => (
     <div className="spinner"></div>
   </div>
 );
-
-// Use dynamic imports with optimized chunks
-const ProblemSection = lazy(() => import(/* webpackChunkName: "problem-section" */ '@/components/sections/ProblemSection'));
-const SolutionSection = lazy(() => import(/* webpackChunkName: "solution-section" */ '@/components/sections/SolutionSection'));
-const ResultsSection = lazy(() => import(/* webpackChunkName: "results-section" */ '@/components/sections/ResultsSection'));
-const ProcessSection = lazy(() => import(/* webpackChunkName: "process-section" */ '@/components/sections/ProcessSection'));
-const PricingSection = lazy(() => import(/* webpackChunkName: "pricing-section" */ '@/components/sections/PricingSection'));
-const DashboardSection = lazy(() => import(/* webpackChunkName: "dashboard-section" */ '@/components/sections/DashboardSection'));
-const FaqSection = lazy(() => import(/* webpackChunkName: "faq-section" */ '@/components/sections/FaqSection'));
 
 // Optimized intersection observer for lazy loading
 const useOptimizedIntersection = (options = {}) => {
@@ -137,9 +135,7 @@ const LazySection = ({ component: Component, id }: { component: React.ComponentT
   return (
     <div id={id} ref={setRef}>
       {isVisible ? (
-        <Suspense fallback={<SectionLoader />}>
-          <Component />
-        </Suspense>
+        <Component />
       ) : (
         <SectionLoader />
       )}
