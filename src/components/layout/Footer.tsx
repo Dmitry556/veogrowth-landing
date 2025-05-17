@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
           <div>
             <h2 className="text-body font-semibold text-white mb-6">Company</h2>
             <ul className="space-y-3">
-              <li><a href="/about" className="text-caption text-white hover:text-white transition-colors">About Us</a></li>
+              <li><Link to="/about" className="text-caption text-white hover:text-white transition-colors">About Us</Link></li>
               <li><a href="/careers" className="text-caption text-white hover:text-white transition-colors">Careers</a></li>
               <li><Link to="/blog" className="text-caption text-white hover:text-white transition-colors">Blog</Link></li>
               <li><a href="/press" className="text-caption text-white hover:text-white transition-colors">Press</a></li>

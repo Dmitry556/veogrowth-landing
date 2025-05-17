@@ -37,6 +37,7 @@ const Header: React.FC = () => {
   // Determine if we're on blog pages or resources
   const isBlogPage = location.pathname.includes('/blog');
   const isResourcesPage = location.pathname.includes('/resources');
+  const isAboutPage = location.pathname === '/about';
   
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -54,13 +55,14 @@ const Header: React.FC = () => {
             </div>
             
             <nav className="hidden md:flex items-center space-x-8">
-              {!isBlogPage && !isResourcesPage ? (
+              {!isBlogPage && !isResourcesPage && !isAboutPage ? (
                 <>
                   <a href="#problems" className="text-caption text-white hover:text-white transition-colors">Problems</a>
                   <a href="#solutions" className="text-caption text-white hover:text-white transition-colors">Solutions</a>
                   <a href="#results" className="text-caption text-white hover:text-white transition-colors">Results</a>
                   <a href="#process" className="text-caption text-white hover:text-white transition-colors">Process</a>
                   <a href="#faq" className="text-caption text-white hover:text-white transition-colors">FAQ</a>
+                  <Link to="/about" className="text-caption text-white hover:text-white transition-colors">About</Link>
                   <Link to="/blog" className="text-caption text-white hover:text-white transition-colors">Blog</Link>
                   <div className="relative group">
                     <span className="text-caption text-white hover:text-white transition-colors cursor-pointer">Resources</span>
@@ -76,6 +78,7 @@ const Header: React.FC = () => {
               ) : (
                 <>
                   <Link to="/" className="text-caption text-white hover:text-white transition-colors">Home</Link>
+                  <Link to="/about" className={`text-caption ${location.pathname === '/about' ? 'text-white' : 'text-white hover:text-white'} transition-colors`}>About</Link>
                   <Link to="/blog" className={`text-caption ${location.pathname === '/blog' ? 'text-white' : 'text-white hover:text-white'} transition-colors`}>Blog</Link>
                   <div className="relative group">
                     <span className={`text-caption ${location.pathname.includes('/resources') ? 'text-white' : 'text-white hover:text-white'} transition-colors cursor-pointer`}>Resources</span>
@@ -114,13 +117,14 @@ const Header: React.FC = () => {
         style={{ opacity: 0.95 }} // Higher opacity for better contrast
       >
         <div className="px-4 py-5 space-y-5">
-          {!isBlogPage && !isResourcesPage ? (
+          {!isBlogPage && !isResourcesPage && !isAboutPage ? (
             <>
               <a href="#problems" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Problems</a>
               <a href="#solutions" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Solutions</a>
               <a href="#results" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Results</a>
               <a href="#process" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Process</a>
               <a href="#faq" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>FAQ</a>
+              <Link to="/about" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>About</Link>
               <Link to="/blog" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Blog</Link>
               <div className="py-2.5">
                 <span className="block text-base text-white mb-2">Resources</span>
@@ -132,6 +136,7 @@ const Header: React.FC = () => {
           ) : (
             <>
               <Link to="/" className="block text-base text-white hover:text-white transition-colors py-2.5" onClick={closeMenu}>Home</Link>
+              <Link to="/about" className={`block text-base ${location.pathname === '/about' ? 'text-white' : 'text-white hover:text-white'} transition-colors py-2.5`} onClick={closeMenu}>About</Link>
               <Link to="/blog" className={`block text-base ${location.pathname === '/blog' ? 'text-white' : 'text-white hover:text-white'} transition-colors py-2.5`} onClick={closeMenu}>Blog</Link>
               <div className="py-2.5">
                 <span className="block text-base text-white mb-2">Resources</span>
