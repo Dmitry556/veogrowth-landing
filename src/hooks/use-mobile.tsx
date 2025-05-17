@@ -1,3 +1,4 @@
+
 import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
@@ -16,4 +17,31 @@ export function useIsMobile() {
   }, [])
 
   return !!isMobile
+}
+
+// Add the useMediaQuery hook which is being imported in EmailCarouselSection
+export function useMediaQuery(query: string) {
+  const [matches, setMatches] = React.useState(false)
+
+  React.useEffect(() => {
+    const media = window.matchMedia(query)
+    
+    // Set initial value
+    setMatches(media.matches)
+    
+    // Define listener
+    const updateMatches = () => {
+      setMatches(media.matches)
+    }
+    
+    // Add listener
+    media.addEventListener("change", updateMatches)
+    
+    // Clean up
+    return () => {
+      media.removeEventListener("change", updateMatches)
+    }
+  }, [query])
+
+  return matches
 }
