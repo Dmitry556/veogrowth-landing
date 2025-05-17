@@ -3,6 +3,7 @@ import React from 'react';
 import CustomCard from '../ui/CustomCard';
 import { Quote } from 'lucide-react';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import EmailCarouselSection from './EmailCarouselSection';
 
 const ResultsSection: React.FC = () => {
   const testimonials = [
@@ -106,6 +107,9 @@ const ResultsSection: React.FC = () => {
             </CustomCard>
           ))}
         </div>
+        
+        {/* Email Carousel Section */}
+        <EmailCarouselSection />
         
         <div className="rounded-3xl border border-white/10 overflow-hidden">
           <div className="flex flex-col md:flex-row">
