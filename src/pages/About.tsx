@@ -68,9 +68,6 @@ const About = () => {
                   monthly at Novaly (acquired), and now pioneering performance-based, AI-driven cold outbound systems 
                   with VeoGrowth, Dmitry is passionate about building efficient outbound systems that deliver tangible results.
                 </p>
-                <p className="text-body text-white/80 mb-6 leading-relaxed">
-                  VeoGrowth is registered in Toronto, Canada.
-                </p>
                 <a 
                   href="https://www.linkedin.com/in/dmitrypinchuk" 
                   target="_blank" 
