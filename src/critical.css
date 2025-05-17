@@ -118,3 +118,37 @@
   display: block;
   content-visibility: auto;
 }
+
+/* Improved carousel and card interactions */
+.select-none {
+  user-select: none;
+}
+
+.touch-none {
+  touch-action: pan-x;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced focus styles for keyboard navigation */
+.carousel-focus-visible:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Card elevation effects */
+.shadow-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
