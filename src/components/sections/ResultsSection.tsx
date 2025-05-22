@@ -34,7 +34,7 @@ const ResultsSection: React.FC = () => {
             Proven Results for Our Clients
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            We've generated 2500+ meetings for 25+ clients in 2024 alone.
+            Our smart email outbound system has generated 2500+ qualified meetings for 25+ B2B clients in 2024 alone.
           </p>
         </div>
         
@@ -121,7 +121,7 @@ const ResultsSection: React.FC = () => {
                 How we helped build $8M in pipeline for Teleforce360.com
               </h3>
               <p className="text-body text-white/70 mb-6">
-                Their data-first approach found leads our internal team missed completely.
+                VeoGrowth's smart, data-first email outbound system found great leads our own team missed.
               </p>
               <div className="flex items-center">
                 <img src="https://placehold.co/60x60/2A2A2A/CCCCCC?text=CEO" alt="CEO" className="w-10 h-10 rounded mr-3" />

@@ -67,7 +67,7 @@ const PricingSection: React.FC = () => {
       description: "",
       badge: "FREE",
       features: [
-        "Get two qualified meetings that match your ICP criteria",
+        "Experience our AI-Powered Email Outbound: Get two qualified meetings that match your ICP criteria",
         "Custom prospect targeting",
         "No setup fees",
         "No commitments",
@@ -87,7 +87,7 @@ const PricingSection: React.FC = () => {
       features: [
         "Purchase packages of 5, 10, or 20+ meetings",
         "One-time setup fee after free meetings",
-        "Custom-branded email infrastructure",
+        "Dedicated, custom-branded email outbound infrastructure",
         "Guaranteed deliverability",
         "Only pay for meetings that happen",
         "ICP-focused targeting",
@@ -131,7 +131,7 @@ const PricingSection: React.FC = () => {
             Pricing & Packages
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            Simple, results-based pricing
+            Simple, Results-Based Pricing for Our Smart Email Outbound System
           </h2>
           <p className="text-body-large text-white/70 leading-body">
             Start with 2 free meetings before purchasing additional meeting packages. Only pay for qualified meetings that actually happen.
@@ -162,7 +162,7 @@ const PricingSection: React.FC = () => {
                 <li className="flex items-start">
                   <Check className="mr-2 text-green-400 shrink-0 mt-1" size={16} />
                   <span className="text-body text-white/80">
-                    We built our own infrastructure instead of relying on the same tools everyone uses
+                    We set up and run our email outbound tools for top results, better than standard ways.
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -183,7 +183,7 @@ const PricingSection: React.FC = () => {
             <div className="bg-white/5 rounded-2xl p-6">
               <h3 className="text-h3 font-semibold mb-4">Why Start Now?</h3>
               <p className="text-body text-white/80 mb-6">
-                Waiting costs you significant pipeline opportunities. The sooner you start, the sooner you can tap into new revenue sources.
+                Don't wait to grow your pipeline. Start your smart email outbound engine with VeoGrowth now, and find new revenue faster.
               </p>
               <CustomButton 
                 size="lg" 

@@ -8,19 +8,19 @@ const SolutionSection: React.FC = () => {
     {
       icon: <LineChart className="text-blue-400" />,
       title: "Custom Data Pipeline",
-      description: "We build hyper-targeted lists with 10+ data points per prospect - not just names and emails. Our data waterfall finds decision-makers other agencies miss entirely.",
+      description: "Our Smart Data System builds targeted B2B prospect lists with 10+ data points. This sharp targeting, key to our email outbound system, finds buyers others miss.",
       gradient: "from-blue-600/20 to-blue-400/5"
     },
     {
       icon: <ArrowUpRight className="text-green-400" />,
       title: "Inbox-Optimized Infrastructure",
-      description: "We manage 2,500+ warming inboxes with 90%+ deliverability rates. Each domain is prepared for 3+ weeks before sending a single email, ensuring your messages land in primary inboxes.",
+      description: "Our Top Email Delivery Setup, with 2,500+ warming inboxes, means 90%+ of emails land. This careful prep ensures your AI-personalized emails reach main inboxes.",
       gradient: "from-green-600/20 to-green-400/5"
     },
     {
       icon: <Zap className="text-amber-400" />,
       title: "AI-Powered Personalization",
-      description: "Our AI systems create truly personalized messages that reference specific details about each prospect's business, generating response rates 3.7x higher than industry average.",
+      description: "Our AI Copy Tool writes emails that fit each prospect, using key facts about their business. This smart, personal touch gets up to 3.7x more replies.",
       gradient: "from-amber-500/20 to-amber-300/5"
     },
     {
@@ -41,10 +41,10 @@ const SolutionSection: React.FC = () => {
             The Difference
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            How We're Different: Pay-Per-Meeting Lead Generation
+            The VeoGrowth Difference: Our Smart Email Outbound System (Pay-Per-Meeting)
           </h2>
           <p className="text-body-large text-white/70 leading-body">
-            Most agencies lock you into yearly contracts or charge retainers even when they fail to deliver. We don't. You only pay for qualified meetings that actually happen - period. While other agencies guess what works, we rely on data to design custom campaigns that consistently deliver:
+            Most agencies lock you into costly retainers with no guarantees. We don't. With VeoGrowth, you only pay for qualified sales meetings that happen – period. While others guess, our smart email outbound system uses good data and AI skill to build and run custom email campaigns that bring results:
           </p>
         </div>
         

@@ -78,7 +78,7 @@ const ProblemSection: React.FC = () => {
             The Pipeline Problem
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-10">
-            The Pipeline Problem You're Facing
+            The Outbound Email Challenge: Is This Your Pipeline Problem?
           </h2>
         </div>
         
@@ -93,7 +93,7 @@ const ProblemSection: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           <div className="p-6 rounded-2xl border border-white/5 bg-white/5">
             <p className="text-body-large font-medium italic text-white/90">
-              "What if you could turn cold email into your <span className="text-blue-400">most reliable lead source</span> - without hiring a single SDR?"
+              "What if your cold emails could bring in steady leads – without the high cost and hassle of an in-house SDR team?"
             </p>
           </div>
         </div>
