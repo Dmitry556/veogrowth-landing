@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
               <span className="text-blue-400">Veo</span>growth
             </Link>
             <p className="text-caption text-white mb-6">
-              The agency partner for businesses looking to scale their growth operations and drive unprecedented revenue.
+              Your expert partner for more B2B sales using smart email outbound.
             </p>
             <div className="flex space-x-4">
               <a href="https://twitter.com" aria-label="Twitter" className="text-white/80 hover:text-white transition-colors">

@@ -37,7 +37,7 @@ const ProcessSection: React.FC = () => {
     {
       number: "01",
       title: "TWO FREE Meetings",
-      description: "We'll schedule your first 2 qualified sales meetings completely free. No setup fees, no commitments - just real prospects that match your exact ICP criteria."
+      description: "Experience our AI-Powered Email Outbound firsthand. We'll deliver your first 2 qualified sales meetings completely free. No setup fees, no commitments - just real prospects that match your exact ICP criteria."
     },
     {
       number: "02",
@@ -47,7 +47,7 @@ const ProcessSection: React.FC = () => {
     {
       number: "03",
       title: "Messaging Strategy",
-      description: "We create and test messaging variants based on what's working now in your specific industry. You review and approve all copy before campaigns launch."
+      description: "Our team creates and tests strong email plans, using AI smarts and proven ways that fit your field. You okay all copy before emails go out."
     },
     {
       number: "04",
@@ -84,7 +84,7 @@ const ProcessSection: React.FC = () => {
             The Process
           </div>
           <h2 className="text-h2 font-bold tracking-tight mb-6">
-            How It Works: Start with Two Free Meetings
+            Our Process: Get More Leads From Email (Starts with 2 Free Meetings)
           </h2>
           <p className="text-body-large text-white/70 leading-body">
             Our streamlined process gets you from initial setup to generating qualified meetings in just five steps.

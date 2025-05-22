@@ -141,11 +141,11 @@ const HeroSection: React.FC = () => {
               className="text-display font-extrabold leading-tight tracking-tight mb-8 max-w-xl bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
               id="main-heading"
             >
-              We built a new way to run cold outbound at scale—and it finally just works.
+              AI-Powered Email Outbound That Drives Revenue.
             </h1>
             
             <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-6 max-w-lg">
-              By just works, we mean it scales your pipeline predictably without risk - you only pay for qualified meetings that happen. We're on track to win over $600M in pipeline for B2Bs this year.
+              Get more qualified B2B sales meetings with our smart email system, risk-free. You only pay for results. Your first two meetings are free. We help B2Bs build $600M+ in pipeline.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5">
@@ -235,7 +235,7 @@ const HeroSection: React.FC = () => {
                       </div>
                     </div>
                     <h3 className="text-h3 font-bold mb-3 text-center">Add Pipeline, Not Headcount</h3>
-                    <p className="text-center text-white/90 text-lg mb-8">Pay Only For Qualified Meetings</p>
+                    <p className="text-center text-white/90 text-lg mb-8">Your Smart Email Outbound Partner</p>
                     <div className="w-full bg-black/30 rounded-lg p-5 mb-6 shadow-inner">
                       <div className="h-3 w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                       <div className="mt-3 h-3 w-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
