@@ -1,5 +1,57 @@
 
 {
+  "redirects": [
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "statusCode": 301
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms-of-service", 
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/1",
+      "destination": "/blog/poke-the-bear-questions-that-get-replies",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/3",
+      "destination": "/blog/competitor-lookalike-insights-using-public-data",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/8",
+      "destination": "/blog/cold-email-campaign-that-actually-works",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/4",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/5",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/6",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/7",
+      "destination": "/blog",
+      "statusCode": 301
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import SchemaMarkup from "./components/schema/SchemaMarkup";
 import WebVitals from "./components/performance/WebVitals";
 import PerformanceDashboard from "./components/performance/PerformanceDashboard";
@@ -72,10 +72,21 @@ const App = () => {
             <Route path="/resources/true-cost-of-sdr" element={<SDRCostWhitepaper />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/terms" element={<TermsOfService />} />
             <Route path="/security" element={<Security />} />
             <Route path="/compliance" element={<Compliance />} />
             <Route path="/gdpr" element={<GDPR />} />
+            {/* Old blog post redirects */}
+            <Route path="/blog/1" element={<Navigate to="/blog/poke-the-bear-questions-that-get-replies" replace />} />
+            <Route path="/blog/2" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/3" element={<Navigate to="/blog/competitor-lookalike-insights-using-public-data" replace />} />
+            <Route path="/blog/4" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/5" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/6" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/7" element={<Navigate to="/blog" replace />} />
+            <Route path="/blog/8" element={<Navigate to="/blog/cold-email-campaign-that-actually-works" replace />} />
             <Route path="/admin/performance" element={<PerformanceReport />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
