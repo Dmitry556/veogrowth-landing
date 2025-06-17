@@ -323,18 +323,6 @@ const Header: React.FC = () => {
             Pricing
           </button>
           
-          <div className="pt-2">
-            <CustomButton 
-              className="w-full justify-center mt-2 bg-purple-600 text-white hover:bg-purple-700 font-semibold" 
-              onClick={() => {
-                trackCalendlyClick('mobile-header');
-                window.open('https://calendly.com/veogrowth', '_blank');
-                closeMenu();
-              }}
-            >
-              Get 2 Free Meetings
-            </CustomButton>
-          </div>
         </div>
       </div>
     </header>
