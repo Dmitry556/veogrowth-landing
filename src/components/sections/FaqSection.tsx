@@ -55,7 +55,7 @@ const FaqSection: React.FC = () => {
     }
   ];
 
-  // Generate FAQ schema markup
+  // Generate FAQ schema markup for rich snippets
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -64,9 +64,12 @@ const FaqSection: React.FC = () => {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer.join(' ').replace(/<[^>]*>/g, '') // Remove HTML tags for schema
+        "text": faq.answer.join(' ').replace(/<[^>]*>/g, ''), // Remove HTML tags for schema
+        "inLanguage": "en-US"
       }
-    }))
+    })),
+    "inLanguage": "en-US",
+    "url": "https://www.veogrowth.com/#faq"
   };
 
   return (
