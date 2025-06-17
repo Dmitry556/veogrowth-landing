@@ -1,13 +1,14 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import SchemaMarkup from "./components/schema/SchemaMarkup";
 import WebVitals from "./components/performance/WebVitals";
 import PerformanceDashboard from "./components/performance/PerformanceDashboard";
+import RouteTracker from "./components/analytics/RouteTracker";
 
 // Direct imports for immediate loading
 import Index from "./pages/Index";
@@ -55,6 +56,7 @@ const App = () => {
         />
         <PerformanceDashboard />
         <BrowserRouter>
+          <RouteTracker />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />

@@ -3,6 +3,7 @@ import CustomButton from '../ui/CustomButton';
 import { ChevronRight } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Play } from 'lucide-react';
+import { trackCalendlyClick } from '@/utils/analytics';
 
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -198,7 +199,10 @@ const HeroSection: React.FC = () => {
           {/* CTA Section */}
           <div className="flex flex-col items-center gap-6">
             <button 
-              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              onClick={() => {
+                trackCalendlyClick('hero-main');
+                window.open('https://calendly.com/veogrowth', '_blank');
+              }}
               className="group relative"
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>

@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import CustomButton from '../ui/CustomButton';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { trackCalendlyClick } from '@/utils/analytics';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -272,7 +273,10 @@ const Header: React.FC = () => {
             <div className="hidden md:block">
               <CustomButton 
                 className="bg-purple-600 text-white hover:bg-purple-700 px-4 py-1.5 text-sm font-semibold"
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                onClick={() => {
+                  trackCalendlyClick('header');
+                  window.open('https://calendly.com/veogrowth', '_blank');
+                }}
               >
                 Get 2 Free Meetings
               </CustomButton>
@@ -323,6 +327,7 @@ const Header: React.FC = () => {
             <CustomButton 
               className="w-full justify-center mt-2 bg-purple-600 text-white hover:bg-purple-700 font-semibold" 
               onClick={() => {
+                trackCalendlyClick('mobile-header');
                 window.open('https://calendly.com/veogrowth', '_blank');
                 closeMenu();
               }}
