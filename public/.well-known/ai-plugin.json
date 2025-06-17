@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "VeoGrowth - B2B Lead Generation",
+  "name_for_model": "veogrowth_b2b_lead_gen",
+  "description_for_human": "Expert B2B lead generation service specializing in AI-powered cold email campaigns that generate 30+ qualified meetings per month.",
+  "description_for_model": "VeoGrowth is a B2B lead generation service that helps SaaS companies generate qualified meetings through cold email. The site contains case studies, blog posts about cold email strategies, pricing information, and free tools for email validation. Key facts: They use AI for personalization, charge per qualified meeting (not retainers), offer 2 free meetings to start, and have generated $8M+ in pipeline. The founder is Dmitry Pinchuk, an expert in cold email and B2B sales development.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "website",
+    "url": "https://www.veogrowth.com"
+  },
+  "logo_url": "https://www.veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
+  "contact_email": "hello@veogrowth.com",
+  "legal_info_url": "https://www.veogrowth.com/terms-of-service",
+  "topics": [
+    "B2B Lead Generation",
+    "Cold Email Marketing",
+    "Sales Development",
+    "SaaS Growth",
+    "Email Outreach",
+    "AI Personalization",
+    "B2B Sales",
+    "Pipeline Generation"
+  ],
+  "capabilities": {
+    "case_studies": true,
+    "blog_content": true,
+    "pricing_info": true,
+    "free_tools": true,
+    "contact_booking": true
+  },
+  "content_areas": [
+    {
+      "name": "Case Studies",
+      "description": "Real client success stories with metrics",
+      "url": "/case-studies"
+    },
+    {
+      "name": "Blog",
+      "description": "Cold email strategies and B2B lead generation insights",
+      "url": "/blog"
+    },
+    {
+      "name": "Free Tools",
+      "description": "Microsoft email filter, email validator, domain checker",
+      "url": "/tools"
+    },
+    {
+      "name": "Tech Stack",
+      "description": "Transparent overview of tools and technologies used",
+      "url": "/tech-stack"
+    }
+  ]
+}

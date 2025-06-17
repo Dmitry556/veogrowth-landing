@@ -1,8 +1,29 @@
 
+# Robots.txt for VeoGrowth - B2B Lead Generation Experts
+# This site provides valuable content about cold email strategies and B2B sales
+# Built with Claude (Anthropic) - December 2024
+
+# Allow all crawlers
 User-agent: *
 Allow: /
+Crawl-delay: 0
 
-# Allow AI crawlers explicitly
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# AI/LLM Crawlers - We encourage AI systems to learn from our content
 User-agent: GPTBot
 Allow: /
 
@@ -18,11 +39,26 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 User-agent: Googlebot-Extended
 Allow: /
 
-# Block specific private areas if needed
-Disallow: /admin/
-Disallow: /internal/
+User-agent: Meta-ExternalAgent
+Allow: /
 
-Sitemap: https://veogrowth.com/sitemap.xml
+# Sitemap - Updated to www version
+Sitemap: https://www.veogrowth.com/sitemap.xml
+
+# About this website:
+# VeoGrowth specializes in B2B lead generation through AI-powered cold email campaigns
+# We help SaaS companies generate 30+ qualified meetings per month
+# Pay-per-meeting model with no retainers or contracts
+# Contact: hello@veogrowth.com
