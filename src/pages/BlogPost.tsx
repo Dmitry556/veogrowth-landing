@@ -1,36 +1,41 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import CanonicalUrl from '@/components/seo/CanonicalUrl';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { getIdFromSlug, getSlugFromId } from '@/utils/slug';
 import { Calendar, Clock, Share2, MessageSquare, User, ArrowLeft, ArrowRight } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import BlogCard from '@/components/blog/BlogCard';
 import TableOfContents from '@/components/blog/TableOfContents';
+import RelatedPosts from '@/components/blog/RelatedPosts';
 import { BlogPost } from '@/types/blog';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { generateArticleSchema, schemaToString } from '@/utils/schema';
-import { useToast } from '@/components/ui/use-toast';
+// import { useToast } from '@/components/ui/use-toast';
 
 const BlogPostPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
+  const id = slug ? getIdFromSlug(slug) : null;
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const articleRef = useRef<HTMLElement>(null);
   const navigate = useNavigate();
-  const { toast } = useToast();
+  // const { toast } = useToast();
   
   const blogPosts: Record<string, BlogPost> = {
     "1": {
       id: '1',
       title: 'How to Create Poke-the-Bear Questions That Get Replies',
       excerpt: "Cold emails that get ignored cost your business thousands in wasted opportunity. The difference between a 0.5% and 3% response rate isn't just better copy—it's asking the right questions that make prospects stop and think.",
-      category: 'cold-email',
+      category: 'Copywriting',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       publishDate: new Date().toISOString().split('T')[0],
@@ -147,6 +152,15 @@ const BlogPostPage = () => {
       <p>The best Poke-the-Bear questions come from deep industry knowledge. What do you know that your prospects don't? What assumptions are they making that could be hurting them?</p>
       <p>Create a list of 5-10 customized questions for your specific audience, test them on a small batch of prospects, and refine based on response rates.</p>
       <p>When you hit on the right question, you'll see your response rates jump dramatically—often from below 1% to 3-5% or higher.</p>
+      
+      <h2 id="real-world-examples">Real-World Examples from Our Case Studies</h2>
+      <p>Want to see Poke-the-Bear questions in action? Check out how we've used strategic questioning to drive results:</p>
+      <ul>
+        <li><a href="/case-studies/zero-fee-payment-processor-52-meetings" style="color: #a855f7;">Zero-Fee Payment Processor Case Study</a> - See how simple math questions about monthly fees generated 52 meetings</li>
+        <li><a href="/case-studies/api-monitoring-platform-56-meetings" style="color: #a855f7;">API Monitoring Platform Case Study</a> - Learn how technical credibility questions resonated with engineering leaders</li>
+        <li><a href="/case-studies/podcast-whales-25-meetings-6-clients" style="color: #a855f7;">Podcast Production Case Study</a> - Discover how creative concept questions stood out from generic pitches</li>
+      </ul>
+      
       <p><strong>Need more help with your cold email campaigns?</strong> Our team has generated over 10,000 positive responses in 2024 alone. Contact us for a free campaign test where we'll validate your offer works before you pay a penny.</p>
     `,
       tableOfContents: [
@@ -159,17 +173,18 @@ const BlogPostPage = () => {
         { id: 'why-this-works-the-psychology', title: 'Why This Works: The Psychology' },
         { id: 'testing-your-questions', title: 'Testing Your Questions' },
         { id: 'beyond-the-first-reply', title: 'Beyond the First Reply' },
-        { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' }
+        { id: 'start-creating-your-questions', title: 'Start Creating Your Questions' },
+        { id: 'real-world-examples', title: 'Real-World Examples from Our Case Studies' }
       ]
     },
     "3": {
       id: '3',
       title: 'How We Find Competitor & Lookalike Insights Using Public Data',
       excerpt: "Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with or their ideal customers is pure gold.",
-      category: 'research',
+      category: 'Research',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       publishDate: '2023-09-11',
@@ -203,10 +218,10 @@ const BlogPostPage = () => {
       id: '8',
       title: 'How to Set Up a Cold Email Campaign That Actually Works',
       excerpt: "Most cold email campaigns fail before they even start. After analyzing over 1.5 million emails and generating 10,000+ positive responses in 2024, we've identified exactly what separates campaigns that generate pipeline from those that waste your budget.",
-      category: 'cold-email',
+      category: 'Clay',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       publishDate: new Date().toISOString().split('T')[0],
@@ -508,23 +523,28 @@ const BlogPostPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (id && !blogPost) {
-      toast({
-        title: "Blog post not found",
-        description: "The requested blog post doesn't exist. Redirecting to blog page...",
-        variant: "destructive"
-      });
-      setTimeout(() => navigate('/blog'), 1500);
-    }
-  }, [id, navigate, toast, blogPost]);
+
+  if (!blogPost && isLoaded) {
+    return (
+      <div className="min-h-screen bg-gray-900 text-white">
+        <Header />
+        <main className="pt-32 pb-20 container mx-auto px-4 sm:px-6 text-center">
+          <p className="text-gray-400">Blog post not found</p>
+          <p className="text-gray-500 text-sm mt-2">Available posts: {Object.keys(blogPosts).join(', ')}</p>
+          <p className="text-gray-500 text-sm">Looking for ID: {id}</p>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   if (!blogPost) {
     return (
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-gray-900 text-white">
         <Header />
         <main className="pt-32 pb-20 container mx-auto px-4 sm:px-6 text-center">
-          <p className="text-white/70">Looking for blog post...</p>
+          <div className="spinner mx-auto"></div>
+          <p className="text-gray-400 mt-4">Loading...</p>
         </main>
         <Footer />
       </div>
@@ -545,7 +565,8 @@ const BlogPostPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <CanonicalUrl path={`/blog/${slug}`} />
       <Header />
       
       <div 
@@ -555,6 +576,18 @@ const BlogPostPage = () => {
       
       <main className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6 mb-8">
+          {/* Breadcrumbs */}
+          <div className="mb-4">
+            <Breadcrumbs 
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Blog', href: '/blog' },
+                { label: blogPost?.title || 'Article', current: true }
+              ]}
+              className="text-gray-300"
+            />
+          </div>
+          
           <Link to="/blog" className="inline-flex items-center text-white/70 hover:text-white transition-colors">
             <ArrowLeft size={16} className="mr-2" />
             <span>Back to all articles</span>
@@ -572,10 +605,10 @@ const BlogPostPage = () => {
             <article 
               ref={articleRef}
               className={cn(
-                "lg:col-span-9 max-w-4xl opacity-0",
-                isLoaded && "animate-fade-in"
+                "lg:col-span-9 max-w-4xl",
+                isLoaded ? "animate-fade-in" : "opacity-100"
               )}
-              style={{ animationDelay: '200ms' }}
+              style={{ animationDelay: isLoaded ? '200ms' : '0ms' }}
             >
               <header className="mb-10">
                 <Badge 
@@ -592,7 +625,7 @@ const BlogPostPage = () => {
                 <div className="flex flex-wrap items-center gap-6 text-white/70">
                   <div className="flex items-center">
                     <Avatar className="h-10 w-10 mr-3 border border-white/10">
-                      <AvatarImage src={blogPost.author.avatarUrl} alt={blogPost.author.name} />
+                      <AvatarImage src={blogPost.author.avatarUrl} alt={`${blogPost.author.name} - Article author photo`} />
                       <AvatarFallback>
                         <User size={20} />
                       </AvatarFallback>
@@ -635,7 +668,7 @@ const BlogPostPage = () => {
               </header>
               
               <div 
-                className="prose prose-invert prose-lg max-w-none"
+                className="prose prose-lg max-w-none prose-invert"
                 dangerouslySetInnerHTML={{ __html: blogPost.content }}
               ></div>
               
@@ -659,7 +692,7 @@ const BlogPostPage = () => {
                 <div className="glass-card p-6 mb-12">
                   <div className="flex items-center gap-4 mb-4">
                     <Avatar className="h-12 w-12 border border-white/10">
-                      <AvatarImage src={blogPost.author.avatarUrl} alt={blogPost.author.name} />
+                      <AvatarImage src={blogPost.author.avatarUrl} alt={`${blogPost.author.name} - Article author photo`} />
                       <AvatarFallback><User size={24} /></AvatarFallback>
                     </Avatar>
                     <div>
@@ -717,6 +750,15 @@ const BlogPostPage = () => {
             ))}
           </div>
         </section>
+        
+        {/* Related Posts */}
+        {blogPost && (
+          <RelatedPosts 
+            currentPostId={blogPost.id}
+            allPosts={blogPosts}
+            maxPosts={2}
+          />
+        )}
       </main>
 
       <Footer />

@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import CustomButton from '../ui/CustomButton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
@@ -8,78 +9,114 @@ const FaqSection: React.FC = () => {
   const faqs = [
     {
       question: "How is this different from other outbound agencies?",
-      answer: "We're a B2B data company first. Our differentiator is our custom data pipeline that finds signals other agencies miss. Plus, we start with free qualified meetings so you can validate our approach before paying anything."
+      answer: [
+        "We're <strong>not just another agency</strong>—we built an <strong>inference engine</strong>.",
+        "While others send generic 'Hi {FirstName}' emails, our AI analyzes each prospect to infer what <strong>specific problems they're facing right now</strong>.",
+        "Plus, we only charge for <strong>meetings that actually happen</strong>."
+      ]
     },
     {
       question: "What qualifies as a \"qualified meeting\"?",
-      answer: "A qualified meeting is a scheduled and attended video call with a decision-maker who matches your exact ICP criteria. We agree on these criteria during our initial consultation to ensure we're targeting the right prospects for your business."
+      answer: [
+        "A <strong>scheduled and attended video call</strong> with a decision-maker who matches your exact ICP criteria.",
+        "We agree on these criteria during our initial consultation to ensure we're targeting the <strong>right prospects for your business</strong>."
+      ]
+    },
+    {
+      question: "How many emails do you send?",
+      answer: [
+        "Typically <strong>20,000-50,000 per month</strong>, split across 20+ targeted campaigns.",
+        "The exact volume depends on your TAM size and segmentation.",
+        "Our inference engine ensures each email is <strong>relevant to the recipient's current situation</strong>."
+      ]
+    },
+    {
+      question: "Do you guarantee 30 meetings?",
+      answer: [
+        "We show <strong>typical results</strong>. Actual meetings depend on your offer strength and market fit.",
+        "Our pilot lets you <strong>test quality before committing to volume</strong>.",
+        "Most clients see <strong>15-30+ meetings per month</strong> once fully scaled."
+      ]
     },
     {
       question: "How does your performance-based pricing work?",
-      answer: "After your 2 free meetings, you can purchase meeting packages at a fixed per-meeting price. You only pay for meetings that actually happen - no retainers or long-term contracts required. Unlike most B2B agencies that charge regardless of results, our model ensures you only invest in real opportunities. Meeting packages start at 5 meetings and can scale to fit your growth needs."
+      answer: [
+        "After your <strong>2 free meetings</strong>, you can purchase meeting packages at a fixed per-meeting price.",
+        "You only pay for <strong>meetings that actually happen</strong>—no retainers or long-term contracts required."
+      ]
     },
     {
       question: "Is there any minimum commitment?",
-      answer: "Your only commitment is the one-time setup fee after your 2 free meetings. This covers our costs for creating your custom data pipeline and email infrastructure. After that, you can purchase meeting packages as needed."
-    },
-    {
-      question: "What if my company doesn't have a large enough target market?",
-      answer: "Our approach works best for B2B companies with a total addressable market (TAM) of at least 5,000 prospects. This ensures we have enough data to build effective targeting. If you're unsure about your TAM, we can help you evaluate your market potential."
-    },
-    {
-      question: "Do I need to change my domain or email setup?",
-      answer: "No. We handle everything, including domain setup, warming, and deliverability. For ongoing clients, we purchase new domains branded similar to your main domain and warm them for 2 weeks before launching campaigns."
+      answer: [
+        "<strong>No minimum commitment</strong>. Start with 2 free meetings to test our quality.",
+        "After that, purchase meeting packages as needed.",
+        "We earn your business with <strong>results, not contracts</strong>."
+      ]
     }
   ];
 
+  // Generate FAQ schema markup
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer.join(' ').replace(/<[^>]*>/g, '') // Remove HTML tags for schema
+      }
+    }))
+  };
+
   return (
-    <section id="faq" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+    <section id="faq" className="py-20 md:py-24 bg-gray-900">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
       
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-caption font-medium mb-6">
+      <div className="container mx-auto px-8 sm:px-12">
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <div className="inline-block px-4 py-2 rounded-full bg-purple-900/50 border border-purple-500/30 text-purple-300 text-sm font-medium mb-8">
             Common Questions
           </div>
-          <h2 className="text-h2 font-bold tracking-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-12 text-white">
             Frequently Asked Questions
           </h2>
-          <p className="text-body-large text-white/70 leading-body">
-            Everything you need to know about our meeting generation service and how it can transform your business.
+          <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+            Everything you need to know about our inference engine and how it delivers qualified meetings.
           </p>
         </div>
         
-        <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-4">
+        <div className="max-w-4xl mx-auto">
+          <Accordion type="single" collapsible className="w-full space-y-6">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
                 className="border-0"
               >
-                <AccordionTrigger className="py-6 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex justify-between items-center text-left">
-                  <span className="text-body font-medium pr-4">{faq.question}</span>
+                <AccordionTrigger className="py-6 px-8 rounded-xl bg-gray-800/50 hover:bg-gray-800/70 transition-colors flex justify-between items-center text-left border border-gray-700">
+                  <span className="text-lg font-medium pr-4 text-white">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="py-6 px-6">
-                  <p className="text-body text-white/70">{faq.answer}</p>
+                <AccordionContent className="py-6 px-8 bg-gray-800/30 rounded-b-xl border-x border-b border-gray-700 border-t-0">
+                  <div className="space-y-3">
+                    {faq.answer.map((line, lineIndex) => (
+                      <p 
+                        key={lineIndex} 
+                        className="text-lg text-gray-300 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: line }}
+                      />
+                    ))}
+                  </div>
                 </AccordionContent>
-                
-                {index < faqs.length - 1 && (
-                  <div className="h-px bg-white/5"></div>
-                )}
               </AccordionItem>
             ))}
           </Accordion>
         </div>
         
-        <div className="text-center mt-16">
-          <p className="text-body text-white/70 mb-6">
-            Ready to get qualified meetings without risk? Schedule your free consultation today.
-          </p>
-          <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
-            Get 2 Free Meetings →
-          </CustomButton>
-        </div>
       </div>
     </section>
   );

@@ -16,53 +16,65 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Individual Blog Posts -->
+  <!-- Individual Blog Posts (SEO-friendly URLs) -->
   <url>
-    <loc>https://veogrowth.com/blog/1</loc>
-    <lastmod>2024-07-10</lastmod>
+    <loc>https://veogrowth.com/blog/poke-the-bear-questions-that-get-replies</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/blog/competitor-lookalike-insights-using-public-data</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/blog/8</loc>
-    <lastmod>2024-07-10</lastmod>
+    <loc>https://veogrowth.com/blog/cold-email-campaign-that-actually-works</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Case Studies -->
+  <url>
+    <loc>https://veogrowth.com/case-studies</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/blog/2</loc>
-    <lastmod>2023-09-28</lastmod>
+    <loc>https://veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/blog/3</loc>
-    <lastmod>2023-09-12</lastmod>
+    <loc>https://veogrowth.com/case-studies/api-monitoring-platform-56-meetings</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
+  <!-- About Page -->
   <url>
-    <loc>https://veogrowth.com/blog/4</loc>
-    <lastmod>2023-08-22</lastmod>
+    <loc>https://veogrowth.com/about</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
+  
+  <!-- Tech Stack -->
   <url>
-    <loc>https://veogrowth.com/blog/5</loc>
-    <lastmod>2023-08-05</lastmod>
+    <loc>https://veogrowth.com/tech-stack</loc>
+    <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://veogrowth.com/blog/6</loc>
-    <lastmod>2023-07-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://veogrowth.com/blog/7</loc>
-    <lastmod>2023-07-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

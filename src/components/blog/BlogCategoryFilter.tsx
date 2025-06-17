@@ -10,19 +10,19 @@ interface BlogCategoryFilterProps {
 
 const BlogCategoryFilter = ({ categories, activeCategory, onChange }: BlogCategoryFilterProps) => {
   return (
-    <div className="flex flex-wrap justify-center gap-2 mb-4">
+    <div className="flex flex-wrap justify-center gap-3 mb-8">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onChange(category)}
           className={cn(
-            "px-4 py-2 rounded-pill text-caption transition-all duration-300",
+            "px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 transform hover:-translate-y-0.5",
             activeCategory === category
-              ? "bg-gradient-primary text-white shadow-glow"
-              : "bg-white/5 hover:bg-white/10 text-white/80 hover:text-white"
+              ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/25"
+              : "bg-gray-800/60 hover:bg-gray-700/60 text-gray-300 hover:text-white border border-gray-700/40 hover:border-gray-600/60"
           )}
         >
-          {category}
+          {category === 'all' ? 'All Categories' : category}
         </button>
       ))}
     </div>

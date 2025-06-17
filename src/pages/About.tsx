@@ -9,7 +9,7 @@ import { Briefcase, User, Linkedin, Mail } from 'lucide-react';
 const About = () => {
   useEffect(() => {
     // Update document title
-    document.title = "About Us - Veogrowth";
+    document.title = "About Veogrowth | Dmitry Pinchuk - B2B Lead Generation Expert";
     
     // Scroll to top on page load
     window.scrollTo(0, 0);

@@ -68,56 +68,56 @@ export default {
 				DEFAULT: {
 					css: {
 						maxWidth: '65ch',
-						color: 'white',
+						color: 'hsl(var(--foreground))',
 						h1: {
-							color: 'white',
+							color: 'hsl(var(--foreground))',
 						},
 						h2: {
-							color: 'white',
+							color: 'hsl(var(--foreground))',
 						},
 						h3: {
-							color: 'white',
+							color: 'hsl(var(--foreground))',
 						},
 						strong: {
-							color: 'white',
+							color: 'hsl(var(--foreground))',
 						},
 						a: {
-							color: '#3b82f6',
+							color: 'hsl(var(--primary))',
 							'&:hover': {
-								color: '#60a5fa',
+								color: 'hsl(var(--primary) / 0.8)',
 							},
 						},
 						blockquote: {
-							borderLeftColor: '#3b82f6',
-							backgroundColor: 'rgba(255, 255, 255, 0.05)',
-							color: 'rgba(255, 255, 255, 0.9)',
+							borderLeftColor: 'hsl(var(--primary))',
+							backgroundColor: 'hsl(var(--muted))',
+							color: 'hsl(var(--foreground) / 0.8)',
 						},
 						hr: {
-							borderColor: 'rgba(255, 255, 255, 0.1)',
+							borderColor: 'hsl(var(--border))',
 						},
 						ul: {
 							li: {
 								'&::marker': {
-									color: '#3b82f6',
+									color: 'hsl(var(--primary))',
 								},
 							},
 						},
 						ol: {
 							li: {
 								'&::marker': {
-									color: '#3b82f6',
+									color: 'hsl(var(--primary))',
 								},
 							},
 						},
 						pre: {
-							backgroundColor: 'rgba(0, 0, 0, 0.3)',
-							borderColor: 'rgba(255, 255, 255, 0.1)',
+							backgroundColor: 'hsl(var(--muted))',
+							borderColor: 'hsl(var(--border))',
 							borderWidth: '1px',
 							borderRadius: '0.5rem',
 						},
 						code: {
-							color: '#93c5fd',
-							backgroundColor: 'rgba(147, 197, 253, 0.1)',
+							color: 'hsl(var(--primary))',
+							backgroundColor: 'hsl(var(--primary) / 0.1)',
 							borderRadius: '0.25rem',
 							padding: '0.2em 0.4em',
 						},
@@ -125,27 +125,30 @@ export default {
 				},
 			},
 			fontFamily: {
-				sans: ['Inter var', 'Inter', 'SF Pro Display', 'SF Pro', 'system-ui', 'sans-serif'],
+				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				raleway: ['Raleway', 'Inter', 'system-ui', 'sans-serif'],
+				lato: ['Lato', 'Inter', 'system-ui', 'sans-serif'],
 			},
 			fontSize: {
-				'display': 'clamp(48px, 5vw, 80px)',
-				'h1': 'clamp(38px, 4vw, 64px)',
-				'h2': 'clamp(28px, 3vw, 44px)',
-				'h3': 'clamp(22px, 2.5vw, 32px)',
-				'body-large': '20px',
-				'body': '17px',
-				'caption': '15px',
+				'display': 'clamp(40px, 4.5vw, 72px)',
+				'h1': 'clamp(32px, 3.5vw, 56px)',
+				'h2': 'clamp(24px, 2.8vw, 40px)',
+				'h3': 'clamp(20px, 2.2vw, 28px)',
+				'body-large': '18px',
+				'body': '16px',
+				'caption': '14px',
 			},
 			letterSpacing: {
-				'tight': '-0.02em',
+				'tight': '-0.025em',
 				'normal': '0',
 				'slight': '-0.01em',
+				'relaxed': '0.025em',
 			},
 			lineHeight: {
-				'display': '110%',
-				'heading': '110%',
-				'subheading': '120%',
-				'body': '150%',
+				'display': '115%',
+				'heading': '120%',
+				'subheading': '130%',
+				'body': '160%',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -195,15 +198,15 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-primary': 'linear-gradient(to right, #3B82F6, #8B5CF6)',
-				'gradient-secondary': 'linear-gradient(to right, #10B981, #059669)',
-				'noise-texture': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E\")",
+				'gradient-primary': 'linear-gradient(to right, #3B82F6, #6366F1)',
+				'gradient-secondary': 'linear-gradient(to right, #10B981, #3B82F6)',
+				'noise-texture': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.01'/%3E%3C/svg%3E\")",
 			},
 			boxShadow: {
-				'glow': '0 0 15px 5px rgba(59, 130, 246, 0.15)',
-				'glow-purple': '0 0 15px 5px rgba(139, 92, 246, 0.15)',
-				'card': '0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05)',
-				'card-hover': '0 10px 30px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.1)',
+				'glow': '0 0 20px rgba(59, 130, 246, 0.1)',
+				'glow-purple': '0 0 20px rgba(99, 102, 241, 0.1)',
+				'card': '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)',
+				'card-hover': '0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
 			},
 		}
 	},

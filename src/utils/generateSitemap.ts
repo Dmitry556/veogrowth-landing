@@ -16,7 +16,7 @@ const getBlogPosts = (): BlogPost[] => {
       category: 'cold-email',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       readingTime: '6 min read',
@@ -31,7 +31,7 @@ const getBlogPosts = (): BlogPost[] => {
       category: 'cold-email',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       readingTime: '8 min read',
@@ -44,7 +44,7 @@ const getBlogPosts = (): BlogPost[] => {
       category: 'research',
       author: {
         name: 'Dmitry Pinchuk',
-        avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+        avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
         title: 'Co-founder at Veogrowth'
       },
       publishDate: '2023-09-11',

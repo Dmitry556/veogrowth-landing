@@ -19,11 +19,11 @@ const ProblemCard = memo(({ problem, index }: { problem: any, index: number }) =
       style={{ transitionDelay: `${index * 100}ms` }}
     >
       <CustomCard className="flex flex-col h-full">
-        <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center mb-4">
+        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
           {problem.icon}
         </div>
-        <h3 className="text-body font-semibold mb-2">{problem.title}</h3>
-        <p className="text-caption text-white/70">{problem.description}</p>
+        <h3 className="font-raleway text-base font-semibold mb-3 text-foreground">{problem.title}</h3>
+        <p className="text-sm text-foreground/75 leading-relaxed">{problem.description}</p>
       </CustomCard>
     </div>
   );
@@ -38,64 +38,81 @@ const ProblemSection: React.FC = () => {
   });
 
   const problems = [
-    {
-      icon: <AlertTriangle className="text-amber-400" />,
-      title: "Low Response Rates",
-      description: "Your cold outreach generates under 1% response rates, wasting valuable time and resources."
-    },
-    {
-      icon: <DollarSign className="text-rose-400" />,
-      title: "Wasted Budget",
-      description: "You're spending on tools that promise leads but consistently fail to deliver meaningful results."
-    },
-    {
-      icon: <Unlink className="text-blue-400" />,
-      title: "Burnt Domains",
-      description: "Poor email deliverability has damaged your sending reputation and landing emails in spam."
-    },
-    {
-      icon: <FileQuestion className="text-purple-400" />,
-      title: "Generic Messaging",
-      description: "Your messaging gets ignored by decision-makers because it lacks personalization that resonates."
-    },
-    {
-      icon: <Database className="text-green-400" />,
-      title: "Data Gaps",
-      description: "Incomplete targeting data prevents you from reaching the right accounts and decision-makers."
-    }
+    // Comparison examples will be handled differently in the new layout
   ];
 
   return (
-    <section id="problems" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+    <section id="problems" className="py-16 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
       
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-8 sm:px-12">
         <div 
           ref={ref}
-          className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-10 text-center`}
+          className={`transition-all duration-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-12 text-center max-w-5xl mx-auto`}
         >
-          <div className="inline-block px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-caption font-medium mb-6">
-            The Pipeline Problem
+          <div className="inline-block px-3 py-1 rounded-full bg-destructive/10 border border-destructive/20 text-destructive text-sm font-medium mb-6">
+            The Story
           </div>
-          <h2 className="text-h2 font-bold tracking-tight mb-10">
-            The Outbound Email Challenge: Is This Your Pipeline Problem?
+          <h2 className="font-raleway text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-8 text-foreground">
+            The Day Cold Email Died (And What Replaced It)
           </h2>
-        </div>
-        
-        {/* 5-column layout for problems */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
-          {problems.map((problem, index) => (
-            <ProblemCard key={index} problem={problem} index={index} />
-          ))}
-        </div>
-        
-        {/* Quote without the paragraph */}
-        <div className="max-w-2xl mx-auto">
-          <div className="p-6 rounded-2xl border border-white/5 bg-white/5">
-            <p className="text-body-large font-medium italic text-white/90">
-              "What if your cold emails could bring in steady leads – without the high cost and hassle of an in-house SDR team?"
+          <div className="max-w-4xl mx-auto mb-16">
+            <p className="text-xl text-foreground/80 mb-8 leading-relaxed">
+              You know why cold email stopped working? Everyone bought the same Apollo list. Everyone uses the same AI tools. Everyone sends "Hi Sarah, I saw you're VP of Marketing at..."
+            </p>
+            <p className="text-xl text-foreground/80 mb-8 leading-relaxed">
+              Prospects can smell it instantly. <span className="font-semibold text-destructive">Delete.</span>
+            </p>
+            <p className="text-xl text-foreground/80 mb-12 leading-relaxed">
+              But here's what changed everything: AI can now do something that was impossible before—make intelligent inferences about thousands of prospects simultaneously.
             </p>
           </div>
+        </div>
+        
+        {/* Comparison Box */}
+        <div className="bg-muted/50 rounded-2xl p-8 md:p-12 mb-12 max-w-5xl mx-auto border border-border">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold text-destructive mb-4">❌ Everyone Else</h3>
+              <p className="text-foreground/60 italic">"I see you use Salesforce."</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-green-600 mb-4">✅ Our AI</h3>
+              <p className="text-foreground/85 font-medium">
+                "Based on your 3 new enterprise clients and that RevOps hire last month, you're probably dealing with data silos between your CRM and billing system."
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* The Why Now */}
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xl font-semibold text-foreground mb-8">
+            Why wasn't this possible 2 years ago?
+          </p>
+          
+          <p className="text-lg text-foreground/80 mb-8">
+            Three things had to converge:
+          </p>
+          
+          <ul className="text-lg text-foreground/75 space-y-4 mb-12">
+            <li className="flex items-start">
+              <span className="text-primary font-bold mr-3">•</span>
+              AI models that can actually reason, not just match patterns
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary font-bold mr-3">•</span>
+              APIs that let us pull real-time intelligence at scale
+            </li>
+            <li className="flex items-start">
+              <span className="text-primary font-bold mr-3">•</span>
+              Infrastructure costs dropping 90% for this kind of processing
+            </li>
+          </ul>
+          
+          <p className="text-xl text-foreground leading-relaxed">
+            We built a system that does this inference work across your entire market. And just as important—it knows who to skip.
+          </p>
         </div>
       </div>
     </section>

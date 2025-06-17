@@ -7,6 +7,7 @@ export interface Author {
 
 export interface BlogPost {
   id: string;
+  slug?: string;
   title: string;
   excerpt: string;
   category: string;
