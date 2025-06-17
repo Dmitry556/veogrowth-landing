@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CanonicalUrl from '@/components/seo/CanonicalUrl';
+import Breadcrumbs from '@/components/seo/Breadcrumbs';
+import { Helmet } from 'react-helmet-async';
+import { getSlugFromId } from '@/utils/slug';
 import FeaturedBlogCard from '@/components/blog/FeaturedBlogCard';
 import BlogCard from '@/components/blog/BlogCard';
 import BlogCategoryFilter from '@/components/blog/BlogCategoryFilter';
@@ -17,7 +21,7 @@ const sampleBlogPosts: BlogPost[] = [
     category: 'Copywriting',
     author: {
       name: 'Dmitry Pinchuk',
-      avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+      avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
       title: 'Co-founder at Veogrowth'
     },
     publishDate: '2023-10-05',
@@ -26,27 +30,13 @@ const sampleBlogPosts: BlogPost[] = [
     featured: true
   },
   {
-    id: '2',
-    title: 'The Psychology Behind High-Converting Cold Emails',
-    excerpt: 'Discover the psychological principles that make recipients more likely to respond positively to your outreach.',
-    category: 'Copywriting',
-    author: {
-      name: 'Marcus Johnson',
-      avatarUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
-      title: 'CMO, GrowthWorks'
-    },
-    publishDate: '2023-09-28',
-    readingTime: '6 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
     id: '3',
     title: 'How We Find Competitor & Lookalike Insights Using Public Data',
     excerpt: "Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with or their ideal customers is pure gold.",
     category: 'Research',
     author: {
       name: 'Dmitry Pinchuk',
-      avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+      avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
       title: 'Co-founder at Veogrowth'
     },
     publishDate: '2023-09-15',
@@ -77,88 +67,18 @@ const sampleBlogPosts: BlogPost[] = [
     ]
   },
   {
-    id: '4',
-    title: 'Building an Outbound Sales Machine: From Zero to Seven Figures',
-    excerpt: 'A step-by-step playbook for constructing a sustainable outbound process that generates consistent pipeline.',
-    category: 'Sales',
-    author: {
-      name: 'Aisha Patel',
-      avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
-      title: 'Sales Director, RevOps Inc'
-    },
-    publishDate: '2023-09-12',
-    readingTime: '10 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: '5',
-    title: 'Cold Email Teardown: Analyzing a $100k/Month Campaign',
-    excerpt: 'A deep dive into a real-world cold email sequence that generated six-figure revenue for a B2B SaaS company.',
-    category: 'Copywriting',
-    author: {
-      name: 'Elena Rodriguez',
-      avatarUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
-      title: 'Growth Consultant, ScaleUp LLC'
-    },
-    publishDate: '2023-08-05',
-    readingTime: '8 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1587620962725-ead37193ca4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: '6',
-    title: 'The Future of Outbound: AI, Automation, and Personalization',
-    excerpt: 'Exploring the emerging trends and technologies that will shape the next generation of outbound sales and marketing.',
-    category: 'Tech Stack',
-    author: {
-      name: 'Rajesh Kumar',
-      avatarUrl: 'https://randomuser.me/api/portraits/men/21.jpg',
-      title: 'CEO, InnovateAI'
-    },
-    publishDate: '2023-07-18',
-    readingTime: '9 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1519389950473-47a04ca018e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: '7',
-    title: 'Account-Based Marketing for Startups: A Practical Guide',
-    excerpt: 'How early-stage companies can leverage ABM strategies to target high-value accounts and accelerate growth.',
-    category: 'List Building',
-    author: {
-      name: 'Sophie Dubois',
-      avatarUrl: 'https://randomuser.me/api/portraits/women/12.jpg',
-      title: 'Marketing Manager, SeedRocket'
-    },
-    publishDate: '2023-07-01',
-    readingTime: '7 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1505628356033-6da43bae39ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
     id: '8',
     title: 'How to Set Up a Cold Email Campaign That Actually Works',
     excerpt: "Most cold email campaigns fail before they even start. After analyzing over 1.5 million emails and generating 10,000+ positive responses in 2024, we've identified exactly what separates campaigns that generate pipeline from those that waste your budget.",
     category: 'Clay',
     author: {
       name: 'Dmitry Pinchuk',
-      avatarUrl: '/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png',
+      avatarUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE',
       title: 'Co-founder at Veogrowth'
     },
     publishDate: '2023-06-15',
     readingTime: '8 min read',
     imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: '9',
-    title: 'The Art of the Follow-Up: Nudging Prospects Without Annoying Them',
-    excerpt: 'Master the subtle techniques of following up with leads to increase conversions without being pushy or intrusive.',
-    category: 'Sales',
-    author: {
-      name: 'Carlos Ramirez',
-      avatarUrl: 'https://randomuser.me/api/portraits/men/55.jpg',
-      title: 'Sales Consultant, FollowUpPro'
-    },
-    publishDate: '2023-06-01',
-    readingTime: '6 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1542744166-e35939358f7c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -183,6 +103,8 @@ const Blog = () => {
   );
   
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
@@ -204,7 +126,7 @@ const Blog = () => {
     };
     
     injectSchema();
-    document.title = "Veogrowth - Insights and Resources for B2B Outbound Strategy";
+    document.title = "Veogrowth Blog | Cold Email Strategies & B2B Lead Generation";
     
     return () => {
       clearTimeout(timer);
@@ -216,28 +138,108 @@ const Blog = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <CanonicalUrl path="/blog" />
+      <Helmet>
+        <title>Veogrowth Blog | Cold Email Strategies & B2B Lead Generation</title>
+        <meta name="description" content="Expert insights on cold email strategies, B2B lead generation, and outbound sales development. Learn proven tactics that generate pipeline and qualified meetings." />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <Header />
       
-      <main className="container mx-auto px-4 sm:px-6 pt-32 pb-16">
-        <section className="mb-12">
-          <h1 className="text-h1 font-bold tracking-tight mb-4">
-            Insights and Resources for B2B Outbound Strategy
-          </h1>
-          <p className="text-lg text-white/70 max-w-3xl">
-            Stay up-to-date with the latest trends, tips, and techniques for generating pipeline and driving revenue through effective outbound sales and marketing strategies.
-          </p>
-        </section>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900 pt-32 pb-20">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        </div>
         
-        <section className="mb-16">
-          <h2 className="text-h2 font-semibold mb-6">Featured Article</h2>
-          <FeaturedBlogCard 
-            post={sampleBlogPosts.find(post => post.featured === true) || sampleBlogPosts[0]} 
-            isVisible={isLoaded} 
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center bg-purple-900/30 text-purple-300 rounded-full px-6 py-3 mb-8 border border-purple-500/30 backdrop-blur-sm">
+              <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+              <span className="text-sm font-medium">2,500+ cold email experts read our insights</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Master Cold Email
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                That Actually Works
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
+              Get proven strategies, real case studies, and tactical insights from 
+              <strong className="text-white"> campaigns that generated $8M+ in pipeline</strong>
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+              <div className="flex items-center text-gray-400">
+                <svg className="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Real campaigns, real results</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <svg className="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Actionable, not theoretical</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <svg className="w-5 h-5 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Updated weekly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main className="container mx-auto px-4 sm:px-6 py-20">
+        {/* Breadcrumbs */}
+        <div className="mb-8">
+          <Breadcrumbs 
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog', current: true }
+            ]}
+            className="text-gray-300"
           />
+        </div>
+
+        {/* Featured Article Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-full px-6 py-2 mb-6 border border-purple-500/30">
+              <svg className="w-5 h-5 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-sm font-medium text-purple-300">Editor's Pick</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Most Popular This Week</h2>
+            <p className="text-gray-400 text-lg">The strategies our community is implementing right now</p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <FeaturedBlogCard 
+              post={sampleBlogPosts.find(post => post.featured === true) || sampleBlogPosts[0]} 
+              isVisible={isLoaded} 
+            />
+          </div>
         </section>
         
-        <section className="mb-12">
+        {/* Category Filter */}
+        <section className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Explore by Category</h2>
+            <p className="text-gray-400">Find exactly what you need to level up your outbound game</p>
+          </div>
           <BlogCategoryFilter 
             categories={categories}
             activeCategory={selectedCategory}
@@ -245,8 +247,25 @@ const Blog = () => {
           />
         </section>
         
-        <section className="mb-16">
-          <h2 className="text-h2 font-semibold mb-6">All Articles</h2>
+        {/* All Articles Section */}
+        <section className="mb-20">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                {selectedCategory === 'all' ? 'All Insights' : `${selectedCategory} Insights`}
+              </h2>
+              <p className="text-gray-400">
+                {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''} • Updated weekly
+              </p>
+            </div>
+            
+            {filteredPosts.length > 6 && (
+              <div className="text-sm text-gray-400">
+                Showing {Math.min(currentPage * postsPerPage, totalPosts)} of {totalPosts}
+              </div>
+            )}
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {currentPosts.map((post, index) => (
               <BlogCard 
@@ -257,18 +276,62 @@ const Blog = () => {
               />
             ))}
           </div>
+          
+          {currentPosts.length === 0 && (
+            <div className="text-center py-20">
+              <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">No articles found</h3>
+              <p className="text-gray-400 mb-6">Try selecting a different category or check back soon for new content.</p>
+              <button 
+                onClick={() => setSelectedCategory('all')}
+                className="text-purple-400 hover:text-purple-300 font-medium"
+              >
+                View all articles →
+              </button>
+            </div>
+          )}
         </section>
         
+        {/* Pagination */}
         {totalPages > 1 && (
-          <BlogPagination 
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
+          <section className="mb-20">
+            <BlogPagination 
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </section>
         )}
         
-        <section className="mt-16">
+        {/* Newsletter Section */}
+        <section className="mb-16">
           <NewsletterSubscribe />
+        </section>
+        
+        {/* Call to Action */}
+        <section className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-3xl p-8 md:p-12 text-center border border-purple-500/20">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Transform Your Cold Email Results?
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              Stop guessing. Start with a strategy session and see how we can help you 
+              <strong className="text-white"> book more qualified meetings</strong> in the next 30 days.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+              >
+                Book Your Strategy Call →
+              </button>
+              <span className="text-gray-400 text-sm">Free • 30 minutes • No pitch, just value</span>
+            </div>
+          </div>
         </section>
       </main>
       

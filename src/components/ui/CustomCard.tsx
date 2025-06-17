@@ -13,7 +13,7 @@ const CustomCard = React.forwardRef<HTMLDivElement, CustomCardProps>(
     const baseClasses = 'rounded-2xl p-6 transition-all duration-300 backdrop-blur-sm';
     
     const variantClasses = {
-      default: 'bg-card border border-white/5 shadow-card hover:shadow-card-hover hover:-translate-y-1',
+      default: 'bg-card border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1',
       glass: 'glass-card',
       gradient: 'gradient-border bg-card/40 shadow-card hover:shadow-card-hover hover:-translate-y-1',
     };

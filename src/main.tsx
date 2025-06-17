@@ -1,37 +1,42 @@
 
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
 import App from './App.tsx'
 import './critical.css'
 
-// Preload important resources
+// Preload important resources (only in production)
 const preloadResources = () => {
-  const resources = [
-    { href: '/assets/index.css', as: 'style', rel: 'preload' }
-  ];
-  
-  resources.forEach(({ href, as, rel }) => {
-    const link = document.createElement('link');
-    link.rel = rel;
-    link.as = as;
-    link.href = href;
-    link.crossOrigin = 'anonymous';
-    document.head.appendChild(link);
-  });
+  if (import.meta.env.PROD) {
+    const resources = [
+      { href: '/assets/index.css', as: 'style', rel: 'preload' }
+    ];
+    
+    resources.forEach(({ href, as, rel }) => {
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.as = as;
+      link.href = href;
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+    });
+  }
 };
 
-// Load non-critical CSS after initial paint
+// Load non-critical CSS after initial paint (only in production)
 const loadNonCriticalCSS = () => {
-  const links = [
-    '/assets/index.css'
-  ];
-  
-  links.forEach(href => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-    document.head.appendChild(link);
-  });
+  if (import.meta.env.PROD) {
+    const links = [
+      '/assets/index.css'
+    ];
+    
+    links.forEach(href => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    });
+  }
 };
 
 // Optimize third-party script loading
@@ -63,7 +68,9 @@ preloadResources();
 const root = createRoot(document.getElementById("root")!);
 root.render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
   </React.StrictMode>
 );
 

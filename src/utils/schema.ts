@@ -6,20 +6,68 @@
 
 import { BlogPost } from "@/types/blog";
 
-// Organization schema for Veogrowth
+// Enhanced Organization schema for Veogrowth with knowledge graph signals
 export const generateOrganizationSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Veogrowth",
+    "alternateName": ["VeoGrowth", "Veo Growth"],
     "url": "https://veogrowth.com",
-    "logo": "https://veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
-    "description": "Discover how to create successful cold email campaigns and high-converting outbound strategies that drive B2B sales and generate pipeline.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
+      "width": 400,
+      "height": 400
+    },
+    "description": "B2B lead generation agency specializing in performance-based cold email campaigns. Pay only for qualified meetings that actually happen.",
+    "slogan": "Generate Pipeline Without Hiring More Sales Reps",
+    "foundingDate": "2023",
+    "founder": {
+      "@type": "Person",
+      "name": "Dmitry Pinchuk",
+      "jobTitle": "Founder & CEO",
+      "url": "https://veogrowth.com/about",
+      "sameAs": [
+        "https://www.linkedin.com/in/dmitrypinchuk"
+      ]
+    },
+    "knowsAbout": [
+      "Cold Email Marketing",
+      "B2B Lead Generation", 
+      "Sales Development",
+      "Email Campaign Optimization",
+      "Performance Marketing",
+      "Sales Automation",
+      "Outbound Marketing Strategy"
+    ],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Global"
+    },
+    "serviceArea": {
+      "@type": "Place", 
+      "name": "Global"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "Pay-Per-Meeting Lead Generation",
+      "description": "Performance-based B2B lead generation where clients only pay for qualified meetings with decision-makers"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "url": "https://calendly.com/veogrowth"
+    },
     "sameAs": [
       "https://twitter.com/veogrowth",
       "https://www.linkedin.com/company/veogrowth",
       "https://www.facebook.com/veogrowth"
-    ]
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    }
   };
 };
 
@@ -47,20 +95,6 @@ export const generateProfessionalServiceSchema = () => {
   };
 };
 
-// Website schema for Veogrowth
-export const generateWebsiteSchema = () => {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Veogrowth",
-    "url": "https://veogrowth.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://veogrowth.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  };
-};
 
 // Article schema for blog posts
 export const generateArticleSchema = (post: BlogPost) => {
@@ -91,12 +125,80 @@ export const generateArticleSchema = (post: BlogPost) => {
 export const generateHomePageSchema = () => {
   return [
     generateOrganizationSchema(),
+    generatePersonSchema(),
     generateWebsiteSchema(),
     generateProfessionalServiceSchema()
   ];
 };
 
 // Helper to convert schema objects to JSON string
+// Person schema for Dmitry Pinchuk (founder)
+export const generatePersonSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dmitry Pinchuk", 
+    "givenName": "Dmitry",
+    "familyName": "Pinchuk",
+    "jobTitle": "Founder & CEO of Veogrowth",
+    "description": "B2B lead generation expert and founder of Veogrowth, specializing in performance-based cold email campaigns and sales development strategies.",
+    "url": "https://veogrowth.com/about",
+    "image": "https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Veogrowth",
+      "url": "https://veogrowth.com"
+    },
+    "knowsAbout": [
+      "Cold Email Marketing",
+      "B2B Lead Generation",
+      "Sales Development", 
+      "Performance Marketing",
+      "Email Campaign Optimization",
+      "Sales Automation"
+    ],
+    "expertise": [
+      "Cold Email Strategy",
+      "B2B Sales Development",
+      "Lead Generation",
+      "Performance-Based Marketing"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/dmitrypinchuk"
+    ],
+    "nationality": "US"
+  };
+};
+
+// Enhanced WebSite schema with better search capabilities
+export const generateWebsiteSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Veogrowth - B2B Lead Generation Agency",
+    "alternateName": "Veogrowth",
+    "url": "https://veogrowth.com",
+    "description": "Performance-based B2B lead generation agency. Pay only for qualified meetings that actually happen. Cold email campaigns that generate pipeline.",
+    "inLanguage": "en-US",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://veogrowth.com/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Veogrowth"
+    },
+    "publisher": {
+      "@type": "Organization", 
+      "name": "Veogrowth"
+    }
+  };
+};
+
 export const schemaToString = (schema: any) => {
   return JSON.stringify(schema, null, 2);
 };

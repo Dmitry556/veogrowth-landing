@@ -129,132 +129,107 @@ const HeroSection: React.FC = () => {
   return (
     <section 
       ref={setRef} 
-      className="hero-section relative min-h-screen flex items-center pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden"
+      className="hero-section relative flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900"
     >
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" aria-hidden="true" />
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <canvas 
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full opacity-30"
+          style={{ pointerEvents: 'none' }}
+        />
+      </div>
       
       <div className="container mx-auto px-4 sm:px-6 z-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          <div className="hero-content max-w-2xl">
-            <h1 
-              ref={headingRef}
-              className="text-display font-extrabold leading-tight tracking-tight mb-8 max-w-xl bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent"
-              id="main-heading"
-            >
-              AI-Powered Email Outbound That Drives Revenue.
-            </h1>
-            
-            <p className="text-body-large text-white/90 leading-relaxed tracking-slight mb-6 max-w-lg">
-              Get more qualified B2B sales meetings with our smart email system, risk-free. You only pay for results. Your first two meetings are free. We help B2Bs build $600M+ in pipeline.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-5">
-              <CustomButton 
-                size="lg" 
-                className="flex items-center justify-center font-bold text-lg"
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-                aria-label="Get started"
-              >
-                Get started <ChevronRight className="ml-2" size={18} />
-              </CustomButton>
-            </div>
+        <div className="max-w-6xl mx-auto text-center">
+          
+          {/* Qualification Badge */}
+          <div className="inline-flex items-center bg-purple-900/30 text-purple-300 rounded-full px-6 py-3 mb-8 border border-purple-500/30 backdrop-blur-sm">
+            <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+            <span className="text-sm font-medium">For B2B companies doing $100K+ monthly with TAM &gt;50,000 prospects</span>
           </div>
           
-          <div className="relative mt-10 lg:mt-0">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl opacity-20 blur-sm"></div>
-            <div className="glass-card rounded-3xl p-2 bg-black/40 relative h-auto md:h-[500px] shadow-xl">
-              <div className="absolute inset-0 overflow-hidden rounded-3xl">
-                <div className="h-full w-full bg-gradient-to-br from-blue-900/20 to-purple-900/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-64 h-64 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-3xl"></div>
+          {/* Main Headline */}
+          <h1 
+            ref={headingRef}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            id="main-heading"
+          >
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              30+ Qualified Meetings
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Per Month on Autopilot
+            </span>
+          </h1>
+          
+          {/* Subheadline */}
+          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-2 max-w-3xl mx-auto font-normal">
+            We generate qualified pipeline that turns into <span className="text-gray-100">actual revenue</span><br />using AI-powered cold email campaigns.
+          </p>
+          <p className="text-sm md:text-base text-gray-300 mb-8 max-w-2xl mx-auto font-medium">
+            No retainers. No contracts. Pay only for <span className="text-white">qualified</span> meetings that show up.
+          </p>
+
+          {/* Video Section */}
+          <div className="max-w-xl mx-auto mb-8">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 border border-gray-700/50">
+                <div className="relative bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl overflow-hidden aspect-video group cursor-pointer hover:from-gray-600/50 hover:to-gray-700/50 transition-all duration-300">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <Play className="w-5 h-5 text-white ml-0.5" />
+                    </div>
+                    <h3 className="text-sm font-bold text-white mb-1">See How We Generate Pipeline</h3>
+                    <p className="text-gray-300 text-center text-xs">Watch our proven process in action • 3 min demo</p>
                   </div>
-                  <div className="relative h-full w-full p-6 md:p-8 flex flex-col items-center justify-center">
-                    {/* Dashboard visualization replacing video player */}
-                    <div className="mb-8 rounded-xl shadow-lg bg-black/50 border border-white/10 w-full max-w-[560px] aspect-video overflow-hidden">
-                      <div className="p-4 border-b border-white/10">
-                        <div className="flex items-center">
-                          <div className="flex space-x-2">
-                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                          </div>
-                          <div className="mx-auto text-center text-white/80 text-sm">Pipeline Dashboard</div>
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <div className="flex justify-between mb-6">
-                          <div className="text-white text-sm">Pipeline Growth</div>
-                          <div className="text-green-500 text-sm">+24.8%</div>
-                        </div>
-                        
-                        {/* Chart visualization */}
-                        <div className="w-full h-[140px] mb-6">
-                          <div className="relative w-full h-full">
-                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/20"></div>
-                            <div className="absolute bottom-1/3 left-0 w-full h-[1px] bg-white/10"></div>
-                            <div className="absolute bottom-2/3 left-0 w-full h-[1px] bg-white/10"></div>
-                            
-                            {/* Chart bars */}
-                            <div className="absolute bottom-0 left-[5%] w-[8px] h-[30%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[15%] w-[8px] h-[40%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[25%] w-[8px] h-[25%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[35%] w-[8px] h-[60%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[45%] w-[8px] h-[35%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[55%] w-[8px] h-[70%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[65%] w-[8px] h-[50%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[75%] w-[8px] h-[90%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            <div className="absolute bottom-0 left-[85%] w-[8px] h-[75%] bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-sm"></div>
-                            
-                            {/* Trend line */}
-                            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                              <path 
-                                d="M5,70 L15,60 L25,75 L35,40 L45,65 L55,30 L65,50 L75,10 L85,25 L95,15" 
-                                fill="none" 
-                                stroke="rgba(59, 130, 246, 0.5)" 
-                                strokeWidth="1"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                        
-                        {/* Data rows */}
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center text-sm">
-                            <div className="text-white/80">Meetings Booked</div>
-                            <div className="text-white">124</div>
-                          </div>
-                          <div className="flex justify-between items-center text-sm">
-                            <div className="text-white/80">Response Rate</div>
-                            <div className="text-white">26.8%</div>
-                          </div>
-                          <div className="flex justify-between items-center text-sm">
-                            <div className="text-white/80">Total Pipeline</div>
-                            <div className="text-white">$4.2M</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <h3 className="text-h3 font-bold mb-3 text-center">Add Pipeline, Not Headcount</h3>
-                    <p className="text-center text-white/90 text-lg mb-8">Your Smart Email Outbound Partner</p>
-                    <div className="w-full bg-black/30 rounded-lg p-5 mb-6 shadow-inner">
-                      <div className="h-3 w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-                      <div className="mt-3 h-3 w-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-                    </div>
-                    <div className="flex justify-between w-full px-4 md:px-6">
-                      <div className="text-center">
-                        <p className="text-3xl font-bold text-white">$4.2M</p>
-                        <p className="text-caption text-white/90">Pipeline</p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-3xl font-bold text-white">$600M+</p>
-                        <p className="text-caption text-white/90">Total Pipeline</p>
-                      </div>
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
             </div>
           </div>
+          
+          {/* CTA Section */}
+          <div className="flex flex-col items-center gap-6">
+            <button 
+              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              className="group relative"
+            >
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+              <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl transition-all duration-200 transform hover:-translate-y-1 flex items-center">
+                Get 2 Free Qualified Meetings
+                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </div>
+            </button>
+            
+            <div className="flex flex-col sm:flex-row items-center gap-6 text-gray-400">
+              <div className="flex items-center">
+                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>No contracts</span>
+              </div>
+              <div className="flex items-center">
+                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Zero risk</span>
+              </div>
+              <div className="flex items-center">
+                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span>Setup in 48 hours</span>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>

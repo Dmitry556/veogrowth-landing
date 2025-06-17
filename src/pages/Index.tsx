@@ -2,15 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import HeroSection from '@/components/sections/HeroSection';
 import LogoSlider from '@/components/sections/LogoSlider';
-import ProblemSection from '@/components/sections/ProblemSection';
+import StorySection from '@/components/sections/StorySection';
 import SolutionSection from '@/components/sections/SolutionSection';
+import EmailExamplesSlider from '@/components/sections/EmailExamplesSlider';
 import ResultsSection from '@/components/sections/ResultsSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
-import DashboardSection from '@/components/sections/DashboardSection';
 import FaqSection from '@/components/sections/FaqSection';
+import QualificationSection from '@/components/sections/QualificationSection';
+import SimpleFinalCta from '@/components/sections/SimpleFinalCta';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
 // More efficient section loader
@@ -106,21 +109,41 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <CanonicalUrl path="/" />
       <Header />
       
       <main>
         <HeroSection />
         
-        {/* Logo Slider - Added between HeroSection and ProblemSection */}
+        {/* Logo Slider */}
         <LogoSlider />
         
-        <LazySection component={ProblemSection} id="problems" />
-        <LazySection component={SolutionSection} id="solutions" />
-        <LazySection component={ResultsSection} id="results" />
-        <LazySection component={ProcessSection} id="process" />
-        <LazySection component={PricingSection} id="pricing" />
-        <LazySection component={DashboardSection} id="dashboard" />
-        <LazySection component={FaqSection} id="faq" />
+        {/* The Story Section */}
+        <StorySection />
+        
+        {/* The Three-Layer Innovation Section */}
+        <SolutionSection />
+        
+        {/* Email Examples Section */}
+        <EmailExamplesSlider />
+        
+        {/* How It Actually Works Section */}
+        <ProcessSection />
+        
+        {/* Proof Section */}
+        <ResultsSection />
+        
+        {/* Who This Is For Section */}
+        <QualificationSection />
+        
+        {/* Investment Section */}
+        <PricingSection />
+        
+        {/* FAQ Section */}
+        <FaqSection />
+        
+        {/* Final CTA Section */}
+        <SimpleFinalCta />
       </main>
       
       <Footer />
