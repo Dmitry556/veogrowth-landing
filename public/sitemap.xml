@@ -8,58 +8,58 @@
     <priority>1.0</priority>
   </url>
   
-  <!-- Blog Main Page -->
-  <url>
-    <loc>https://www.veogrowth.com/blog</loc>
-    <lastmod>2024-07-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Individual Blog Posts (SEO-friendly URLs) -->
-  <url>
-    <loc>https://www.veogrowth.com/blog/poke-the-bear-questions-that-get-replies</loc>
-    <lastmod>2024-12-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.veogrowth.com/blog/competitor-lookalike-insights-using-public-data</loc>
-    <lastmod>2024-12-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.veogrowth.com/blog/cold-email-campaign-that-actually-works</loc>
-    <lastmod>2024-12-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Case Studies -->
+  <!-- Case Studies (High Priority for Brand Searches) -->
   <url>
     <loc>https://www.veogrowth.com/case-studies</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.veogrowth.com/case-studies/api-monitoring-platform-56-meetings</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog Content (Lower Priority) -->
+  <url>
+    <loc>https://www.veogrowth.com/blog</loc>
+    <lastmod>2024-07-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Individual Blog Posts -->
+  <url>
+    <loc>https://www.veogrowth.com/blog/poke-the-bear-questions-that-get-replies</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.veogrowth.com/blog/competitor-lookalike-insights-using-public-data</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.veogrowth.com/blog/cold-email-campaign-that-actually-works</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <!-- About Page -->

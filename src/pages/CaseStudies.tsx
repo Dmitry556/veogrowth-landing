@@ -9,7 +9,7 @@ import { ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
 
 const CaseStudies = () => {
   useEffect(() => {
-    document.title = "Veogrowth Case Studies | B2B Lead Generation Success Stories";
+    document.title = "VeoGrowth Case Studies | $8M+ Pipeline Generated";
     window.scrollTo(0, 0);
   }, []);
 
@@ -77,7 +77,7 @@ const CaseStudies = () => {
       <CanonicalUrl path="/case-studies" />
       <Helmet>
         <title>Veogrowth Case Studies | B2B Lead Generation Success Stories</title>
-        <meta name="description" content="See real results from our cold email campaigns. Case studies showing how we've generated millions in pipeline and thousands of qualified meetings for B2B companies." />
+        <meta name="description" content="VeoGrowth client success stories: $8M+ pipeline generated, 10,000+ meetings booked. Real case studies from B2B SaaS companies." />
         <meta name="robots" content="index, follow" />
       </Helmet>
       
