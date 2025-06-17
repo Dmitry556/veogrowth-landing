@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://veogrowth.com/</loc>
+    <loc>https://www.veogrowth.com/</loc>
     <lastmod>2024-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -10,7 +10,7 @@
   
   <!-- Blog Main Page -->
   <url>
-    <loc>https://veogrowth.com/blog</loc>
+    <loc>https://www.veogrowth.com/blog</loc>
     <lastmod>2024-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -18,19 +18,19 @@
   
   <!-- Individual Blog Posts (SEO-friendly URLs) -->
   <url>
-    <loc>https://veogrowth.com/blog/poke-the-bear-questions-that-get-replies</loc>
+    <loc>https://www.veogrowth.com/blog/poke-the-bear-questions-that-get-replies</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/blog/competitor-lookalike-insights-using-public-data</loc>
+    <loc>https://www.veogrowth.com/blog/competitor-lookalike-insights-using-public-data</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/blog/cold-email-campaign-that-actually-works</loc>
+    <loc>https://www.veogrowth.com/blog/cold-email-campaign-that-actually-works</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,25 +38,25 @@
   
   <!-- Case Studies -->
   <url>
-    <loc>https://veogrowth.com/case-studies</loc>
+    <loc>https://www.veogrowth.com/case-studies</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients</loc>
+    <loc>https://www.veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings</loc>
+    <loc>https://www.veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://veogrowth.com/case-studies/api-monitoring-platform-56-meetings</loc>
+    <loc>https://www.veogrowth.com/case-studies/api-monitoring-platform-56-meetings</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -64,7 +64,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://veogrowth.com/about</loc>
+    <loc>https://www.veogrowth.com/about</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -72,7 +72,7 @@
   
   <!-- Tech Stack -->
   <url>
-    <loc>https://veogrowth.com/tech-stack</loc>
+    <loc>https://www.veogrowth.com/tech-stack</loc>
     <lastmod>2024-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

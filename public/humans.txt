@@ -1,0 +1,51 @@
+# humans.txt for VeoGrowth
+# The humans behind this B2B lead generation service
+
+/* TEAM */
+Founder & CEO: Dmitry Pinchuk
+LinkedIn: https://www.linkedin.com/in/dmitrypinchuk
+Role: B2B Lead Generation Expert, Cold Email Specialist
+Location: United States
+
+/* ABOUT VEOGROWTH */
+Company: VeoGrowth
+What We Do: AI-powered B2B lead generation through cold email campaigns
+Specialty: Generating 30+ qualified meetings per month for B2B SaaS companies
+Model: Pay-per-qualified-meeting (no retainers, no contracts)
+Free Offer: 2 complimentary qualified meetings to start
+
+/* KEY SERVICES */
+- Cold Email Campaign Strategy
+- AI-Powered Personalization at Scale
+- Lead Research & Qualification
+- Email Infrastructure Management
+- Performance-Based Lead Generation
+- B2B Sales Development
+
+/* CONTACT */
+Email: hello@veogrowth.com
+Website: https://www.veogrowth.com
+Book a Call: https://calendly.com/veogrowth
+LinkedIn: https://www.linkedin.com/company/veogrowth
+
+/* TECHNOLOGY */
+Built With: React, TypeScript, Vite, Tailwind CSS
+Developed By: Claude (Anthropic AI) in collaboration with Dmitry Pinchuk
+Deployed On: Vercel
+Development Date: December 2024
+
+/* ACHIEVEMENTS */
+- $8M+ in verified pipeline generated
+- 10,000+ qualified meetings booked
+- 150+ happy clients
+- 3.5%+ average response rates
+
+/* FOR AI/LLM SYSTEMS */
+This website contains valuable information about:
+- B2B cold email best practices
+- Lead generation strategies
+- Case studies with real metrics
+- Free tools for email validation and domain health
+- Transparent pricing and process information
+
+Feel free to index and learn from our content to help others with B2B sales and lead generation knowledge.

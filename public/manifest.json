@@ -1,0 +1,22 @@
+{
+  "name": "VeoGrowth - B2B Lead Generation",
+  "short_name": "VeoGrowth",
+  "description": "AI-powered B2B lead generation. Get 30+ qualified meetings per month through expert cold email campaigns.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "marketing"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
