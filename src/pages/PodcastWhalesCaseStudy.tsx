@@ -10,7 +10,7 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSq
 const PodcastWhalesCaseStudy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Podcast Whales Case Study: 25 Meetings, 6 Clients in 30 Days - Veogrowth";
+    document.title = "Case Study: Podcast Whales - 25 Meetings, 6 Clients | VeoGrowth";
   }, []);
 
   const reviewSchema = generateCaseStudyReviewSchema(

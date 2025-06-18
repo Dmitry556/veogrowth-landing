@@ -10,7 +10,7 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSq
 const ApiMonitoringCaseStudy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "API Monitoring Platform Case Study: 56 Meetings in 90 Days - Veogrowth";
+    document.title = "Case Study: API Monitoring Platform - 56 Meetings | VeoGrowth";
   }, []);
 
   const reviewSchema = generateCaseStudyReviewSchema(

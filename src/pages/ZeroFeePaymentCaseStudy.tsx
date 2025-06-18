@@ -10,7 +10,7 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSq
 const ZeroFeePaymentCaseStudy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Zero-Fee Payment Processor Case Study: 52 Meetings - Veogrowth";
+    document.title = "Case Study: Zero-Fee Payment Processor - 52 Meetings | VeoGrowth";
   }, []);
 
   const reviewSchema = generateCaseStudyReviewSchema(
