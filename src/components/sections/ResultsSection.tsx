@@ -51,7 +51,7 @@ const ResultsSection: React.FC = () => {
                 </p>
                 <div>
                   <p className="text-lg font-bold text-gray-900">David Hughes</p>
-                  <p className="text-gray-600">Founder & CEO, Podcast Whales</p>
+                  <p className="text-gray-600">Founder & CEO, <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 underline">Podcast Whales</a></p>
                 </div>
               </div>
             </div>

@@ -39,7 +39,7 @@ const ProofSection: React.FC = () => {
               <div>
                 <div className="text-center lg:text-left">
                   <p className="text-lg text-gray-600 mb-4">David Hughes</p>
-                  <p className="text-sm text-gray-500 mb-8">Founder & CEO, Podcast Whales</p>
+                  <p className="text-sm text-gray-500 mb-8">Founder & CEO, <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 underline">Podcast Whales</a></p>
                   
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-blue-50 rounded-xl p-6 text-center">

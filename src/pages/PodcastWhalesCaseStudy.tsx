@@ -58,7 +58,9 @@ const PodcastWhalesCaseStudy = () => {
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Podcast Whales:
+                  <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80">
+                    Podcast Whales
+                  </a>:
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
@@ -117,7 +119,11 @@ const PodcastWhalesCaseStudy = () => {
                 <div>
                   <div className="mb-4">
                     <span className="text-purple-400 font-medium">Company:</span>
-                    <p className="text-white">Podcast Whales - B2B Podcast Production Agency</p>
+                    <p className="text-white">
+                      <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">
+                        Podcast Whales
+                      </a> - B2B Podcast Production Agency
+                    </p>
                   </div>
                   <div className="mb-4">
                     <span className="text-purple-400 font-medium">Service:</span>
@@ -160,7 +166,7 @@ const PodcastWhalesCaseStudy = () => {
 
           {/* Our Three-Layer Approach */}
           <section className="mb-16">
-            <h2 className="text-2xl font-bold mb-8">Our Three-Layer Approach for Podcast Whales</h2>
+            <h2 className="text-2xl font-bold mb-8">Our Three-Layer Approach for <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">Podcast Whales</a></h2>
             
             {/* Layer 1 */}
             <div className="mb-12">
@@ -361,7 +367,7 @@ const PodcastWhalesCaseStudy = () => {
             </div>
             
             <div className="mt-8 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
-              <h3 className="text-xl font-bold mb-4">David Hughes, Founder of Podcast Whales</h3>
+              <h3 className="text-xl font-bold mb-4">David Hughes, Founder of <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">Podcast Whales</a></h3>
               <blockquote className="text-gray-300 italic text-lg leading-relaxed">
                 "Over the last 30 days, we hopped on 25 meetings and closed six high-ticket clients. The emails weren't pitching podcasts - they were pitching specific show concepts that made perfect sense for each prospect. One CEO said it was the best cold email he'd ever received."
               </blockquote>
@@ -418,7 +424,7 @@ const PodcastWhalesCaseStudy = () => {
             
             <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
               <p className="text-lg text-gray-300 mb-6">
-                For creative services like Podcast Whales, the inference engine doesn't just identify problems - it proposes solutions so specific and compelling that prospects can't help but respond.
+                For creative services like <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">Podcast Whales</a>, the inference engine doesn't just identify problems - it proposes solutions so specific and compelling that prospects can't help but respond.
               </p>
               
               <div className="grid md:grid-cols-2 gap-8 text-center">

@@ -169,7 +169,16 @@ const CaseStudies = () => {
                       {study.industry}
                     </span>
                     <h3 className="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
-                      {study.title}
+                      {study.id === 'podcast-whales-25-meetings-6-clients' ? (
+                        <>
+                          <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-300">
+                            Podcast Whales
+                          </a>
+                          : 25 Meetings, 6 Clients in 30 Days
+                        </>
+                      ) : (
+                        study.title
+                      )}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed mb-4">
                       {study.preview}
