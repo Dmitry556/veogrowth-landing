@@ -203,7 +203,18 @@ const Header: React.FC = () => {
                           to={`/case-studies/${study.id}`}
                           className="block px-4 py-3 hover:bg-gray-50 transition-colors"
                         >
-                          <p className="text-sm font-medium text-gray-900 line-clamp-2">{study.title}</p>
+                          <p className="text-sm font-medium text-gray-900 line-clamp-2">
+                            {study.id === 'podcast-whales-25-meetings-6-clients' ? (
+                              <>
+                                <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 underline">
+                                  Podcast Whales
+                                </a>
+                                : 25 Meetings, 6 Clients in 30 Days
+                              </>
+                            ) : (
+                              study.title
+                            )}
+                          </p>
                           <p className="text-xs text-purple-600 mt-1">{study.industry}</p>
                         </Link>
                       ))}
