@@ -1,5 +1,5 @@
 /**
- * Generate review schema for case studies
+ * Generate case study schema without problematic reviews
  */
 export const generateCaseStudyReviewSchema = (
   title: string,
@@ -9,32 +9,34 @@ export const generateCaseStudyReviewSchema = (
 ) => {
   return {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": title,
+    "@type": "Article",
+    "@id": `https://www.veogrowth.com/case-studies/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    "headline": title,
     "description": description,
-    "provider": {
-      "@type": "Organization", 
-      "name": "Veogrowth",
-      "url": "https://veogrowth.com"
+    "author": {
+      "@type": "Organization",
+      "name": "VeoGrowth",
+      "url": "https://www.veogrowth.com"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": rating,
-      "bestRating": 5,
-      "ratingCount": reviewCount
+    "publisher": {
+      "@type": "Organization",
+      "name": "VeoGrowth",
+      "url": "https://www.veogrowth.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png"
+      }
     },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": rating,
-        "bestRating": 5
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Verified Client"
-      },
-      "reviewBody": description
+    "datePublished": "2024-12-17",
+    "dateModified": "2024-12-17",
+    "articleSection": "Case Studies",
+    "about": {
+      "@type": "Service",
+      "name": "B2B Lead Generation",
+      "provider": {
+        "@type": "Organization",
+        "name": "VeoGrowth"
+      }
     }
   };
 };
