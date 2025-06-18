@@ -77,4 +77,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  <!-- Resources -->
+  <url>
+    <loc>https://www.veogrowth.com/resources/true-cost-of-sdr</loc>
+    <lastmod>2025-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Tools -->
+  <url>
+    <loc>https://www.veogrowth.com/tools/microsoft-filter</loc>
+    <lastmod>2024-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

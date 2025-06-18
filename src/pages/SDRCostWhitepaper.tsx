@@ -11,6 +11,8 @@ import CostPieChart from '../components/whitepaper/CostPieChart';
 import ComparisonTable from '../components/whitepaper/ComparisonTable';
 import DecisionFlowDiagram from '../components/whitepaper/DecisionFlowDiagram';
 import RelatedContent from '../components/whitepaper/RelatedContent';
+import CanonicalUrl from '@/components/seo/CanonicalUrl';
+import { Helmet } from 'react-helmet-async';
 
 // Schema markup component
 const SchemaMarkup = () => {
@@ -106,6 +108,12 @@ const SDRCostWhitepaper = () => {
 
   return (
     <>
+      <CanonicalUrl path="/resources/true-cost-of-sdr" />
+      <Helmet>
+        <title>The True Cost of an SDR: What Sales Leaders Actually Pay in 2025 | VeoGrowth</title>
+        <meta name="description" content="Most companies dramatically underestimate what their SDR program actually costs. The fully-loaded cost of an in-house SDR ranges from $110,000 to nearly $200,000 annually." />
+        <meta name="robots" content="index, follow" />
+      </Helmet>
       <SchemaMarkup />
       <Header />
       
