@@ -13,10 +13,10 @@ export const generateOrganizationSchema = () => {
     "@type": "Organization",
     "name": "Veogrowth",
     "alternateName": ["VeoGrowth", "Veo Growth"],
-    "url": "https://veogrowth.com",
+    "url": "https://www.veogrowth.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
+      "url": "https://www.veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
       "width": 400,
       "height": 400
     },
@@ -27,7 +27,7 @@ export const generateOrganizationSchema = () => {
       "@type": "Person",
       "name": "Dmitry Pinchuk",
       "jobTitle": "Founder & CEO",
-      "url": "https://veogrowth.com/about",
+      "url": "https://www.veogrowth.com/about",
       "sameAs": [
         "https://www.linkedin.com/in/dmitrypinchuk"
       ]
@@ -113,7 +113,7 @@ export const generateArticleSchema = (post: BlogPost) => {
       "name": "Veogrowth",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png"
+        "url": "https://www.veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png"
       }
     },
     "datePublished": post.publishDate,
@@ -142,12 +142,12 @@ export const generatePersonSchema = () => {
     "familyName": "Pinchuk",
     "jobTitle": "Founder & CEO of Veogrowth",
     "description": "B2B lead generation expert and founder of Veogrowth, specializing in performance-based cold email campaigns and sales development strategies.",
-    "url": "https://veogrowth.com/about",
+    "url": "https://www.veogrowth.com/about",
     "image": "https://media.licdn.com/dms/image/v2/D4D03AQFM7wSeqcLPyw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1721634299261?e=2147483647&v=beta&t=77NLh-cQo2Bpvuu_b5sm5Pf5RUOuR072wC-r4foWyUE",
     "worksFor": {
       "@type": "Organization",
       "name": "Veogrowth",
-      "url": "https://veogrowth.com"
+      "url": "https://www.veogrowth.com"
     },
     "knowsAbout": [
       "Cold Email Marketing",
@@ -177,14 +177,14 @@ export const generateWebsiteSchema = () => {
     "@type": "WebSite",
     "name": "Veogrowth - B2B Lead Generation Agency",
     "alternateName": "Veogrowth",
-    "url": "https://veogrowth.com",
+    "url": "https://www.veogrowth.com",
     "description": "Performance-based B2B lead generation agency. Pay only for qualified meetings that actually happen. Cold email campaigns that generate pipeline.",
     "inLanguage": "en-US",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://veogrowth.com/search?q={search_term_string}"
+        "urlTemplate": "https://www.veogrowth.com/search?q={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     },

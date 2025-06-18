@@ -5,6 +5,17 @@
   "framework": null,
   "redirects": [
     {
+      "source": "/(.*)",
+      "destination": "https://www.veogrowth.com/$1",
+      "statusCode": 301,
+      "has": [
+        {
+          "type": "host",
+          "value": "veogrowth.com"
+        }
+      ]
+    },
+    {
       "source": "/privacy",
       "destination": "/privacy-policy",
       "statusCode": 301

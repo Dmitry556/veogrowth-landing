@@ -6,7 +6,7 @@ interface CanonicalUrlProps {
 }
 
 const CanonicalUrl: React.FC<CanonicalUrlProps> = ({ path }) => {
-  const baseUrl = 'https://veogrowth.com';
+  const baseUrl = 'https://www.veogrowth.com';
   const canonicalUrl = `${baseUrl}${path}`;
 
   return (
