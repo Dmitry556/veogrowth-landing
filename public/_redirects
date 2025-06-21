@@ -7,5 +7,19 @@
 /blog/poke-the-bear* / 301
 /blog/outbound-strategy* / 301
 
-# Catch-all for SPA
+# Static pages (these should return their own HTML files after prerendering)
+/case-studies /case-studies/index.html 200
+/case-studies/podcast-whales-25-meetings-6-clients /case-studies/podcast-whales-25-meetings-6-clients/index.html 200
+/case-studies/zero-fee-payment-processor-52-meetings /case-studies/zero-fee-payment-processor-52-meetings/index.html 200
+/case-studies/api-monitoring-platform-56-meetings /case-studies/api-monitoring-platform-56-meetings/index.html 200
+/blog /blog/index.html 200
+/blog/poke-the-bear-questions-that-get-replies /blog/poke-the-bear-questions-that-get-replies/index.html 200
+/blog/competitor-lookalike-insights-using-public-data /blog/competitor-lookalike-insights-using-public-data/index.html 200
+/blog/cold-email-campaign-that-actually-works /blog/cold-email-campaign-that-actually-works/index.html 200
+/about /about/index.html 200
+/tech-stack /tech-stack/index.html 200
+/resources/true-cost-of-sdr /resources/true-cost-of-sdr/index.html 200
+/tools/microsoft-filter /tools/microsoft-filter/index.html 200
+
+# Catch-all for SPA (only for unmatched routes)
 /* /index.html 200

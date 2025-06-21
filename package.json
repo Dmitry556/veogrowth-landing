@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vite build",
+    "build:prerender": "vite build && npm run prerender && npm run seo-optimize",
+    "prerender": "node scripts/prerender.js",
+    "seo-optimize": "node scripts/seo-optimizer.js",
     "start": "vite preview",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -50,6 +53,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^12.5.0",
+    "googleapis": "^150.0.1",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next": "^15.3.3",
@@ -90,6 +94,7 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",
-    "vite-plugin-prerender": "^1.0.8"
+    "vite-plugin-prerender": "^1.0.8",
+    "vite-plugin-static-copy": "^3.0.2"
   }
 }
