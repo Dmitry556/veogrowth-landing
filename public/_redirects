@@ -1,4 +1,7 @@
 
+# Free trial redirect to Calendly
+/free-trial https://calendly.com/veogrowth 301
+
 # Redirect old blog URLs that contain outdated "poke the bear" content
 /blog/1 / 301
 /blog/poke-the-bear* / 301
