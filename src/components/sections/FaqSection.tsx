@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import CustomButton from '../ui/CustomButton';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
@@ -55,30 +54,8 @@ const FaqSection: React.FC = () => {
     }
   ];
 
-  // Generate FAQ schema markup for rich snippets
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer.join(' ').replace(/<[^>]*>/g, ''), // Remove HTML tags for schema
-        "inLanguage": "en-US"
-      }
-    })),
-    "inLanguage": "en-US",
-    "url": "https://www.veogrowth.com/#faq"
-  };
-
   return (
     <section id="faq" className="py-20 md:py-24 bg-gray-900">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
       
       <div className="container mx-auto px-8 sm:px-12">
         <div className="text-center max-w-4xl mx-auto mb-20">
