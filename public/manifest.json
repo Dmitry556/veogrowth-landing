@@ -9,13 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.ico?v=2025-06",
-      "sizes": "32x32",
-      "type": "image/x-icon"
+      "src": "/favicon.svg?v=2025-06-23",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
-      "src": "/favicon.ico?v=2025-06",
-      "sizes": "16x16",
+      "src": "/favicon.ico?v=2025-06-23",
+      "sizes": "32x32",
       "type": "image/x-icon"
     }
   ],
