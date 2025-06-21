@@ -25,7 +25,7 @@ const CaseStudies = () => {
       },
       challenge: 'Needed consistent pipeline of executives interested in starting podcasts',
       preview: 'Creative, personalized pitches that proposed specific podcast concepts for each prospect, not generic service pitches.',
-      imageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       tags: ['Creative Services', 'Podcast Production', 'Custom Concepts']
     },
     {
@@ -39,7 +39,7 @@ const CaseStudies = () => {
       },
       challenge: 'Stuck at 10 demos/month from inbound, needed predictable pipeline to scale past $7M ARR',
       preview: 'Using our three-layer intelligence approach, we identified companies with active training challenges and generated 42 meetings in just 30 days.',
-      imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       tags: ['Employee Training', 'AI Intelligence', 'Custom Data']
     },
     {
@@ -53,7 +53,7 @@ const CaseStudies = () => {
       },
       challenge: 'Standing out in the most commoditized industry with 500,000+ SMB retailers and restaurants as TAM',
       preview: 'Massive TAM qualification at scale using clear differentiation (zero monthly fees) and simple math that resonates with small business owners.',
-      imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       tags: ['Payment Processing', 'SMB', 'Scale Approach']
     },
     {
@@ -67,7 +67,7 @@ const CaseStudies = () => {
       },
       challenge: 'Developers hate sales emails and ignore vendor outreach - reaching 300,000+ companies with production APIs',
       preview: 'Technical credibility and developer empathy helped reach engineering teams at scale with characteristic-based qualification and architecture-specific messaging.',
-      imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       tags: ['Developer Tools', 'API Monitoring', 'Technical Credibility']
     }
   ];

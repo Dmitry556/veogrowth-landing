@@ -28,7 +28,7 @@ const CaseStudyDetail = () => {
         proposalStage: '6',
         closed: '6'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+      imageUrl: ''
     },
     'employee-training-platform-42-meetings': {
       title: 'Employee Training Platform: 42 Meetings in 30 Days',
@@ -44,7 +44,7 @@ const CaseStudyDetail = () => {
         proposalStage: '8',
         closed: '3'
       },
-      imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80'
+      imageUrl: ''
     }
   }[id as string];
 

@@ -40,7 +40,7 @@ const BlogPostPage = () => {
       },
       publishDate: new Date().toISOString().split('T')[0],
       readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       content: `
       <h2 id="what-are-poke-the-bear-questions">What Are Poke-the-Bear Questions?</h2>
       <p>Poke-the-Bear questions target your prospect's hidden pain points—problems they might not even realize they have. Unlike leading questions that feel manipulative, these questions get prospects to think differently about their current situation.</p>
@@ -189,7 +189,7 @@ const BlogPostPage = () => {
       },
       publishDate: '2023-09-11',
       readingTime: '5 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       content: `
       <p>Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with, or who their ideal customers actually look like, is pure gold. Guessing isn't reliable, but we found that using publicly available data, often with a bit of smart automation, helps us get much closer to understanding a prospect's world.</p>
       
@@ -226,7 +226,7 @@ const BlogPostPage = () => {
       },
       publishDate: new Date().toISOString().split('T')[0],
       readingTime: '8 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '',
       content: `
       <h2 id="the-three-questions-every-cold-email-campaign-must-answer">The Three Questions Every Cold Email Campaign Must Answer</h2>
       <p>Before launching any campaign, you need clear answers to these fundamental questions:</p>

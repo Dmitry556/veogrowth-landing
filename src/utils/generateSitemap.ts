@@ -20,7 +20,7 @@ const getBlogPosts = (): BlogPost[] => {
         title: 'Co-founder at Veogrowth'
       },
       readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      imageUrl: '/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
       featured: true
     },
     {
@@ -35,7 +35,7 @@ const getBlogPosts = (): BlogPost[] => {
         title: 'Co-founder at Veogrowth'
       },
       readingTime: '8 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '3',
@@ -49,7 +49,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-09-11',
       readingTime: '5 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '2',
@@ -63,7 +63,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-09-28',
       readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1553877522-43269d4ea984?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '3',
@@ -77,7 +77,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-09-12',
       readingTime: '10 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1560472355-109703aa3edc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '4',
@@ -91,7 +91,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-08-22',
       readingTime: '7 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '5',
@@ -105,7 +105,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-08-05',
       readingTime: '9 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '6',
@@ -119,7 +119,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-07-19',
       readingTime: '5 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1589829545856-d10d557cf95f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     },
     {
       id: '7',
@@ -133,7 +133,7 @@ const getBlogPosts = (): BlogPost[] => {
       },
       publishDate: '2023-07-03',
       readingTime: '6 min read',
-      imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+      imageUrl: '/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
     }
   ];
 };
