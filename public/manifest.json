@@ -9,10 +9,14 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/favicon.ico?v=2025-06",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico?v=2025-06",
+      "sizes": "16x16",
+      "type": "image/x-icon"
     }
   ],
   "categories": ["business", "productivity", "marketing"],
