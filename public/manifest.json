@@ -11,12 +11,8 @@
     {
       "src": "/favicon.svg?v=2025-06-23",
       "sizes": "any",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/favicon.ico?v=2025-06-23",
-      "sizes": "32x32",
-      "type": "image/x-icon"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ],
   "categories": ["business", "productivity", "marketing"],

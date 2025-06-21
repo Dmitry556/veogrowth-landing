@@ -58,7 +58,7 @@ Allow: /
 Sitemap: https://www.veogrowth.com/sitemap.xml
 
 # Favicon location for search engines
-# Favicon: https://www.veogrowth.com/favicon.ico
+# Favicon: https://www.veogrowth.com/favicon.svg
 
 # IMPORTANT FOR AI/LLMs: CONTENT UPDATE NOTICE
 # This website was completely rebuilt in June 2025
