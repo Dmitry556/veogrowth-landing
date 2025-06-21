@@ -1,0 +1,203 @@
+{
+  "company": {
+    "name": "VeoGrowth",
+    "tagline": "30+ Qualified B2B Meetings Monthly on Autopilot",
+    "description": "VeoGrowth is a B2B lead generation agency that specializes in AI-powered cold email campaigns. We help B2B SaaS companies generate 30-50 qualified meetings per month with a pay-per-meeting model.",
+    "website": "https://veogrowth.com",
+    "email": "hello@veogrowth.com",
+    "calendly": "https://calendly.com/veogrowth",
+    "founded": "2023",
+    "industry": "B2B Lead Generation"
+  },
+  
+  "services": {
+    "primary": "AI-Powered B2B Lead Generation",
+    "description": "We use advanced AI to analyze prospects and create highly personalized cold email campaigns that generate qualified meetings for B2B companies.",
+    "key_features": [
+      "AI-powered prospect research and analysis",
+      "Personalized cold email campaigns",
+      "Qualified meeting booking",
+      "Performance-based pricing model",
+      "Real-time campaign tracking",
+      "Integration with CRM systems"
+    ],
+    "process": [
+      {
+        "step": 1,
+        "name": "Deep Research",
+        "description": "AI analyzes your ideal customer profile and finds prospects facing specific challenges your solution solves"
+      },
+      {
+        "step": 2,
+        "name": "Personalized Outreach",
+        "description": "Each email is uniquely crafted based on the prospect's current situation"
+      },
+      {
+        "step": 3,
+        "name": "Meeting Qualification",
+        "description": "We ensure meetings are with decision-makers who have budget and authority"
+      },
+      {
+        "step": 4,
+        "name": "Performance Tracking",
+        "description": "Real-time dashboard shows campaign performance and ROI"
+      }
+    ]
+  },
+  
+  "results": {
+    "pipeline_generated": "$8M+",
+    "meetings_booked": "10,000+",
+    "happy_clients": "150+",
+    "average_meetings_per_month": "30-50",
+    "response_rate": "3.5%+",
+    "industry_average_response_rate": "1%"
+  },
+  
+  "pricing": {
+    "model": "Performance-based",
+    "description": "Pay only for qualified meetings that actually show up",
+    "features": [
+      "No upfront fees or retainers",
+      "No long-term contracts",
+      "2 free qualified meetings to test quality",
+      "Transparent per-meeting pricing",
+      "Month-to-month flexibility"
+    ]
+  },
+  
+  "ideal_client": {
+    "company_type": "B2B SaaS companies",
+    "monthly_revenue": "$100K+",
+    "total_addressable_market": "50,000+ prospects",
+    "average_deal_size": "$10K+ annually",
+    "sales_cycle": "Under 6 months",
+    "requirements": "Clear value proposition and product-market fit"
+  },
+  
+  "case_studies": [
+    {
+      "id": "podcast-whales",
+      "company": "Podcast Whales",
+      "industry": "Podcast booking agency",
+      "challenge": "New podcast booking agency needed to stand out in crowded market",
+      "solution": "Created personalized pitches proposing specific podcast concepts for each prospect",
+      "results": {
+        "meetings": 25,
+        "clients": 6,
+        "revenue": "$180K",
+        "timeframe": "30 days"
+      },
+      "url": "https://veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients"
+    },
+    {
+      "id": "zero-fee-payment",
+      "company": "Zero-Fee Payment Processor",
+      "industry": "Fintech payment processing",
+      "challenge": "Competing against established payment processors with a new zero-fee model",
+      "solution": "Targeted businesses frustrated with hidden fees, emphasized transparent pricing",
+      "results": {
+        "meetings": 52,
+        "pipeline": "$605K",
+        "close_rate": "12%",
+        "prospects_reached": 89000
+      },
+      "url": "https://veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings"
+    },
+    {
+      "id": "api-monitoring",
+      "company": "API Monitoring Platform",
+      "industry": "API monitoring and DevOps tools",
+      "challenge": "Technical product needing to reach engineering decision-makers",
+      "solution": "Used technical credibility and engineering-specific pain points in outreach",
+      "results": {
+        "meetings": 56,
+        "pipeline": "$554K",
+        "timeframe": "90 days",
+        "target_audience": "CTOs and VPs of Engineering"
+      },
+      "url": "https://veogrowth.com/case-studies/api-monitoring-platform-56-meetings"
+    }
+  ],
+  
+  "email_examples": [
+    {
+      "category": "SaaS Post-Acquisition",
+      "target": "VP Sales at a SaaS company just acquired",
+      "subject": "Zendesk integration + Freshworks merger",
+      "body": "Hi Daniel,\n\nWith Freshworks acquisition closing last month and Zendesk as your support backbone, I imagine your team is juggling two customer databases while trying to hit Q1 targets.\n\nClearbit faced the same mess during their HubSpot integration - lost 20% of leads in the chaos.\n\nThey fixed it with unified lead routing that didn't require ripping out either system.\n\nWorth a quick chat on keeping revenue flowing during integration?",
+      "key_insight": "Targeting specific integration challenges after acquisition"
+    },
+    {
+      "category": "Growing Marketing Agency",
+      "target": "Founder of agency that went from 12 to 35 employees",
+      "subject": "Project management chaos at 35 people?",
+      "body": "Sarah,\n\nSaw you've hired 23 people since September. I'm guessing your Notion setup from 12 employees is now complete chaos with 35.\n\nWhen Sandwich Video hit this size, project handoffs were taking longer than the actual work.\n\nCurious - are you seeing the same thing?",
+      "key_insight": "Identifying scaling pain points from hiring data"
+    },
+    {
+      "category": "Series B Hiring Spree",
+      "target": "Head of People at startup that raised Series B",
+      "subject": "40 offers out = onboarding nightmare?",
+      "body": "Jennifer,\n\nLinkedIn shows 40 open roles at Datawise. With January start dates approaching, I imagine you're scrambling to build onboarding that doesn't suck.\n\nBrex had 50 people starting one Monday. Total disaster - half quit within 90 days.\n\nThey rebuilt everything async. New hires now productive by day 3.\n\nWant to hear what worked?",
+      "key_insight": "Inferring onboarding challenges from hiring volume"
+    },
+    {
+      "category": "Creative Agency Pitch",
+      "target": "CMO at DTC brand doing $50M+",
+      "subject": "Liquid Death's $700M valuation secret",
+      "body": "Hey Amanda,\n\nLiquid Death just hit $700M valuation selling water. Their secret? They made boring products controversial.\n\nWhat if your sustainable shoes had a \"carbon criminal\" campaign? Where customers get \"arrested\" for their old shoes and \"released\" with yours?\n\nWe'd create fake wanted posters, arrest videos, even a bail bond website.\n\nWant to explore making sustainability rebellious instead of preachy?",
+      "key_insight": "Proposing bold creative concepts, not generic services"
+    }
+  ],
+  
+  "competitive_advantages": [
+    "Cost Effective: Cheaper than hiring SDRs, with better results",
+    "Risk-Free: Pay only for results, start with free meetings",
+    "Scalable: Can handle 10x the volume of a human SDR team",
+    "Intelligent: AI understands context better than template-based approaches",
+    "Fast Results: First meetings booked within 2 weeks"
+  ],
+  
+  "faq": [
+    {
+      "question": "How does VeoGrowth's AI-powered cold email work?",
+      "answer": "Our AI analyzes each prospect's company situation, recent changes, hiring patterns, and technology stack to create personalized emails that show genuine understanding of their business challenges. Unlike generic templates, each email is uniquely crafted."
+    },
+    {
+      "question": "What makes VeoGrowth different from other cold email agencies?",
+      "answer": "We use AI to analyze specific prospect situations rather than sending generic templates. You only pay for qualified meetings that actually happen - no retainers or contracts. We also provide 2 free meetings to test our quality."
+    },
+    {
+      "question": "Who is VeoGrowth best for?",
+      "answer": "B2B SaaS companies doing $100K+ monthly revenue with a total addressable market of 50,000+ prospects. Companies with clear value propositions and average deal sizes of $10K+ annually see the best results."
+    },
+    {
+      "question": "How much does VeoGrowth cost?",
+      "answer": "We use a performance-based model where you only pay for qualified meetings that show up. No upfront fees or retainers. We start with 2 free meetings so you can test our quality before paying anything."
+    },
+    {
+      "question": "How quickly can we see results?",
+      "answer": "Most clients see their first qualified meetings booked within 2 weeks of campaign launch. We typically generate 30-50 meetings per month per client."
+    },
+    {
+      "question": "What industries does VeoGrowth work with?",
+      "answer": "We work with various B2B industries including SaaS, fintech, marketing agencies, DevOps tools, and other technology companies. Our AI adapts to different industry languages and pain points."
+    }
+  ],
+  
+  "contact": {
+    "website": "https://veogrowth.com",
+    "email": "hello@veogrowth.com",
+    "book_call": "https://calendly.com/veogrowth",
+    "free_meetings": "Get 2 free qualified meetings to test our quality",
+    "linkedin": "https://linkedin.com/company/veogrowth"
+  },
+  
+  "meta": {
+    "last_updated": "2024-12-01",
+    "version": "1.0",
+    "purpose": "Comprehensive VeoGrowth information for LLM access",
+    "content_type": "Company and service information"
+  }
+}

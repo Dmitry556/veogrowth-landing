@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://veogrowth.com/</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:meta name="description" content="VeoGrowth is a B2B lead generation agency that uses AI-powered cold email campaigns to generate 30-50 qualified meetings per month. Pay only for meetings that show up. No retainers, no contracts."/>
+    <xhtml:meta name="keywords" content="B2B lead generation, AI cold email, qualified meetings, SaaS lead generation, pay per meeting"/>
+    <xhtml:meta name="services" content="AI-powered cold email campaigns, B2B lead generation, qualified meeting booking, prospect research, personalized outreach"/>
+    <xhtml:meta name="results" content="$8M+ pipeline generated, 10,000+ meetings booked, 150+ clients, 3.5%+ response rates"/>
+    <xhtml:meta name="pricing" content="Pay per qualified meeting, no retainers, 2 free meetings to start"/>
+    <xhtml:meta name="ideal-client" content="B2B SaaS companies, $100K+ monthly revenue, 50,000+ TAM"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:meta name="description" content="Case study: How VeoGrowth helped Podcast Whales generate 25 qualified meetings and 6 new clients in 30 days using personalized AI-powered outreach."/>
+    <xhtml:meta name="results" content="25 meetings, 6 clients, $180K revenue, 30 days"/>
+    <xhtml:meta name="industry" content="Podcast booking agency"/>
+    <xhtml:meta name="challenge" content="Standing out in crowded podcast booking market"/>
+    <xhtml:meta name="solution" content="Personalized pitches proposing specific podcast concepts"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:meta name="description" content="Case study: How VeoGrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor."/>
+    <xhtml:meta name="results" content="52 meetings, $605K pipeline, 12% close rate"/>
+    <xhtml:meta name="industry" content="Fintech payment processing"/>
+    <xhtml:meta name="challenge" content="Competing against established payment processors"/>
+    <xhtml:meta name="solution" content="Targeted messaging about transparent pricing and zero fees"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/case-studies/api-monitoring-platform-56-meetings</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:meta name="description" content="Case study: How VeoGrowth helped an API monitoring platform generate 56 meetings with engineering decision-makers and $554K in pipeline."/>
+    <xhtml:meta name="results" content="56 meetings, $554K pipeline, 90 days"/>
+    <xhtml:meta name="industry" content="API monitoring and DevOps tools"/>
+    <xhtml:meta name="challenge" content="Reaching technical decision-makers in engineering"/>
+    <xhtml:meta name="solution" content="Technical credibility and engineering-specific pain points"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/blog</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:meta name="description" content="VeoGrowth blog with insights on B2B lead generation, cold email strategies, and AI-powered outreach techniques."/>
+    <xhtml:meta name="topics" content="Cold email strategies, B2B lead generation, AI outreach, sales development"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/tools/microsoft-filter</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:meta name="description" content="Free Microsoft email filter tool to validate and clean email lists for better deliverability."/>
+    <xhtml:meta name="tool-type" content="Email validation and filtering"/>
+  </url>
+  
+  <url>
+    <loc>https://veogrowth.com/resources/true-cost-of-sdr</loc>
+    <lastmod>2024-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:meta name="description" content="Comprehensive whitepaper analyzing the true cost of hiring SDRs vs. using AI-powered lead generation services."/>
+    <xhtml:meta name="resource-type" content="Cost analysis whitepaper"/>
+  </url>
+</urlset>
