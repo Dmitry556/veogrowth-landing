@@ -1,2 +1,8 @@
 
+# Redirect old blog URLs that contain outdated "poke the bear" content
+/blog/1 / 301
+/blog/poke-the-bear* / 301
+/blog/outbound-strategy* / 301
+
+# Catch-all for SPA
 /* /index.html 200
