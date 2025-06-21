@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
-import { generateCaseStudyReviewSchema } from '@/utils/reviewSchema';
+import { generateCaseStudySchema } from '@/utils/reviewSchema';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare, Code, Star } from 'lucide-react';
 
@@ -13,11 +13,11 @@ const ApiMonitoringCaseStudy = () => {
     document.title = "Case Study: API Monitoring Platform - 56 Meetings | VeoGrowth";
   }, []);
 
-  const reviewSchema = generateCaseStudyReviewSchema(
-    "API Monitoring Platform Campaign",
-    "Generated 56 qualified meetings with engineering leaders by using technical credibility and characteristic-based qualification to reach 78,000 developers at companies with production APIs.",
-    5,
-    1
+  const caseStudySchema = generateCaseStudySchema(
+    "API Monitoring Platform: 56 Meetings in 90 Days",
+    "How VeoGrowth generated 56 qualified meetings with engineering leaders and $554K in pipeline using technical credibility and characteristic-based qualification.",
+    "https://www.veogrowth.com/case-studies/api-monitoring-platform-56-meetings",
+    "2025-06-23"
   );
 
   return (
@@ -28,7 +28,7 @@ const ApiMonitoringCaseStudy = () => {
         <meta name="description" content="How we helped an API monitoring platform reach 78,000 engineering leaders with technical credibility and generate 56 meetings using characteristic-based qualification." />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">
-          {JSON.stringify(reviewSchema)}
+          {JSON.stringify(caseStudySchema)}
         </script>
       </Helmet>
       
