@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
-import { generateCaseStudyReviewSchema } from '@/utils/reviewSchema';
+import { generateCaseStudySchema } from '@/utils/reviewSchema';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare, CreditCard, Star } from 'lucide-react';
 
@@ -13,11 +13,11 @@ const ZeroFeePaymentCaseStudy = () => {
     document.title = "Case Study: Zero-Fee Payment Processor - 52 Meetings | VeoGrowth";
   }, []);
 
-  const reviewSchema = generateCaseStudyReviewSchema(
-    "Zero-Fee Payment Processor Campaign",
-    "Generated 52 qualified meetings and $605K in pipeline by reaching 89,000 qualified prospects with clear messaging about zero monthly fees in the commoditized payment processing industry.",
-    5,
-    1
+  const caseStudySchema = generateCaseStudySchema(
+    "Zero-Fee Payment Processor: 52 Meetings, $605K Pipeline",
+    "How VeoGrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor by targeting businesses frustrated with hidden fees.",
+    "https://www.veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings",
+    "2025-06-23"
   );
 
   return (
@@ -28,7 +28,7 @@ const ZeroFeePaymentCaseStudy = () => {
         <meta name="description" content="How we helped a zero-fee payment processor reach 89,000 qualified prospects and generate 52 meetings using massive TAM qualification and clear differentiation." />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">
-          {JSON.stringify(reviewSchema)}
+          {JSON.stringify(caseStudySchema)}
         </script>
       </Helmet>
       

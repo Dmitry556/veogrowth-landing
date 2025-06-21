@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
-import { generateCaseStudyReviewSchema } from '@/utils/reviewSchema';
+import { generateCaseStudySchema } from '@/utils/reviewSchema';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare, Mic, Star } from 'lucide-react';
 
@@ -13,11 +13,11 @@ const PodcastWhalesCaseStudy = () => {
     document.title = "Case Study: Podcast Whales - 25 Meetings, 6 Clients | VeoGrowth";
   }, []);
 
-  const reviewSchema = generateCaseStudyReviewSchema(
-    "Podcast Whales Creative Campaign",
-    "Generated 25 meetings and 6 new clients in 30 days for a podcast production agency by proposing specific podcast concepts instead of generic service pitches.",
-    5,
-    1
+  const caseStudySchema = generateCaseStudySchema(
+    "Podcast Whales: 25 Meetings, 6 Clients in 30 Days",
+    "How VeoGrowth helped Podcast Whales generate 25 meetings and close 6 clients in 30 days using creative, personalized pitches that proposed specific podcast concepts.",
+    "https://www.veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients",
+    "2025-06-23"
   );
 
   return (
@@ -28,7 +28,7 @@ const PodcastWhalesCaseStudy = () => {
         <meta name="description" content="How we helped Podcast Whales generate 25 meetings and close 6 clients in 30 days using creative, personalized pitches that proposed specific podcast concepts." />
         <meta name="robots" content="index, follow" />
         <script type="application/ld+json">
-          {JSON.stringify(reviewSchema)}
+          {JSON.stringify(caseStudySchema)}
         </script>
       </Helmet>
       

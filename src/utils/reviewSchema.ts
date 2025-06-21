@@ -1,38 +1,40 @@
 /**
- * Generate case study schema without problematic reviews
+ * Generate clean case study schema - NO REVIEWS to avoid Google errors
  */
-export const generateCaseStudyReviewSchema = (
+export const generateCaseStudySchema = (
   title: string,
   description: string,
-  rating: number = 5,
-  reviewCount: number = 1
+  url: string,
+  datePublished: string = "2025-06-23"
 ) => {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    "@id": `https://www.veogrowth.com/case-studies/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    "@id": url,
     "headline": title,
     "description": description,
+    "url": url,
     "author": {
       "@type": "Organization",
       "name": "VeoGrowth",
       "url": "https://www.veogrowth.com"
     },
     "publisher": {
-      "@type": "Organization",
+      "@type": "Organization", 
       "name": "VeoGrowth",
-      "url": "https://www.veogrowth.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.veogrowth.com/lovable-uploads/4882578b-1930-4387-b142-b075eb12bb6f.png"
-      }
+      "url": "https://www.veogrowth.com"
     },
-    "datePublished": "2024-12-17",
-    "dateModified": "2024-12-17",
+    "datePublished": datePublished,
+    "dateModified": "2025-06-23",
     "articleSection": "Case Studies",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
     "about": {
       "@type": "Service",
       "name": "B2B Lead Generation",
+      "serviceType": "Marketing",
       "provider": {
         "@type": "Organization",
         "name": "VeoGrowth"
