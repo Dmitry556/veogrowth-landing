@@ -11,19 +11,19 @@ const RelatedContent = () => {
       title: "How AI is Transforming the SDR Function in 2025",
       description: "An analysis of AI tools that are changing how SDRs qualify leads and book meetings.",
       url: "/blog",
-      imageUrl: "https://source.unsplash.com/400x250/?technology,ai",
+      imageUrl: "",
     },
     {
       title: "The Most Effective SDR Compensation Models",
       description: "Discover which compensation structures drive the best SDR performance and retention.",
       url: "/blog",
-      imageUrl: "https://source.unsplash.com/400x250/?business,money",
+      imageUrl: "",
     },
     {
       title: "SDR to AE Career Path: Optimizing the Transition",
       description: "Best practices for developing your SDRs into successful Account Executives.",
       url: "/blog",
-      imageUrl: "https://source.unsplash.com/400x250/?career,ladder",
+      imageUrl: "",
     }
   ];
 

@@ -26,7 +26,7 @@ const sampleBlogPosts: BlogPost[] = [
     },
     publishDate: '2023-10-05',
     readingTime: '6 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    imageUrl: '',
     featured: true
   },
   {
@@ -41,7 +41,7 @@ const sampleBlogPosts: BlogPost[] = [
     },
     publishDate: '2023-09-15',
     readingTime: '5 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    imageUrl: '',
     content: `
       <p>Sending generic cold emails just doesn't work well anymore. To make outreach feel relevant, knowing who a company competes with, or who their ideal customers actually look like, is pure gold. Guessing isn't reliable, but we found that using publicly available data, often with a bit of smart automation, helps us get much closer to understanding a prospect's world.</p>
       
@@ -78,7 +78,7 @@ const sampleBlogPosts: BlogPost[] = [
     },
     publishDate: '2023-06-15',
     readingTime: '8 min read',
-    imageUrl: 'https://images.unsplash.com/photo-1512626120412-faf41adb4874?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+    imageUrl: ''
   }
 ];
 
