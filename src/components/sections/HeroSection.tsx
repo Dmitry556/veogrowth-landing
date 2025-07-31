@@ -131,7 +131,7 @@ const HeroSection: React.FC = () => {
   return (
     <section 
       ref={setRef} 
-      className="hero-section relative flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900"
+      className="hero-section relative flex items-center pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900"
     >
       {/* Animated Background */}
       <div className="absolute inset-0">
@@ -158,7 +158,7 @@ const HeroSection: React.FC = () => {
           {/* Main Headline */}
           <h1 
             ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8"
             id="main-heading"
           >
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -171,32 +171,27 @@ const HeroSection: React.FC = () => {
           </h1>
           
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-2 max-w-3xl mx-auto font-normal">
+          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto font-normal">
             We generate qualified pipeline that turns into <span className="text-gray-100">actual revenue</span><br />using AI-powered cold email campaigns.
-          </p>
-          <p className="text-sm md:text-base text-gray-300 mb-8 max-w-2xl mx-auto font-medium">
-            No retainers. No contracts. Pay only for <span className="text-white">qualified</span> meetings that show up.
           </p>
 
           {/* Video Section */}
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 border border-gray-700/50">
-                <VideoPlayer
-                  videoUrl="https://pub-a7e4c0be2e134a7d8ae6db1354116576.r2.dev/My%20Movie%202.mp4"
-                  className="aspect-video rounded-xl overflow-hidden"
-                />
-                <div className="mt-3 text-center">
-                  <h3 className="text-sm font-bold text-white mb-1">See How We Generate Pipeline</h3>
-                  <p className="text-gray-300 text-xs">Watch our proven process in action</p>
-                </div>
-              </div>
+          <div className="max-w-lg mx-auto mb-8 px-4">
+            <div className="relative">
+              <VideoPlayer
+                videoUrl="https://pub-a7e4c0be2e134a7d8ae6db1354116576.r2.dev/vsl.mp4"
+                className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+              />
             </div>
           </div>
-          
-          {/* CTA Section */}
-          <div className="flex flex-col items-center gap-6">
+
+          {/* Payment Terms - Under Video */}
+          <p className="text-sm text-gray-400 max-w-2xl mx-auto font-medium text-center mb-8">
+            No retainers. No contracts. Pay only for <span className="text-gray-200">qualified</span> meetings that show up.
+          </p>
+
+          {/* CTA Section - After Payment Terms */}
+          <div className="flex flex-col items-center gap-4 mb-12">
             <button 
               onClick={() => {
                 trackCalendlyClick('hero-main');
@@ -210,26 +205,27 @@ const HeroSection: React.FC = () => {
                 <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </div>
             </button>
-            
-            <div className="flex flex-col sm:flex-row items-center gap-6 text-gray-400">
-              <div className="flex items-center">
-                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>No contracts</span>
-              </div>
-              <div className="flex items-center">
-                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Zero risk</span>
-              </div>
-              <div className="flex items-center">
-                <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Setup in 48 hours</span>
-              </div>
+          </div>
+          
+          {/* Trust Indicators - Below Video */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
+            <div className="flex items-center">
+              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>No contracts</span>
+            </div>
+            <div className="flex items-center">
+              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>Zero risk</span>
+            </div>
+            <div className="flex items-center">
+              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>Setup in 48 hours</span>
             </div>
           </div>
           
