@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
 import { Play } from 'lucide-react';
 import { trackCalendlyClick } from '@/utils/analytics';
+import VideoPlayer from '../VideoPlayer';
 
 const HeroSection: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -178,19 +179,17 @@ const HeroSection: React.FC = () => {
           </p>
 
           {/* Video Section */}
-          <div className="max-w-xl mx-auto mb-8">
+          <div className="max-w-2xl mx-auto mb-8">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
               <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 border border-gray-700/50">
-                <div className="relative bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl overflow-hidden aspect-video group cursor-pointer hover:from-gray-600/50 hover:to-gray-700/50 transition-all duration-300">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Play className="w-5 h-5 text-white ml-0.5" />
-                    </div>
-                    <h3 className="text-sm font-bold text-white mb-1">See How We Generate Pipeline</h3>
-                    <p className="text-gray-300 text-center text-xs">Watch our proven process in action • 3 min demo</p>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <VideoPlayer
+                  videoUrl="https://f63404c49a518cf4ff1d01c8890354c2.r2.cloudflarestorage.com/myvideo"
+                  className="aspect-video rounded-xl overflow-hidden"
+                />
+                <div className="mt-3 text-center">
+                  <h3 className="text-sm font-bold text-white mb-1">See How We Generate Pipeline</h3>
+                  <p className="text-gray-300 text-xs">Watch our proven process in action</p>
                 </div>
               </div>
             </div>
