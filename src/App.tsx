@@ -30,6 +30,7 @@ import Security from "./pages/Security";
 import Compliance from "./pages/Compliance";
 import GDPR from "./pages/GDPR";
 import PerformanceReport from "./pages/PerformanceReport";
+import ROICalculator from "./pages/ROICalculator";
 
 // Create a client for React Query with performance optimizations
 const queryClient = new QueryClient({
@@ -69,6 +70,7 @@ const App = () => {
             <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
             <Route path="/tech-stack" element={<TechStack />} />
             <Route path="/tools/microsoft-filter" element={<MicrosoftFilter />} />
+            <Route path="/tools/roi-calculator" element={<ROICalculator />} />
             <Route path="/resources/true-cost-of-sdr" element={<SDRCostWhitepaper />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

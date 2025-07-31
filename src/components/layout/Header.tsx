@@ -62,6 +62,12 @@ const Header: React.FC = () => {
   // Free tools for preview
   const freeTools = [
     {
+      id: 'roi-calculator',
+      title: 'ROI Calculator',
+      description: 'Calculate your cold outbound ROI',
+      href: '/tools/roi-calculator'
+    },
+    {
       id: 'microsoft-filter',
       title: 'Microsoft Email Filter',
       description: 'Remove Microsoft emails from your lists',
