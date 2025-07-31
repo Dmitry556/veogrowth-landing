@@ -25,7 +25,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
         controls: true,
         responsive: true,
         fluid: true,
-        preload: 'auto',
+        preload: 'metadata', // Changed from 'auto' to 'metadata' for faster initial load
         poster: poster || '',
         sources: [
           {
@@ -45,9 +45,24 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
         },
         html5: {
           vhs: {
-            enableLowInitialPlaylist: false,
+            enableLowInitialPlaylist: true, // Enable low initial playlist for faster start
             smoothQualityChange: true,
-            overrideNative: true
+            overrideNative: true,
+            withCredentials: false, // Disable credentials for faster loading
+            handlePartialData: true // Handle partial data for progressive loading
+          },
+          nativeVideoTracks: false,
+          nativeAudioTracks: false,
+          nativeTextTracks: false
+        },
+        // Add buffer settings for better streaming
+        techOrder: ['html5'],
+        html5: {
+          hlsjsConfig: {
+            maxBufferLength: 10, // Reduce buffer size for faster start
+            maxMaxBufferLength: 20,
+            maxBufferSize: 60 * 1000 * 1000, // 60MB
+            maxBufferHole: 0.1
           }
         }
       });
@@ -89,7 +104,20 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
           console.log('Video loading timeout - reloading');
           setHasError(true);
           player.src(videoUrl);
-        }, 10000); // 10 second timeout
+        }, 15000); // 15 second timeout for large files
+      });
+
+      // Optimize for slow connections
+      player.on('progress', () => {
+        const buffered = player.buffered();
+        if (buffered.length > 0) {
+          const bufferedEnd = buffered.end(buffered.length - 1);
+          const duration = player.duration();
+          if (bufferedEnd > 5 || bufferedEnd / duration > 0.1) {
+            // Enough buffered to start playing smoothly
+            setIsLoading(false);
+          }
+        }
       });
       
       player.on('loadeddata', () => {
