@@ -12,7 +12,6 @@ import RouteTracker from "./components/analytics/RouteTracker";
 
 // Direct imports for immediate loading
 import Index from "./pages/Index";
-import VSLHomepage from "./pages/VSLHomepage";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CaseStudies from "./pages/CaseStudies";
@@ -60,8 +59,7 @@ const App = () => {
         <BrowserRouter>
           <RouteTracker />
           <Routes>
-            <Route path="/" element={<VSLHomepage />} />
-            <Route path="/full-site" element={<Index />} />
+            <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/blog/:id" element={<BlogPost />} />
