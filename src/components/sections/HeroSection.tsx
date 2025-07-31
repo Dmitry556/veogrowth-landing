@@ -184,7 +184,7 @@ const HeroSection: React.FC = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
               <div className="relative bg-gray-800/90 backdrop-blur-sm rounded-2xl p-4 border border-gray-700/50">
                 <VideoPlayer
-                  videoUrl="/myvideo.mp4"
+                  videoUrl="https://pub-a7e4c0be2e134a7d8ae6db1354116576.r2.dev/My%20Movie%202.mp4"
                   className="aspect-video rounded-xl overflow-hidden"
                 />
                 <div className="mt-3 text-center">
