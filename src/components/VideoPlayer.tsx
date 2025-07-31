@@ -29,10 +29,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
           {
             src: videoUrl,
             type: 'video/mp4'
-          },
-          {
-            src: `${videoUrl}.mp4`,
-            type: 'video/mp4'
           }
         ],
         playbackRates: [0.75, 1, 1.25, 1.5],
