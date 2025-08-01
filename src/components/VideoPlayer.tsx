@@ -43,6 +43,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
             inline: false
           }
         },
+        // Add buffer settings for better streaming
+        techOrder: ['html5'],
         html5: {
           vhs: {
             enableLowInitialPlaylist: true, // Enable low initial playlist for faster start
@@ -53,11 +55,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, poster, className =
           },
           nativeVideoTracks: false,
           nativeAudioTracks: false,
-          nativeTextTracks: false
-        },
-        // Add buffer settings for better streaming
-        techOrder: ['html5'],
-        html5: {
+          nativeTextTracks: false,
           hlsjsConfig: {
             maxBufferLength: 10, // Reduce buffer size for faster start
             maxMaxBufferLength: 20,

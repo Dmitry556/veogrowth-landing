@@ -13,6 +13,7 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
 import QualificationSection from '@/components/sections/QualificationSection';
+import CaseStudiesPreview from '@/components/sections/CaseStudiesPreview';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
 // More efficient section loader
@@ -117,20 +118,23 @@ const Index = () => {
         {/* Logo Slider */}
         <LogoSlider />
         
+        {/* Proof Section - Moved up for credibility */}
+        <ResultsSection />
+        
+        {/* Case Studies Preview - New section for social proof */}
+        <CaseStudiesPreview />
+        
+        {/* Email Examples Section - Moved up to show work quality */}
+        <EmailExamplesSlider />
+        
         {/* The Story Section */}
         <StorySection />
         
         {/* The Three-Layer Innovation Section */}
         <SolutionSection />
         
-        {/* Email Examples Section */}
-        <EmailExamplesSlider />
-        
         {/* How It Actually Works Section */}
         <ProcessSection />
-        
-        {/* Proof Section */}
-        <ResultsSection />
         
         {/* Who This Is For Section */}
         <QualificationSection />

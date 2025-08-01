@@ -12,6 +12,7 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
 import QualificationSection from '@/components/sections/QualificationSection';
+import CaseStudiesPreview from '@/components/sections/CaseStudiesPreview';
 
 export const metadata: Metadata = {
   title: 'VeoGrowth - 30+ Qualified B2B Meetings Monthly | Pay Per Meeting',
@@ -33,13 +34,14 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <LogoSlider />
+        <ResultsSection />
+        <CaseStudiesPreview />
+        <EmailExamplesSlider />
         <StorySection />
         <SolutionSection />
-        <EmailExamplesSlider />
-        <ResultsSection />
         <ProcessSection />
-        <PricingSection />
         <QualificationSection />
+        <PricingSection />
         <FaqSection />
       </main>
       <Footer />
