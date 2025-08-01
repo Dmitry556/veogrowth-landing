@@ -45,10 +45,17 @@ const ResultsSection: React.FC = () => {
               
               {/* Text content on the right */}
               <div>
-                <Quote className="text-purple-600 opacity-30 mb-6" size={48} />
-                <p className="text-xl md:text-2xl text-gray-900 mb-8 leading-relaxed font-medium">
-                  "Over the last <strong className="text-purple-600">30 days</strong>, we hopped on <strong className="text-purple-600">25 meetings</strong> and closed <strong className="text-purple-600">six high-ticket clients</strong>."
-                </p>
+                <div className="space-y-4 mb-8">
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    <strong className="text-gray-900">The Challenge:</strong> Podcast Whales needed consistent pipeline of executives interested in starting podcasts, but generic "you should start a podcast" emails weren't working.
+                  </p>
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    <strong className="text-gray-900">Our Solution:</strong> Instead of pitching podcasting services, we pitched <em className="text-purple-600">specific podcast concepts</em> tailored to each prospect's business situation.
+                  </p>
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    <strong className="text-gray-900">Example:</strong> To a CEO competing with Loom: <em className="text-purple-600">"What if you launched 'The Async CEO' - interviewing remote leaders about killing meetings? Position yourself as the anti-Loom."</em>
+                  </p>
+                </div>
                 <div>
                   <p className="text-lg font-bold text-gray-900">David Hughes</p>
                   <p className="text-gray-600">Founder & CEO, <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 underline">Podcast Whales</a></p>
