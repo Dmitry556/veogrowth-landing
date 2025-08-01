@@ -12,7 +12,6 @@ import ProcessSection from '@/components/sections/ProcessSection';
 import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
 import QualificationSection from '@/components/sections/QualificationSection';
-import SimpleFinalCta from '@/components/sections/SimpleFinalCta';
 
 export const metadata: Metadata = {
   title: 'VeoGrowth - 30+ Qualified B2B Meetings Monthly | Pay Per Meeting',
@@ -42,7 +41,6 @@ export default function HomePage() {
         <PricingSection />
         <QualificationSection />
         <FaqSection />
-        <SimpleFinalCta />
       </main>
       <Footer />
     </>
