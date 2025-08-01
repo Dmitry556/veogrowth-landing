@@ -58,23 +58,6 @@ const ResultsSection: React.FC = () => {
           </div>
         </div>
         
-        {/* The results speak for themselves */}
-        <div className="mb-16 max-w-3xl mx-auto text-center">
-          <div className="bg-purple-50 rounded-xl p-8 border border-purple-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The results speak for themselves:</h3>
-            <div className="space-y-4">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                This isn't unusual.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Our inference approach consistently generates <strong className="text-purple-600">30-50 qualified meetings per month</strong> with prospects who match your exact ICP.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                And weren't actively looking for solutions.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
