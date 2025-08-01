@@ -298,50 +298,6 @@ Ready to be the security company people actually remember?`
           </div>
         </div>
 
-        {/* What Makes These Different */}
-        <div className="mt-20">
-          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-3xl p-8 md:p-12 border border-purple-500/20">
-            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">What Makes These Different</h3>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/30">
-                  <span className="text-red-400 font-bold">❌</span>
-                </div>
-                <h4 className="text-lg font-bold mb-3 text-red-400">Traditional Cold Email</h4>
-                <p className="text-gray-400 text-sm italic">
-                  "I noticed you're growing fast..."
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
-                  <span className="text-blue-400 font-bold">🎯</span>
-                </div>
-                <h4 className="text-lg font-bold mb-3 text-blue-400">Our Inference Approach</h4>
-                <p className="text-gray-400 text-sm italic">
-                  "With 40 open roles and January start dates, I imagine you're scrambling to build onboarding that doesn't suck."
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 border border-green-500/30">
-                  <span className="text-green-400 font-bold">💡</span>
-                </div>
-                <h4 className="text-lg font-bold mb-3 text-green-400">For Agencies</h4>
-                <p className="text-gray-400 text-sm italic">
-                  "What if your sustainable shoes had a 'carbon criminal' campaign?"
-                </p>
-              </div>
-            </div>
-            
-            <div className="text-center mt-8">
-              <p className="text-lg text-gray-300">
-                <strong className="text-white">One is a template.</strong> Others show we understand what's happening in their business - or can propose ideas that actually make them stop and think.
-              </p>
-            </div>
-          </div>
-        </div>
 
         {/* CTA */}
         <div className="text-center mt-16">
