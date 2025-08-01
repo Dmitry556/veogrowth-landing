@@ -12,7 +12,7 @@ const NewHeroSection: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Qualifier */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-8">
-            For B2B companies doing $100K+ per month with large TAM
+            For Productized B2B Agencies
           </div>
           
           {/* Main Headline */}

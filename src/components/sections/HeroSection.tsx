@@ -152,7 +152,7 @@ const HeroSection: React.FC = () => {
           {/* Qualification Badge */}
           <div className="inline-flex items-center bg-purple-900/30 text-purple-300 rounded-full px-6 py-3 mb-8 border border-purple-500/30 backdrop-blur-sm">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-            <span className="text-sm font-medium">For B2B companies doing $100K+ monthly with TAM &gt;50,000 prospects</span>
+            <span className="text-sm font-medium">For Productized B2B Agencies</span>
           </div>
           
           {/* Main Headline */}
