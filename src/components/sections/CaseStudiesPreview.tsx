@@ -54,46 +54,21 @@ const CaseStudiesPreview: React.FC = () => {
           
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-green-900/30 text-green-300 rounded-full px-4 py-2 mb-6 border border-green-500/30 backdrop-blur-sm">
-              <TrendingUp className="w-4 h-4 mr-2" />
-              <span className="text-sm font-medium">$8M+ in verified pipeline generated</span>
-            </div>
-            
             <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Client Success Stories
               </span>
             </h2>
-            
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              See how we've helped B2B companies generate qualified meetings and pipeline through strategic cold email campaigns.
-            </p>
           </div>
 
-          {/* Stats Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-16 p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">10,000+</div>
-              <div className="text-gray-400 text-sm">Qualified Meetings</div>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-gray-600"></div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">$8M+</div>
-              <div className="text-gray-400 text-sm">Pipeline Generated</div>
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-gray-600"></div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1">150+</div>
-              <div className="text-gray-400 text-sm">Happy Clients</div>
-            </div>
-          </div>
 
           {/* Case Studies Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             {featuredCaseStudies.map((study, index) => (
-              <div 
+              <Link
+                to={`/case-studies/${study.id}`}
                 key={study.id}
-                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1"
+                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 block"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
@@ -156,19 +131,19 @@ const CaseStudiesPreview: React.FC = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
-          {/* View All CTA */}
+          {/* Get Free Meetings CTA */}
           <div className="text-center">
-            <Link
-              to="/case-studies"
+            <button
+              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
               className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
             >
-              View All Case Studies
+              Get 2 Free Meetings
               <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>
