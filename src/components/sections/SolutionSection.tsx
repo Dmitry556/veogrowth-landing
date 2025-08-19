@@ -1,4 +1,3 @@
-
 import React from 'react';
 import CustomCard from '../ui/CustomCard';
 import { LineChart, ArrowUpRight, Zap, DollarSign, Database } from 'lucide-react';
@@ -42,70 +41,263 @@ const SolutionSection: React.FC = () => {
   ];
 
   return (
-    <section id="solutions" className="py-20 md:py-24 bg-white border-b border-gray-200">
+    <section id="solutions" style={{
+      background: '#0a0a0a',
+      padding: '80px 0 100px',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
       
-      <div className="container mx-auto px-8 sm:px-12">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-block px-4 py-2 rounded-full bg-purple-50 border border-purple-200 text-purple-600 text-sm font-medium mb-8">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 120px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '100px',
+            padding: '8px 20px',
+            marginBottom: '48px',
+            fontSize: '13px',
+            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+            color: '#B0B0B0',
+            fontWeight: '400',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase'
+          }}>
             Our Innovation
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-12 text-gray-900">
+          <h2 style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: 'clamp(40px, 5.5vw, 64px)',
+            fontWeight: '400',
+            lineHeight: '1.1',
+            letterSpacing: '-0.03em',
+            marginBottom: '48px',
+            color: '#EAEAEA'
+          }}>
             How We Get 10x Better Results Than Everyone Else
           </h2>
-          <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium mb-12">
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '22px',
+            color: '#B0B0B0',
+            lineHeight: '1.5',
+            fontWeight: '500',
+            marginBottom: '64px',
+            letterSpacing: '-0.01em'
+          }}>
             We didn't just improve cold email. We rebuilt every single step from scratch.
           </p>
           
-          <div className="max-w-3xl mx-auto text-left">
-            <div className="bg-gray-50 rounded-xl p-8 mb-12 border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">The Old Way (Broken)</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Traditional cold email follows the same broken process: <strong>Buy list</strong> → <strong>Add basic personalization</strong> → <strong>Blast everyone</strong> → <strong>Hope for replies</strong>.
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '20px',
+              padding: '48px',
+              marginBottom: '40px',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <h3 style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '28px',
+                fontWeight: '500',
+                color: '#EAEAEA',
+                marginBottom: '24px',
+                letterSpacing: '-0.02em'
+              }}>The Old Way (Broken)</h3>
+              <p style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '18px',
+                color: '#B0B0B0',
+                lineHeight: '1.6',
+                letterSpacing: '-0.01em'
+              }}>
+                Traditional cold email follows the same broken process: <strong style={{ color: '#FFFFFF' }}>Buy list</strong> → <strong style={{ color: '#FFFFFF' }}>Add basic personalization</strong> → <strong style={{ color: '#FFFFFF' }}>Blast everyone</strong> → <strong style={{ color: '#FFFFFF' }}>Hope for replies</strong>.
               </p>
             </div>
             
-            <div className="bg-purple-50 rounded-xl p-8 mb-12 border border-purple-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Our Way (Rebuilt From Scratch)</h3>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '20px',
+              padding: '48px',
+              marginBottom: '48px',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <h3 style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '28px',
+                fontWeight: '500',
+                color: '#EAEAEA',
+                marginBottom: '24px',
+                letterSpacing: '-0.02em'
+              }}>Our Way (Rebuilt From Scratch)</h3>
+              <p style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '18px',
+                color: '#B0B0B0',
+                lineHeight: '1.6',
+                marginBottom: '32px',
+                letterSpacing: '-0.01em'
+              }}>
                 We threw that out and reimagined everything:
               </p>
               
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white font-bold text-xs">•</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div style={{
+                    flexShrink: '0',
+                    width: '24px',
+                    height: '24px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '16px',
+                    marginTop: '2px'
+                  }}>
+                    <span style={{
+                      color: '#FFFFFF',
+                      fontWeight: '600',
+                      fontSize: '12px'
+                    }}>•</span>
                   </div>
-                  <p className="text-gray-700">How lists are built (<strong>custom intelligence</strong>, not database filters)</p>
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    color: '#B0B0B0',
+                    lineHeight: '1.6',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>How lists are built (<strong style={{ color: '#FFFFFF' }}>custom intelligence</strong>, not database filters)</p>
                 </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white font-bold text-xs">•</span>
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div style={{
+                    flexShrink: '0',
+                    width: '24px',
+                    height: '24px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '16px',
+                    marginTop: '2px'
+                  }}>
+                    <span style={{
+                      color: '#FFFFFF',
+                      fontWeight: '600',
+                      fontSize: '12px'
+                    }}>•</span>
                   </div>
-                  <p className="text-gray-700">How prospects are qualified (<strong>AI inference</strong>, not spray and pray)</p>
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    color: '#B0B0B0',
+                    lineHeight: '1.6',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>How prospects are qualified (<strong style={{ color: '#FFFFFF' }}>AI inference</strong>, not spray and pray)</p>
                 </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white font-bold text-xs">•</span>
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div style={{
+                    flexShrink: '0',
+                    width: '24px',
+                    height: '24px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '16px',
+                    marginTop: '2px'
+                  }}>
+                    <span style={{
+                      color: '#FFFFFF',
+                      fontWeight: '600',
+                      fontSize: '12px'
+                    }}>•</span>
                   </div>
-                  <p className="text-gray-700">How messages are written (<strong>problem-first</strong>, not feature-first)</p>
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    color: '#B0B0B0',
+                    lineHeight: '1.6',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>How messages are written (<strong style={{ color: '#FFFFFF' }}>problem-first</strong>, not feature-first)</p>
                 </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white font-bold text-xs">•</span>
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div style={{
+                    flexShrink: '0',
+                    width: '24px',
+                    height: '24px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '16px',
+                    marginTop: '2px'
+                  }}>
+                    <span style={{
+                      color: '#FFFFFF',
+                      fontWeight: '600',
+                      fontSize: '12px'
+                    }}>•</span>
                   </div>
-                  <p className="text-gray-700">How campaigns are structured (<strong>20+ micro-campaigns</strong>, not one blast)</p>
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    color: '#B0B0B0',
+                    lineHeight: '1.6',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>How campaigns are structured (<strong style={{ color: '#FFFFFF' }}>20+ micro-campaigns</strong>, not one blast)</p>
                 </div>
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-white font-bold text-xs">•</span>
+                <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+                  <div style={{
+                    flexShrink: '0',
+                    width: '24px',
+                    height: '24px',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: '16px',
+                    marginTop: '2px'
+                  }}>
+                    <span style={{
+                      color: '#FFFFFF',
+                      fontWeight: '600',
+                      fontSize: '12px'
+                    }}>•</span>
                   </div>
-                  <p className="text-gray-700">How infrastructure is managed (<strong>protected domains</strong>, not burned reputation)</p>
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    color: '#B0B0B0',
+                    lineHeight: '1.6',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>How infrastructure is managed (<strong style={{ color: '#FFFFFF' }}>protected domains</strong>, not burned reputation)</p>
                 </div>
               </div>
             </div>
             
-            <div className="text-center">
-              <p className="text-xl text-gray-900 leading-relaxed font-bold">
+            <div style={{ textAlign: 'center' }}>
+              <p style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '24px',
+                color: '#EAEAEA',
+                lineHeight: '1.5',
+                fontWeight: '500',
+                letterSpacing: '-0.02em'
+              }}>
                 Here's our three-layer system that makes it all work:
               </p>
             </div>
@@ -113,24 +305,69 @@ const SolutionSection: React.FC = () => {
         </div>
         
         {/* Three-Layer System */}
-        <div className="space-y-8 max-w-4xl mx-auto">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
           {solutions.map((solution, index) => (
             <div 
               key={index} 
-              className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '20px',
+                padding: '48px',
+                transition: 'all 0.3s ease',
+                backdropFilter: 'blur(10px)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+              }}
             >
-              <div className="flex items-start space-x-6">
-                <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-lg">{index + 1}</span>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '32px' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: '0'
+                }}>
+                  <span style={{
+                    color: '#FFFFFF',
+                    fontWeight: '600',
+                    fontSize: '18px',
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                  }}>{index + 1}</span>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-6 text-gray-900">{solution.title}</h3>
-                  <div className="space-y-3">
+                <div style={{ flex: '1' }}>
+                  <h3 style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '28px',
+                    fontWeight: '500',
+                    marginBottom: '24px',
+                    color: '#EAEAEA',
+                    letterSpacing: '-0.02em'
+                  }}>{solution.title}</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {solution.description.map((line, lineIndex) => (
                       <p 
                         key={lineIndex} 
-                        className="text-gray-700 leading-relaxed text-lg"
-                        dangerouslySetInnerHTML={{ __html: line }}
+                        style={{
+                          fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                          color: '#B0B0B0',
+                          lineHeight: '1.6',
+                          fontSize: '16px',
+                          margin: '0',
+                          letterSpacing: '-0.01em'
+                        }}
+                        dangerouslySetInnerHTML={{ 
+                          __html: line.replace(/<strong>/g, '<strong style="color: #FFFFFF; font-weight: 600;">').replace(/<em>/g, '<em style="color: #EAEAEA; font-style: italic;">') 
+                        }}
                       />
                     ))}
                   </div>
@@ -141,11 +378,31 @@ const SolutionSection: React.FC = () => {
         </div>
         
         {/* Bottom Formula */}
-        <div className="mt-20 max-w-4xl mx-auto">
-          <div className="bg-purple-50 rounded-xl p-8 md:p-10 text-center border border-purple-200">
-            <p className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">The math is simple:</p>
-            <p className="text-xl text-gray-700 leading-relaxed">
-              <strong>Better Data</strong> × <strong>Smarter AI</strong> × <strong>Real Problems</strong> = <span className="text-purple-600 font-bold text-2xl">30+ meetings per month</span>
+        <div style={{ marginTop: '80px', maxWidth: '1000px', margin: '80px auto 0' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '20px',
+            padding: '48px 40px',
+            textAlign: 'center',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <p style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: 'clamp(24px, 3vw, 32px)',
+              fontWeight: '500',
+              marginBottom: '24px',
+              color: '#EAEAEA',
+              letterSpacing: '-0.02em'
+            }}>The math is simple:</p>
+            <p style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: '20px',
+              color: '#B0B0B0',
+              lineHeight: '1.5',
+              letterSpacing: '-0.01em'
+            }}>
+              <strong style={{ color: '#FFFFFF' }}>Better Data</strong> × <strong style={{ color: '#FFFFFF' }}>Smarter AI</strong> × <strong style={{ color: '#FFFFFF' }}>Real Problems</strong> = <span style={{ color: '#FFFFFF', fontWeight: '600', fontSize: '24px' }}>30+ meetings per month</span>
             </p>
           </div>
         </div>

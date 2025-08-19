@@ -54,47 +54,161 @@ const FaqSection: React.FC = () => {
     }
   ];
 
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <section id="faq" className="py-20 md:py-24 bg-gray-900">
+    <section id="faq" style={{
+      background: '#0a0a0a',
+      padding: '80px 0 100px',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
       
-      <div className="container mx-auto px-8 sm:px-12">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-block px-4 py-2 rounded-full bg-purple-900/50 border border-purple-500/30 text-purple-300 text-sm font-medium mb-8">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 120px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '100px',
+            padding: '8px 20px',
+            marginBottom: '48px',
+            fontSize: '13px',
+            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+            color: '#B0B0B0',
+            fontWeight: '400',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase'
+          }}>
             Common Questions
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-12 text-white">
+          <h2 style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: 'clamp(40px, 5.5vw, 64px)',
+            fontWeight: '400',
+            lineHeight: '1.1',
+            letterSpacing: '-0.03em',
+            marginBottom: '48px',
+            color: '#EAEAEA'
+          }}>
             Frequently Asked Questions
           </h2>
-          <p className="text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '22px',
+            color: '#B0B0B0',
+            fontWeight: '500',
+            lineHeight: '1.5',
+            letterSpacing: '-0.01em'
+          }}>
             Everything you need to know about our inference engine and how it delivers qualified meetings.
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-6">
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="border-0"
-              >
-                <AccordionTrigger className="py-6 px-8 rounded-xl bg-gray-800/50 hover:bg-gray-800/70 transition-colors flex justify-between items-center text-left border border-gray-700">
-                  <span className="text-lg font-medium pr-4 text-white">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="py-6 px-8 bg-gray-800/30 rounded-b-xl border-x border-b border-gray-700 border-t-0">
-                  <div className="space-y-3">
-                    {faq.answer.map((line, lineIndex) => (
-                      <p 
-                        key={lineIndex} 
-                        className="text-lg text-gray-300 leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: line }}
-                      />
-                    ))}
+              <div key={index} style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.3s ease'
+              }}>
+                <button
+                  onClick={() => toggleFaq(index)}
+                  style={{
+                    width: '100%',
+                    padding: '32px 40px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    const parent = e.currentTarget.parentElement as HTMLElement;
+                    if (parent) {
+                      parent.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    const parent = e.currentTarget.parentElement as HTMLElement;
+                    if (parent) {
+                      parent.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                    }
+                  }}
+                >
+                  <span style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '20px',
+                    fontWeight: '500',
+                    color: '#EAEAEA',
+                    letterSpacing: '-0.01em',
+                    flex: '1',
+                    marginRight: '24px'
+                  }}>
+                    {faq.question}
+                  </span>
+                  <div style={{
+                    width: '24px',
+                    height: '24px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    {openIndex === index ? 
+                      <Minus style={{ width: '12px', height: '12px', color: '#EAEAEA' }} /> :
+                      <Plus style={{ width: '12px', height: '12px', color: '#EAEAEA' }} />
+                    }
                   </div>
-                </AccordionContent>
-              </AccordionItem>
+                </button>
+                {openIndex === index && (
+                  <div style={{
+                    padding: '0 40px 32px',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                    marginTop: '-1px'
+                  }}>
+                    <div style={{
+                      paddingTop: '32px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '16px'
+                    }}>
+                      {faq.answer.map((line, lineIndex) => (
+                        <p 
+                          key={lineIndex} 
+                          style={{
+                            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                            fontSize: '18px',
+                            color: '#B0B0B0',
+                            lineHeight: '1.6',
+                            margin: '0',
+                            letterSpacing: '-0.01em'
+                          }}
+                          dangerouslySetInnerHTML={{ 
+                            __html: line.replace(/<strong>/g, '<strong style="color: #FFFFFF; font-weight: 600;">') 
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
-          </Accordion>
+          </div>
         </div>
         
       </div>

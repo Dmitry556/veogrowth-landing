@@ -11,26 +11,83 @@ const ResultsSection: React.FC = () => {
     "Your email caught my attention. We've been looking for a solution exactly like this..."
   ];
 
+
   return (
-    <section id="results" className="py-20 md:py-24 bg-white border-b border-gray-200">
+    <section 
+      id="results" 
+      style={{
+        background: '#0a0a0a',
+        padding: '40px 0 80px'
+      }}
+    >
       
-      <div className="container mx-auto px-8 sm:px-12">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-block px-4 py-2 rounded-full bg-purple-50 border border-purple-200 text-purple-600 text-sm font-medium mb-8">
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto 80px' }}>
+          <div 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '100px',
+              padding: '8px 20px',
+              marginBottom: '48px',
+              fontSize: '13px',
+              fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+              color: '#B0B0B0',
+              fontWeight: '400',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase'
+            }}
+          >
             Proof
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-12 text-gray-900">
+          <h2 
+            style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: 'clamp(32px, 4vw, 48px)',
+              fontWeight: '400',
+              lineHeight: '1.2',
+              letterSpacing: '-0.02em',
+              marginBottom: '0',
+              color: '#EAEAEA',
+              textAlign: 'center'
+            }}
+          >
             "Over the last 30 days, we hopped on 25 meetings and closed six high-ticket clients"
           </h2>
         </div>
         
         {/* Video Testimonial - David Hughes */}
-        <div className="mb-20 max-w-5xl mx-auto">
-          <div className="bg-gray-50 rounded-xl p-8 md:p-10 border border-gray-200">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <div style={{ marginBottom: '0', maxWidth: '1000px', margin: '0 auto' }}>
+          <div 
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+              borderRadius: '16px',
+              padding: '48px',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              backdropFilter: 'blur(10px)'
+            }}
+          >
+            <div 
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '48px',
+                alignItems: 'center'
+              }}
+            >
               {/* Video on the left */}
-              <div className="relative rounded-xl overflow-hidden border border-gray-200">
-                <AspectRatio ratio={16 / 9} className="bg-gray-100">
+              <div 
+                style={{
+                  position: 'relative',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.12)'
+                }}
+              >
+                <AspectRatio ratio={16 / 9} style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
                   <div style={{height: "100%", width: "100%"}}>
                     <iframe 
                       src="https://player.vimeo.com/video/1011989557?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
@@ -45,20 +102,80 @@ const ResultsSection: React.FC = () => {
               
               {/* Text content on the right */}
               <div>
-                <div className="space-y-4 mb-8">
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                    <strong className="text-gray-900">The Challenge:</strong> Podcast Whales needed consistent pipeline of executives interested in starting podcasts, but generic "you should start a podcast" emails weren't working.
+                <div style={{ marginBottom: '32px' }}>
+                  <p 
+                    style={{
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                      fontSize: '16px',
+                      color: '#B0B0B0',
+                      lineHeight: '1.6',
+                      marginBottom: '20px',
+                      letterSpacing: '-0.01em'
+                    }}
+                  >
+                    <strong style={{ color: '#EAEAEA', fontWeight: '500' }}>The Challenge:</strong> Podcast Whales needed consistent pipeline of executives interested in starting podcasts, but generic "you should start a podcast" emails weren't working.
                   </p>
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                    <strong className="text-gray-900">Our Solution:</strong> Instead of pitching podcasting services, we pitched <em className="text-purple-600">specific podcast concepts</em> tailored to each prospect's business situation.
+                  <p 
+                    style={{
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                      fontSize: '16px',
+                      color: '#B0B0B0',
+                      lineHeight: '1.6',
+                      marginBottom: '20px',
+                      letterSpacing: '-0.01em'
+                    }}
+                  >
+                    <strong style={{ color: '#EAEAEA', fontWeight: '500' }}>Our Solution:</strong> Instead of pitching podcasting services, we pitched <em style={{ color: '#FFFFFF', fontStyle: 'normal', fontWeight: '500' }}>specific podcast concepts</em> tailored to each prospect's business situation.
                   </p>
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                    <strong className="text-gray-900">Example:</strong> To a CEO competing with Loom: <em className="text-purple-600">"What if you launched 'The Async CEO' - interviewing remote leaders about killing meetings? Position yourself as the anti-Loom."</em>
+                  <p 
+                    style={{
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                      fontSize: '16px',
+                      color: '#B0B0B0',
+                      lineHeight: '1.6',
+                      marginBottom: '0',
+                      letterSpacing: '-0.01em'
+                    }}
+                  >
+                    <strong style={{ color: '#EAEAEA', fontWeight: '500' }}>Example:</strong> To a CEO competing with Loom: <em style={{ color: '#FFFFFF', fontStyle: 'normal', fontWeight: '500' }}>"What if you launched 'The Async CEO' - interviewing remote leaders about killing meetings? Position yourself as the anti-Loom."</em>
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-gray-900">David Hughes</p>
-                  <p className="text-gray-600">Founder & CEO, <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 underline">Podcast Whales</a></p>
+                  <p 
+                    style={{
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                      fontSize: '16px',
+                      fontWeight: '500',
+                      color: '#EAEAEA',
+                      marginBottom: '4px'
+                    }}
+                  >
+                    David Hughes
+                  </p>
+                  <p 
+                    style={{
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                      fontSize: '14px',
+                      color: '#7A7A7A',
+                      margin: '0'
+                    }}
+                  >
+                    Founder & CEO, <a 
+                      href="https://www.podcastwhales.com/" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      style={{ 
+                        color: '#FFFFFF', 
+                        textDecoration: 'none',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+                        transition: 'border-color 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.target.style.borderBottomColor = '#FFFFFF'}
+                      onMouseLeave={(e) => e.target.style.borderBottomColor = 'rgba(255, 255, 255, 0.3)'}
+                    >
+                      Podcast Whales
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>

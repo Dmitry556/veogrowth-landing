@@ -1,10 +1,9 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import HeroSection from '@/components/sections/HeroSection';
-import LogoSlider from '@/components/sections/LogoSlider';
 import StorySection from '@/components/sections/StorySection';
 import SolutionSection from '@/components/sections/SolutionSection';
 import EmailExamplesSlider from '@/components/sections/EmailExamplesSlider';
@@ -23,32 +22,115 @@ const SectionLoader = () => (
   </div>
 );
 
-// Optimized intersection observer for lazy loading
-const useOptimizedIntersection = (options = {}) => {
+// Scroll-triggered animation component
+const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [element, setElement] = useState<HTMLDivElement | null>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    const element = elementRef.current;
     if (!element) return;
     
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+          // Fast, subtle animation
+          requestAnimationFrame(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          });
+        }
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
       }
-    }, { rootMargin: '300px 0px', threshold: 0.01, ...options });
+    );
     
     observer.observe(element);
     
     return () => observer.disconnect();
-  }, [element, options]);
+  }, [isVisible]);
   
-  return { isVisible, setRef: setElement };
+  return (
+    <div 
+      ref={elementRef}
+      className="scroll-animate"
+      style={{
+        opacity: 0,
+        transform: 'translateY(20px)',
+        transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
+        willChange: 'opacity, transform'
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 const Index = () => {
   // Track if this is the first render to optimize schema injection
   const isFirstRender = React.useRef(true);
+  
+  // Add fast, subtle scroll animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        will-change: opacity, transform;
+      }
+      
+      .fade-in {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      
+      .fade-in.visible {
+        opacity: 1;
+      }
+      
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      
+      body {
+        overflow-x: hidden;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   useEffect(() => {
     // Update document title with high priority
@@ -108,42 +190,59 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground" style={{ overflowX: 'hidden' }}>
       <CanonicalUrl path="/" />
-      <Header />
+      {/* <Header /> */}
       
       <main>
-        <HeroSection />
-        
-        {/* Logo Slider */}
-        <LogoSlider />
+        <div className="fade-in visible">
+          <HeroSection />
+        </div>
         
         {/* Proof Section - Moved up for credibility */}
-        <ResultsSection />
+        <AnimatedSection delay={0}>
+          <ResultsSection />
+        </AnimatedSection>
         
         {/* Case Studies Preview - New section for social proof */}
-        <CaseStudiesPreview />
+        <AnimatedSection delay={100}>
+          <CaseStudiesPreview />
+        </AnimatedSection>
         
         {/* Email Examples Section - Moved up to show work quality */}
-        <EmailExamplesSlider />
+        <AnimatedSection delay={200}>
+          <EmailExamplesSlider />
+        </AnimatedSection>
         
         {/* The Story Section */}
-        <StorySection />
+        <AnimatedSection delay={0}>
+          <StorySection />
+        </AnimatedSection>
         
         {/* The Three-Layer Innovation Section */}
-        <SolutionSection />
+        <AnimatedSection delay={0}>
+          <SolutionSection />
+        </AnimatedSection>
         
         {/* How It Actually Works Section */}
-        <ProcessSection />
+        <AnimatedSection delay={0}>
+          <ProcessSection />
+        </AnimatedSection>
         
         {/* Who This Is For Section */}
-        <QualificationSection />
+        <AnimatedSection delay={0}>
+          <QualificationSection />
+        </AnimatedSection>
         
         {/* Investment Section */}
-        <PricingSection />
+        <AnimatedSection delay={0}>
+          <PricingSection />
+        </AnimatedSection>
         
         {/* FAQ Section */}
-        <FaqSection />
+        <AnimatedSection delay={0}>
+          <FaqSection />
+        </AnimatedSection>
         
       </main>
       
@@ -152,17 +251,11 @@ const Index = () => {
   );
 };
 
-// Optimized lazy section loader with better memory management
+// Simple section loader
 const LazySection = ({ component: Component, id }: { component: React.ComponentType, id: string }) => {
-  const { isVisible, setRef } = useOptimizedIntersection();
-
   return (
-    <div id={id} ref={setRef}>
-      {isVisible ? (
-        <Component />
-      ) : (
-        <SectionLoader />
-      )}
+    <div id={id}>
+      <Component />
     </div>
   );
 };

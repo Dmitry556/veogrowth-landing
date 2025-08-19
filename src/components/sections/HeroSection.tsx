@@ -1,237 +1,560 @@
-import React, { useEffect, useRef } from 'react';
-import CustomButton from '../ui/CustomButton';
-import { ChevronRight } from 'lucide-react';
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
-import { Play } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
 import { trackCalendlyClick } from '@/utils/analytics';
-import VideoPlayer from '../VideoPlayer';
 
 const HeroSection: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const { setRef, isIntersecting } = useIntersectionObserver({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-  
+  const [scrolled, setScrolled] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    if (headingRef.current && 'elementTiming' in headingRef.current) {
-      headingRef.current.setAttribute('elementtiming', 'hero-heading');
-      headingRef.current.setAttribute('fetchpriority', 'high');
-    }
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
+  // Next-gen Linear-style blur-in animation on load
   useEffect(() => {
-    if (!canvasRef.current || !isIntersecting) return;
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 100); // Small delay for dramatic effect
     
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d', { alpha: true });
-    if (!ctx) return;
-    
-    const setCanvasDimensions = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      ctx.scale(dpr, dpr);
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-    };
-    
-    setCanvasDimensions();
-    
-    const resizeObserver = new ResizeObserver(() => {
-      requestAnimationFrame(setCanvasDimensions);
-    });
-    
-    resizeObserver.observe(canvas);
-    
-    const isMobile = window.innerWidth < 768;
-    const particleCount = Math.min(isMobile ? 5 : 10, 10);
-    const particles: {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
-    }[] = [];
-    
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.1,
-        speedY: (Math.random() - 0.5) * 0.1,
-        color: i % 2 === 0 ? 'rgba(59, 130, 246, 0.2)' : 'rgba(139, 92, 246, 0.2)',
-      });
-    }
-    
-    let animationFrameId: number;
-    let lastTime = 0;
-    const fps = 15;
-    const interval = 1000 / fps;
-    
-    const animate = (currentTime: number) => {
-      animationFrameId = requestAnimationFrame(animate);
-      
-      const delta = currentTime - lastTime;
-      if (delta < interval) return;
-      
-      lastTime = currentTime - (delta % interval);
-      
-      ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-      
-      particles.forEach(particle => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-        
-        if (particle.x < 0) particle.x = canvas.width / window.devicePixelRatio;
-        if (particle.x > canvas.width / window.devicePixelRatio) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height / window.devicePixelRatio;
-        if (particle.y > canvas.height / window.devicePixelRatio) particle.y = 0;
-        
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.fill();
-      });
-      
-      if (!isMobile) {
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
-        ctx.lineWidth = 0.5;
-        
-        for (let i = 0; i < particles.length - 1; i++) {
-          const dx = particles[i].x - particles[i+1].x;
-          const dy = particles[i].y - particles[i+1].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < 100) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[i+1].x, particles[i+1].y);
-            ctx.stroke();
-          }
-        }
-      }
-    };
-    
-    const animationDelay = setTimeout(() => {
-      animationFrameId = requestAnimationFrame(animate);
-    }, 500);
-    
-    return () => {
-      clearTimeout(animationDelay);
-      cancelAnimationFrame(animationFrameId);
-      resizeObserver.disconnect();
-    };
-  }, [isIntersecting]);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section 
-      ref={setRef} 
-      className="hero-section relative flex items-center pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900"
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <canvas 
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full opacity-30"
-          style={{ pointerEvents: 'none' }}
-        />
-      </div>
+    <>
+      {/* Linear-style hero animations & navbar CSS */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          /* Next-gen Linear-style hero blur-in animation */
+          .hero-container {
+            opacity: 0;
+            filter: blur(20px);
+            transform: translateY(30px) scale(1.02);
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, filter, transform;
+          }
+          
+          .hero-container.loaded {
+            opacity: 1;
+            filter: blur(0px);
+            transform: translateY(0) scale(1);
+          }
+          
+          /* Staggered blur-in for child elements */
+          .hero-element {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          
+          .loaded .hero-element:nth-child(1) { 
+            transition-delay: 0.1s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(2) { 
+            transition-delay: 0.2s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(3) { 
+            transition-delay: 0.3s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(4) { 
+            transition-delay: 0.4s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(5) { 
+            transition-delay: 0.5s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          
+          .full-width-navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 50% !important;
+            right: auto !important;
+            width: 100vw !important;
+            min-width: 100vw !important;
+            max-width: 100vw !important;
+            margin: 0 !important;
+            margin-left: -50vw !important;
+            transform: none !important;
+            box-sizing: border-box !important;
+          }
+          
+          /* Override any parent container constraints */
+          .full-width-navbar * {
+            box-sizing: border-box !important;
+          }
+          
+          /* Force body and html to allow full width */
+          body, html {
+            overflow-x: auto !important;
+            width: 100% !important;
+          }
+        `
+      }} />
       
-      <div className="container mx-auto px-4 sm:px-6 z-10 relative">
-        <div className="max-w-6xl mx-auto text-center">
-          
-          {/* Qualification Badge */}
-          <div className="inline-flex items-center bg-purple-900/30 text-purple-300 rounded-full px-6 py-3 mb-8 border border-purple-500/30 backdrop-blur-sm">
-            <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-            <span className="text-sm font-medium">For Productized B2B Agencies</span>
-          </div>
-          
-          {/* Main Headline */}
-          <h1 
-            ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8"
-            id="main-heading"
+      {/* Elegant Navigation */}
+      <nav 
+        className="full-width-navbar fixed top-0 z-50"
+        style={{
+          padding: '12px 32px',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+          background: scrolled ? 'rgba(17, 18, 19, 0.8)' : 'transparent',
+          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none',
+          boxShadow: scrolled ? '0 1px 10px rgba(0, 0, 0, 0.1)' : 'none',
+          transition: 'background 0.2s ease, backdrop-filter 0.2s ease, box-shadow 0.2s ease',
+          boxSizing: 'border-box'
+        }}
+      >
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a 
+            href="#" 
+            style={{
+              fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+              fontSize: '16px',
+              fontWeight: '500',
+              color: '#EAEAEA',
+              textDecoration: 'none',
+              letterSpacing: '-0.01em',
+              opacity: '0.95'
+            }}
           >
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              30+ Qualified Meetings
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Per Month on Autopilot
-            </span>
-          </h1>
-          
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto font-normal">
-            We generate qualified pipeline that turns into <span className="text-gray-100">actual revenue</span><br />using AI-powered cold email campaigns.
-          </p>
-
-          {/* Video Section */}
-          <div className="max-w-lg mx-auto mb-8 px-4">
-            <div className="relative">
-              <VideoPlayer
-                videoUrl="https://pub-a7e4c0be2e134a7d8ae6db1354116576.r2.dev/vsl.mp4"
-                className="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-              />
-            </div>
-          </div>
-
-          {/* Payment Terms - Under Video */}
-          <p className="text-sm text-gray-400 max-w-2xl mx-auto font-medium text-center mb-8">
-            No retainers. No contracts. Pay only for <span className="text-gray-200">qualified</span> meetings that show up.
-          </p>
-
-          {/* CTA Section - After Payment Terms */}
-          <div className="flex flex-col items-center gap-4 mb-12">
-            <button 
-              onClick={() => {
-                trackCalendlyClick('hero-main');
-                window.open('https://calendly.com/veogrowth', '_blank');
+            Veogrowth
+          </a>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="hidden md:flex">
+            <a 
+              href="/case-studies" 
+              style={{
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '400',
+                transition: 'color 0.2s ease'
               }}
-              className="group relative"
+              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
-              <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-2xl transition-all duration-200 transform hover:-translate-y-1 flex items-center">
-                Get 2 Free Qualified Meetings
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-              </div>
+              Case Studies
+            </a>
+            <a 
+              href="/blog" 
+              style={{
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '400',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
+            >
+              Blog
+            </a>
+            <a 
+              href="/tools" 
+              style={{
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '400',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
+            >
+              Free Tools
+            </a>
+            <a 
+              href="#pricing" 
+              style={{
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                fontSize: '14px',
+                fontWeight: '400',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
+            >
+              Pricing
+            </a>
+            <button 
+              style={{
+                padding: '8px 20px',
+                background: '#FAFAFA',
+                color: '#111213',
+                borderRadius: '6px',
+                textDecoration: 'none',
+                fontSize: '13px',
+                fontWeight: '400',
+                transition: 'all 0.2s ease',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.opacity = '0.92';
+                e.target.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
+              }}
+            >
+              Request the pilot
             </button>
           </div>
-          
-          {/* Trust Indicators - Below Video */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-gray-400">
-            <div className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>No contracts</span>
-            </div>
-            <div className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Zero risk</span>
-            </div>
-            <div className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Setup in 48 hours</span>
-            </div>
-          </div>
-          
         </div>
-      </div>
-    </section>
+      </nav>
+
+      {/* Hero Section */}
+      <section 
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{
+          background: '#0a0a0a',
+          color: '#EAEAEA',
+          fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        }}
+      >
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" 
+            style={{
+              backgroundImage: `
+                radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 45% 85%, rgba(255,255,255,0.35), transparent)
+              `,
+              backgroundSize: '400px 300px, 300px 400px, 200px 200px'
+            }}
+          />
+        </div>
+
+        <div 
+          className={`hero-container ${loaded ? 'loaded' : ''}`}
+          style={{
+            position: 'relative',
+            zIndex: '10',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '100px 40px',
+            minHeight: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            textAlign: 'center'
+          }}
+        >
+          <div className="max-w-5xl mx-auto text-center">
+            
+            {/* Status Pill */}
+            <div 
+              className="hero-element"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                borderRadius: '100px',
+                padding: '8px 20px',
+                marginBottom: '40px',
+                fontSize: '13px',
+                fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+              }}
+            >
+              <span 
+                style={{
+                  fontSize: '12px',
+                  fontWeight: '400',
+                  color: '#B0B0B0',
+                  letterSpacing: '0.04em',
+                  textTransform: 'uppercase'
+                }}
+              >
+                Proof-of-Concept Pilot
+              </span>
+              <span style={{ color: '#7A7A7A', marginLeft: '4px', opacity: '0.6' }}>→</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 
+              className="hero-element relative text-center font-montserrat"
+              style={{
+                fontSize: 'clamp(42px, 5.4vw, 56px)',
+                lineHeight: '1.05',
+                letterSpacing: '-0.04em',
+                marginBottom: '40px',
+                fontWeight: '400',
+                background: 'linear-gradient(135deg, #9ca3af 0%, #d1d5db 25%, #e5e7eb 50%, #f9fafb 75%, #ffffff 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                position: 'relative'
+              }}
+            >
+              <div 
+                className="absolute -z-10"
+                style={{
+                  content: '',
+                  position: 'absolute',
+                  inset: '-20px -40px',
+                  background: 'radial-gradient(ellipse 120% 50% at center, rgba(255, 255, 255, 0.06) 0%, rgba(229, 231, 235, 0.03) 40%, transparent 70%)',
+                  borderRadius: '24px',
+                  filter: 'blur(1px)'
+                }}
+              />
+              We'll run your cold email campaign<br />
+              until we book 2 meetings - free.
+            </h1>
+
+            {/* Elegant Subheadline */}
+            <div 
+              className="hero-element"
+              style={{
+                fontSize: '20px',
+                fontWeight: '400',
+                color: '#B0B0B0',
+                textAlign: 'center',
+                marginBottom: '40px',
+                opacity: '0.9',
+                fontStyle: 'italic'
+              }}
+            >
+              Then only pay for{' '}
+              <span 
+                style={{
+                  color: '#ffffff',
+                  fontWeight: '500',
+                  fontStyle: 'normal',
+                  position: 'relative'
+                }}
+              >
+                qualified calls
+                <div 
+                  style={{
+                    position: 'absolute',
+                    bottom: '-2px',
+                    left: '0',
+                    right: '0',
+                    height: '1px',
+                    background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%)',
+                    opacity: '0.8'
+                  }}
+                />
+              </span>
+              {' '}that show up.
+            </div>
+
+            {/* Description */}
+            <div className="hero-element" style={{ maxWidth: '520px', margin: '0 auto 48px', textAlign: 'center' }}>
+              <p style={{ 
+                fontSize: '18px', 
+                lineHeight: '1.5', 
+                marginBottom: '24px', 
+                color: 'rgba(255, 255, 255, 0.9)', 
+                fontWeight: '500', 
+                letterSpacing: '-0.02em' 
+              }}>
+                We bet our revenue on results.
+              </p>
+              <p style={{ 
+                fontSize: '16px', 
+                lineHeight: '1.6', 
+                marginBottom: '20px', 
+                color: 'rgba(255, 255, 255, 0.8)', 
+                letterSpacing: '-0.015em' 
+              }}>
+                Tell us what you sell and who you want to reach. Our AI finds, researches, and sends the email of the year to your prospects.
+              </p>
+              <p style={{ 
+                fontSize: '16px', 
+                lineHeight: '1.6', 
+                color: 'rgba(255, 255, 255, 0.8)', 
+                letterSpacing: '-0.015em' 
+              }}>
+                You approve the copy & targeting. We launch in less than 24 hours.
+              </p>
+            </div>
+
+            {/* Form */}
+            <div className="hero-element" style={{ maxWidth: '520px', margin: '0 auto 60px' }}>
+              <div 
+                style={{
+                  display: 'flex',
+                  gap: '10px',
+                  padding: '8px',
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.04)'
+                }}
+              >
+                <input 
+                  type="email"
+                  placeholder="What's your work email?"
+                  style={{
+                    flex: '2',
+                    height: '48px',
+                    padding: '0 20px',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '6px',
+                    color: '#EAEAEA',
+                    fontSize: '15px',
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                  }}
+                />
+                <button 
+                  onClick={() => {
+                    trackCalendlyClick('hero-elegant');
+                    window.open('https://calendly.com/veogrowth', '_blank');
+                  }}
+                  style={{
+                    flexShrink: '0',
+                    height: '48px',
+                    padding: '0 26px',
+                    background: '#FAFAFA',
+                    color: '#111213',
+                    border: 'none',
+                    borderRadius: '6px',
+                    fontSize: '14px',
+                    fontWeight: '400',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    whiteSpace: 'nowrap',
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.opacity = '0.95';
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.12)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
+                  Request the pilot
+                </button>
+              </div>
+            </div>
+
+            {/* Elegant Video Placeholder */}
+            <div className="max-w-2xl mx-auto mb-15">
+              <div 
+                className="w-full aspect-video bg-gray-800/50 border-2 border-white/20 rounded-lg cursor-pointer hover:border-white/30 hover:-translate-y-0.5 transition-all min-h-48"
+                onClick={() => {
+                  // Keep existing video functionality if any
+                  console.log('Video clicked - integrate existing video player');
+                }}
+              />
+            </div>
+
+            {/* Trust Section */}
+            <div style={{ marginTop: 'auto', paddingTop: '60px', paddingBottom: '0px', textAlign: 'center' }}>
+              <p style={{ 
+                fontSize: '14px', 
+                color: '#6B7280', 
+                marginBottom: '36px', 
+                opacity: '0.8' 
+              }}>
+                Companies we booked meetings for our clients with
+              </p>
+              
+              {/* Logo Grid */}
+              <div style={{ 
+                position: 'relative',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '80vw', 
+                maxWidth: '1200px', 
+                margin: '0'
+              }}>
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(8, 1fr)', 
+                  gap: '32px', 
+                  alignItems: 'center', 
+                  justifyItems: 'center' 
+                }}>
+                  {[
+                    { name: 'Apple', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg' },
+                    { name: 'Amazon', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg' },
+                    { name: 'Google', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg' },
+                    { name: 'Microsoft', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg' },
+                    { name: 'PayPal', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/paypal.svg' },
+                    { name: 'Nike', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nike.svg' },
+                    { name: 'Tesla', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tesla.svg' },
+                    { name: 'Meta', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg' },
+                    { name: 'HubSpot', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg' },
+                    { name: 'Netflix', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/netflix.svg' },
+                    { name: 'Adobe', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobe.svg' },
+                    { name: 'IBM', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/ibm.svg' },
+                    { name: 'Salesforce', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg' },
+                    { name: 'FedEx', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fedex.svg' },
+                    { name: 'Samsung', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/samsung.svg' },
+                    { name: 'Intel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/intel.svg' }
+                  ].map((company, index) => (
+                    <div 
+                      key={index}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '100%',
+                        height: '48px'
+                      }}
+                    >
+                      <img 
+                        src={company.src}
+                        alt={`${company.name} logo`}
+                        style={{ 
+                          height: '32px',
+                          width: 'auto',
+                          objectFit: 'contain',
+                          opacity: '0.3',
+                          transition: 'opacity 0.3s ease',
+                          filter: 'brightness(0) saturate(100%) invert(1)'
+                        }}
+                        onMouseEnter={(e) => e.target.style.opacity = '0.6'}
+                        onMouseLeave={(e) => e.target.style.opacity = '0.3'}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a 
+                href="#" 
+                className="inline-flex items-center gap-2 mt-7 text-gray-600 text-sm hover:text-gray-400 transition-colors group"
+              >
+                See case studies 
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -27,31 +27,95 @@ const companyLogos: Logo[] = [
 const LogoSlider = () => {
 
   return (
-    <section className="py-16 bg-white overflow-hidden border-b border-gray-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <h2 className="text-xl font-semibold text-center mb-8 text-gray-700">
-          Companies We've Booked Meetings For Our Clients With
+    <section 
+      style={{
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0f0f0f 100%)',
+        overflow: 'hidden',
+        padding: '80px 0',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      }}
+    >
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <h2 
+          style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '14px',
+            fontWeight: '400',
+            textAlign: 'center',
+            marginBottom: '48px',
+            color: '#B0B0B0',
+            opacity: '0.8',
+            letterSpacing: '0.02em',
+            textTransform: 'uppercase'
+          }}
+        >
+          Companies we booked meetings for our clients with
         </h2>
         
-        <div className="relative">
+        <div style={{ position: 'relative' }}>
           {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white to-transparent"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white to-transparent"></div>
+          <div style={{
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            bottom: '0',
+            width: '80px',
+            zIndex: '10',
+            background: 'linear-gradient(to right, #0f0f0f, transparent)',
+            pointerEvents: 'none'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            right: '0',
+            top: '0',
+            bottom: '0',
+            width: '80px',
+            zIndex: '10',
+            background: 'linear-gradient(to left, #0f0f0f, transparent)',
+            pointerEvents: 'none'
+          }}></div>
           
-          <div className="overflow-hidden">
+          <div style={{ overflow: 'hidden' }}>
             <div 
-              className="flex space-x-12 animate-scroll"
+              className="animate-scroll"
+              style={{
+                display: 'flex',
+                gap: '64px',
+                alignItems: 'center'
+              }}
             >
               {/* First set of logos */}
               {companyLogos.map((logo) => (
                 <div 
-                  key={logo.id} 
-                  className="flex-shrink-0 h-10 flex items-center justify-center"
+                  key={logo.id}
+                  style={{
+                    flexShrink: '0',
+                    height: '48px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minWidth: '100px'
+                  }}
                 >
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-10 w-auto object-contain opacity-40 hover:opacity-60 transition-opacity duration-300 filter grayscale"
+                    style={{
+                      height: '32px',
+                      width: 'auto',
+                      objectFit: 'contain',
+                      opacity: '0.25',
+                      transition: 'all 0.3s ease',
+                      filter: 'brightness(0) saturate(100%) invert(1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.opacity = '0.6';
+                      e.target.style.transform = 'scale(1.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.opacity = '0.25';
+                      e.target.style.transform = 'scale(1)';
+                    }}
                     loading="lazy"
                   />
                 </div>
@@ -59,13 +123,35 @@ const LogoSlider = () => {
               {/* Duplicate set for seamless loop */}
               {companyLogos.map((logo) => (
                 <div 
-                  key={`${logo.id}-duplicate`} 
-                  className="flex-shrink-0 h-10 flex items-center justify-center"
+                  key={`${logo.id}-duplicate`}
+                  style={{
+                    flexShrink: '0',
+                    height: '48px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minWidth: '100px'
+                  }}
                 >
                   <img 
                     src={logo.src} 
                     alt={logo.alt} 
-                    className="h-10 w-auto object-contain opacity-40 hover:opacity-60 transition-opacity duration-300 filter grayscale"
+                    style={{
+                      height: '32px',
+                      width: 'auto',
+                      objectFit: 'contain',
+                      opacity: '0.25',
+                      transition: 'all 0.3s ease',
+                      filter: 'brightness(0) saturate(100%) invert(1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.opacity = '0.6';
+                      e.target.style.transform = 'scale(1.05)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.opacity = '0.25';
+                      e.target.style.transform = 'scale(1)';
+                    }}
                     loading="lazy"
                   />
                 </div>

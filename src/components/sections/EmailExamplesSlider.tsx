@@ -191,83 +191,218 @@ Ready to be the security company people actually remember?`
   };
 
   return (
-    <section className="py-20 bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-purple-900/30 text-purple-300 rounded-full px-6 py-3 mb-8 border border-purple-500/30 backdrop-blur-sm">
-            <Mail className="w-4 h-4 mr-2" />
-            <span className="text-sm font-medium">AI-Generated Cold Emails</span>
+    <section style={{
+      background: '#0a0a0a',
+      padding: '80px 0 100px',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '100px',
+            padding: '8px 20px',
+            marginBottom: '48px',
+            fontSize: '13px',
+            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+            color: '#B0B0B0',
+            fontWeight: '400',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase'
+          }}>
+            <Mail style={{ width: '16px', height: '16px' }} />
+            <span>AI-Generated Cold Emails</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Cold Email Examples
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Our AI Writes
-            </span>
+          <h2 style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: 'clamp(40px, 5.5vw, 64px)',
+            fontWeight: '400',
+            lineHeight: '1.1',
+            letterSpacing: '-0.03em',
+            marginBottom: '32px',
+            color: '#EAEAEA'
+          }}>
+            Cold Email Examples Our AI Writes
           </h2>
           
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '22px',
+            color: '#B0B0B0',
+            maxWidth: '900px',
+            margin: '0 auto',
+            lineHeight: '1.5',
+            letterSpacing: '-0.01em'
+          }}>
             These aren't templates. Our AI analyzes each company's situation and writes emails that show real understanding of their specific challenges.
           </p>
         </div>
 
         {/* Email Grid - 2 rows, 2 columns */}
-        <div ref={emailGridRef} className="relative max-w-7xl mx-auto">
+        <div ref={emailGridRef} style={{ position: 'relative', maxWidth: '1400px', margin: '0 auto' }}>
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors border border-gray-700 hover:border-purple-500 shadow-lg"
+            style={{
+              position: 'absolute',
+              left: '-60px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              width: '48px',
+              height: '48px',
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+            }}
           >
-            <ChevronLeft className="w-5 h-5 text-gray-300" />
+            <ChevronLeft style={{ width: '20px', height: '20px', color: '#EAEAEA' }} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center transition-colors border border-gray-700 hover:border-purple-500 shadow-lg"
+            style={{
+              position: 'absolute',
+              right: '-60px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+              width: '48px',
+              height: '48px',
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              backdropFilter: 'blur(10px)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.12)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+            }}
           >
-            <ChevronRight className="w-5 h-5 text-gray-300" />
+            <ChevronRight style={{ width: '20px', height: '20px', color: '#EAEAEA' }} />
           </button>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 mx-8">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '32px', marginBottom: '60px' }}>
             {getCurrentEmails().map((email, index) => (
               <div 
                 key={`${currentSlide}-${email.id}`}
-                className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-300 group animate-fade-in"
                 style={{
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  backdropFilter: 'blur(10px)',
                   animationDelay: `${index * 150}ms`,
-                  animationFillMode: 'both'
+                  animationFillMode: 'both',
+                  minHeight: '450px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
                 }}
               >
                 {/* Email Header */}
-                <div className="p-6 border-b border-gray-700/50">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-block bg-purple-900/50 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">
+                <div style={{ padding: '32px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+                    <div style={{
+                      display: 'inline-block',
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: '#B0B0B0',
+                      fontSize: '12px',
+                      fontWeight: '400',
+                      padding: '6px 12px',
+                      borderRadius: '100px',
+                      letterSpacing: '0.02em',
+                      fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                    }}>
                       {email.category}
-                    </span>
-                    <Target className="w-4 h-4 text-gray-500" />
+                    </div>
+                    <Target style={{ width: '18px', height: '18px', color: '#7A7A7A' }} />
                   </div>
                   
-                  <div className="text-sm text-gray-400 mb-2">
-                    <span className="font-medium">To:</span> {email.to}
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '14px',
+                    color: '#B0B0B0',
+                    marginBottom: '10px',
+                    letterSpacing: '-0.01em'
+                  }}>
+                    <span style={{ fontWeight: '500' }}>To:</span> {email.to}
                   </div>
                   
-                  <div className="text-sm text-gray-400 mb-3">
-                    <span className="font-medium">Subject:</span> {email.subject}
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '14px',
+                    color: '#B0B0B0',
+                    marginBottom: '16px',
+                    letterSpacing: '-0.01em'
+                  }}>
+                    <span style={{ fontWeight: '500' }}>Subject:</span> {email.subject}
                   </div>
                   
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    color: '#EAEAEA',
+                    fontSize: '15px',
+                    lineHeight: '1.5',
+                    margin: '0',
+                    letterSpacing: '-0.01em'
+                  }}>
                     {email.preview}
                   </p>
                 </div>
 
                 {/* Email Body Preview */}
-                <div className="p-6">
-                  <div className="bg-gray-900/50 rounded-lg p-4 border border-gray-700/30">
-                    <pre className="text-gray-300 text-sm whitespace-pre-wrap font-sans leading-relaxed">
+                <div style={{ padding: '32px', paddingTop: '0' }}>
+                  <div style={{
+                    background: 'rgba(0, 0, 0, 0.3)',
+                    borderRadius: '12px',
+                    padding: '24px',
+                    border: '1px solid rgba(255, 255, 255, 0.06)'
+                  }}>
+                    <pre style={{
+                      fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+                      color: '#B0B0B0',
+                      fontSize: '14px',
+                      whiteSpace: 'pre-wrap',
+                      lineHeight: '1.6',
+                      margin: '0',
+                      letterSpacing: '0'
+                    }}>
                       {email.body}
                     </pre>
                   </div>
@@ -277,9 +412,9 @@ Ready to be the security company people actually remember?`
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-center space-x-4">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
             {/* Slide Indicators */}
-            <div className="flex space-x-2">
+            <div style={{ display: 'flex', gap: '8px' }}>
               {Array.from({ length: totalSlides }, (_, index) => (
                 <button
                   key={index}
@@ -287,27 +422,74 @@ Ready to be the security company people actually remember?`
                     setCurrentSlide(index);
                     setTimeout(scrollToEmailGrid, 100);
                   }}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentSlide 
-                      ? 'bg-purple-500' 
-                      : 'bg-gray-600 hover:bg-gray-500'
-                  }`}
+                  style={{
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    background: index === currentSlide 
+                      ? '#FFFFFF' 
+                      : 'rgba(255, 255, 255, 0.3)'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (index !== currentSlide) {
+                      e.target.style.background = 'rgba(255, 255, 255, 0.5)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (index !== currentSlide) {
+                      e.target.style.background = 'rgba(255, 255, 255, 0.3)';
+                    }
+                  }}
                 />
               ))}
             </div>
           </div>
         </div>
 
-
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div style={{ textAlign: 'center', marginTop: '64px' }}>
           <button 
             onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: '#FAFAFA',
+              color: '#111213',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '16px 32px',
+              fontSize: '16px',
+              fontWeight: '400',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.opacity = '0.95';
+              e.target.style.transform = 'translateY(-2px)';
+              e.target.style.boxShadow = '0 8px 25px rgba(255, 255, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.opacity = '1';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = 'none';
+            }}
           >
             See What Our AI Writes for You →
           </button>
-          <p className="text-gray-400 text-sm mt-4">Free strategy call • See real examples for your industry</p>
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            color: '#7A7A7A',
+            fontSize: '14px',
+            marginTop: '16px',
+            letterSpacing: '-0.01em'
+          }}>
+            Free strategy call • See real examples for your industry
+          </p>
         </div>
       </div>
     </section>

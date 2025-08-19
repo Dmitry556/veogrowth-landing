@@ -47,105 +47,273 @@ const CaseStudiesPreview: React.FC = () => {
     }
   ];
 
+  // Add subtle scrollbar styles
+  React.useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      .case-studies-scroll::-webkit-scrollbar {
+        height: 4px;
+      }
+      
+      .case-studies-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      .case-studies-scroll::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+      }
+      
+      .case-studies-scroll::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    `;
+    document.head.appendChild(styleElement);
+    
+    return () => {
+      if (document.head.contains(styleElement)) {
+        document.head.removeChild(styleElement);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 md:py-24 bg-gray-900 border-b border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Client Success Stories
-              </span>
-            </h2>
+    <section style={{
+      background: '#0a0a0a',
+      padding: '80px 0',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            borderRadius: '100px',
+            padding: '8px 20px',
+            marginBottom: '48px',
+            fontSize: '13px',
+            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+            color: '#B0B0B0',
+            fontWeight: '400',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase'
+          }}>
+            Client Success Stories
           </div>
+          <h2 style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontWeight: '400',
+            lineHeight: '1.2',
+            letterSpacing: '-0.02em',
+            marginBottom: '0',
+            color: '#EAEAEA'
+          }}>
+            Real Results from Real Clients
+          </h2>
+        </div>
 
-
-          {/* Case Studies Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {featuredCaseStudies.map((study, index) => (
-              <Link
-                to={`/case-studies/${study.id}`}
-                key={study.id}
-                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700/50 overflow-hidden hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1 block"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        {/* Case Studies - Single Row */}
+        <div 
+          className="case-studies-scroll"
+          style={{ 
+            display: 'flex', 
+            gap: '32px', 
+            overflowX: 'auto',
+            paddingBottom: '20px',
+            scrollSnapType: 'x mandatory',
+            width: '100%'
+          }}
+        >
+          {featuredCaseStudies.map((study, index) => (
+            <Link
+              to={`/case-studies/${study.id}`}
+              key={study.id}
+              style={{
+                display: 'block',
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '20px',
+                padding: '32px',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+                backdropFilter: 'blur(10px)',
+                flex: '0 0 auto',
+                scrollSnapAlign: 'start',
+                width: 'max-content',
+                maxWidth: '400px'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+              }}
+            >
+              <div style={{ marginBottom: '24px' }}>
+                <div style={{
+                  display: 'inline-block',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  color: '#B0B0B0',
+                  fontSize: '12px',
+                  fontWeight: '400',
+                  padding: '6px 12px',
+                  borderRadius: '100px',
+                  letterSpacing: '0.02em',
+                  marginBottom: '16px',
+                  fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                }}>
+                  {study.industry}
+                </div>
                 
-                <div className="relative p-6">
-                  <div className="mb-4">
-                    <span className="inline-block bg-purple-900/50 text-purple-300 text-xs font-medium px-3 py-1 rounded-full mb-3">
-                      {study.industry}
-                    </span>
-                    <h3 className="text-lg font-bold mb-3 group-hover:text-purple-400 transition-colors leading-tight">
-                      {study.id === 'podcast-whales-25-meetings-6-clients' ? (
-                        <>
-                          <a href={study.companyUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-300">
-                            Podcast Whales
-                          </a>
-                          : 25 Meetings, 6 Clients in 30 Days
-                        </>
-                      ) : (
-                        study.title
-                      )}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                      {study.preview}
-                    </p>
+                <h3 style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontSize: '18px',
+                  fontWeight: '500',
+                  color: '#EAEAEA',
+                  marginBottom: '12px',
+                  letterSpacing: '-0.01em'
+                }}>
+                  {study.title}
+                </h3>
+                
+                <p style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  color: '#B0B0B0',
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  marginBottom: '20px',
+                  letterSpacing: '-0.01em'
+                }}>
+                  {study.preview}
+                </p>
+              </div>
+              
+              {/* Results Metrics */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '20px' }}>
+                <div style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '8px',
+                  padding: '12px 8px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    color: '#FFFFFF',
+                    marginBottom: '4px'
+                  }}>
+                    {study.results.meetings}
                   </div>
-                  
-                  {/* Results Grid */}
-                  <div className="grid grid-cols-3 gap-3 mb-6">
-                    <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-green-900/30 rounded-lg mb-2 mx-auto">
-                        <Users className="w-4 h-4 text-green-400" />
-                      </div>
-                      <div className="text-lg font-bold text-white">{study.results.meetings}</div>
-                      <div className="text-xs text-gray-500">Meetings</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-blue-900/30 rounded-lg mb-2 mx-auto">
-                        <DollarSign className="w-4 h-4 text-blue-400" />
-                      </div>
-                      <div className="text-lg font-bold text-white">{study.results.pipeline}</div>
-                      <div className="text-xs text-gray-500">Pipeline</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="flex items-center justify-center w-8 h-8 bg-purple-900/30 rounded-lg mb-2 mx-auto">
-                        <TrendingUp className="w-4 h-4 text-purple-400" />
-                      </div>
-                      <div className="text-lg font-bold text-white">{study.results.responseRate}</div>
-                      <div className="text-xs text-gray-500">Response</div>
-                    </div>
-                  </div>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {study.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="text-xs bg-gray-700/50 text-gray-300 px-2 py-1 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '11px',
+                    color: '#7A7A7A',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Meetings
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-
-          {/* Get Free Meetings CTA */}
-          <div className="text-center">
-            <button
-              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-              className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              Get 2 Free Meetings
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </button>
-          </div>
+                
+                <div style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '8px',
+                  padding: '12px 8px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    color: '#FFFFFF',
+                    marginBottom: '4px'
+                  }}>
+                    {study.results.pipeline}
+                  </div>
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '11px',
+                    color: '#7A7A7A',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Pipeline
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '8px',
+                  padding: '12px 8px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    color: '#FFFFFF',
+                    marginBottom: '4px'
+                  }}>
+                    {study.results.responseRate}
+                  </div>
+                  <div style={{
+                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                    fontSize: '11px',
+                    color: '#7A7A7A',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}>
+                    Response
+                  </div>
+                </div>
+              </div>
+              
+              {/* Tags */}
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
+                {study.tags.map((tag, tagIndex) => (
+                  <span
+                    key={tagIndex}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      color: '#7A7A7A',
+                      fontSize: '11px',
+                      fontWeight: '400',
+                      padding: '4px 8px',
+                      borderRadius: '100px',
+                      letterSpacing: '0.02em',
+                      fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              {/* Read More Link */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  color: '#EAEAEA',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  Read Full Case Study
+                </span>
+                <ArrowRight style={{ width: '16px', height: '16px', color: '#B0B0B0' }} />
+              </div>
+            </Link>
+          ))}
         </div>
+        
       </div>
     </section>
   );

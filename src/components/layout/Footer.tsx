@@ -1,71 +1,280 @@
-
 import React from 'react';
 import CustomButton from '../ui/CustomButton';
-import { Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { Linkedin, Mail, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative pt-24 pb-12 overflow-hidden">
+    <footer style={{
+      background: '#0a0a0a',
+      borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
       
-      {/* Main Footer */}
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+      {/* CTA Section */}
+      <div style={{
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        padding: '80px 0'
+      }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 40px', textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontWeight: '500',
+            color: '#EAEAEA',
+            marginBottom: '24px',
+            letterSpacing: '-0.02em',
+            lineHeight: '1.2'
+          }}>
+            Ready to Generate 30+ Meetings Per Month?
+          </h2>
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '20px',
+            color: '#B0B0B0',
+            marginBottom: '40px',
+            letterSpacing: '-0.01em'
+          }}>
+            Start with 2 free meetings. No contracts. No risk.
+          </p>
+          <CustomButton 
+            href="https://calendly.com/veogrowth"
+            style={{
+              background: 'linear-gradient(135deg, #FFFFFF 0%, #E5E5E5 100%)',
+              color: '#0a0a0a',
+              border: 'none',
+              borderRadius: '12px',
+              padding: '16px 32px',
+              fontSize: '18px',
+              fontWeight: '600',
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.3s ease',
+              letterSpacing: '-0.01em'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(255, 255, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <Calendar size={20} />
+            Book Strategy Call
+          </CustomButton>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 40px 40px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '48px',
+          marginBottom: '48px'
+        }}>
+          
+          {/* Company Info */}
           <div>
-            <Link to="/" className="text-xl font-bold text-foreground mb-6 block" aria-label="Veogrowth homepage">
-              <span className="text-primary">Veo</span>growth
+            <Link to="/" style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: '28px',
+              fontWeight: '600',
+              color: '#EAEAEA',
+              textDecoration: 'none',
+              display: 'block',
+              marginBottom: '20px',
+              letterSpacing: '-0.02em'
+            }} aria-label="Veogrowth homepage">
+              Veogrowth
             </Link>
-            <p className="text-caption text-foreground/75 mb-6">
-              Your expert partner for more B2B sales using smart email outbound.
+            <p style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: '16px',
+              color: '#B0B0B0',
+              lineHeight: '1.6',
+              marginBottom: '24px',
+              letterSpacing: '-0.01em'
+            }}>
+              AI-powered B2B lead generation that delivers 30+ qualified meetings per month. Pay only for results.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://twitter.com" aria-label="Twitter" className="text-foreground/60 hover:text-foreground transition-colors">
-                <Twitter size={20} />
+            
+            {/* Contact Links */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <a 
+                href="mailto:hello@veogrowth.com" 
+                style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontSize: '14px',
+                  color: '#B0B0B0',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'color 0.2s ease',
+                  letterSpacing: '-0.01em'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}
+              >
+                <Mail size={16} />
+                hello@veogrowth.com
               </a>
-              <a href="https://facebook.com" aria-label="Facebook" className="text-foreground/60 hover:text-foreground transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://instagram.com" aria-label="Instagram" className="text-foreground/60 hover:text-foreground transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://linkedin.com" aria-label="LinkedIn" className="text-foreground/60 hover:text-foreground transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://github.com" aria-label="GitHub" className="text-foreground/60 hover:text-foreground transition-colors">
-                <Github size={20} />
+              <a 
+                href="https://linkedin.com/company/veogrowth" 
+                style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontSize: '14px',
+                  color: '#B0B0B0',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  transition: 'color 0.2s ease',
+                  letterSpacing: '-0.01em'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}
+              >
+                <Linkedin size={16} />
+                Follow us on LinkedIn
               </a>
             </div>
           </div>
           
+          {/* Resources */}
           <div>
-            <h2 className="text-body font-semibold text-foreground mb-6">Company</h2>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-caption text-foreground/75 hover:text-foreground transition-colors">About Us</Link></li>
-              <li><a href="/careers" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Careers</a></li>
-              <li><Link to="/blog" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Blog</Link></li>
-            </ul>
+            <h3 style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: '18px',
+              fontWeight: '500',
+              color: '#EAEAEA',
+              marginBottom: '20px',
+              letterSpacing: '-0.01em'
+            }}>Resources</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <Link to="/case-studies" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Case Studies</Link>
+              
+              <Link to="/blog" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Blog</Link>
+              
+              <Link to="/tools" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Free Tools</Link>
+            </div>
           </div>
           
+          {/* Legal */}
           <div>
-            <h2 className="text-body font-semibold text-foreground mb-6">Legal</h2>
-            <ul className="space-y-3">
-              <li><Link to="/privacy-policy" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/terms-of-service" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Terms of Service</Link></li>
-              <li><Link to="/security" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Security</Link></li>
-              <li><Link to="/compliance" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Compliance</Link></li>
-              <li><Link to="/gdpr" className="text-caption text-foreground/75 hover:text-foreground transition-colors">GDPR</Link></li>
-            </ul>
+            <h3 style={{
+              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              fontSize: '18px',
+              fontWeight: '500',
+              color: '#EAEAEA',
+              marginBottom: '20px',
+              letterSpacing: '-0.01em'
+            }}>Legal</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <Link to="/privacy-policy" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Privacy Policy</Link>
+              
+              <Link to="/terms-of-service" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Terms of Service</Link>
+              
+              <Link to="/security" style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: '14px',
+                color: '#B0B0B0',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease',
+                letterSpacing: '-0.01em'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#EAEAEA'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#B0B0B0'}>Security</Link>
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-caption text-foreground/60 mb-4 md:mb-0">
+        {/* Bottom Bar */}
+        <div style={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          paddingTop: '32px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '20px'
+        }}>
+          <p style={{
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            fontSize: '14px',
+            color: '#7A7A7A',
+            letterSpacing: '-0.01em',
+            margin: '0'
+          }}>
             © {new Date().getFullYear()} Veogrowth. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Privacy</Link>
-            <Link to="/terms-of-service" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Terms</Link>
-            <Link to="/security" className="text-caption text-foreground/75 hover:text-foreground transition-colors">Security</Link>
+          
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(255, 255, 255, 0.05)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '100px',
+            padding: '6px 16px',
+            fontSize: '12px',
+            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+            color: '#B0B0B0',
+            fontWeight: '400',
+            letterSpacing: '0.02em'
+          }}>
+            Performance-Based Lead Generation
           </div>
         </div>
       </div>

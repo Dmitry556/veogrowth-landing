@@ -126,6 +126,7 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+				montserrat: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
 				raleway: ['Raleway', 'Inter', 'system-ui', 'sans-serif'],
 				lato: ['Lato', 'Inter', 'system-ui', 'sans-serif'],
 			},
