@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import SchemaMarkup from "./components/schema/SchemaMarkup";
 import WebVitals from "./components/performance/WebVitals";
@@ -43,6 +44,18 @@ const queryClient = new QueryClient({
   },
 });
 
+const VercelAnalytics = () => {
+  const location = useLocation();
+  const path = `${location.pathname}${location.search}${location.hash}`;
+
+  return (
+    <Analytics
+      route={location.pathname}
+      path={path || location.pathname}
+    />
+  );
+};
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -58,6 +71,7 @@ const App = () => {
         <PerformanceDashboard />
         <BrowserRouter>
           <RouteTracker />
+          <VercelAnalytics />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />

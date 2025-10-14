@@ -82,12 +82,56 @@ const HeroSection: React.FC = () => {
             filter: blur(0px); 
             transform: translateY(0); 
           }
-          
-          .full-width-navbar {
-            position: fixed !important;
-            top: 0 !important;
-            left: 50% !important;
-            right: auto !important;
+
+          .hero-headline-primary {
+            display: inline-block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: -0.035em;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(226, 232, 240, 0.65));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+
+          .hero-headline-accent {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.28), rgba(20, 184, 166, 0.18));
+            border: 1px solid rgba(45, 212, 191, 0.3);
+            box-shadow: 0 14px 28px rgba(13, 148, 136, 0.25);
+            color: #f0fdfa;
+            letter-spacing: -0.02em;
+            text-shadow: none;
+          }
+
+      @keyframes ctaPulse {
+        0% {
+          transform: translateX(-120%);
+          opacity: 0;
+        }
+        35% {
+          transform: translateX(20%);
+          opacity: 0.45;
+        }
+        50% {
+          transform: translateX(60%);
+          opacity: 0.25;
+        }
+        100% {
+          transform: translateX(140%);
+          opacity: 0;
+        }
+      }
+
+      .full-width-navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 50% !important;
+        right: auto !important;
             width: 100vw !important;
             min-width: 100vw !important;
             max-width: 100vw !important;
@@ -106,6 +150,51 @@ const HeroSection: React.FC = () => {
           body, html {
             overflow-x: auto !important;
             width: 100% !important;
+          }
+
+          .ping-wrapper {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+          }
+
+          .ping-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            background: rgba(45, 212, 191, 0.45);
+            animation: heroPing 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          }
+
+          .ping-wrapper::after {
+            content: '';
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 9999px;
+            background: #5eead4;
+            box-shadow: 0 0 12px rgba(94, 234, 212, 0.5);
+          }
+
+          @keyframes heroPing {
+            0% {
+              transform: scale(0.6);
+              opacity: 0.8;
+            }
+            70% {
+              transform: scale(2.1);
+              opacity: 0;
+            }
+            100% {
+              transform: scale(2.1);
+              opacity: 0;
+            }
           }
         `
       }} />
@@ -254,8 +343,8 @@ const HeroSection: React.FC = () => {
             zIndex: '10',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '100px 40px',
-            minHeight: '100vh',
+            padding: '80px 32px 64px',
+            minHeight: '88vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -270,44 +359,39 @@ const HeroSection: React.FC = () => {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '8px',
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                borderRadius: '100px',
-                padding: '8px 20px',
-                marginBottom: '40px',
+                gap: '12px',
+                background: 'rgba(18, 24, 36, 0.55)',
+                border: '1px solid rgba(94, 234, 212, 0.25)',
+                borderRadius: '999px',
+                padding: '10px 22px',
+                marginBottom: '36px',
                 fontSize: '13px',
-                fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                fontFamily: "'SF Mono', Monaco, Consolas, monospace",
+                color: '#A5F3FC',
+                boxShadow: '0 12px 30px rgba(14, 116, 144, 0.15)'
               }}
             >
-              <span 
-                style={{
-                  fontSize: '12px',
-                  fontWeight: '400',
-                  color: '#B0B0B0',
-                  letterSpacing: '0.04em',
-                  textTransform: 'uppercase'
-                }}
-              >
-                Proof-of-Concept Pilot
+              <span className="ping-wrapper" aria-hidden="true"></span>
+              <span style={{ letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                Limited spots left for Q4
               </span>
-              <span style={{ color: '#7A7A7A', marginLeft: '4px', opacity: '0.6' }}>→</span>
             </div>
 
             {/* Main Headline */}
             <h1 
               className="hero-element relative text-center font-montserrat"
               style={{
-                fontSize: 'clamp(42px, 5.4vw, 56px)',
-                lineHeight: '1.05',
+                fontSize: 'clamp(40px, 5vw, 56px)',
+                lineHeight: '1.08',
                 letterSpacing: '-0.04em',
-                marginBottom: '40px',
-                fontWeight: '400',
-                background: 'linear-gradient(135deg, #9ca3af 0%, #d1d5db 25%, #e5e7eb 50%, #f9fafb 75%, #ffffff 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                position: 'relative'
+                margin: '0 auto 26px',
+                fontWeight: '500',
+                position: 'relative',
+                maxWidth: '920px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                alignItems: 'center'
               }}
             >
               <div 
@@ -315,166 +399,147 @@ const HeroSection: React.FC = () => {
                 style={{
                   content: '',
                   position: 'absolute',
-                  inset: '-20px -40px',
-                  background: 'radial-gradient(ellipse 120% 50% at center, rgba(255, 255, 255, 0.06) 0%, rgba(229, 231, 235, 0.03) 40%, transparent 70%)',
-                  borderRadius: '24px',
-                  filter: 'blur(1px)'
+                  inset: '-12px -28px',
+                  background: 'radial-gradient(ellipse 115% 45% at center, rgba(255, 255, 255, 0.05) 0%, rgba(229, 231, 235, 0.02) 45%, transparent 75%)',
+                  borderRadius: '22px',
+                  filter: 'blur(0.5px)'
                 }}
               />
-              We'll run your cold email campaign<br />
-              until we book 2 meetings - free.
+              <span className="hero-headline-primary">
+                Systematic outreach to every qualified lead in your TAM
+              </span>
+              <span className="hero-headline-accent" style={{ fontSize: 'clamp(22px, 2.7vw, 30px)', fontWeight: 500 }}>
+                with 1:1 researched, relevant cold emails.
+              </span>
             </h1>
 
             {/* Elegant Subheadline */}
             <div 
               className="hero-element"
               style={{
-                fontSize: '20px',
+                fontSize: '18px',
                 fontWeight: '400',
-                color: '#B0B0B0',
+                color: 'rgba(229, 231, 235, 0.9)',
                 textAlign: 'center',
-                marginBottom: '40px',
-                opacity: '0.9',
-                fontStyle: 'italic'
+                margin: '0 auto 30px',
+                letterSpacing: '-0.02em',
+                maxWidth: '520px',
+                position: 'relative'
               }}
             >
-              Then only pay for{' '}
-              <span 
+              Pay only for the qualified meetings you get out of it.
+              <span
                 style={{
-                  color: '#ffffff',
-                  fontWeight: '500',
-                  fontStyle: 'normal',
-                  position: 'relative'
-                }}
-              >
-                qualified calls
-                <div 
-                  style={{
-                    position: 'absolute',
-                    bottom: '-2px',
-                    left: '0',
-                    right: '0',
-                    height: '1px',
-                    background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%)',
-                    opacity: '0.8'
-                  }}
-                />
-              </span>
-              {' '}that show up.
-            </div>
-
-            {/* Description */}
-            <div className="hero-element" style={{ maxWidth: '520px', margin: '0 auto 48px', textAlign: 'center' }}>
-              <p style={{ 
-                fontSize: '18px', 
-                lineHeight: '1.5', 
-                marginBottom: '24px', 
-                color: 'rgba(255, 255, 255, 0.9)', 
-                fontWeight: '500', 
-                letterSpacing: '-0.02em' 
-              }}>
-                We bet our revenue on results.
-              </p>
-              <p style={{ 
-                fontSize: '16px', 
-                lineHeight: '1.6', 
-                marginBottom: '20px', 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                letterSpacing: '-0.015em' 
-              }}>
-                Tell us what you sell and who you want to reach. Our AI finds, researches, and sends the email of the year to your prospects.
-              </p>
-              <p style={{ 
-                fontSize: '16px', 
-                lineHeight: '1.6', 
-                color: 'rgba(255, 255, 255, 0.8)', 
-                letterSpacing: '-0.015em' 
-              }}>
-                You approve the copy & targeting. We launch in less than 24 hours.
-              </p>
-            </div>
-
-            {/* Form */}
-            <div className="hero-element" style={{ maxWidth: '520px', margin: '0 auto 60px' }}>
-              <div 
-                style={{
-                  display: 'flex',
-                  gap: '10px',
-                  padding: '8px',
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.04)'
-                }}
-              >
-                <input 
-                  type="email"
-                  placeholder="What's your work email?"
-                  style={{
-                    flex: '2',
-                    height: '48px',
-                    padding: '0 20px',
-                    background: 'transparent',
-                    border: 'none',
-                    borderRadius: '6px',
-                    color: '#EAEAEA',
-                    fontSize: '15px',
-                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-                  }}
-                />
-                <button 
-                  onClick={() => {
-                    trackCalendlyClick('hero-elegant');
-                    window.open('https://calendly.com/veogrowth', '_blank');
-                  }}
-                  style={{
-                    flexShrink: '0',
-                    height: '48px',
-                    padding: '0 26px',
-                    background: '#FAFAFA',
-                    color: '#111213',
-                    border: 'none',
-                    borderRadius: '6px',
-                    fontSize: '14px',
-                    fontWeight: '400',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    whiteSpace: 'nowrap',
-                    fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.opacity = '0.95';
-                    e.target.style.transform = 'translateY(-2px)';
-                    e.target.style.boxShadow = '0 6px 20px rgba(255, 255, 255, 0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.opacity = '1';
-                    e.target.style.transform = 'translateY(0)';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                >
-                  Request the pilot
-                </button>
-              </div>
-            </div>
-
-            {/* Elegant Video Placeholder */}
-            <div className="max-w-2xl mx-auto mb-15">
-              <div 
-                className="w-full aspect-video bg-gray-800/50 border-2 border-white/20 rounded-lg cursor-pointer hover:border-white/30 hover:-translate-y-0.5 transition-all min-h-48"
-                onClick={() => {
-                  // Keep existing video functionality if any
-                  console.log('Video clicked - integrate existing video player');
+                  display: 'block',
+                  margin: '12px auto 0',
+                  width: '160px',
+                  height: '1px',
+                  background: 'linear-gradient(90deg, transparent, rgba(236, 254, 255, 0.6), transparent)',
+                  opacity: 0.9
                 }}
               />
             </div>
 
+            {/* CTA */}
+            <div className="hero-element" style={{ margin: '0 auto 44px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+              <button
+                onClick={() => {
+                  trackCalendlyClick('hero-free-pilot');
+                  window.open('https://calendly.com/veogrowth', '_blank');
+                }}
+                style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '32px',
+                  padding: '22px 56px 22px 52px',
+                  minWidth: 'min(95vw, 560px)',
+                  borderRadius: '26px',
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  letterSpacing: '-0.016em',
+                  color: '#073429',
+                  background: 'linear-gradient(135deg, #34d399 0%, #4ade80 40%, #5eead4 75%, #a5f3fc 100%)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  boxShadow: 'none',
+                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                }}
+              >
+                <span style={{ flex: 1, textAlign: 'left', position: 'relative', zIndex: 1 }}>Apply For Your 2 Free Sales Meetings Pilot</span>
+                <span
+                  style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '54px',
+                    height: '54px',
+                    borderRadius: '18px',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 250, 0.85))',
+                    color: '#0b8c7a',
+                    fontSize: '26px',
+                    boxShadow: '0 6px 14px rgba(13, 148, 136, 0.22)'
+                  }}
+                >
+                  ➜
+                </span>
+              </button>
+              <div className="hero-element" style={{ marginTop: '-4px', width: '100%' }}>
+                <p
+                  style={{
+                    margin: '0 auto',
+                    maxWidth: 'min(95vw, 640px)',
+                    fontSize: '15px',
+                    color: '#f8fafc',
+                    lineHeight: '1.55',
+                    textAlign: 'left'
+                  }}
+                >
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '4px 10px',
+                      borderRadius: '12px',
+                      background: '#ffffff',
+                      color: '#0f766e',
+                      fontWeight: 700,
+                      fontSize: '11px',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                      marginRight: '8px'
+                    }}
+                  >
+                    New
+                  </span>
+                  <strong style={{ letterSpacing: '-0.01em', marginRight: '6px', color: '#ffffff' }}>Free Trial Offer:</strong>
+                  <span style={{ color: 'rgba(255, 255, 255, 0.92)', fontWeight: 500 }}>
+                    We’ll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 600 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
+                  </span>
+                </p>
+              </div>
+            </div>
             {/* Trust Section */}
             <div style={{ marginTop: 'auto', paddingTop: '60px', paddingBottom: '0px', textAlign: 'center' }}>
               <p style={{ 
-                fontSize: '14px', 
-                color: '#6B7280', 
-                marginBottom: '36px', 
-                opacity: '0.8' 
+                fontSize: '16px', 
+                color: '#E5E7EB', 
+                marginBottom: '32px', 
+                letterSpacing: '0.02em',
+                fontWeight: 500,
+                opacity: '0.9' 
               }}>
                 Companies we booked meetings for our clients with
               </p>
@@ -484,13 +549,13 @@ const HeroSection: React.FC = () => {
                 position: 'relative',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '80vw', 
-                maxWidth: '1200px', 
+                width: '88vw', 
+                maxWidth: '1280px', 
                 margin: '0'
               }}>
                 <div style={{ 
                   display: 'grid', 
-                  gridTemplateColumns: 'repeat(8, 1fr)', 
+                  gridTemplateColumns: 'repeat(8, minmax(0, 1fr))', 
                   gap: '32px', 
                   alignItems: 'center', 
                   justifyItems: 'center' 
@@ -520,22 +585,28 @@ const HeroSection: React.FC = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         width: '100%',
-                        height: '48px'
+                        height: '62px'
                       }}
                     >
                       <img 
                         src={company.src}
                         alt={`${company.name} logo`}
                         style={{ 
-                          height: '32px',
+                          height: '48px',
                           width: 'auto',
                           objectFit: 'contain',
-                          opacity: '0.3',
-                          transition: 'opacity 0.3s ease',
+                          opacity: '0.7',
+                          transition: 'opacity 0.3s ease, transform 0.3s ease',
                           filter: 'brightness(0) saturate(100%) invert(1)'
                         }}
-                        onMouseEnter={(e) => e.target.style.opacity = '0.6'}
-                        onMouseLeave={(e) => e.target.style.opacity = '0.3'}
+                        onMouseEnter={(e) => {
+                          e.target.style.opacity = '1';
+                          e.target.style.transform = 'scale(1.05)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.opacity = '0.7';
+                          e.target.style.transform = 'scale(1)';
+                        }}
                       />
                     </div>
                   ))}
@@ -543,11 +614,19 @@ const HeroSection: React.FC = () => {
               </div>
 
               <a 
-                href="#" 
-                className="inline-flex items-center gap-2 mt-7 text-gray-600 text-sm hover:text-gray-400 transition-colors group"
+                href="/case-studies" 
+                className="inline-flex items-center gap-3 mt-8 text-sm font-medium text-gray-200 hover:text-white transition-colors group"
+                style={{
+                  padding: '10px 18px',
+                  borderRadius: '12px',
+                  background: 'rgba(255, 255, 255, 0.08)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)'
+                }}
               >
                 See case studies 
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span className="group-hover:translate-x-1 transition-transform text-lg">→</span>
               </a>
             </div>
 

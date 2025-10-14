@@ -161,7 +161,7 @@ const ResultsSection: React.FC = () => {
                     }}
                   >
                     Founder & CEO, <a 
-                      href="https://www.podcastwhales.com/" 
+                      href="https://podcastwhales.co/" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       style={{ 

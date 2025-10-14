@@ -8,7 +8,7 @@ const CaseStudiesPreview: React.FC = () => {
       id: 'podcast-whales-25-meetings-6-clients',
       title: 'Podcast Whales: 25 Meetings, 6 Clients in 30 Days',
       company: 'Podcast Whales',
-      companyUrl: 'https://www.podcastwhales.com/',
+      companyUrl: 'https://podcastwhales.co/',
       industry: 'B2B Podcast Production Agency',
       results: {
         meetings: '25',
