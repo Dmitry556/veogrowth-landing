@@ -453,7 +453,7 @@ const ZeroFeePaymentCaseStudy = () => {
                 See how our massive TAM approach can help you reach qualified prospects at scale with clear, simple messaging.
               </p>
               <button 
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book Your Strategy Call →

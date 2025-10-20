@@ -103,7 +103,7 @@ src/
 
 - **Production**: https://veogrowth.com (current site)
 - **GitHub**: https://github.com/Dmitry556/veogrowth-landing
-- **Calendly**: https://calendly.com/veogrowth
+- **Calendly**: https://calendly.com/veogrowth/discovery
 - **LinkedIn**: https://linkedin.com/company/veogrowth
 
 ## Future Enhancements

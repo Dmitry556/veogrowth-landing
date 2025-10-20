@@ -10,7 +10,7 @@ import BlogCard from '@/components/blog/BlogCard';
 import BlogCategoryFilter from '@/components/blog/BlogCategoryFilter';
 import BlogPagination from '@/components/blog/BlogPagination';
 import NewsletterSubscribe from '@/components/blog/NewsletterSubscribe';
-import { generateOrganizationSchema, generateWebsiteSchema, schemaToString } from '@/utils/schema';
+import { generateWebsiteSchema, schemaToString } from '@/utils/schema';
 import { BlogPost } from '@/types/blog';
 
 const sampleBlogPosts: BlogPost[] = [
@@ -119,7 +119,6 @@ const Blog = () => {
       script.id = 'schema-script-blog';
       script.type = 'application/ld+json';
       script.innerHTML = schemaToString([
-        generateOrganizationSchema(),
         generateWebsiteSchema()
       ]);
       document.head.appendChild(script);
@@ -324,7 +323,7 @@ const Blog = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book Your Strategy Call →

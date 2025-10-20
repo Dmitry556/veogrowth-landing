@@ -94,7 +94,7 @@ const CaseStudies = () => {
           <div className="hidden md:flex items-center gap-3">
             <span className="text-xs uppercase tracking-[0.18em] text-slate-500">Free Trial Pilot</span>
             <button
-              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
               className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200 hover:bg-emerald-500/20 transition-colors"
             >
               Book Strategy Call

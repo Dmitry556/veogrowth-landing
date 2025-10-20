@@ -57,7 +57,7 @@ export const generateOrganizationSchema = () => {
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Service",
-      "url": "https://calendly.com/veogrowth"
+      "url": "https://calendly.com/veogrowth/discovery"
     },
     "sameAs": [
       "https://twitter.com/veogrowth",
@@ -124,10 +124,8 @@ export const generateArticleSchema = (post: BlogPost) => {
 // Generate a combined schema array for the homepage
 export const generateHomePageSchema = () => {
   return [
-    generateOrganizationSchema(),
     generatePersonSchema(),
-    generateWebsiteSchema(),
-    generateProfessionalServiceSchema()
+    generateWebsiteSchema()
   ];
 };
 

@@ -1,94 +1,45 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import CustomButton from '../ui/CustomButton';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { trackCalendlyClick } from '@/utils/analytics';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [blogDropdownOpen, setBlogDropdownOpen] = useState(false);
-  const [caseStudiesDropdownOpen, setCaseStudiesDropdownOpen] = useState(false);
-  const [freeToolsDropdownOpen, setFreeToolsDropdownOpen] = useState(false);
-  const isMobile = useIsMobile();
   const location = useLocation();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const dropdownCloseTimeout = useRef<number | null>(null);
 
-  // Blog articles for preview
   const blogArticles = [
-    {
-      id: '1',
-      title: 'How to Create Poke-the-Bear Questions That Get Replies',
-      category: 'Copywriting'
-    },
-    {
-      id: '3', 
-      title: 'How We Find Competitor & Lookalike Insights Using Public Data',
-      category: 'Research'
-    },
-    {
-      id: '8',
-      title: 'How to Set Up a Cold Email Campaign That Actually Works', 
-      category: 'Clay'
-    }
+    { href: '/blog/poke-the-bear-questions-that-get-replies', title: 'Poke-the-Bear Questions That Get Replies', tag: 'Copywriting' },
+    { href: '/blog/competitor-lookalike-insights-using-public-data', title: 'Competitor Lookalike Insights Using Public Data', tag: 'Research' },
+    { href: '/blog/cold-email-campaign-that-actually-works', title: 'Cold Email Campaign That Works', tag: 'Playbook' }
   ];
 
-  // Case studies for preview
   const caseStudies = [
-    {
-      id: 'podcast-whales-25-meetings-6-clients',
-      title: 'Podcast Whales: 25 Meetings, 6 Clients in 30 Days',
-      industry: 'Podcast Production Agency'
-    },
-    {
-      id: 'employee-training-platform-42-meetings',
-      title: 'Employee Training Platform: 42 Meetings in 30 Days',
-      industry: 'B2B SaaS Training'
-    },
-    {
-      id: 'zero-fee-payment-processor-52-meetings',
-      title: 'Zero-Fee Payment Processor: 52 Meetings',
-      industry: 'B2B Payment Processing'
-    },
-    {
-      id: 'api-monitoring-platform-56-meetings',
-      title: 'API Monitoring Platform: 56 Meetings in 90 Days',
-      industry: 'Developer Tools'
-    }
+    { href: '/case-studies/podcast-whales-25-meetings-6-clients', title: 'Podcast Whales · 25 Meetings', tag: 'Creative Services' },
+    { href: '/case-studies/zero-fee-payment-processor-52-meetings', title: 'Zero-Fee Processor · 52 Meetings', tag: 'Payments' },
+    { href: '/case-studies/api-monitoring-platform-56-meetings', title: 'API Monitoring · 56 Meetings', tag: 'Dev Tools' },
+    { href: '/case-studies/employee-training-platform-42-meetings', title: 'Employee Training · 42 Meetings', tag: 'B2B SaaS' }
   ];
 
-  // Free tools for preview
   const freeTools = [
-    {
-      id: 'roi-calculator',
-      title: 'ROI Calculator',
-      description: 'Calculate your cold outbound ROI',
-      href: '/tools/roi-calculator'
-    },
-    {
-      id: 'microsoft-filter',
-      title: 'Microsoft Email Filter',
-      description: 'Remove Microsoft emails from your lists',
-      href: '/tools/microsoft-filter'
-    },
-    {
-      id: 'email-validator',
-      title: 'Email Validator',
-      description: 'Validate email addresses in bulk',
-      href: '/tools/email-validator'
-    },
-    {
-      id: 'domain-checker',
-      title: 'Domain Health Checker', 
-      description: 'Check your domain reputation',
-      href: '/tools/domain-checker'
-    }
+    { href: '/tools/microsoft-filter', title: 'Microsoft Filter', tag: 'LIST HYGIENE' },
+    { href: '/tools/roi-calculator', title: 'ROI Calculator', tag: 'PIPELINE FORECAST' },
+    { href: '/tools/domain-checker', title: 'Domain Checker', tag: 'INBOX HEALTH' }
+  ];
+
+  const navItems = [
+    { key: 'case-studies', label: 'Case Studies', items: caseStudies, fallback: '/case-studies', footer: 'View all case studies →' },
+    { key: 'blog', label: 'Blog', items: blogArticles, fallback: '/blog', footer: 'Browse the blog →' },
+    { key: 'tools', label: 'Free Tools', items: freeTools, fallback: '/tools', footer: 'See all tools →' },
+    { key: 'stack', label: 'Stack', href: '/tech-stack' }
   ];
   
   const handleScroll = () => {
-    // Use requestAnimationFrame for better scroll performance
     requestAnimationFrame(() => {
       setScrollPosition(window.scrollY);
     });
@@ -100,16 +51,44 @@ const Header: React.FC = () => {
   }, []);
   
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
+    setOpenDropdown(null);
+    cancelDropdownClose();
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setOpenDropdown(null);
+    cancelDropdownClose();
   };
-  
-  // Determine if we should show white background
-  const isScrolledPastHero = scrollPosition > 100;
-  const shouldShowWhiteBg = isScrolledPastHero || isHovered || isMenuOpen || blogDropdownOpen || caseStudiesDropdownOpen || freeToolsDropdownOpen;
+
+  const isScrolledPastHero = scrollPosition > 8;
+  const isElevated = isScrolledPastHero || isHovered || isMenuOpen || openDropdown !== null;
+
+  const openDropdownMenu = (key: string) => {
+    if (dropdownCloseTimeout.current) {
+      window.clearTimeout(dropdownCloseTimeout.current);
+      dropdownCloseTimeout.current = null;
+    }
+    setOpenDropdown(key);
+  };
+
+  const scheduleDropdownClose = () => {
+    if (dropdownCloseTimeout.current) {
+      window.clearTimeout(dropdownCloseTimeout.current);
+    }
+    dropdownCloseTimeout.current = window.setTimeout(() => {
+      setOpenDropdown(null);
+      dropdownCloseTimeout.current = null;
+    }, 140);
+  };
+
+  const cancelDropdownClose = () => {
+    if (dropdownCloseTimeout.current) {
+      window.clearTimeout(dropdownCloseTimeout.current);
+      dropdownCloseTimeout.current = null;
+    }
+  };
 
   // Handle pricing scroll
   const handlePricingClick = () => {
@@ -121,186 +100,136 @@ const Header: React.FC = () => {
     } else {
       window.location.href = '/#pricing';
     }
+    setOpenDropdown(null);
+    cancelDropdownClose();
   };
   
   return (
     <header 
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div 
-        className={`transition-all duration-300 ${
-          shouldShowWhiteBg 
-            ? 'bg-white border-b border-gray-200 shadow-sm' 
+        className={`transition-all duration-200 ${
+          isElevated
+            ? 'bg-slate-950/75 border-b border-white/10 backdrop-blur-md'
             : 'bg-transparent'
         }`}
       >
-        <div className="container mx-auto px-4 sm:px-6 py-2">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-2">
           <div className="flex items-center justify-between h-12">
             <div className="flex items-center">
-              <Link to="/" className={`text-lg font-bold transition-colors ${shouldShowWhiteBg ? 'text-gray-900' : 'text-gray-900'}`} aria-label="Veogrowth homepage">
-                <span className="text-purple-600">Veo</span>growth
+              <Link
+                to="/"
+                aria-label="Veogrowth homepage"
+                className="text-[13px] font-semibold uppercase tracking-[0.28em] text-white/80 hover:text-white transition-colors"
+              >
+                Veogrowth
               </Link>
             </div>
             
-            <nav className="hidden md:flex items-center space-x-8">
-              {/* Blog with Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setBlogDropdownOpen(true)}
-                onMouseLeave={() => setBlogDropdownOpen(false)}
-              >
-                <button
-                  className={`flex items-center text-sm transition-colors font-medium ${shouldShowWhiteBg ? 'text-gray-600 hover:text-gray-900' : 'text-gray-700 hover:text-gray-900'}`}
-                >
-                  Blog
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${blogDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {blogDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Latest Articles</p>
-                      </div>
-                      {blogArticles.map((article) => (
-                        <Link
-                          key={article.id}
-                          to={`/blog/${article.id}`}
-                          className="block px-4 py-3 hover:bg-gray-50 transition-colors"
-                        >
-                          <p className="text-sm font-medium text-gray-900 line-clamp-2">{article.title}</p>
-                          <p className="text-xs text-purple-600 mt-1">{article.category}</p>
-                        </Link>
-                      ))}
-                      <div className="border-t border-gray-100 mt-2">
-                        <Link to="/blog" className="block px-4 py-2 text-sm text-purple-600 hover:text-purple-700 font-medium">
-                          View all articles →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+            <nav className="hidden md:flex items-center gap-5">
+              {navItems.map(item => {
+                const isActive = item.href ? location.pathname.startsWith(item.href) : false;
 
-              {/* Case Studies with Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setCaseStudiesDropdownOpen(true)}
-                onMouseLeave={() => setCaseStudiesDropdownOpen(false)}
-              >
-                <button
-                  className={`flex items-center text-sm transition-colors font-medium ${shouldShowWhiteBg ? 'text-gray-600 hover:text-gray-900' : 'text-gray-700 hover:text-gray-900'}`}
-                >
-                  Case Studies
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${caseStudiesDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {caseStudiesDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Success Stories</p>
-                      </div>
-                      {caseStudies.map((study) => (
-                        <Link
-                          key={study.id}
-                          to={`/case-studies/${study.id}`}
-                          className="block px-4 py-3 hover:bg-gray-50 transition-colors"
+                if (item.items) {
+                  return (
+                    <div
+                      key={item.key}
+                      className="relative"
+                      onMouseEnter={() => openDropdownMenu(item.key)}
+                      onMouseLeave={scheduleDropdownClose}
+                      onFocus={() => openDropdownMenu(item.key)}
+                    >
+                      <button
+                        className={`flex items-center gap-1 text-[14px] font-medium tracking-tight transition-colors ${openDropdown === item.key || isActive ? 'text-white' : isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
+                      >
+                        {item.label}
+                        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.key ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {openDropdown === item.key && (
+                        <div
+                          className="absolute top-full left-0 pt-3 z-50"
+                          onMouseEnter={cancelDropdownClose}
+                          onMouseLeave={scheduleDropdownClose}
                         >
-                          <p className="text-sm font-medium text-gray-900 line-clamp-2">
-                            {study.id === 'podcast-whales-25-meetings-6-clients' ? (
-                              <>
-                                <a href="https://www.podcastwhales.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-700 underline">
-                                  Podcast Whales
-                                </a>
-                                : 25 Meetings, 6 Clients in 30 Days
-                              </>
-                            ) : (
-                              study.title
+                          <div className="w-[18rem] rounded-xl border border-white/8 bg-slate-950/95 backdrop-blur-md shadow-[0_18px_36px_-28px_rgba(8,9,11,0.75)]">
+                            <div className="py-2.5">
+                              {item.items.map((entry) => (
+                                <Link
+                                  key={entry.href}
+                                  to={entry.href}
+                                  className="block px-4 py-2 min-h-[54px] hover:bg-white/7 transition-colors text-slate-100"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  <div className="flex h-full flex-col justify-center gap-1">
+                                    <p className="text-[13px] font-medium text-slate-100 leading-tight line-clamp-2">{entry.title}</p>
+                                    {'tag' in entry && (
+                                      <p className="text-[11px] uppercase tracking-[0.22em] text-emerald-300/80 leading-snug">{entry.tag}</p>
+                                    )}
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                            {item.fallback && (
+                              <div className="border-t border-white/10 px-4 py-2">
+                                <Link
+                                  to={item.fallback}
+                                  className="text-[12px] font-medium text-emerald-300/80 hover:text-emerald-200 transition-colors"
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  {item.footer}
+                                </Link>
+                              </div>
                             )}
-                          </p>
-                          <p className="text-xs text-purple-600 mt-1">{study.industry}</p>
-                        </Link>
-                      ))}
-                      <div className="border-t border-gray-100 mt-2">
-                        <Link to="/case-studies" className="block px-4 py-2 text-sm text-purple-600 hover:text-purple-700 font-medium">
-                          View all case studies →
-                        </Link>
-                      </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                )}
-              </div>
+                  );
+                }
 
-              {/* Free Tools with Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setFreeToolsDropdownOpen(true)}
-                onMouseLeave={() => setFreeToolsDropdownOpen(false)}
-              >
-                <button
-                  className={`flex items-center text-sm transition-colors font-medium ${shouldShowWhiteBg ? 'text-gray-600 hover:text-gray-900' : 'text-gray-700 hover:text-gray-900'}`}
-                >
-                  Free Tools
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${freeToolsDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {freeToolsDropdownOpen && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="w-72 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Cold Email Tools</p>
-                      </div>
-                      {freeTools.map((tool) => (
-                        <Link
-                          key={tool.id}
-                          to={tool.href}
-                          className="block px-4 py-3 hover:bg-gray-50 transition-colors"
-                        >
-                          <p className="text-sm font-medium text-gray-900">{tool.title}</p>
-                          <p className="text-xs text-gray-600 mt-1">{tool.description}</p>
-                        </Link>
-                      ))}
-                      <div className="border-t border-gray-100 mt-2">
-                        <Link to="/tools" className="block px-4 py-2 text-sm text-purple-600 hover:text-purple-700 font-medium">
-                          View all tools →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+                return (
+                  <Link
+                    key={item.key}
+                    to={item.href || '#'}
+                    className={`text-[14px] font-medium tracking-tight transition-colors ${isActive ? 'text-white' : isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
+                    onMouseEnter={() => {
+                      cancelDropdownClose();
+                      setOpenDropdown(null);
+                    }}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
 
-              {/* Tech Stack */}
-              <Link to="/tech-stack" className={`text-sm transition-colors font-medium ${shouldShowWhiteBg ? 'text-gray-600 hover:text-gray-900' : 'text-gray-700 hover:text-gray-900'}`}>
-                Tech Stack
-              </Link>
-
-              {/* Pricing */}
               <button 
                 onClick={handlePricingClick}
-                className={`text-sm transition-colors font-medium ${shouldShowWhiteBg ? 'text-gray-600 hover:text-gray-900' : 'text-gray-700 hover:text-gray-900'}`}
+                className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
               >
                 Pricing
               </button>
             </nav>
-            
+
             <div className="hidden md:block">
-              <CustomButton 
-                className="bg-purple-600 text-white hover:bg-purple-700 px-4 py-1.5 text-sm font-semibold"
+              <button
                 onClick={() => {
                   trackCalendlyClick('header');
-                  window.open('https://calendly.com/veogrowth', '_blank');
+                  window.open('https://calendly.com/veogrowth/discovery', '_blank');
                 }}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-4 py-2 text-[13px] font-medium text-white shadow-[0_8px_20px_-12px_rgba(8,9,11,0.9)] transition-transform hover:-translate-y-[1px] hover:border-emerald-300/40 hover:text-emerald-100"
               >
-                Get 2 Free Meetings
-              </CustomButton>
+                Start the Free Pilot
+                <ArrowRight className="h-3 w-3" />
+              </button>
             </div>
             
             <button 
-              className={`md:hidden transition-colors ${shouldShowWhiteBg ? 'text-gray-900' : 'text-gray-900'}`} 
+              className={`md:hidden transition-colors ${isElevated ? 'text-slate-200' : 'text-slate-100'}`} 
               onClick={toggleMenu} 
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
@@ -313,33 +242,59 @@ const Header: React.FC = () => {
       
       {/* Mobile menu */}
       <div 
-        className={`bg-white border-b border-gray-200 shadow-lg absolute top-full left-0 right-0 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`absolute top-full left-0 right-0 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} bg-slate-950/90 border-b border-white/10 backdrop-blur-lg shadow-[0_32px_60px_-28px_rgba(8,9,11,0.7)]`}
         aria-hidden={!isMenuOpen}
       >
-        <div className="px-4 py-4 space-y-3">
-          <Link to="/blog" className={`block text-sm ${location.pathname === '/blog' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'} transition-colors py-2 font-medium`} onClick={closeMenu}>Blog</Link>
-          
-          <Link to="/case-studies" className={`block text-sm ${location.pathname === '/case-studies' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'} transition-colors py-2 font-medium`} onClick={closeMenu}>Case Studies</Link>
-          
-          <div className="border-l-2 border-gray-200 pl-4 space-y-2">
-            <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">Free Tools</p>
-            <Link to="/tools/microsoft-filter" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1" onClick={closeMenu}>Microsoft Email Filter</Link>
-            <Link to="/tools/email-validator" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1" onClick={closeMenu}>Email Validator</Link>
-            <Link to="/tools/domain-checker" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1" onClick={closeMenu}>Domain Health Checker</Link>
-          </div>
-          
-          <Link to="/tech-stack" className={`block text-sm ${location.pathname === '/tech-stack' ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'} transition-colors py-2 font-medium`} onClick={closeMenu}>Tech Stack</Link>
-          
+        <div className="px-5 py-6 space-y-4">
+          {navItems.map(item => (
+            item.items ? (
+              <div key={item.key} className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-slate-500">{item.label}</p>
+                <div className="space-y-1.5">
+                  {item.items.map(entry => (
+                    <Link
+                      key={entry.href}
+                      to={entry.href}
+                      className="block text-sm text-slate-200 hover:text-white transition-colors"
+                      onClick={closeMenu}
+                    >
+                      {entry.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.key}
+                to={item.href || '#'}
+                className={`block text-sm ${item.href && location.pathname.startsWith(item.href) ? 'text-emerald-300' : 'text-slate-200 hover:text-white'} transition-colors py-2 font-medium tracking-tight`}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </Link>
+            )
+          ))}
+
           <button 
             onClick={() => {
               handlePricingClick();
               closeMenu();
             }}
-            className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-2 font-medium w-full text-left"
+            className="block text-sm text-slate-200 hover:text-white transition-colors py-2 font-medium tracking-tight w-full text-left"
           >
             Pricing
           </button>
           
+          <button
+            onClick={() => {
+              trackCalendlyClick('header-mobile');
+              window.open('https://calendly.com/veogrowth/discovery', '_blank');
+            }}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-4 py-2 text-[13px] font-medium text-white shadow-[0_8px_20px_-12px_rgba(8,9,11,0.9)] transition-colors hover:border-emerald-300/40 hover:text-emerald-100"
+          >
+            Start the Free Pilot
+            <ArrowRight className="h-3 w-3" />
+          </button>
         </div>
       </div>
     </header>

@@ -149,7 +149,7 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <CustomButton 
                 size="lg"
-                onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                 className="flex items-center justify-center"
               >
                 Schedule Your Free Consultation

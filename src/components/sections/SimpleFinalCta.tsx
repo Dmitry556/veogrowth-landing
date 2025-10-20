@@ -39,7 +39,7 @@ const SimpleFinalCta: React.FC = () => {
             <CustomButton 
               size="lg" 
               className="inline-flex items-center font-semibold px-8 py-4 text-lg mb-6"
-              onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+              onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
             >
               Get Your First 2 Meetings Free <ChevronRight className="ml-2" size={20} />
             </CustomButton>

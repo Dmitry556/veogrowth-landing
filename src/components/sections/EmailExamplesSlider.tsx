@@ -162,6 +162,82 @@ Ready to be the security company people actually remember?`
 
   const totalSlides = Math.ceil(emailExamples.length / 4);
 
+  useEffect(() => {
+    const styleId = 'email-examples-slider-styles';
+    const existing = document.getElementById(styleId);
+    if (existing) existing.remove();
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @keyframes emailCardReveal {
+        0% {
+          opacity: 0;
+          filter: blur(14px);
+          transform: translateY(26px) scale(0.98);
+        }
+        60% {
+          opacity: 1;
+          filter: blur(0px);
+          transform: translateY(-4px) scale(1.01);
+        }
+        100% {
+          opacity: 1;
+          filter: blur(0px);
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .email-slider__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 48px;
+        height: 48px;
+        background: rgba(15, 23, 42, 0.5);
+        border: 1px solid rgba(45, 212, 191, 0.18);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 16px 32px rgba(2, 8, 12, 0.48);
+        backdrop-filter: blur(6px);
+      }
+
+      .email-slider__nav:hover {
+        background: rgba(16, 185, 129, 0.22);
+        border-color: rgba(94, 234, 212, 0.32);
+      }
+
+      .email-slider__nav--prev { left: clamp(-28px, -4vw, -52px); }
+      .email-slider__nav--next { right: clamp(-28px, -4vw, -52px); }
+
+      @media (max-width: 1280px) {
+        .email-slider__nav {
+          width: 44px;
+          height: 44px;
+        }
+        .email-slider__nav--prev { left: clamp(-6px, -1.5vw, -18px); }
+        .email-slider__nav--next { right: clamp(-6px, -1.5vw, -18px); }
+      }
+
+      .email-card {
+        opacity: 0;
+        animation: emailCardReveal 0.85s forwards;
+      }
+    `;
+
+    document.head.appendChild(style);
+    return () => {
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
+    };
+  }, []);
+
   const scrollToEmailGrid = () => {
     if (emailGridRef.current) {
       const yOffset = -120; // Offset for header
@@ -175,14 +251,25 @@ Ready to be the security company people actually remember?`
     }
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    setTimeout(scrollToEmailGrid, 100); // Small delay to let animation start
+  const scheduleScroll = () => {
+    if (typeof window === 'undefined') return;
+    if ('requestAnimationFrame' in window) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(scrollToEmailGrid);
+      });
+    } else {
+      setTimeout(scrollToEmailGrid, 16);
+    }
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    scheduleScroll();
+  };
+  
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-    setTimeout(scrollToEmailGrid, 100); // Small delay to let animation start
+    scheduleScroll();
   };
 
   const getCurrentEmails = () => {
@@ -192,54 +279,71 @@ Ready to be the security company people actually remember?`
 
   return (
     <section style={{
-      background: '#0a0a0a',
-      padding: '80px 0 100px',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      position: 'relative',
+      background: 'linear-gradient(180deg, #02060b 0%, #040a11 45%, #051116 100%)',
+      padding: '72px 0 96px',
+      borderTop: '1px solid rgba(45, 212, 191, 0.06)',
+      borderBottom: '1px solid rgba(45, 212, 191, 0.08)',
+      overflow: 'hidden'
     }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-160px',
+          left: 0,
+          right: 0,
+          height: '240px',
+          background: 'linear-gradient(180deg, rgba(3, 17, 24, 1) 0%, rgba(3, 17, 24, 0.68) 45%, rgba(3, 17, 24, 0) 100%)'
+        }} />
+      </div>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+        <div style={{ textAlign: 'center', marginBottom: '48px', maxWidth: '860px', marginLeft: 'auto', marginRight: 'auto' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '100px',
-            padding: '8px 20px',
-            marginBottom: '48px',
-            fontSize: '13px',
-            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
-            color: '#B0B0B0',
-            fontWeight: '400',
-            letterSpacing: '0.04em',
+            background: 'rgba(15, 23, 42, 0.5)',
+            border: '1px solid rgba(45, 212, 191, 0.28)',
+            borderRadius: '999px',
+            padding: '6px 16px',
+            marginBottom: '22px',
+            fontSize: '10px',
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            color: 'rgba(209, 250, 229, 0.85)',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
             textTransform: 'uppercase'
           }}>
-            <Mail style={{ width: '16px', height: '16px' }} />
+            <Mail style={{ width: '16px', height: '16px', color: 'rgba(94, 234, 212, 0.8)' }} />
             <span>AI-Generated Cold Emails</span>
           </div>
-          
+
           <h2 style={{
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            fontSize: 'clamp(40px, 5.5vw, 64px)',
+            fontSize: 'clamp(28px, 4vw, 44px)',
             fontWeight: '400',
-            lineHeight: '1.1',
-            letterSpacing: '-0.03em',
-            marginBottom: '32px',
-            color: '#EAEAEA'
+            lineHeight: '1.08',
+            letterSpacing: '-0.025em',
+            marginBottom: '18px',
+            color: 'rgba(239, 246, 255, 0.96)'
           }}>
-            Cold Email Examples Our AI Writes
+            We use AI to help us write the emails you dream your SDRs would send. But to your entire market.
           </h2>
-          
+
           <p style={{
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            fontSize: '22px',
-            color: '#B0B0B0',
-            maxWidth: '900px',
+            fontSize: '16px',
+            color: 'rgba(207, 227, 241, 0.72)',
+            maxWidth: '620px',
             margin: '0 auto',
-            lineHeight: '1.5',
+            lineHeight: '1.4',
             letterSpacing: '-0.01em'
           }}>
-            These aren't templates. Our AI analyzes each company's situation and writes emails that show real understanding of their specific challenges.
+            These aren't templates. We analyze each company's situation and write cold emails that show real understanding of their specific challenges and the solution we have.
           </p>
         </div>
 
@@ -248,127 +352,81 @@ Ready to be the security company people actually remember?`
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            style={{
-              position: 'absolute',
-              left: '-60px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 10,
-              width: '48px',
-              height: '48px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              backdropFilter: 'blur(10px)'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.12)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.08)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-            }}
+            className="email-slider__nav email-slider__nav--prev"
           >
-            <ChevronLeft style={{ width: '20px', height: '20px', color: '#EAEAEA' }} />
+            <ChevronLeft style={{ width: '20px', height: '20px', color: 'rgba(237, 244, 255, 0.9)' }} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            style={{
-              position: 'absolute',
-              right: '-60px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 10,
-              width: '48px',
-              height: '48px',
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              backdropFilter: 'blur(10px)'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.12)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = 'rgba(255, 255, 255, 0.08)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-            }}
+            className="email-slider__nav email-slider__nav--next"
           >
-            <ChevronRight style={{ width: '20px', height: '20px', color: '#EAEAEA' }} />
+            <ChevronRight style={{ width: '20px', height: '20px', color: 'rgba(237, 244, 255, 0.9)' }} />
           </button>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '32px', marginBottom: '60px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '26px', marginBottom: '48px' }}>
             {getCurrentEmails().map((email, index) => (
               <div 
                 key={`${currentSlide}-${email.id}`}
+                className="email-card"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  borderRadius: '20px',
+                  background: 'linear-gradient(135deg, rgba(11, 22, 30, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
+                  border: '1px solid rgba(45, 212, 191, 0.12)',
+                  borderRadius: '18px',
                   overflow: 'hidden',
                   transition: 'all 0.3s ease',
-                  backdropFilter: 'blur(10px)',
                   animationDelay: `${index * 150}ms`,
                   animationFillMode: 'both',
-                  minHeight: '450px'
+                  minHeight: '360px',
+                  width: '100%',
+                  boxShadow: '0 24px 48px rgba(2, 8, 12, 0.44)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.22)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.borderColor = 'rgba(45, 212, 191, 0.12)';
                 }}
               >
                 {/* Email Header */}
-                <div style={{ padding: '32px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
+                <div style={{ padding: '26px', borderBottom: '1px solid rgba(45, 212, 191, 0.12)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                     <div style={{
                       display: 'inline-block',
-                      background: 'rgba(255, 255, 255, 0.08)',
-                      color: '#B0B0B0',
+                      background: 'rgba(15, 23, 42, 0.65)',
+                      color: 'rgba(148, 197, 255, 0.72)',
                       fontSize: '12px',
-                      fontWeight: '400',
-                      padding: '6px 12px',
-                      borderRadius: '100px',
-                      letterSpacing: '0.02em',
-                      fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                      fontWeight: 600,
+                      padding: '6px 14px',
+                      borderRadius: '999px',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      border: '1px solid rgba(99, 179, 237, 0.2)',
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
                     }}>
                       {email.category}
                     </div>
-                    <Target style={{ width: '18px', height: '18px', color: '#7A7A7A' }} />
+                    <Target style={{ width: '18px', height: '18px', color: 'rgba(148, 197, 255, 0.58)' }} />
                   </div>
-                  
+
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    fontSize: '14px',
-                    color: '#B0B0B0',
-                    marginBottom: '10px',
+                    fontSize: '13px',
+                    color: 'rgba(204, 228, 241, 0.78)',
+                    marginBottom: '8px',
                     letterSpacing: '-0.01em'
                   }}>
                     <span style={{ fontWeight: '500' }}>To:</span> {email.to}
                   </div>
-                  
+
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    fontSize: '14px',
-                    color: '#B0B0B0',
-                    marginBottom: '16px',
+                    fontSize: '13px',
+                    color: 'rgba(204, 228, 241, 0.78)',
+                    marginBottom: '14px',
                     letterSpacing: '-0.01em'
                   }}>
                     <span style={{ fontWeight: '500' }}>Subject:</span> {email.subject}
@@ -376,9 +434,9 @@ Ready to be the security company people actually remember?`
                   
                   <p style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    color: '#EAEAEA',
-                    fontSize: '15px',
-                    lineHeight: '1.5',
+                    color: 'rgba(237, 244, 255, 0.92)',
+                    fontSize: '14px',
+                    lineHeight: '1.45',
                     margin: '0',
                     letterSpacing: '-0.01em'
                   }}>
@@ -387,21 +445,21 @@ Ready to be the security company people actually remember?`
                 </div>
 
                 {/* Email Body Preview */}
-                <div style={{ padding: '32px', paddingTop: '0' }}>
+                <div style={{ padding: '26px', paddingTop: '0' }}>
                   <div style={{
-                    background: 'rgba(0, 0, 0, 0.3)',
+                    background: 'rgba(8, 15, 24, 0.78)',
                     borderRadius: '12px',
-                    padding: '24px',
-                    border: '1px solid rgba(255, 255, 255, 0.06)'
+                    padding: '20px',
+                    border: '1px solid rgba(45, 212, 191, 0.12)'
                   }}>
                     <pre style={{
-                      fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif",
-                      color: '#B0B0B0',
-                      fontSize: '14px',
+                      fontFamily: "'Roboto', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
+                      color: 'rgba(204, 228, 241, 0.84)',
+                      fontSize: '13px',
                       whiteSpace: 'pre-wrap',
-                      lineHeight: '1.6',
+                      lineHeight: '1.58',
                       margin: '0',
-                      letterSpacing: '0'
+                      letterSpacing: '0.01em'
                     }}>
                       {email.body}
                     </pre>
@@ -420,7 +478,7 @@ Ready to be the security company people actually remember?`
                   key={index}
                   onClick={() => {
                     setCurrentSlide(index);
-                    setTimeout(scrollToEmailGrid, 100);
+                    scheduleScroll();
                   }}
                   style={{
                     width: '12px',
@@ -449,48 +507,6 @@ Ready to be the security company people actually remember?`
           </div>
         </div>
 
-        {/* CTA */}
-        <div style={{ textAlign: 'center', marginTop: '64px' }}>
-          <button 
-            onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: '#FAFAFA',
-              color: '#111213',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '16px 32px',
-              fontSize: '16px',
-              fontWeight: '400',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.opacity = '0.95';
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 8px 25px rgba(255, 255, 255, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.opacity = '1';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}
-          >
-            See What Our AI Writes for You →
-          </button>
-          <p style={{
-            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            color: '#7A7A7A',
-            fontSize: '14px',
-            marginTop: '16px',
-            letterSpacing: '-0.01em'
-          }}>
-            Free strategy call • See real examples for your industry
-          </p>
-        </div>
       </div>
     </section>
   );

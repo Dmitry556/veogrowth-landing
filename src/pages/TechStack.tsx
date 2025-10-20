@@ -300,7 +300,7 @@ const TechStack = () => {
                 
                 <div className="mt-8 pt-6 border-t border-gray-200">
                   <button 
-                    onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                    onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                     className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg text-sm transition-colors"
                   >
                     Get Recommendations
@@ -388,7 +388,7 @@ const TechStack = () => {
                     Every business is different. Get personalized tool recommendations based on your specific needs and scale.
                   </p>
                   <button 
-                    onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}
+                    onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                     className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                   >
                     Get Your Custom Stack Recommendations →

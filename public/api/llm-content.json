@@ -5,7 +5,7 @@
     "description": "VeoGrowth is a B2B lead generation agency that specializes in AI-powered cold email campaigns. We help B2B SaaS companies generate 30-50 qualified meetings per month with a pay-per-meeting model.",
     "website": "https://veogrowth.com",
     "email": "hello@veogrowth.com",
-    "calendly": "https://calendly.com/veogrowth",
+    "calendly": "https://calendly.com/veogrowth/discovery",
     "founded": "2023",
     "industry": "B2B Lead Generation"
   },
@@ -189,7 +189,7 @@
   "contact": {
     "website": "https://veogrowth.com",
     "email": "hello@veogrowth.com",
-    "book_call": "https://calendly.com/veogrowth",
+    "book_call": "https://calendly.com/veogrowth/discovery",
     "free_meetings": "Get 2 free qualified meetings to test our quality",
     "linkedin": "https://linkedin.com/company/veogrowth"
   },

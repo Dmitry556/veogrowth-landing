@@ -1,6 +1,6 @@
 
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build:prerender",
   "outputDirectory": "dist", 
   "framework": null,
   "redirects": [

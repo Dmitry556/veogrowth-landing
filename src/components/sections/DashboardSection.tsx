@@ -72,7 +72,7 @@ const DashboardSection: React.FC = () => {
               All clients receive login credentials to access their campaign dashboard after the initial test campaign proves successful.
             </p>
             
-            <CustomButton onClick={() => window.open('https://calendly.com/veogrowth', '_blank')}>
+            <CustomButton onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}>
               Get 2 Free Meetings
             </CustomButton>
           </div>

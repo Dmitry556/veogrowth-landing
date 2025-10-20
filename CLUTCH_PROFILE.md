@@ -159,4 +159,4 @@ A: Everything needed for successful outreach: email infrastructure, domain manag
 
 ## Contact CTA
 "Get Your 2 Free Qualified Meetings"
-Link to: https://calendly.com/veogrowth
+Link to: https://calendly.com/veogrowth/discovery

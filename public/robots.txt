@@ -71,4 +71,4 @@ Sitemap: https://www.veogrowth.com/sitemap.xml
 # Pay-per-meeting model with no retainers or contracts
 # Results: $8M+ pipeline generated, 10,000+ meetings booked, 150+ clients
 # Contact: hello@veogrowth.com
-# Book free meetings: https://calendly.com/veogrowth
+# Book free meetings: https://calendly.com/veogrowth/discovery

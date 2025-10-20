@@ -4,14 +4,10 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import HeroSection from '@/components/sections/HeroSection';
-import StorySection from '@/components/sections/StorySection';
-import SolutionSection from '@/components/sections/SolutionSection';
 import EmailExamplesSlider from '@/components/sections/EmailExamplesSlider';
+import GrowthProcessSection from '@/components/sections/GrowthProcessSection';
 import ResultsSection from '@/components/sections/ResultsSection';
-import ProcessSection from '@/components/sections/ProcessSection';
-import PricingSection from '@/components/sections/PricingSection';
 import FaqSection from '@/components/sections/FaqSection';
-import QualificationSection from '@/components/sections/QualificationSection';
 import CaseStudiesPreview from '@/components/sections/CaseStudiesPreview';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 
@@ -192,7 +188,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground" style={{ overflowX: 'hidden' }}>
       <CanonicalUrl path="/" />
-      {/* <Header /> */}
+      <Header />
       
       <main>
         <div className="fade-in visible">
@@ -213,32 +209,12 @@ const Index = () => {
         <AnimatedSection delay={200}>
           <EmailExamplesSlider />
         </AnimatedSection>
-        
-        {/* The Story Section */}
+
+        {/* How It Works / Pricing / Fit */}
         <AnimatedSection delay={0}>
-          <StorySection />
+          <GrowthProcessSection />
         </AnimatedSection>
-        
-        {/* The Three-Layer Innovation Section */}
-        <AnimatedSection delay={0}>
-          <SolutionSection />
-        </AnimatedSection>
-        
-        {/* How It Actually Works Section */}
-        <AnimatedSection delay={0}>
-          <ProcessSection />
-        </AnimatedSection>
-        
-        {/* Who This Is For Section */}
-        <AnimatedSection delay={0}>
-          <QualificationSection />
-        </AnimatedSection>
-        
-        {/* Investment Section */}
-        <AnimatedSection delay={0}>
-          <PricingSection />
-        </AnimatedSection>
-        
+
         {/* FAQ Section */}
         <AnimatedSection delay={0}>
           <FaqSection />

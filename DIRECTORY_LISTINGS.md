@@ -51,7 +51,7 @@ We help B2B SaaS companies predictably fill their pipeline with qualified prospe
 🤝 Who We Serve:
 B2B companies with $100K+ monthly revenue and TAM of 50,000+ prospects.
 
-Ready to transform your outbound? Get your 2 free qualified meetings: https://calendly.com/veogrowth
+Ready to transform your outbound? Get your 2 free qualified meetings: https://calendly.com/veogrowth/discovery
 
 ### Specialties
 Cold Email, B2B Lead Generation, Sales Development, AI Personalization, Appointment Setting, Pipeline Generation, SaaS Growth, Outbound Marketing

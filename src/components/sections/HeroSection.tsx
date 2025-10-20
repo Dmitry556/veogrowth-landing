@@ -2,18 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { trackCalendlyClick } from '@/utils/analytics';
 
 const HeroSection: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Next-gen Linear-style blur-in animation on load
   useEffect(() => {
@@ -94,6 +83,10 @@ const HeroSection: React.FC = () => {
             -webkit-text-fill-color: transparent;
           }
 
+          .hero-headline-line {
+            display: block;
+          }
+
           .hero-headline-accent {
             display: inline-flex;
             align-items: center;
@@ -106,6 +99,82 @@ const HeroSection: React.FC = () => {
             color: #f0fdfa;
             letter-spacing: -0.02em;
             text-shadow: none;
+          }
+
+          .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 24px;
+            min-width: min(90vw, 420px);
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(13, 110, 90, 0.88) 0%, rgba(12, 90, 78, 0.9) 55%, rgba(9, 71, 63, 0.92) 100%);
+            color: #e9faf4;
+            font-size: clamp(18px, 2.4vw, 21px);
+            font-weight: 600;
+            letter-spacing: -0.016em;
+            border: 1px solid rgba(45, 212, 191, 0.28);
+            box-shadow: 0 24px 44px rgba(6, 60, 50, 0.32);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .hero-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+          }
+
+          .hero-cta:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 30px 56px rgba(6, 60, 50, 0.36);
+            background: linear-gradient(145deg, rgba(12, 90, 78, 0.96) 0%, rgba(10, 78, 69, 0.97) 55%, rgba(7, 64, 55, 0.97) 100%);
+          }
+
+          .hero-cta:hover::after {
+            opacity: 0.28;
+          }
+
+          .hero-cta:focus-visible {
+            outline: 3px solid rgba(45, 212, 191, 0.45);
+            outline-offset: 4px;
+          }
+
+          .hero-cta__label {
+            flex: 1;
+            text-align: left;
+            display: inline-block;
+            font-size: clamp(24px, 3.2vw, 30px);
+            line-height: 0.9;
+            letter-spacing: -0.025em;
+            transform: translateY(1px);
+          }
+
+          .hero-cta__arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(226, 252, 239, 0.85) 0%, rgba(209, 250, 229, 0.8) 100%);
+            color: #064e3b;
+            font-size: 24px;
+            font-weight: 600;
+            box-shadow: 0 12px 22px rgba(5, 46, 39, 0.24);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+          }
+
+          .hero-cta:hover .hero-cta__arrow {
+            transform: translateX(3px);
+            box-shadow: 0 16px 30px rgba(5, 46, 39, 0.3);
+            background: linear-gradient(135deg, rgba(226, 252, 239, 0.95), rgba(209, 250, 229, 0.9));
           }
 
       @keyframes ctaPulse {
@@ -126,31 +195,6 @@ const HeroSection: React.FC = () => {
           opacity: 0;
         }
       }
-
-      .full-width-navbar {
-        position: fixed !important;
-        top: 0 !important;
-        left: 50% !important;
-        right: auto !important;
-            width: 100vw !important;
-            min-width: 100vw !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            margin-left: -50vw !important;
-            transform: none !important;
-            box-sizing: border-box !important;
-          }
-          
-          /* Override any parent container constraints */
-          .full-width-navbar * {
-            box-sizing: border-box !important;
-          }
-          
-          /* Force body and html to allow full width */
-          body, html {
-            overflow-x: auto !important;
-            width: 100% !important;
-          }
 
           .ping-wrapper {
             position: relative;
@@ -199,120 +243,6 @@ const HeroSection: React.FC = () => {
         `
       }} />
       
-      {/* Elegant Navigation */}
-      <nav 
-        className="full-width-navbar fixed top-0 z-50"
-        style={{
-          padding: '12px 32px',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-          background: scrolled ? 'rgba(17, 18, 19, 0.8)' : 'transparent',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : 'none',
-          boxShadow: scrolled ? '0 1px 10px rgba(0, 0, 0, 0.1)' : 'none',
-          transition: 'background 0.2s ease, backdrop-filter 0.2s ease, box-shadow 0.2s ease',
-          boxSizing: 'border-box'
-        }}
-      >
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <a 
-            href="#" 
-            style={{
-              fontFamily: "'SF Mono', Monaco, Consolas, monospace",
-              fontSize: '16px',
-              fontWeight: '500',
-              color: '#EAEAEA',
-              textDecoration: 'none',
-              letterSpacing: '-0.01em',
-              opacity: '0.95'
-            }}
-          >
-            Veogrowth
-          </a>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="hidden md:flex">
-            <a 
-              href="/case-studies" 
-              style={{
-                color: '#B0B0B0',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '400',
-                transition: 'color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
-              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
-            >
-              Case Studies
-            </a>
-            <a 
-              href="/blog" 
-              style={{
-                color: '#B0B0B0',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '400',
-                transition: 'color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
-              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
-            >
-              Blog
-            </a>
-            <a 
-              href="/tools" 
-              style={{
-                color: '#B0B0B0',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '400',
-                transition: 'color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
-              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
-            >
-              Free Tools
-            </a>
-            <a 
-              href="#pricing" 
-              style={{
-                color: '#B0B0B0',
-                textDecoration: 'none',
-                fontSize: '14px',
-                fontWeight: '400',
-                transition: 'color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#EAEAEA'}
-              onMouseLeave={(e) => e.target.style.color = '#B0B0B0'}
-            >
-              Pricing
-            </a>
-            <button 
-              style={{
-                padding: '8px 20px',
-                background: '#FAFAFA',
-                color: '#111213',
-                borderRadius: '6px',
-                textDecoration: 'none',
-                fontSize: '13px',
-                fontWeight: '400',
-                transition: 'all 0.2s ease',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.opacity = '0.92';
-                e.target.style.transform = 'translateY(-1px)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.opacity = '1';
-                e.target.style.transform = 'translateY(0)';
-              }}
-            >
-              Request the pilot
-            </button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section 
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -343,7 +273,7 @@ const HeroSection: React.FC = () => {
             zIndex: '10',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '80px 32px 64px',
+            padding: '92px 32px 52px',
             minHeight: '88vh',
             display: 'flex',
             flexDirection: 'column',
@@ -352,29 +282,22 @@ const HeroSection: React.FC = () => {
           }}
         >
           <div className="max-w-5xl mx-auto text-center">
-            
-            {/* Status Pill */}
-            <div 
-              className="hero-element"
+
+            {/* Spacer to preserve original top rhythm */}
+            <div
+              aria-hidden="true"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '12px',
-                background: 'rgba(18, 24, 36, 0.55)',
-                border: '1px solid rgba(94, 234, 212, 0.25)',
-                borderRadius: '999px',
+                gap: '6px',
                 padding: '10px 22px',
-                marginBottom: '36px',
-                fontSize: '13px',
-                fontFamily: "'SF Mono', Monaco, Consolas, monospace",
-                color: '#A5F3FC',
-                boxShadow: '0 12px 30px rgba(14, 116, 144, 0.15)'
+                marginBottom: '24px',
+                visibility: 'hidden',
+                pointerEvents: 'none'
               }}
             >
-              <span className="ping-wrapper" aria-hidden="true"></span>
-              <span style={{ letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                Limited spots left for Q4
-              </span>
+              <span className="ping-wrapper" />
+              <span>Limited spots left for Q4</span>
             </div>
 
             {/* Main Headline */}
@@ -384,7 +307,7 @@ const HeroSection: React.FC = () => {
                 fontSize: 'clamp(40px, 5vw, 56px)',
                 lineHeight: '1.08',
                 letterSpacing: '-0.04em',
-                margin: '0 auto 26px',
+                margin: '0 auto 30px',
                 fontWeight: '500',
                 position: 'relative',
                 maxWidth: '920px',
@@ -406,7 +329,8 @@ const HeroSection: React.FC = () => {
                 }}
               />
               <span className="hero-headline-primary">
-                Systematic outreach to every qualified lead in your TAM
+                <span className="hero-headline-line">Systematic outreach to every</span>
+                <span className="hero-headline-line">qualified lead in your TAM</span>
               </span>
               <span className="hero-headline-accent" style={{ fontSize: 'clamp(22px, 2.7vw, 30px)', fontWeight: 500 }}>
                 with 1:1 researched, relevant cold emails.
@@ -421,13 +345,13 @@ const HeroSection: React.FC = () => {
                 fontWeight: '400',
                 color: 'rgba(229, 231, 235, 0.9)',
                 textAlign: 'center',
-                margin: '0 auto 30px',
+                margin: '0 auto 28px',
                 letterSpacing: '-0.02em',
                 maxWidth: '520px',
                 position: 'relative'
               }}
             >
-              Pay only for the qualified meetings you get out of it.
+              Pay only for the qualified meetings/signups you get out of it.
               <span
                 style={{
                   display: 'block',
@@ -441,58 +365,17 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <div className="hero-element" style={{ margin: '0 auto 44px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+            <div className="hero-element" style={{ margin: '28px auto 44px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px' }}>
               <button
+                type="button"
+                className="hero-cta"
                 onClick={() => {
                   trackCalendlyClick('hero-free-pilot');
-                  window.open('https://calendly.com/veogrowth', '_blank');
-                }}
-                style={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '32px',
-                  padding: '22px 56px 22px 52px',
-                  minWidth: 'min(95vw, 560px)',
-                  borderRadius: '26px',
-                  fontSize: '22px',
-                  fontWeight: 600,
-                  letterSpacing: '-0.016em',
-                  color: '#073429',
-                  background: 'linear-gradient(135deg, #34d399 0%, #4ade80 40%, #5eead4 75%, #a5f3fc 100%)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: 'none',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  window.open('https://calendly.com/veogrowth/discovery', '_blank');
                 }}
               >
-                <span style={{ flex: 1, textAlign: 'left', position: 'relative', zIndex: 1 }}>Apply For Your 2 Free Sales Meetings Pilot</span>
-                <span
-                  style={{
-                    position: 'relative',
-                    zIndex: 1,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '54px',
-                    height: '54px',
-                    borderRadius: '18px',
-                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 250, 0.85))',
-                    color: '#0b8c7a',
-                    fontSize: '26px',
-                    boxShadow: '0 6px 14px rgba(13, 148, 136, 0.22)'
-                  }}
-                >
-                  ➜
-                </span>
+                <span className="hero-cta__label">Start Your 2 Free Sales Meetings Pilot</span>
+                <span className="hero-cta__arrow" aria-hidden="true">➜</span>
               </button>
               <div className="hero-element" style={{ marginTop: '-4px', width: '100%' }}>
                 <p
@@ -502,7 +385,12 @@ const HeroSection: React.FC = () => {
                     fontSize: '15px',
                     color: '#f8fafc',
                     lineHeight: '1.55',
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    display: 'grid',
+                    gridTemplateColumns: 'auto 1fr',
+                    columnGap: '12px',
+                    rowGap: '8px',
+                    alignItems: 'start'
                   }}
                 >
                   <span
@@ -518,21 +406,48 @@ const HeroSection: React.FC = () => {
                       fontSize: '11px',
                       letterSpacing: '0.14em',
                       textTransform: 'uppercase',
-                      border: '1px solid rgba(16, 185, 129, 0.4)',
-                      marginRight: '8px'
+                      border: '1px solid rgba(16, 185, 129, 0.4)'
                     }}
                   >
                     New
                   </span>
-                  <strong style={{ letterSpacing: '-0.01em', marginRight: '6px', color: '#ffffff' }}>Free Trial Offer:</strong>
-                  <span style={{ color: 'rgba(255, 255, 255, 0.92)', fontWeight: 500 }}>
+                  <span style={{ display: 'inline', color: 'rgba(255, 255, 255, 0.92)', fontWeight: 500 }}>
+                    <strong style={{ letterSpacing: '-0.01em', color: '#ffffff' }}>Free Trial Offer:</strong>{' '}
                     We’ll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 600 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
                   </span>
                 </p>
               </div>
             </div>
+
+            {/* Status Pill */}
+            <div 
+              className="hero-element"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'rgba(15, 23, 42, 0.52)',
+                border: '1px solid rgba(45, 212, 191, 0.35)',
+                borderRadius: '999px',
+                padding: '10px 24px',
+                margin: '0 auto 48px',
+                fontSize: '12px',
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontWeight: 600,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'rgba(209, 250, 229, 0.9)',
+                boxShadow: '0 12px 30px rgba(13, 148, 136, 0.18)'
+              }}
+            >
+              <span className="ping-wrapper" aria-hidden="true"></span>
+              <span style={{ letterSpacing: '0.16em', textTransform: 'uppercase', color: 'inherit', fontWeight: 600 }}>
+                Limited spots left for Q4
+              </span>
+            </div>
+
             {/* Trust Section */}
-            <div style={{ marginTop: 'auto', paddingTop: '60px', paddingBottom: '0px', textAlign: 'center' }}>
+            <div style={{ marginTop: 'auto', paddingTop: '26px', paddingBottom: '0px', textAlign: 'center' }}>
               <p style={{ 
                 fontSize: '16px', 
                 color: '#E5E7EB', 

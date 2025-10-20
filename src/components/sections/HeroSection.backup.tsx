@@ -195,7 +195,7 @@ const HeroSection: React.FC = () => {
             <button 
               onClick={() => {
                 trackCalendlyClick('hero-main');
-                window.open('https://calendly.com/veogrowth', '_blank');
+                window.open('https://calendly.com/veogrowth/discovery', '_blank');
               }}
               className="group relative"
             >

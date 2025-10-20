@@ -79,28 +79,53 @@ const CaseStudiesPreview: React.FC = () => {
 
   return (
     <section style={{
-      background: '#0a0a0a',
-      padding: '80px 0',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      position: 'relative',
+      background: 'linear-gradient(180deg, #02060b 0%, #031018 50%, #041621 100%)',
+      padding: '92px 0',
+      borderTop: '1px solid rgba(45, 212, 191, 0.05)',
+      borderBottom: '1px solid rgba(45, 212, 191, 0.08)',
+      overflow: 'hidden'
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '-140px',
+          left: 0,
+          right: 0,
+          height: '220px',
+          background: 'linear-gradient(180deg, rgba(2, 6, 11, 0) 0%, rgba(2, 6, 11, 0.7) 60%, rgba(2, 6, 11, 1) 100%)'
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '-160px',
+          left: 0,
+          right: 0,
+          height: '240px',
+          background: 'linear-gradient(180deg, rgba(3, 17, 24, 1) 0%, rgba(3, 17, 24, 0.68) 45%, rgba(3, 17, 24, 0) 100%)'
+        }} />
+      </div>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '100px',
-            padding: '8px 20px',
-            marginBottom: '48px',
-            fontSize: '13px',
-            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
-            color: '#B0B0B0',
-            fontWeight: '400',
-            letterSpacing: '0.04em',
+            background: 'rgba(15, 23, 42, 0.52)',
+            border: '1px solid rgba(45, 212, 191, 0.28)',
+            borderRadius: '999px',
+            padding: '10px 24px',
+            marginBottom: '44px',
+            fontSize: '12px',
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            color: 'rgba(209, 250, 229, 0.85)',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
             textTransform: 'uppercase'
           }}>
             Client Success Stories
@@ -112,7 +137,7 @@ const CaseStudiesPreview: React.FC = () => {
             lineHeight: '1.2',
             letterSpacing: '-0.02em',
             marginBottom: '0',
-            color: '#EAEAEA'
+            color: 'rgba(239, 246, 255, 0.96)'
           }}>
             Real Results from Real Clients
           </h2>
@@ -125,7 +150,7 @@ const CaseStudiesPreview: React.FC = () => {
             display: 'flex', 
             gap: '32px', 
             overflowX: 'auto',
-            paddingBottom: '20px',
+            paddingBottom: '24px',
             scrollSnapType: 'x mandatory',
             width: '100%'
           }}
@@ -136,39 +161,41 @@ const CaseStudiesPreview: React.FC = () => {
               key={study.id}
               style={{
                 display: 'block',
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'linear-gradient(135deg, rgba(11, 22, 30, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
+                border: '1px solid rgba(45, 212, 191, 0.12)',
                 borderRadius: '20px',
                 padding: '32px',
                 textDecoration: 'none',
                 transition: 'all 0.3s ease',
-                backdropFilter: 'blur(10px)',
                 flex: '0 0 auto',
                 scrollSnapAlign: 'start',
                 width: 'max-content',
-                maxWidth: '400px'
+                maxWidth: '400px',
+                boxShadow: '0 24px 48px rgba(2, 8, 12, 0.48)'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.22)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(45, 212, 191, 0.12)';
               }}
             >
               <div style={{ marginBottom: '24px' }}>
                 <div style={{
                   display: 'inline-block',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  color: '#B0B0B0',
+                  background: 'rgba(15, 23, 42, 0.65)',
+                  color: 'rgba(148, 197, 255, 0.72)',
                   fontSize: '12px',
-                  fontWeight: '400',
-                  padding: '6px 12px',
-                  borderRadius: '100px',
-                  letterSpacing: '0.02em',
+                  fontWeight: 600,
+                  padding: '6px 14px',
+                  borderRadius: '999px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
                   marginBottom: '16px',
-                  fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                  border: '1px solid rgba(99, 179, 237, 0.2)',
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
                 }}>
                   {study.industry}
                 </div>
@@ -177,7 +204,7 @@ const CaseStudiesPreview: React.FC = () => {
                   fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                   fontSize: '18px',
                   fontWeight: '500',
-                  color: '#EAEAEA',
+                  color: 'rgba(237, 244, 255, 0.94)',
                   marginBottom: '12px',
                   letterSpacing: '-0.01em'
                 }}>
@@ -186,7 +213,7 @@ const CaseStudiesPreview: React.FC = () => {
                 
                 <p style={{
                   fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  color: '#B0B0B0',
+                  color: 'rgba(204, 228, 241, 0.78)',
                   fontSize: '14px',
                   lineHeight: '1.5',
                   marginBottom: '20px',
@@ -199,16 +226,17 @@ const CaseStudiesPreview: React.FC = () => {
               {/* Results Metrics */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '20px' }}>
                 <div style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',
                   padding: '12px 8px',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  border: '1px solid rgba(99, 179, 237, 0.18)'
                 }}>
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '16px',
                     fontWeight: '600',
-                    color: '#FFFFFF',
+                    color: 'rgba(237, 244, 255, 0.96)',
                     marginBottom: '4px'
                   }}>
                     {study.results.meetings}
@@ -216,7 +244,7 @@ const CaseStudiesPreview: React.FC = () => {
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '11px',
-                    color: '#7A7A7A',
+                    color: 'rgba(148, 197, 255, 0.72)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
@@ -225,16 +253,17 @@ const CaseStudiesPreview: React.FC = () => {
                 </div>
                 
                 <div style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',
                   padding: '12px 8px',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  border: '1px solid rgba(99, 179, 237, 0.18)'
                 }}>
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '16px',
                     fontWeight: '600',
-                    color: '#FFFFFF',
+                    color: 'rgba(237, 244, 255, 0.96)',
                     marginBottom: '4px'
                   }}>
                     {study.results.pipeline}
@@ -242,7 +271,7 @@ const CaseStudiesPreview: React.FC = () => {
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '11px',
-                    color: '#7A7A7A',
+                    color: 'rgba(148, 197, 255, 0.72)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
@@ -251,16 +280,17 @@ const CaseStudiesPreview: React.FC = () => {
                 </div>
                 
                 <div style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',
                   padding: '12px 8px',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  border: '1px solid rgba(99, 179, 237, 0.18)'
                 }}>
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '16px',
                     fontWeight: '600',
-                    color: '#FFFFFF',
+                    color: 'rgba(237, 244, 255, 0.96)',
                     marginBottom: '4px'
                   }}>
                     {study.results.responseRate}
@@ -268,7 +298,7 @@ const CaseStudiesPreview: React.FC = () => {
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '11px',
-                    color: '#7A7A7A',
+                    color: 'rgba(148, 197, 255, 0.72)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
@@ -283,14 +313,16 @@ const CaseStudiesPreview: React.FC = () => {
                   <span
                     key={tagIndex}
                     style={{
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      color: '#7A7A7A',
+                      background: 'rgba(15, 23, 42, 0.65)',
+                      color: 'rgba(148, 197, 255, 0.72)',
                       fontSize: '11px',
-                      fontWeight: '400',
-                      padding: '4px 8px',
-                      borderRadius: '100px',
-                      letterSpacing: '0.02em',
-                      fontFamily: "'SF Mono', Monaco, Consolas, monospace"
+                      fontWeight: 600,
+                      padding: '4px 10px',
+                      borderRadius: '999px',
+                      letterSpacing: '0.18em',
+                      textTransform: 'uppercase',
+                      border: '1px solid rgba(99, 179, 237, 0.2)',
+                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
                     }}
                   >
                     {tag}
@@ -302,13 +334,13 @@ const CaseStudiesPreview: React.FC = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{
                   fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  color: '#EAEAEA',
+                  color: 'rgba(237, 244, 255, 0.92)',
                   fontSize: '14px',
                   fontWeight: '500'
                 }}>
                   Read Full Case Study
                 </span>
-                <ArrowRight style={{ width: '16px', height: '16px', color: '#B0B0B0' }} />
+                <ArrowRight style={{ width: '16px', height: '16px', color: 'rgba(94, 234, 212, 0.65)' }} />
               </div>
             </Link>
           ))}
