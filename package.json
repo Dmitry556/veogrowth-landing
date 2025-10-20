@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --port 8080",
     "build": "vite build",
-    "build:prerender": "vite build && npm run prerender && npm run seo-optimize",
+    "build:prerender": "puppeteer browsers install chrome && vite build && npm run prerender && npm run seo-optimize",
     "prerender": "node scripts/prerender.js",
     "seo-optimize": "node scripts/seo-optimizer.js",
     "start": "vite preview",
