@@ -62,27 +62,28 @@ const FaqSection: React.FC = () => {
 
   return (
     <section id="faq" style={{
-      background: '#0a0a0a',
-      padding: '80px 0 100px',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.08)'
+      background: 'linear-gradient(180deg, #04080d 0%, #050b11 48%, #061015 100%)',
+      padding: '60px 0 120px',
+      borderTop: '1px solid rgba(45, 212, 191, 0.06)',
+      borderBottom: '1px solid rgba(45, 212, 191, 0.08)'
     }}>
       
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-        <div style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto 120px' }}>
+        <div style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto 72px' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            borderRadius: '100px',
-            padding: '8px 20px',
-            marginBottom: '48px',
-            fontSize: '13px',
-            fontFamily: "'SF Mono', Monaco, Consolas, monospace",
-            color: '#B0B0B0',
-            fontWeight: '400',
-            letterSpacing: '0.04em',
+            background: 'rgba(15, 23, 42, 0.52)',
+            border: '1px solid rgba(45, 212, 191, 0.28)',
+            borderRadius: '999px',
+            padding: '10px 22px',
+            marginBottom: '44px',
+            fontSize: '12px',
+            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            color: 'rgba(209, 250, 229, 0.85)',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
             textTransform: 'uppercase'
           }}>
             Common Questions
@@ -93,15 +94,15 @@ const FaqSection: React.FC = () => {
             fontWeight: '400',
             lineHeight: '1.1',
             letterSpacing: '-0.03em',
-            marginBottom: '48px',
-            color: '#EAEAEA'
+            marginBottom: '36px',
+            color: 'rgba(239, 246, 255, 0.96)'
           }}>
             Frequently Asked Questions
           </h2>
           <p style={{
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
             fontSize: '22px',
-            color: '#B0B0B0',
+            color: 'rgba(207, 227, 241, 0.72)',
             fontWeight: '500',
             lineHeight: '1.5',
             letterSpacing: '-0.01em'
@@ -111,15 +112,15 @@ const FaqSection: React.FC = () => {
         </div>
         
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             {faqs.map((faq, index) => (
               <div key={index} style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                background: 'linear-gradient(135deg, rgba(11, 21, 28, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
+                border: '1px solid rgba(45, 212, 191, 0.12)',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                backdropFilter: 'blur(10px)',
-                transition: 'all 0.3s ease'
+                boxShadow: openIndex === index ? '0 24px 48px rgba(2, 8, 12, 0.55)' : '0 18px 36px rgba(2, 8, 12, 0.4)',
+                transition: 'all 0.32s ease'
               }}>
                 <button
                   onClick={() => toggleFaq(index)}
@@ -138,13 +139,13 @@ const FaqSection: React.FC = () => {
                   onMouseEnter={(e) => {
                     const parent = e.currentTarget.parentElement as HTMLElement;
                     if (parent) {
-                      parent.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                      parent.style.borderColor = 'rgba(94, 234, 212, 0.22)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     const parent = e.currentTarget.parentElement as HTMLElement;
                     if (parent) {
-                      parent.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                      parent.style.borderColor = openIndex === index ? 'rgba(94, 234, 212, 0.18)' : 'rgba(45, 212, 191, 0.12)';
                     }
                   }}
                 >
@@ -152,7 +153,7 @@ const FaqSection: React.FC = () => {
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                     fontSize: '20px',
                     fontWeight: '500',
-                    color: '#EAEAEA',
+                    color: 'rgba(237, 244, 255, 0.92)',
                     letterSpacing: '-0.01em',
                     flex: '1',
                     marginRight: '24px'
@@ -163,26 +164,27 @@ const FaqSection: React.FC = () => {
                     width: '24px',
                     height: '24px',
                     borderRadius: '50%',
-                    background: 'rgba(255, 255, 255, 0.1)',
+                    background: 'rgba(94, 234, 212, 0.12)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    transition: 'all 0.3s ease'
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 8px 16px rgba(2, 40, 36, 0.35)'
                   }}>
                     {openIndex === index ? 
-                      <Minus style={{ width: '12px', height: '12px', color: '#EAEAEA' }} /> :
-                      <Plus style={{ width: '12px', height: '12px', color: '#EAEAEA' }} />
+                      <Minus style={{ width: '12px', height: '12px', color: 'rgba(237, 244, 255, 0.92)' }} /> :
+                      <Plus style={{ width: '12px', height: '12px', color: 'rgba(237, 244, 255, 0.92)' }} />
                     }
                   </div>
                 </button>
                 {openIndex === index && (
                   <div style={{
-                    padding: '0 40px 32px',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                    padding: '0 40px 34px',
+                    borderTop: '1px solid rgba(45, 212, 191, 0.12)',
                     marginTop: '-1px'
                   }}>
                     <div style={{
-                      paddingTop: '32px',
+                      paddingTop: '28px',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '16px'
@@ -193,13 +195,13 @@ const FaqSection: React.FC = () => {
                           style={{
                             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                             fontSize: '18px',
-                            color: '#B0B0B0',
+                            color: 'rgba(204, 228, 241, 0.78)',
                             lineHeight: '1.6',
                             margin: '0',
                             letterSpacing: '-0.01em'
                           }}
                           dangerouslySetInnerHTML={{ 
-                            __html: line.replace(/<strong>/g, '<strong style="color: #FFFFFF; font-weight: 600;">') 
+                            __html: line.replace(/<strong>/g, '<strong style="color: #ecfdf5; font-weight: 600;">') 
                           }}
                         />
                       ))}
