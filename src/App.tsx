@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import SchemaMarkup from "./components/schema/SchemaMarkup";
 import WebVitals from "./components/performance/WebVitals";
@@ -72,6 +73,7 @@ const App = () => {
         <BrowserRouter>
           <RouteTracker />
           <VercelAnalytics />
+          <SpeedInsights />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
