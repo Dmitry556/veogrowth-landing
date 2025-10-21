@@ -109,6 +109,19 @@ const HeroSection: React.FC = () => {
             justify-items: center;
           }
 
+          @media (max-width: 768px) {
+            .hero-logo-grid {
+              grid-template-columns: repeat(3, 1fr);
+              gap: 24px;
+              max-width: 480px;
+              margin: 0 auto;
+            }
+
+            .hero-logo-grid > div:nth-child(n+7) {
+              display: none;
+            }
+          }
+
           .hero-cta {
             display: inline-flex;
             align-items: center;

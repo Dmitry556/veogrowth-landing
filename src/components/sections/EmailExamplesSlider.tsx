@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight, Mail, Target } from 'lucide-react';
 const EmailExamplesSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const emailGridRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const emailExamples = [
     {
@@ -160,7 +162,19 @@ Ready to be the security company people actually remember?`
     }
   ];
 
-  const totalSlides = Math.ceil(emailExamples.length / 4);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const itemsPerSlide = isMobile ? 1 : 4;
+  const totalSlides = Math.ceil(emailExamples.length / itemsPerSlide);
 
   useEffect(() => {
     const styleId = 'email-examples-slider-styles';
@@ -224,8 +238,14 @@ Ready to be the security company people actually remember?`
 
       @media (max-width: 900px) {
         .email-slider__nav {
-          display: none;
+          width: 56px;
+          height: 56px;
+          background: rgba(15, 23, 42, 0.85);
+          border: 2px solid rgba(45, 212, 191, 0.35);
+          box-shadow: 0 8px 24px rgba(2, 8, 12, 0.6);
         }
+        .email-slider__nav--prev { left: 8px; }
+        .email-slider__nav--next { right: 8px; }
       }
 
       .email-card {
@@ -238,6 +258,27 @@ Ready to be the security company people actually remember?`
         transform: translateY(-6px);
         border-color: rgba(94, 234, 212, 0.22);
         box-shadow: 0 26px 52px rgba(2, 8, 12, 0.5);
+      }
+
+      @media (max-width: 768px) {
+        .email-grid {
+          grid-template-columns: 1fr !important;
+          gap: 20px !important;
+        }
+
+        .email-card {
+          min-height: auto !important;
+        }
+
+        .email-card pre {
+          font-size: 14px !important;
+          line-height: 1.65 !important;
+        }
+
+        .email-slider__nav svg {
+          width: 24px !important;
+          height: 24px !important;
+        }
       }
     `;
 
@@ -279,8 +320,35 @@ Ready to be the security company people actually remember?`
   };
 
   const getCurrentEmails = () => {
-    const startIndex = currentSlide * 4;
-    return emailExamples.slice(startIndex, startIndex + 4);
+    const startIndex = currentSlide * itemsPerSlide;
+    return emailExamples.slice(startIndex, startIndex + itemsPerSlide);
+  };
+
+  // Touch swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   return (
@@ -373,6 +441,9 @@ Ready to be the security company people actually remember?`
 
           <div
             className="email-grid"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',

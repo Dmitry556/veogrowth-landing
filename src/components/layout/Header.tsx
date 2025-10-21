@@ -133,30 +133,31 @@ const Header: React.FC = () => {
           `
         }}
       />
-      <header 
-      className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
+      <header
+      className="fixed top-0 left-0 right-0 z-[9999] transition-colors duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{ minHeight: '64px' }}
     >
-      <div 
-        className={`transition-all duration-200 ${
+      <div
+        className={`transition-all duration-200 backdrop-blur-md ${
           isElevated
-            ? 'bg-slate-950/75 border-b border-white/10 backdrop-blur-md'
-            : 'bg-transparent'
+            ? 'bg-slate-950/90 border-b border-white/10'
+            : 'bg-slate-950/95 border-b border-white/10 lg:bg-transparent lg:border-0'
         }`}
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-2">
           <div className="flex items-center justify-between h-12">
-            <div className="flex items-center">
-              <Link
-                to="/"
-                aria-label="Veogrowth homepage"
-                className="text-[13px] font-semibold uppercase tracking-[0.28em] text-white/80 hover:text-white transition-colors"
-              >
-                Veogrowth
-              </Link>
-            </div>
-            
+            {/* Logo */}
+            <Link
+              to="/"
+              aria-label="Veogrowth homepage"
+              className="text-[13px] font-semibold uppercase tracking-[0.28em] text-white/80 hover:text-white transition-colors"
+            >
+              Veogrowth
+            </Link>
+
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-5">
               {navItems.map(item => {
                 const isActive = item.href ? location.pathname.startsWith(item.href) : false;
@@ -235,13 +236,13 @@ const Header: React.FC = () => {
                 );
               })}
 
-              <button 
+              <button
                 onClick={handlePricingClick}
                 className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
               >
                 Pricing
               </button>
-              <button 
+              <button
                 onClick={handleFaqClick}
                 className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
               >
@@ -249,33 +250,36 @@ const Header: React.FC = () => {
               </button>
             </nav>
 
-            <div className="hidden md:block">
+            {/* Right side - Desktop CTA and Mobile Hamburger */}
+            <div className="flex items-center gap-4">
+              {/* Desktop CTA Button - only on larger screens */}
               <button
                 onClick={() => {
                   trackCalendlyClick('header');
                   window.open('https://calendly.com/veogrowth/discovery', '_blank');
                 }}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-4 py-2 text-[13px] font-medium text-white shadow-[0_8px_20px_-12px_rgba(8,9,11,0.9)] transition-transform hover:-translate-y-[1px] hover:border-emerald-300/40 hover:text-emerald-100"
+                className="hidden lg:inline-flex items-center gap-2 rounded-full border border-white/15 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-4 py-2 text-[13px] font-medium text-white shadow-[0_8px_20px_-12px_rgba(8,9,11,0.9)] transition-transform hover:-translate-y-[1px] hover:border-emerald-300/40 hover:text-emerald-100"
               >
                 Start the Free Pilot
                 <ArrowRight className="h-3 w-3" />
               </button>
+
+              {/* Mobile/Tablet Hamburger Menu */}
+              <button
+                className={`lg:hidden transition-colors ${isElevated ? 'text-slate-200' : 'text-slate-100'}`}
+                onClick={toggleMenu}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
-            
-            <button 
-              className={`md:hidden transition-colors ${isElevated ? 'text-slate-200' : 'text-slate-100'}`} 
-              onClick={toggleMenu} 
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </div>
       
       {/* Mobile menu */}
-      <div 
+      <div
         className={`absolute top-full left-0 right-0 md:hidden transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'} bg-slate-950/90 border-b border-white/10 backdrop-blur-lg shadow-[0_32px_60px_-28px_rgba(8,9,11,0.7)]`}
         aria-hidden={!isMenuOpen}
       >
