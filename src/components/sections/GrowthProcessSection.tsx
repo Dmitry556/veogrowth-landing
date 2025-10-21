@@ -92,10 +92,11 @@ const GrowthProcessSection: React.FC = () => {
 
   return (
     <section
+      className="growth-process-section"
       style={{
         position: 'relative',
         background: 'linear-gradient(180deg, #020910 0%, #041520 65%, #050e18 100%)',
-        padding: '90px 0 0',
+        padding: 'clamp(64px, 9vw, 90px) 0 0',
         borderTop: '1px solid rgba(45, 212, 191, 0.06)',
         borderBottom: '1px solid rgba(45, 212, 191, 0.08)',
         overflow: 'hidden'
@@ -131,7 +132,7 @@ const GrowthProcessSection: React.FC = () => {
       </div>
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(36px, 8vw, 56px)' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -168,9 +169,10 @@ const GrowthProcessSection: React.FC = () => {
         </div>
 
         {/* Phase Timeline with Connected Cards */}
-        <div style={{ position: 'relative', maxWidth: '680px', margin: '0 auto 48px' }}>
+        <div className="growth-phases-wrapper" style={{ position: 'relative', maxWidth: '680px', margin: '0 auto clamp(32px, 7vw, 48px)' }}>
           {/* Vertical connecting line */}
           <div
+            className="growth-phases-line"
             style={{
               position: 'absolute',
               left: '50%',
@@ -188,37 +190,29 @@ const GrowthProcessSection: React.FC = () => {
 
             return (
               <div
+                className="growth-phase"
                 key={index}
                 ref={el => phaseRefs.current[index] = el}
                 style={{
                   position: 'relative',
-                  marginBottom: index < phases.length - 1 ? '20px' : '0',
+                  marginBottom: index < phases.length - 1 ? 'clamp(20px, 5vw, 28px)' : '0',
                   opacity: isVisible ? 1 : 0,
-                  filter: isVisible ? 'blur(0px)' : 'blur(12px)',
                   transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-                  transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1)',
+                  transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
                   zIndex: 1
                 }}
               >
                 {/* Phase Card */}
                 <div
+                  className="growth-phase-card"
                   style={{
                     position: 'relative',
                     background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
                     border: `2px solid ${phase.accentBorder}`,
                     borderRadius: '16px',
                     overflow: 'hidden',
-                    boxShadow: `0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 0 24px ${phase.accentColor}`,
-                    transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                    backdropFilter: 'blur(20px)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px) scale(1.01)';
-                    e.currentTarget.style.boxShadow = `0 12px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 0 40px ${phase.accentColor}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                    e.currentTarget.style.boxShadow = `0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 0 24px ${phase.accentColor}`;
+                    boxShadow: '0 8px 22px rgba(0, 0, 0, 0.32)',
+                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out'
                   }}
                 >
                   {/* Accent gradient overlay on top edge */}
@@ -234,19 +228,7 @@ const GrowthProcessSection: React.FC = () => {
                     }}
                   />
 
-                  {/* Subtle noise texture overlay */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      opacity: 0.03,
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                      pointerEvents: 'none',
-                      mixBlendMode: 'overlay'
-                    }}
-                  />
-
-                  <div style={{ padding: '28px 32px', position: 'relative' }}>
+                  <div style={{ padding: 'clamp(20px, 4vw, 28px) clamp(20px, 4.8vw, 32px)', position: 'relative' }}>
                     {/* Phase Number Badge - clean and minimal */}
                     <div
                       style={{
@@ -366,7 +348,7 @@ const GrowthProcessSection: React.FC = () => {
         </div>
 
         {/* Pricing Section */}
-        <div style={{ maxWidth: '600px', margin: '0 auto 56px' }}>
+        <div id="pricing" className="growth-pricing" style={{ maxWidth: '600px', margin: '0 auto 56px' }}>
           <div style={{ textAlign: 'center', marginBottom: '22px' }}>
             <div
               style={{
@@ -425,11 +407,10 @@ const GrowthProcessSection: React.FC = () => {
               background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
               border: '2px solid rgba(16, 185, 129, 0.25)',
               borderRadius: '16px',
-              padding: '24px',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.02), 0 0 24px rgba(16, 185, 129, 0.12)',
+              padding: 'clamp(20px, 5vw, 28px)',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.32)',
               position: 'relative',
-              overflow: 'hidden',
-              backdropFilter: 'blur(20px)'
+              overflow: 'hidden'
             }}
           >
             {/* Top accent line */}
@@ -443,19 +424,6 @@ const GrowthProcessSection: React.FC = () => {
                 background: 'linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.6), transparent)'
               }}
             />
-
-            {/* Noise texture */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                opacity: 0.03,
-                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                pointerEvents: 'none',
-                mixBlendMode: 'overlay'
-              }}
-            />
-
             {/* Main explanation */}
             <div style={{ marginBottom: '18px' }}>
               <p
@@ -669,26 +637,26 @@ const GrowthProcessSection: React.FC = () => {
             </h3>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '20px' }}>
-            {fitLists.map((list, idx) => (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 3.5vw, 16px)', marginBottom: 'clamp(16px, 4vw, 24px)' }}>
+          {fitLists.map((list, idx) => (
+            <div
+              className="growth-fit-card"
+              key={list.label}
+              style={{
+                background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
+                border: idx === 0 ? '2px solid rgba(16, 185, 129, 0.25)' : '2px solid rgba(239, 68, 68, 0.25)',
+                borderRadius: '14px',
+                padding: 'clamp(16px, 4.5vw, 24px) clamp(18px, 5vw, 28px)',
+                boxShadow: idx === 0
+                  ? '0 8px 22px rgba(0, 0, 0, 0.32)'
+                  : '0 8px 22px rgba(0, 0, 0, 0.28)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+            >
+              {/* Top accent line */}
               <div
-                key={list.label}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
-                  border: idx === 0 ? '2px solid rgba(16, 185, 129, 0.25)' : '2px solid rgba(239, 68, 68, 0.25)',
-                  borderRadius: '14px',
-                  padding: '20px 24px',
-                  boxShadow: idx === 0
-                    ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(16, 185, 129, 0.12)'
-                    : '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(239, 68, 68, 0.08)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  backdropFilter: 'blur(20px)'
-                }}
-              >
-                {/* Top accent line */}
-                <div
-                  style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
@@ -697,18 +665,6 @@ const GrowthProcessSection: React.FC = () => {
                     background: idx === 0
                       ? 'linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.6), transparent)'
                       : 'linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent)'
-                  }}
-                />
-
-                {/* Noise texture */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: 0.03,
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                    pointerEvents: 'none',
-                    mixBlendMode: 'overlay'
                   }}
                 />
 
@@ -820,8 +776,7 @@ const GrowthProcessSection: React.FC = () => {
               borderTop: '1px solid rgba(45, 212, 191, 0.24)',
               borderBottom: '1px solid rgba(45, 212, 191, 0.24)',
               overflow: 'hidden',
-              boxShadow: '0 36px 72px rgba(1, 10, 14, 0.55)',
-              backdropFilter: 'blur(18px)'
+              boxShadow: '0 28px 60px rgba(1, 10, 14, 0.45)'
             }}
           >
             <div
@@ -840,17 +795,6 @@ const GrowthProcessSection: React.FC = () => {
                 width: '260px',
                 height: '260px',
                 background: 'radial-gradient(circle, rgba(45, 212, 191, 0.22) 0%, transparent 68%)',
-                pointerEvents: 'none'
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '-160px',
-                left: '20%',
-                width: '320px',
-                height: '320px',
-                background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 78%)',
                 pointerEvents: 'none'
               }}
             />
@@ -922,29 +866,11 @@ const GrowthProcessSection: React.FC = () => {
                       fontWeight: 600,
                       letterSpacing: '-0.01em',
                       cursor: 'pointer',
-                      boxShadow: '0 24px 48px rgba(6, 95, 70, 0.32)',
+                      boxShadow: '0 20px 40px rgba(6, 95, 70, 0.32)',
                       transition: 'transform 0.25s ease, box-shadow 0.25s ease'
                     }}
-                    onMouseEnter={(e) => {
-                      const target = e.currentTarget as HTMLButtonElement;
-                      target.style.transform = 'translateY(-4px)';
-                      target.style.boxShadow = '0 28px 56px rgba(6, 95, 70, 0.45)';
-                      const arrow = target.querySelector('[data-arrow="true"]') as HTMLSpanElement | null;
-                      if (arrow) {
-                        arrow.style.transform = 'translateX(6px)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      const target = e.currentTarget as HTMLButtonElement;
-                      target.style.transform = 'translateY(0)';
-                      target.style.boxShadow = '0 24px 48px rgba(6, 95, 70, 0.32)';
-                      const arrow = target.querySelector('[data-arrow="true"]') as HTMLSpanElement | null;
-                      if (arrow) {
-                        arrow.style.transform = 'translateX(0)';
-                      }
-                    }}
-                    >
-                    Book Pilot Scoping Call
+                  >
+                    <span style={{ fontWeight: 600 }}>Book Pilot Scoping Call</span>
                     <span
                       data-arrow="true"
                       style={{
@@ -957,9 +883,7 @@ const GrowthProcessSection: React.FC = () => {
                         background: 'rgba(236, 253, 245, 0.18)',
                         color: '#ecfdf5',
                         fontSize: '18px',
-                        fontWeight: 600,
-                        transform: 'translateX(0)',
-                        transition: 'transform 0.25s ease'
+                        fontWeight: 600
                       }}
                     >
                       →

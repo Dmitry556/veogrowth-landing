@@ -18,10 +18,10 @@ const Footer: React.FC = () => {
           background:
             'radial-gradient(circle at top, rgba(16, 185, 129, 0.12) 0%, transparent 58%), linear-gradient(180deg, rgba(10, 20, 24, 0.95) 0%, rgba(5, 10, 15, 0.88) 100%)',
           borderBottom: '1px solid rgba(45, 212, 191, 0.12)',
-          padding: '84px 0'
+          padding: 'clamp(56px, 10vw, 84px) 0'
         }}
       >
-        <div style={{ maxWidth: '780px', margin: '0 auto', padding: '0 40px', textAlign: 'center' }}>
+        <div style={{ maxWidth: '780px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)', textAlign: 'center' }}>
           <h2
             style={{
               fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -53,8 +53,8 @@ const Footer: React.FC = () => {
               alignItems: 'center',
               justifyContent: 'space-between',
               gap: '16px',
-              padding: '18px 26px',
-              minWidth: 'min(90vw, 420px)',
+              padding: 'clamp(16px, 4.8vw, 20px) clamp(22px, 6vw, 26px)',
+              width: 'min(100%, 420px)',
               borderRadius: '24px',
               background:
                 'linear-gradient(145deg, rgba(13, 110, 90, 0.9) 0%, rgba(12, 90, 78, 0.92) 55%, rgba(9, 71, 63, 0.94) 100%)',
@@ -114,15 +114,15 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer Content */}
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 24px 32px' }}>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '48px',
-            justifyContent: 'space-between'
-          }}
-        >
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(36px, 8vw, 48px) clamp(20px, 6vw, 32px) clamp(24px, 6vw, 32px)' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 'clamp(28px, 7vw, 48px)',
+              justifyContent: 'space-between'
+            }}
+          >
           <div style={{ flex: '1 1 320px', minWidth: '260px' }}>
             <Link
               to="/"

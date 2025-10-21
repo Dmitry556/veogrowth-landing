@@ -101,6 +101,14 @@ const HeroSection: React.FC = () => {
             text-shadow: none;
           }
 
+          .hero-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: clamp(16px, 3vw, 32px);
+            align-items: center;
+            justify-items: center;
+          }
+
           .hero-cta {
             display: inline-flex;
             align-items: center;
@@ -240,6 +248,70 @@ const HeroSection: React.FC = () => {
               opacity: 0;
             }
           }
+
+          @media (max-width: 1024px) {
+            .hero-container {
+              padding: 72px 24px 48px;
+              min-height: auto;
+              gap: 32px;
+            }
+
+            .hero-cta {
+              padding: 18px 22px;
+              min-width: min(96vw, 380px);
+            }
+          }
+
+          @media (max-width: 768px) {
+            .hero-container {
+              padding: 60px 20px 40px;
+            }
+
+            .hero-cta {
+              gap: 12px;
+              min-width: 100%;
+              flex-direction: column;
+              align-items: stretch;
+              border-radius: 20px;
+            }
+
+            .hero-cta__label {
+              text-align: center;
+              font-size: clamp(20px, 6vw, 28px);
+            }
+
+            .hero-cta__arrow {
+              margin: 8px auto 0;
+            }
+
+            .hero-headline-accent {
+              padding: 8px 16px;
+            }
+
+            .hero-logo-grid {
+              width: 100%;
+              gap: 20px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .hero-container {
+              padding: 48px 16px 32px;
+            }
+
+            .hero-headline-accent {
+              font-size: clamp(18px, 5.8vw, 24px);
+              border-radius: 10px;
+            }
+
+            .hero-cta {
+              padding: 16px 18px;
+            }
+
+            .hero-logo-grid img {
+              height: 34px;
+            }
+          }
         `
       }} />
       
@@ -273,7 +345,7 @@ const HeroSection: React.FC = () => {
             zIndex: '10',
             maxWidth: '1200px',
             margin: '0 auto',
-            padding: '92px 32px 52px',
+            padding: 'clamp(64px, 8vw, 92px) clamp(20px, 5vw, 32px) clamp(40px, 7vw, 52px)',
             minHeight: '88vh',
             display: 'flex',
             flexDirection: 'column',
@@ -365,7 +437,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <div className="hero-element" style={{ margin: '28px auto 44px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '18px' }}>
+            <div className="hero-element" style={{ margin: 'clamp(20px, 5vw, 32px) auto clamp(32px, 6vw, 44px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(14px, 4vw, 18px)' }}>
               <button
                 type="button"
                 className="hero-cta"
@@ -429,8 +501,8 @@ const HeroSection: React.FC = () => {
                 background: 'rgba(15, 23, 42, 0.52)',
                 border: '1px solid rgba(45, 212, 191, 0.35)',
                 borderRadius: '999px',
-                padding: '10px 24px',
-                margin: '0 auto 48px',
+                padding: '10px clamp(18px, 6vw, 24px)',
+                margin: '0 auto clamp(32px, 7vw, 48px)',
                 fontSize: '12px',
                 fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontWeight: 600,
@@ -468,13 +540,7 @@ const HeroSection: React.FC = () => {
                 maxWidth: '1280px', 
                 margin: '0'
               }}>
-                <div style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(8, minmax(0, 1fr))', 
-                  gap: '32px', 
-                  alignItems: 'center', 
-                  justifyItems: 'center' 
-                }}>
+                <div className="hero-logo-grid">
                   {[
                     { name: 'Apple', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg' },
                     { name: 'Amazon', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg' },

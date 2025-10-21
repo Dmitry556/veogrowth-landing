@@ -47,9 +47,13 @@ const CaseStudiesPreview: React.FC = () => {
     }
   ];
 
-  // Add subtle scrollbar styles
+  // Add subtle scrollbar styles once
   React.useEffect(() => {
+    const styleId = 'case-studies-scrollbar';
+    if (document.getElementById(styleId)) return;
+
     const styleElement = document.createElement('style');
+    styleElement.id = styleId;
     styleElement.textContent = `
       .case-studies-scroll::-webkit-scrollbar {
         height: 4px;
@@ -69,19 +73,13 @@ const CaseStudiesPreview: React.FC = () => {
       }
     `;
     document.head.appendChild(styleElement);
-    
-    return () => {
-      if (document.head.contains(styleElement)) {
-        document.head.removeChild(styleElement);
-      }
-    };
   }, []);
 
   return (
     <section style={{
       position: 'relative',
       background: 'linear-gradient(180deg, #02060b 0%, #031018 50%, #041621 100%)',
-      padding: '92px 0',
+      padding: 'clamp(60px, 9vw, 92px) 0',
       borderTop: '1px solid rgba(45, 212, 191, 0.05)',
       borderBottom: '1px solid rgba(45, 212, 191, 0.08)',
       overflow: 'hidden'
@@ -108,10 +106,10 @@ const CaseStudiesPreview: React.FC = () => {
           background: 'linear-gradient(180deg, rgba(3, 17, 24, 1) 0%, rgba(3, 17, 24, 0.68) 45%, rgba(3, 17, 24, 0) 100%)'
         }} />
       </div>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)', position: 'relative', zIndex: 1 }}>
         
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 9vw, 72px)' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -147,12 +145,11 @@ const CaseStudiesPreview: React.FC = () => {
         <div 
           className="case-studies-scroll"
           style={{ 
-            display: 'flex', 
-            gap: '32px', 
-            overflowX: 'auto',
-            paddingBottom: '24px',
-            scrollSnapType: 'x mandatory',
-            width: '100%'
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: 'clamp(20px, 5vw, 32px)',
+            width: '100%',
+            paddingBottom: '24px'
           }}
         >
           {featuredCaseStudies.map((study, index) => (
@@ -164,13 +161,11 @@ const CaseStudiesPreview: React.FC = () => {
                 background: 'linear-gradient(135deg, rgba(11, 22, 30, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
                 border: '1px solid rgba(45, 212, 191, 0.12)',
                 borderRadius: '20px',
-                padding: '32px',
+                padding: 'clamp(24px, 5vw, 32px)',
                 textDecoration: 'none',
                 transition: 'all 0.3s ease',
-                flex: '0 0 auto',
-                scrollSnapAlign: 'start',
-                width: 'max-content',
-                maxWidth: '400px',
+                width: '100%',
+                maxWidth: '100%',
                 boxShadow: '0 24px 48px rgba(2, 8, 12, 0.48)'
               }}
               onMouseEnter={(e) => {
@@ -224,7 +219,7 @@ const CaseStudiesPreview: React.FC = () => {
               </div>
               
               {/* Results Metrics */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: 'clamp(12px, 3vw, 16px)', marginBottom: '20px' }}>
                 <div style={{
                   background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',

@@ -17,13 +17,13 @@ const ResultsSection: React.FC = () => {
       id="results" 
       style={{
         background: 'linear-gradient(180deg, #010409 0%, #020b12 50%, #04111a 100%)',
-        padding: '88px 0 96px',
+        padding: 'clamp(60px, 9vw, 88px) 0 clamp(72px, 10vw, 96px)',
         borderBottom: '1px solid rgba(45, 212, 191, 0.08)'
       }}
     >
-      
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-        <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto 84px' }}>
+
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)' }}>
+        <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto clamp(48px, 10vw, 84px)' }}>
           <div 
             style={{
               display: 'inline-flex',
@@ -66,16 +66,17 @@ const ResultsSection: React.FC = () => {
             style={{
               background: 'linear-gradient(135deg, rgba(12, 26, 34, 0.92) 0%, rgba(7, 18, 25, 0.9) 100%)',
               borderRadius: '20px',
-              padding: '48px',
+              padding: 'clamp(28px, 6vw, 48px)',
               border: '1px solid rgba(45, 212, 191, 0.14)',
               boxShadow: '0 28px 56px rgba(2, 8, 12, 0.52)'
             }}
           >
             <div 
+              className="results-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '48px',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: 'clamp(24px, 6vw, 48px)',
                 alignItems: 'center'
               }}
             >
@@ -95,6 +96,8 @@ const ResultsSection: React.FC = () => {
                       src="https://player.vimeo.com/video/1011989557?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
                       frameBorder="0" 
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
                       style={{position: "absolute", top: 0, left: 0, width: "100%", height: "100%"}} 
                       title="David Hughes Testimonial"
                     ></iframe>

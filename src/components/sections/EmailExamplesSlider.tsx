@@ -164,8 +164,9 @@ Ready to be the security company people actually remember?`
 
   useEffect(() => {
     const styleId = 'email-examples-slider-styles';
-    const existing = document.getElementById(styleId);
-    if (existing) existing.remove();
+    if (document.getElementById(styleId)) {
+      return;
+    }
 
     const style = document.createElement('style');
     style.id = styleId;
@@ -173,17 +174,14 @@ Ready to be the security company people actually remember?`
       @keyframes emailCardReveal {
         0% {
           opacity: 0;
-          filter: blur(14px);
           transform: translateY(26px) scale(0.98);
         }
         60% {
           opacity: 1;
-          filter: blur(0px);
           transform: translateY(-4px) scale(1.01);
         }
         100% {
           opacity: 1;
-          filter: blur(0px);
           transform: translateY(0) scale(1);
         }
       }
@@ -224,18 +222,26 @@ Ready to be the security company people actually remember?`
         .email-slider__nav--next { right: clamp(-6px, -1.5vw, -18px); }
       }
 
+      @media (max-width: 900px) {
+        .email-slider__nav {
+          display: none;
+        }
+      }
+
       .email-card {
         opacity: 0;
         animation: emailCardReveal 0.85s forwards;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .email-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(94, 234, 212, 0.22);
+        box-shadow: 0 26px 52px rgba(2, 8, 12, 0.5);
       }
     `;
 
     document.head.appendChild(style);
-    return () => {
-      if (document.head.contains(style)) {
-        document.head.removeChild(style);
-      }
-    };
   }, []);
 
   const scrollToEmailGrid = () => {
@@ -281,7 +287,7 @@ Ready to be the security company people actually remember?`
     <section style={{
       position: 'relative',
       background: 'linear-gradient(180deg, #02060b 0%, #040a11 45%, #051116 100%)',
-      padding: '72px 0 96px',
+      padding: 'clamp(56px, 9vw, 72px) 0 clamp(72px, 11vw, 96px)',
       borderTop: '1px solid rgba(45, 212, 191, 0.06)',
       borderBottom: '1px solid rgba(45, 212, 191, 0.08)',
       overflow: 'hidden'
@@ -300,8 +306,8 @@ Ready to be the security company people actually remember?`
           background: 'linear-gradient(180deg, rgba(3, 17, 24, 1) 0%, rgba(3, 17, 24, 0.68) 45%, rgba(3, 17, 24, 0) 100%)'
         }} />
       </div>
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px', position: 'relative', zIndex: 1 }}>
-        <div style={{ textAlign: 'center', marginBottom: '48px', maxWidth: '860px', marginLeft: 'auto', marginRight: 'auto' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)', position: 'relative', zIndex: 1 }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(32px, 7vw, 48px)', maxWidth: '860px', marginLeft: 'auto', marginRight: 'auto' }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -309,7 +315,7 @@ Ready to be the security company people actually remember?`
             background: 'rgba(15, 23, 42, 0.5)',
             border: '1px solid rgba(45, 212, 191, 0.28)',
             borderRadius: '999px',
-            padding: '6px 16px',
+            padding: 'clamp(4px, 1.2vw, 6px) clamp(12px, 3vw, 16px)',
             marginBottom: '22px',
             fontSize: '10px',
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -365,7 +371,16 @@ Ready to be the security company people actually remember?`
             <ChevronRight style={{ width: '20px', height: '20px', color: 'rgba(237, 244, 255, 0.9)' }} />
           </button>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '26px', marginBottom: '48px' }}>
+          <div
+            className="email-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+              gridAutoRows: '1fr',
+              gap: 'clamp(18px, 4vw, 26px)',
+              marginBottom: 'clamp(32px, 8vw, 48px)'
+            }}
+          >
             {getCurrentEmails().map((email, index) => (
               <div 
                 key={`${currentSlide}-${email.id}`}
@@ -375,24 +390,17 @@ Ready to be the security company people actually remember?`
                   border: '1px solid rgba(45, 212, 191, 0.12)',
                   borderRadius: '18px',
                   overflow: 'hidden',
-                  transition: 'all 0.3s ease',
+                  transition: 'transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
                   animationDelay: `${index * 150}ms`,
                   animationFillMode: 'both',
-                  minHeight: '360px',
+                  minHeight: '320px',
                   width: '100%',
-                  boxShadow: '0 24px 48px rgba(2, 8, 12, 0.44)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.22)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(45, 212, 191, 0.12)';
+                  boxShadow: '0 24px 48px rgba(2, 8, 12, 0.44)',
+                  willChange: 'transform'
                 }}
               >
                 {/* Email Header */}
-                <div style={{ padding: '26px', borderBottom: '1px solid rgba(45, 212, 191, 0.12)' }}>
+                <div style={{ padding: 'clamp(18px, 4.5vw, 26px)', borderBottom: '1px solid rgba(45, 212, 191, 0.12)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
                     <div style={{
                       display: 'inline-block',
@@ -445,7 +453,7 @@ Ready to be the security company people actually remember?`
                 </div>
 
                 {/* Email Body Preview */}
-                <div style={{ padding: '26px', paddingTop: '0' }}>
+                <div style={{ padding: 'clamp(18px, 4.5vw, 26px)', paddingTop: '0' }}>
                   <div style={{
                     background: 'rgba(8, 15, 24, 0.78)',
                     borderRadius: '12px',

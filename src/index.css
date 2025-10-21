@@ -244,8 +244,67 @@
     }
   }
   
-  .animate-scroll {
+.animate-scroll {
     animation: scroll 40s linear infinite;
+  }
+}
+
+/* Homepage responsive refinements */
+@media (max-width: 1024px) {
+  .hero-logo-grid {
+    width: 100%;
+  }
+
+  .results-grid {
+    gap: clamp(20px, 5vw, 32px);
+  }
+}
+
+@media (max-width: 900px) {
+  .email-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-logo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  }
+
+  .results-grid {
+    gap: clamp(20px, 6vw, 32px);
+  }
+
+  .growth-process-section {
+    padding-top: 56px;
+  }
+
+  .growth-phases-line {
+    display: none;
+  }
+
+  .growth-phases-wrapper {
+    margin-bottom: clamp(28px, 7vw, 40px);
+    padding: 0 12px;
+  }
+
+  .growth-pricing {
+    padding: 0 12px;
+  }
+
+  .growth-fit-card {
+    padding: clamp(16px, 5vw, 24px) clamp(18px, 5vw, 28px);
+  }
+}
+
+@media (max-width: 640px) {
+  .case-studies-scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo-grid img {
+    height: 36px;
   }
 }
 

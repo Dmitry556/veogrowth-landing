@@ -13,12 +13,6 @@ const Header: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const dropdownCloseTimeout = useRef<number | null>(null);
 
-  const blogArticles = [
-    { href: '/blog/poke-the-bear-questions-that-get-replies', title: 'Poke-the-Bear Questions That Get Replies', tag: 'Copywriting' },
-    { href: '/blog/competitor-lookalike-insights-using-public-data', title: 'Competitor Lookalike Insights Using Public Data', tag: 'Research' },
-    { href: '/blog/cold-email-campaign-that-actually-works', title: 'Cold Email Campaign That Works', tag: 'Playbook' }
-  ];
-
   const caseStudies = [
     { href: '/case-studies/podcast-whales-25-meetings-6-clients', title: 'Podcast Whales · 25 Meetings', tag: 'Creative Services' },
     { href: '/case-studies/zero-fee-payment-processor-52-meetings', title: 'Zero-Fee Processor · 52 Meetings', tag: 'Payments' },
@@ -34,7 +28,6 @@ const Header: React.FC = () => {
 
   const navItems = [
     { key: 'case-studies', label: 'Case Studies', items: caseStudies, fallback: '/case-studies', footer: 'View all case studies →' },
-    { key: 'blog', label: 'Blog', items: blogArticles, fallback: '/blog', footer: 'Browse the blog →' },
     { key: 'tools', label: 'Free Tools', items: freeTools, fallback: '/tools', footer: 'See all tools →' },
     { key: 'stack', label: 'Stack', href: '/tech-stack' }
   ];
@@ -103,9 +96,44 @@ const Header: React.FC = () => {
     setOpenDropdown(null);
     cancelDropdownClose();
   };
+
+  const handleFaqClick = () => {
+    if (location.pathname === '/') {
+      const faqElement = document.getElementById('faq');
+      if (faqElement) {
+        faqElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = '/#faq';
+    }
+    setOpenDropdown(null);
+    cancelDropdownClose();
+  };
   
   return (
-    <header 
+    <>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes navDropdownReveal {
+              0% {
+                opacity: 0;
+                transform: translateY(8px) scale(0.98);
+              }
+              100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+              }
+            }
+
+            .dropdown-panel {
+              animation: navDropdownReveal 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+              will-change: transform, opacity;
+            }
+          `
+        }}
+      />
+      <header 
       className="fixed top-0 left-0 right-0 z-50 transition-colors duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -155,7 +183,7 @@ const Header: React.FC = () => {
                           onMouseEnter={cancelDropdownClose}
                           onMouseLeave={scheduleDropdownClose}
                         >
-                          <div className="w-[18rem] rounded-xl border border-white/8 bg-slate-950/95 backdrop-blur-md shadow-[0_18px_36px_-28px_rgba(8,9,11,0.75)]">
+                          <div className="w-[18rem] rounded-xl border border-white/8 bg-slate-950/95 backdrop-blur-md shadow-[0_18px_36px_-28px_rgba(8,9,11,0.75)] dropdown-panel">
                             <div className="py-2.5">
                               {item.items.map((entry) => (
                                 <Link
@@ -212,6 +240,12 @@ const Header: React.FC = () => {
                 className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
               >
                 Pricing
+              </button>
+              <button 
+                onClick={handleFaqClick}
+                className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
+              >
+                FAQ
               </button>
             </nav>
 
@@ -284,6 +318,16 @@ const Header: React.FC = () => {
           >
             Pricing
           </button>
+
+          <button 
+            onClick={() => {
+              handleFaqClick();
+              closeMenu();
+            }}
+            className="block text-sm text-slate-200 hover:text-white transition-colors py-2 font-medium tracking-tight w-full text-left"
+          >
+            FAQ
+          </button>
           
           <button
             onClick={() => {
@@ -298,6 +342,7 @@ const Header: React.FC = () => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 
