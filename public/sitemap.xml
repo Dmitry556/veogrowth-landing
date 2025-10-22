@@ -85,14 +85,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- Tools -->
+
+  <!-- ROI Calculator -->
   <url>
-    <loc>https://www.veogrowth.com/tools/roi-calculator</loc>
-    <lastmod>2025-07-31</lastmod>
+    <loc>https://www.veogrowth.com/roi</loc>
+    <lastmod>2025-10-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+
+  <!-- Tools -->
   <url>
     <loc>https://www.veogrowth.com/tools/microsoft-filter</loc>
     <lastmod>2025-06-21</lastmod>

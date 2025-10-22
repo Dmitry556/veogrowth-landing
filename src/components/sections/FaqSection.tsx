@@ -153,7 +153,7 @@ const faqSections: FaqSectionData[] = [
           {
             type: 'paragraph',
             content:
-              `After that, we switch to prepaid meeting packages. You buy credits upfront (like a 10-meeting or 20-meeting package), and we deduct one credit each time a qualified meeting shows up.`
+              `After that, we switch to prepaid meeting packages. You buy credits upfront (like a 5-meeting or 15-meeting package), and we deduct one credit each time a qualified meeting shows up.`
           },
           {
             type: 'paragraph',
@@ -163,7 +163,7 @@ const faqSections: FaqSectionData[] = [
           {
             type: 'paragraph',
             content:
-              `Credits don't expire on a calendar date - they expire as qualified meetings show up. If you buy a 10-meeting package, those 10 credits last until 10 qualified meetings happen, whether that takes 2 months or 6 months.`
+              `Credits don't expire on a calendar date - they expire as qualified meetings show up. If you buy a 5-meeting package, those 5 credits last until 5 qualified meetings happen, whether that takes 2 months or 6 months.`
           }
         ]
       },

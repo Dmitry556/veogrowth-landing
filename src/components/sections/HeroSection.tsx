@@ -466,15 +466,15 @@ const HeroSection: React.FC = () => {
                 <p
                   style={{
                     margin: '0 auto',
-                    maxWidth: 'min(95vw, 640px)',
-                    fontSize: '15px',
+                    maxWidth: 'min(95vw, 560px)',
+                    fontSize: '12px',
                     color: '#f8fafc',
-                    lineHeight: '1.55',
+                    lineHeight: '1.5',
                     textAlign: 'left',
                     display: 'grid',
                     gridTemplateColumns: 'auto 1fr',
-                    columnGap: '12px',
-                    rowGap: '8px',
+                    columnGap: '8px',
+                    rowGap: '5px',
                     alignItems: 'start'
                   }}
                 >
@@ -496,9 +496,9 @@ const HeroSection: React.FC = () => {
                   >
                     New
                   </span>
-                  <span style={{ display: 'inline', color: 'rgba(255, 255, 255, 0.92)', fontWeight: 500 }}>
-                    <strong style={{ letterSpacing: '-0.01em', color: '#ffffff' }}>Free Trial Offer:</strong>{' '}
-                    We’ll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 600 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
+                  <span style={{ display: 'inline', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
+                    <strong style={{ letterSpacing: '-0.01em', color: '#ffffff', fontWeight: 700 }}>Free Trial Offer:</strong>{' '}
+                    We'll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 700 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
                   </span>
                 </p>
               </div>

@@ -20,16 +20,9 @@ const Header: React.FC = () => {
     { href: '/case-studies/employee-training-platform-42-meetings', title: 'Employee Training · 42 Meetings', tag: 'B2B SaaS' }
   ];
 
-  const freeTools = [
-    { href: '/tools/microsoft-filter', title: 'Microsoft Filter', tag: 'LIST HYGIENE' },
-    { href: '/tools/roi-calculator', title: 'ROI Calculator', tag: 'PIPELINE FORECAST' },
-    { href: '/tools/domain-checker', title: 'Domain Checker', tag: 'INBOX HEALTH' }
-  ];
-
   const navItems = [
     { key: 'case-studies', label: 'Case Studies', items: caseStudies, fallback: '/case-studies', footer: 'View all case studies →' },
-    { key: 'tools', label: 'Free Tools', items: freeTools, fallback: '/tools', footer: 'See all tools →' },
-    { key: 'stack', label: 'Stack', href: '/tech-stack' }
+    { key: 'roi', label: 'No B.S. ROI Calculator', href: '/roi' }
   ];
   
   const handleScroll = () => {
