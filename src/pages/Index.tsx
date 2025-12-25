@@ -18,24 +18,24 @@ const SectionLoader = () => (
   </div>
 );
 
-// Scroll-triggered animation component
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const element = elementRef.current;
     if (!element) return;
-    
+
+    // Check if we are running in a browser that supports IntersectionObserver
+    if (!('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
-          // Fast, subtle animation
-          requestAnimationFrame(() => {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-          });
         }
       },
       {
@@ -43,21 +43,18 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
         rootMargin: '0px 0px -20px 0px'
       }
     );
-    
+
     observer.observe(element);
-    
+
     return () => observer.disconnect();
   }, [isVisible]);
-  
+
   return (
-    <div 
+    <div
       ref={elementRef}
-      className="scroll-animate"
+      className={`transform transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       style={{
-        opacity: 0,
-        transform: 'translateY(20px)',
-        transition: `opacity 0.5s ease-out ${delay}ms, transform 0.5s ease-out ${delay}ms`,
-        willChange: 'opacity, transform'
+        transitionDelay: `${delay}ms`
       }}
     >
       {children}
@@ -68,7 +65,7 @@ const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> =
 const Index = () => {
   // Track if this is the first render to optimize schema injection
   const isFirstRender = React.useRef(true);
-  
+
   // Add fast, subtle scroll animations
   useEffect(() => {
     const style = document.createElement('style');
@@ -122,7 +119,7 @@ const Index = () => {
       }
     `;
     document.head.appendChild(style);
-    
+
     return () => {
       document.head.removeChild(style);
     };
@@ -131,27 +128,27 @@ const Index = () => {
   useEffect(() => {
     // Update document title with high priority
     document.title = "Veogrowth - Generate Pipeline Without Hiring More Sales Reps";
-    
+
     // Add JSON-LD schema markup to head
     const injectSchema = () => {
       const existingScript = document.getElementById('schema-script-home');
       if (existingScript) {
         existingScript.remove();
       }
-      
+
       const script = document.createElement('script');
       script.id = 'schema-script-home';
       script.type = 'application/ld+json';
       script.innerHTML = schemaToString(generateHomePageSchema());
       document.head.appendChild(script);
-      
+
       // Add high-priority preconnects
       const preconnects = [
         'https://fonts.googleapis.com',
         'https://fonts.gstatic.com',
         'https://i.vimeocdn.com'
       ];
-      
+
       preconnects.forEach(url => {
         if (!document.querySelector(`link[rel="preconnect"][href="${url}"]`)) {
           const link = document.createElement('link');
@@ -162,7 +159,7 @@ const Index = () => {
         }
       });
     };
-    
+
     if (isFirstRender.current) {
       injectSchema();
       isFirstRender.current = false;
@@ -176,7 +173,7 @@ const Index = () => {
         setTimeout(injectSchema, 500);
       }
     }
-    
+
     return () => {
       const script = document.getElementById('schema-script-home');
       if (script) {
@@ -189,22 +186,22 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground" style={{ overflowX: 'hidden' }}>
       <CanonicalUrl path="/" />
       <Header />
-      
+
       <main>
         <div className="fade-in visible">
           <HeroSection />
         </div>
-        
+
         {/* Proof Section - Moved up for credibility */}
         <AnimatedSection delay={0}>
           <ResultsSection />
         </AnimatedSection>
-        
+
         {/* Case Studies Preview - New section for social proof */}
         <AnimatedSection delay={100}>
           <CaseStudiesPreview />
         </AnimatedSection>
-        
+
         {/* Email Examples Section - Moved up to show work quality */}
         <AnimatedSection delay={200}>
           <EmailExamplesSlider />
@@ -219,9 +216,9 @@ const Index = () => {
         <AnimatedSection delay={0}>
           <FaqSection />
         </AnimatedSection>
-        
+
       </main>
-      
+
       <Footer />
     </div>
   );
