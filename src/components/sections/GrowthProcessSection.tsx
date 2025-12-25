@@ -425,195 +425,137 @@ const GrowthProcessSection: React.FC = () => {
               }}
             />
             {/* Main explanation */}
-            <div style={{ marginBottom: '18px' }}>
+            {/* Main explanation */}
+            <div style={{ marginBottom: '32px', textAlign: 'center' }}>
               <p
                 style={{
                   fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  fontSize: '15.5px',
-                  color: '#E2E8F0',
-                  margin: '0 0 12px 0',
-                  lineHeight: '1.5',
-                  fontWeight: 500
+                  fontSize: '18px',
+                  color: '#FFFFFF',
+                  margin: '0',
+                  lineHeight: '1.4',
+                  fontWeight: 600
                 }}
               >
                 You only pay when we book a qualified meeting.
               </p>
-              <p
-                style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+            </div>
+
+            {/* Phases Container */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '32px' }}>
+
+              {/* Phase 1 - Highlighted */}
+              <div style={{
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.2)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <h4 style={{
+                  color: '#6ee7b7',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  marginBottom: '6px',
+                  fontFamily: "'Inter', sans-serif",
+                  marginTop: 0
+                }}>
+                  Phase 1: Channel-Fit Validation (Free)
+                </h4>
+                <p style={{
+                  color: '#e2e8f0',
                   fontSize: '14.5px',
-                  color: 'rgba(203, 213, 225, 0.9)',
-                  margin: 0,
                   lineHeight: '1.5',
-                  fontWeight: 500
-                }}
-              >
-                Not per email sent. Not per reply. Not for "effort" or "setup" or a monthly retainer.
-              </p>
-            </div>
-
-            {/* What qualified means */}
-            <div style={{ marginBottom: '18px' }}>
-              <h5
-                style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  fontSize: '14px',
-                  fontWeight: 700,
-                  color: '#FFFFFF',
-                  marginBottom: '10px',
-                  letterSpacing: '-0.006em'
-                }}
-              >
-                A qualified meeting means:
-              </h5>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {[
-                  'They showed up',
-                  'They match your ICP',
-                  'They have the problem you solve',
-                  'They have budget/authority to buy'
-                ].map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'start', gap: '9px' }}>
-                    <div
-                      style={{
-                        width: '16px',
-                        height: '16px',
-                        borderRadius: '4px',
-                        background: 'rgba(16, 185, 129, 0.15)',
-                        border: '1.5px solid rgba(94, 234, 212, 0.35)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexShrink: 0,
-                        marginTop: '1px'
-                      }}
-                    >
-                      <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                        <path d="M7.5 2L3.25 6.25L1.5 4.5" stroke="rgba(167, 243, 208, 1)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                    <span
-                      style={{
-                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                        fontSize: '14.5px',
-                        fontWeight: 500,
-                        color: '#E2E8F0',
-                        letterSpacing: '-0.006em',
-                        lineHeight: '1.4'
-                      }}
-                    >
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'rgba(71, 85, 105, 0.3)', margin: '18px 0' }} />
-
-            {/* Free pilot - GREEN BOX */}
-            <div
-              style={{
-                padding: '14px 16px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 95, 70, 0.15))',
-                border: '1.5px solid rgba(94, 234, 212, 0.25)',
-                position: 'relative',
-                overflow: 'hidden',
-                marginBottom: '16px'
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '4px',
-                  height: '100%',
-                  background: 'rgba(94, 234, 212, 0.5)'
-                }}
-              />
-              <div style={{ paddingLeft: '8px' }}>
-                <p
-                  style={{
-                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    fontSize: '14.5px',
-                    color: 'rgba(241, 245, 249, 0.95)',
-                    margin: '0 0 8px 0',
-                    lineHeight: '1.5',
-                    fontWeight: 600
-                  }}
-                >
-                  <strong style={{ color: '#FFFFFF' }}>First 2 meetings are completely free.</strong> No upfront cost. No commitment.
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    fontSize: '14px',
-                    color: 'rgba(241, 245, 249, 0.95)',
-                    margin: '0 0 10px 0',
-                    lineHeight: '1.5',
-                    fontWeight: 500
-                  }}
-                >
-                  We'll prove it works for your market before you pay a dollar.
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                    fontSize: '14px',
-                    color: 'rgba(241, 245, 249, 0.95)',
-                    margin: 0,
-                    lineHeight: '1.5',
-                    fontWeight: 500
-                  }}
-                >
-                  <strong style={{ color: '#FFFFFF', fontWeight: 600 }}>After the pilot:</strong> pay per meeting booked. No retainer. No monthly fees. No long-term contract.
-                </p>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'rgba(71, 85, 105, 0.3)', margin: '16px 0' }} />
-
-            {/* Why we can do this */}
-            <div style={{ marginBottom: 0 }}>
-              <h5
-                style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  fontSize: '14px',
-                  fontWeight: 700,
-                  color: '#FFFFFF',
-                  marginBottom: '8px',
-                  letterSpacing: '-0.006em'
-                }}
-              >
-                Why can we do this?
-              </h5>
-              <p
-                style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  fontSize: '14px',
-                  color: 'rgba(203, 213, 225, 0.9)',
-                  margin: '0 0 10px 0',
-                  lineHeight: '1.55',
-                  fontWeight: 500
-                }}
-              >
-                Because we've done this enough times to know what works. We're not guessing. We're not "testing your market on your dime."
-              </p>
-              <p
-                style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                  fontSize: '14px',
-                  color: '#E2E8F0',
                   margin: 0,
-                  lineHeight: '1.55',
-                  fontWeight: 600
-                }}
-              >
-                If we can't book meetings, you shouldn't pay us. Simple.
+                  fontWeight: 500,
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff' }}>Zero cost. Zero commitment.</strong>
+                </p>
+              </div>
+
+              {/* Phase 2 */}
+              <div style={{ padding: '0 8px' }}>
+                <h4 style={{
+                  color: '#e2e8f0',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  marginBottom: '6px',
+                  fontFamily: "'Inter', sans-serif",
+                  marginTop: 0
+                }}>
+                  Phase 2: Infrastructure
+                </h4>
+                <p style={{
+                  color: 'rgba(203, 213, 225, 0.9)',
+                  fontSize: '14.5px',
+                  lineHeight: '1.5',
+                  margin: 0,
+                  fontWeight: 500,
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
+                </p>
+              </div>
+
+              {/* Phase 3 */}
+              <div style={{ padding: '0 8px' }}>
+                <h4 style={{
+                  color: '#e2e8f0',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  marginBottom: '6px',
+                  fontFamily: "'Inter', sans-serif",
+                  marginTop: 0
+                }}>
+                  Phase 3: Scale (Credit Model)
+                </h4>
+                <p style={{
+                  color: 'rgba(203, 213, 225, 0.9)',
+                  fontSize: '14.5px',
+                  lineHeight: '1.5',
+                  margin: 0,
+                  fontWeight: 500,
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  From then on, you purchase meeting credits in blocks (e.g., 5 or 10). A credit is deducted <strong style={{ color: '#fff' }}>only</strong> when a qualified meeting is successfully held. Credits never expire. No monthly retainers.
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: '1px', background: 'rgba(71, 85, 105, 0.3)', margin: '0 0 28px 0' }} />
+
+            {/* Alignment Section */}
+            <div style={{ padding: '0 8px' }}>
+              <h4 style={{
+                color: '#FFFFFF',
+                fontSize: '16px',
+                fontWeight: 700,
+                marginBottom: '12px',
+                fontFamily: "'Inter', sans-serif",
+                marginTop: 0
+              }}>
+                Our Incentives Are Aligned
+              </h4>
+              <p style={{
+                color: 'rgba(203, 213, 225, 0.9)',
+                fontSize: '14.5px',
+                lineHeight: '1.6',
+                marginBottom: '16px',
+                fontWeight: 500,
+                fontFamily: "'Inter', sans-serif"
+              }}>
+                We aren't looking for a quick retainer; we want a multi-year partnership. That only happens if the unit economics actually work for you.
+              </p>
+              <p style={{
+                color: 'rgba(203, 213, 225, 0.9)',
+                fontSize: '14.5px',
+                lineHeight: '1.6',
+                margin: 0,
+                fontWeight: 500,
+                fontFamily: "'Inter', sans-serif"
+              }}>
+                We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets. If we can't build a model where this channel is sustainably profitable, we won't take you on.
               </p>
             </div>
           </div>
@@ -638,25 +580,25 @@ const GrowthProcessSection: React.FC = () => {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(12px, 3.5vw, 16px)', marginBottom: 'clamp(16px, 4vw, 24px)' }}>
-          {fitLists.map((list, idx) => (
-            <div
-              className="growth-fit-card"
-              key={list.label}
-              style={{
-                background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
-                border: idx === 0 ? '2px solid rgba(16, 185, 129, 0.25)' : '2px solid rgba(239, 68, 68, 0.25)',
-                borderRadius: '14px',
-                padding: 'clamp(16px, 4.5vw, 24px) clamp(18px, 5vw, 28px)',
-                boxShadow: idx === 0
-                  ? '0 8px 22px rgba(0, 0, 0, 0.32)'
-                  : '0 8px 22px rgba(0, 0, 0, 0.28)',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
-              {/* Top accent line */}
+            {fitLists.map((list, idx) => (
               <div
+                className="growth-fit-card"
+                key={list.label}
                 style={{
+                  background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
+                  border: idx === 0 ? '2px solid rgba(16, 185, 129, 0.25)' : '2px solid rgba(239, 68, 68, 0.25)',
+                  borderRadius: '14px',
+                  padding: 'clamp(16px, 4.5vw, 24px) clamp(18px, 5vw, 28px)',
+                  boxShadow: idx === 0
+                    ? '0 8px 22px rgba(0, 0, 0, 0.32)'
+                    : '0 8px 22px rgba(0, 0, 0, 0.28)',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+              >
+                {/* Top accent line */}
+                <div
+                  style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
@@ -731,11 +673,11 @@ const GrowthProcessSection: React.FC = () => {
                         >
                           {idx === 0 ? (
                             <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                              <path d="M7.5 2L3.25 6.25L1.5 4.5" stroke="rgba(167, 243, 208, 1)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M7.5 2L3.25 6.25L1.5 4.5" stroke="rgba(167, 243, 208, 1)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           ) : (
                             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                              <path d="M2 2L8 8M8 2L2 8" stroke="rgba(254, 202, 202, 1)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                              <path d="M2 2L8 8M8 2L2 8" stroke="rgba(254, 202, 202, 1)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                           )}
                         </div>
