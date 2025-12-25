@@ -482,34 +482,32 @@ const GrowthProcessSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Phase 2 - Premium Dark Card */}
+              {/* Phase 2 - Same style as Phase 1, blue accent */}
               <div style={{
-                background: 'rgba(15, 23, 42, 0.3)',
-                border: '1px solid rgba(148, 163, 184, 0.1)',
+                background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(14, 116, 144, 0.12))',
+                border: '1.5px solid rgba(56, 189, 248, 0.2)',
                 borderRadius: '14px',
                 padding: '20px',
-                display: 'flex',
-                gap: '16px',
-                alignItems: 'start'
+                position: 'relative',
+                overflow: 'hidden'
               }}>
-                <div style={{
-                  minWidth: '28px', height: '28px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.1)',
-                  border: '1px solid rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#38bdf8', fontSize: '13px', fontWeight: 700, fontFamily: "'Montserrat', sans-serif"
-                }}>02</div>
-                <div>
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'rgba(56, 189, 248, 0.5)' }} />
+
+                <div style={{ paddingLeft: '8px' }}>
                   <h4 style={{
-                    color: '#e2e8f0',
+                    color: '#7dd3fc',
                     fontSize: '15px',
                     fontWeight: 700,
-                    marginBottom: '6px',
+                    marginBottom: '8px',
                     fontFamily: "'Montserrat', sans-serif",
-                    marginTop: 0
+                    marginTop: 0,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase'
                   }}>
-                    Infrastructure Build
+                    Phase 2: Infrastructure Build
                   </h4>
                   <p style={{
-                    color: '#e2e8f0',
+                    color: '#f0fdf4',
                     fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
@@ -521,34 +519,32 @@ const GrowthProcessSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Phase 3 - Premium Dark Card */}
+              {/* Phase 3 - Same style as Phase 1, purple accent */}
               <div style={{
-                background: 'rgba(15, 23, 42, 0.3)',
-                border: '1px solid rgba(148, 163, 184, 0.1)',
+                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(126, 34, 206, 0.12))',
+                border: '1.5px solid rgba(168, 85, 247, 0.2)',
                 borderRadius: '14px',
                 padding: '20px',
-                display: 'flex',
-                gap: '16px',
-                alignItems: 'start'
+                position: 'relative',
+                overflow: 'hidden'
               }}>
-                <div style={{
-                  minWidth: '28px', height: '28px', borderRadius: '8px', background: 'rgba(168, 85, 247, 0.1)',
-                  border: '1px solid rgba(168, 85, 247, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#a855f7', fontSize: '13px', fontWeight: 700, fontFamily: "'Montserrat', sans-serif"
-                }}>03</div>
-                <div>
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'rgba(168, 85, 247, 0.5)' }} />
+
+                <div style={{ paddingLeft: '8px' }}>
                   <h4 style={{
-                    color: '#e2e8f0',
+                    color: '#c4b5fd',
                     fontSize: '15px',
                     fontWeight: 700,
-                    marginBottom: '6px',
+                    marginBottom: '8px',
                     fontFamily: "'Montserrat', sans-serif",
-                    marginTop: 0
+                    marginTop: 0,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase'
                   }}>
-                    Scale (Credit Model)
+                    Phase 3: Scale (Credit Model)
                   </h4>
                   <p style={{
-                    color: '#e2e8f0',
+                    color: '#f0fdf4',
                     fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
