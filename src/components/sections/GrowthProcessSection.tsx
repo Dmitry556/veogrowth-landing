@@ -442,121 +442,170 @@ const GrowthProcessSection: React.FC = () => {
             </div>
 
             {/* Phases Container */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '32px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '36px' }}>
 
-              {/* Phase 1 - Highlighted */}
+              {/* Phase 1 - Highlighted Green Card */}
               <div style={{
-                background: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '12px',
-                padding: '16px'
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 95, 70, 0.15))',
+                border: '1.5px solid rgba(94, 234, 212, 0.25)',
+                borderRadius: '14px',
+                padding: '20px',
+                position: 'relative',
+                overflow: 'hidden'
               }}>
-                <h4 style={{
-                  color: '#6ee7b7',
-                  fontSize: '15px',
-                  fontWeight: 700,
-                  marginBottom: '6px',
-                  fontFamily: "'Inter', sans-serif",
-                  marginTop: 0
-                }}>
-                  Phase 1: Channel-Fit Validation (Free)
-                </h4>
-                <p style={{
-                  color: '#e2e8f0',
-                  fontSize: '14.5px',
-                  lineHeight: '1.5',
-                  margin: 0,
-                  fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff' }}>Zero cost. Zero commitment.</strong>
-                </p>
+                {/* Accent Sidebar */}
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'rgba(94, 234, 212, 0.5)' }} />
+
+                <div style={{ paddingLeft: '8px' }}>
+                  <h4 style={{
+                    color: '#6ee7b7',
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    marginBottom: '8px',
+                    fontFamily: "'Montserrat', sans-serif",
+                    marginTop: 0,
+                    letterSpacing: '0.02em',
+                    textTransform: 'uppercase'
+                  }}>
+                    Phase 1: Channel-Fit Validation
+                  </h4>
+                  <p style={{
+                    color: '#f0fdf4',
+                    fontSize: '15px',
+                    lineHeight: '1.5',
+                    margin: 0,
+                    fontWeight: 500,
+                    fontFamily: "'Inter', sans-serif"
+                  }}>
+                    We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff', fontWeight: 600 }}>Zero cost. Zero commitment.</strong>
+                  </p>
+                </div>
               </div>
 
-              {/* Phase 2 */}
-              <div style={{ padding: '0 8px' }}>
-                <h4 style={{
-                  color: '#e2e8f0',
-                  fontSize: '15px',
-                  fontWeight: 700,
-                  marginBottom: '6px',
-                  fontFamily: "'Inter', sans-serif",
-                  marginTop: 0
-                }}>
-                  Phase 2: Infrastructure
-                </h4>
-                <p style={{
-                  color: 'rgba(203, 213, 225, 0.9)',
-                  fontSize: '14.5px',
-                  lineHeight: '1.5',
-                  margin: 0,
-                  fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
-                </p>
+              {/* Phase 2 - Premium Dark Card */}
+              <div style={{
+                background: 'rgba(15, 23, 42, 0.3)',
+                border: '1px solid rgba(148, 163, 184, 0.1)',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                gap: '16px',
+                alignItems: 'start'
+              }}>
+                <div style={{
+                  minWidth: '28px', height: '28px', borderRadius: '8px', background: 'rgba(56, 189, 248, 0.1)',
+                  border: '1px solid rgba(56, 189, 248, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#38bdf8', fontSize: '13px', fontWeight: 700, fontFamily: "'Montserrat', sans-serif"
+                }}>02</div>
+                <div>
+                  <h4 style={{
+                    color: '#e2e8f0',
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    marginBottom: '6px',
+                    fontFamily: "'Montserrat', sans-serif",
+                    marginTop: 0
+                  }}>
+                    Infrastructure Build
+                  </h4>
+                  <p style={{
+                    color: 'rgba(203, 213, 225, 0.85)',
+                    fontSize: '14px',
+                    lineHeight: '1.5',
+                    margin: 0,
+                    fontWeight: 400,
+                    fontFamily: "'Inter', sans-serif"
+                  }}>
+                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
+                  </p>
+                </div>
               </div>
 
-              {/* Phase 3 */}
-              <div style={{ padding: '0 8px' }}>
-                <h4 style={{
-                  color: '#e2e8f0',
-                  fontSize: '15px',
-                  fontWeight: 700,
-                  marginBottom: '6px',
-                  fontFamily: "'Inter', sans-serif",
-                  marginTop: 0
-                }}>
-                  Phase 3: Scale (Credit Model)
-                </h4>
-                <p style={{
-                  color: 'rgba(203, 213, 225, 0.9)',
-                  fontSize: '14.5px',
-                  lineHeight: '1.5',
-                  margin: 0,
-                  fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif"
-                }}>
-                  From then on, you purchase meeting credits in blocks (e.g., 5 or 10). A credit is deducted <strong style={{ color: '#fff' }}>only</strong> when a qualified meeting is successfully held. Credits never expire. No monthly retainers.
-                </p>
+              {/* Phase 3 - Premium Dark Card */}
+              <div style={{
+                background: 'rgba(15, 23, 42, 0.3)',
+                border: '1px solid rgba(148, 163, 184, 0.1)',
+                borderRadius: '14px',
+                padding: '20px',
+                display: 'flex',
+                gap: '16px',
+                alignItems: 'start'
+              }}>
+                <div style={{
+                  minWidth: '28px', height: '28px', borderRadius: '8px', background: 'rgba(168, 85, 247, 0.1)',
+                  border: '1px solid rgba(168, 85, 247, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#a855f7', fontSize: '13px', fontWeight: 700, fontFamily: "'Montserrat', sans-serif"
+                }}>03</div>
+                <div>
+                  <h4 style={{
+                    color: '#e2e8f0',
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    marginBottom: '6px',
+                    fontFamily: "'Montserrat', sans-serif",
+                    marginTop: 0
+                  }}>
+                    Scale (Credit Model)
+                  </h4>
+                  <p style={{
+                    color: 'rgba(203, 213, 225, 0.85)',
+                    fontSize: '14px',
+                    lineHeight: '1.5',
+                    margin: 0,
+                    fontWeight: 400,
+                    fontFamily: "'Inter', sans-serif"
+                  }}>
+                    Purchase meeting credits in blocks. Credits deducted <strong style={{ color: '#fff', fontWeight: 600 }}>only</strong> when a qualified meeting is held. Credits never expire.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Divider */}
-            <div style={{ height: '1px', background: 'rgba(71, 85, 105, 0.3)', margin: '0 0 28px 0' }} />
+            {/* Divider with subtle gradient */}
+            <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.4), transparent)', margin: '0 0 32px 0' }} />
 
-            {/* Alignment Section */}
+            {/* Alignment Section - Improved Visuals */}
             <div style={{ padding: '0 8px' }}>
-              <h4 style={{
-                color: '#FFFFFF',
-                fontSize: '16px',
-                fontWeight: 700,
-                marginBottom: '12px',
-                fontFamily: "'Inter', sans-serif",
-                marginTop: 0
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#f472b6', boxShadow: '0 0 8px rgba(244, 114, 182, 0.6)' }} />
+                <h4 style={{
+                  color: '#FFFFFF',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  fontFamily: "'Montserrat', sans-serif",
+                  margin: 0,
+                  letterSpacing: '-0.01em'
+                }}>
+                  Our Incentives Are Aligned
+                </h4>
+              </div>
+
+              <div style={{
+                borderLeft: '2px solid rgba(244, 114, 182, 0.2)',
+                paddingLeft: '16px',
+                marginLeft: '3px'
               }}>
-                Our Incentives Are Aligned
-              </h4>
-              <p style={{
-                color: 'rgba(203, 213, 225, 0.9)',
-                fontSize: '14.5px',
-                lineHeight: '1.6',
-                marginBottom: '16px',
-                fontWeight: 500,
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                We aren't looking for a quick retainer; we want a multi-year partnership. That only happens if the unit economics actually work for you.
-              </p>
-              <p style={{
-                color: 'rgba(203, 213, 225, 0.9)',
-                fontSize: '14.5px',
-                lineHeight: '1.6',
-                margin: 0,
-                fontWeight: 500,
-                fontFamily: "'Inter', sans-serif"
-              }}>
-                We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets. If we can't build a model where this channel is sustainably profitable, we won't take you on.
-              </p>
+                <p style={{
+                  color: 'rgba(203, 213, 225, 0.85)',
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  marginBottom: '12px',
+                  fontWeight: 400,
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  We aren't looking for a quick retainer; we want a multi-year partnership. That only happens if the <strong style={{ color: '#e2e8f0' }}>unit economics</strong> actually work for you.
+                </p>
+                <p style={{
+                  color: 'rgba(203, 213, 225, 0.85)',
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  margin: 0,
+                  fontWeight: 400,
+                  fontFamily: "'Inter', sans-serif"
+                }}>
+                  We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets.
+                </p>
+              </div>
             </div>
           </div>
         </div>
