@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import puppeteer from 'puppeteer';
+// Puppeteer imported dynamically based on environment
 import { preview } from 'vite';
 import { fileURLToPath } from 'url';
 
@@ -48,64 +48,85 @@ async function prerenderRoutes() {
 
   const resolvedUrl = previewServer.resolvedUrls?.local?.[0] ?? `http://${PREVIEW_HOST}:${PREVIEW_PORT}`;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  let browser;
+  if (process.env.VERCEL) {
+    console.log('🚀 Running on Vercel: Using @sparticuz/chromium');
+    try {
+      const chromium = (await import('@sparticuz/chromium')).default;
+      const puppeteerCore = (await import('puppeteer-core')).default;
+
+      browser = await puppeteerCore.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+      });
+    } catch (e) {
+      console.error('SERVERLESS BROWSER ERROR:', e);
+      throw e;
+    }
+  } else {
+    console.log('💻 Running Locally: Using standard puppeteer');
+    const puppeteer = (await import('puppeteer')).default;
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+  }
 
   try {
     const page = await browser.newPage();
-    
+
     // Wait for React to load
     await page.setDefaultTimeout(30000);
-    
+
     for (const route of routes) {
       try {
         console.log(`📄 Prerendering: ${route}`);
-        
+
         const url = `${resolvedUrl.replace(/\/$/, '')}${route}`;
-        
+
         // Go to the page
-        await page.goto(url, { 
+        await page.goto(url, {
           waitUntil: ['networkidle0', 'domcontentloaded'],
-          timeout: 30000 
+          timeout: 30000
         });
-        
+
         // Wait for React to render
         await page.waitForSelector('#root', { timeout: 10000 });
-        
+
         // Wait a bit more to ensure all content is loaded
         await new Promise(resolve => setTimeout(resolve, 2000));
-        
+
         // Get the fully rendered HTML
         const html = await page.content();
-        
+
         // Create directory structure
         const routePath = route === '/' ? '/index' : route;
         const filePath = path.join(DIST_DIR, routePath);
-        
+
         if (routePath.includes('/')) {
           const dir = path.dirname(filePath);
           if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
           }
         }
-        
+
         // Save the HTML file
         const fileName = route === '/'
           ? path.join(DIST_DIR, 'index.html')
           : path.join(filePath, 'index.html');
-        
+
         // Ensure directory exists
         const finalDir = path.dirname(fileName);
         if (!fs.existsSync(finalDir)) {
           fs.mkdirSync(finalDir, { recursive: true });
         }
-        
+
         fs.writeFileSync(fileName, html);
-        
+
         console.log(`✅ Successfully prerendered: ${route} -> ${fileName}`);
-        
+
       } catch (error) {
         console.error(`❌ Failed to prerender ${route}:`, error.message);
       }
