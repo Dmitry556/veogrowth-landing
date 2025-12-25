@@ -509,11 +509,11 @@ const GrowthProcessSection: React.FC = () => {
                     Infrastructure Build
                   </h4>
                   <p style={{
-                    color: 'rgba(203, 213, 225, 0.85)',
-                    fontSize: '14px',
+                    color: '#e2e8f0',
+                    fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
-                    fontWeight: 400,
+                    fontWeight: 500,
                     fontFamily: "'Inter', sans-serif"
                   }}>
                     Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
@@ -548,11 +548,11 @@ const GrowthProcessSection: React.FC = () => {
                     Scale (Credit Model)
                   </h4>
                   <p style={{
-                    color: 'rgba(203, 213, 225, 0.85)',
-                    fontSize: '14px',
+                    color: '#e2e8f0',
+                    fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
-                    fontWeight: 400,
+                    fontWeight: 500,
                     fontFamily: "'Inter', sans-serif"
                   }}>
                     Purchase meeting credits in blocks. Credits deducted <strong style={{ color: '#fff', fontWeight: 600 }}>only</strong> when a qualified meeting is held. Credits never expire.
@@ -586,21 +586,21 @@ const GrowthProcessSection: React.FC = () => {
                 marginLeft: '3px'
               }}>
                 <p style={{
-                  color: 'rgba(203, 213, 225, 0.85)',
-                  fontSize: '14px',
+                  color: '#e2e8f0',
+                  fontSize: '15px',
                   lineHeight: '1.6',
                   marginBottom: '12px',
-                  fontWeight: 400,
+                  fontWeight: 500,
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   We aren't looking for a quick retainer; we want a multi-year partnership. That only happens if the <strong style={{ color: '#e2e8f0' }}>unit economics</strong> actually work for you.
                 </p>
                 <p style={{
-                  color: 'rgba(203, 213, 225, 0.85)',
-                  fontSize: '14px',
+                  color: '#e2e8f0',
+                  fontSize: '15px',
                   lineHeight: '1.6',
                   margin: 0,
-                  fontWeight: 400,
+                  fontWeight: 500,
                   fontFamily: "'Inter', sans-serif"
                 }}>
                   We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets.
