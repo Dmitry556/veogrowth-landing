@@ -9,7 +9,7 @@ const HeroSection: React.FC = () => {
     const timer = setTimeout(() => {
       setLoaded(true);
     }, 100); // Small delay for dramatic effect
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -327,9 +327,9 @@ const HeroSection: React.FC = () => {
           }
         `
       }} />
-      
+
       {/* Hero Section */}
-      <section 
+      <section
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{
           background: '#0a0a0a',
@@ -339,7 +339,7 @@ const HeroSection: React.FC = () => {
       >
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
-          <div className="absolute inset-0" 
+          <div className="absolute inset-0"
             style={{
               backgroundImage: `
                 radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.4), transparent),
@@ -351,7 +351,7 @@ const HeroSection: React.FC = () => {
           />
         </div>
 
-        <div 
+        <div
           className={`hero-container ${loaded ? 'loaded' : ''}`}
           style={{
             position: 'relative',
@@ -386,7 +386,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 
+            <h1
               className="hero-element relative text-center font-montserrat"
               style={{
                 fontSize: 'clamp(40px, 5vw, 56px)',
@@ -402,7 +402,7 @@ const HeroSection: React.FC = () => {
                 alignItems: 'center'
               }}
             >
-              <div 
+              <div
                 className="absolute -z-10"
                 style={{
                   content: '',
@@ -423,7 +423,7 @@ const HeroSection: React.FC = () => {
             </h1>
 
             {/* Elegant Subheadline */}
-            <div 
+            <div
               className="hero-element"
               style={{
                 fontSize: '18px',
@@ -436,7 +436,7 @@ const HeroSection: React.FC = () => {
                 position: 'relative'
               }}
             >
-              Pay only for the qualified meetings/signups you get out of it.
+              Pay only for the qualified meetings held. Engineered backwards from your unit economics.
               <span
                 style={{
                   display: 'block',
@@ -505,7 +505,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             {/* Status Pill */}
-            <div 
+            <div
               className="hero-element"
               style={{
                 display: 'inline-flex',
@@ -533,24 +533,24 @@ const HeroSection: React.FC = () => {
 
             {/* Trust Section */}
             <div style={{ marginTop: 'auto', paddingTop: '26px', paddingBottom: '0px', textAlign: 'center' }}>
-              <p style={{ 
-                fontSize: '16px', 
-                color: '#E5E7EB', 
-                marginBottom: '32px', 
+              <p style={{
+                fontSize: '16px',
+                color: '#E5E7EB',
+                marginBottom: '32px',
                 letterSpacing: '0.02em',
                 fontWeight: 500,
-                opacity: '0.9' 
+                opacity: '0.9'
               }}>
                 Companies we booked meetings for our clients with
               </p>
-              
+
               {/* Logo Grid */}
-              <div style={{ 
+              <div style={{
                 position: 'relative',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '88vw', 
-                maxWidth: '1280px', 
+                width: '88vw',
+                maxWidth: '1280px',
                 margin: '0'
               }}>
                 <div className="hero-logo-grid">
@@ -572,7 +572,7 @@ const HeroSection: React.FC = () => {
                     { name: 'Samsung', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/samsung.svg' },
                     { name: 'Intel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/intel.svg' }
                   ].map((company, index) => (
-                    <div 
+                    <div
                       key={index}
                       style={{
                         display: 'flex',
@@ -582,10 +582,10 @@ const HeroSection: React.FC = () => {
                         height: '62px'
                       }}
                     >
-                      <img 
+                      <img
                         src={company.src}
                         alt={`${company.name} logo`}
-                        style={{ 
+                        style={{
                           height: '48px',
                           width: 'auto',
                           objectFit: 'contain',
@@ -607,8 +607,8 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
 
-              <a 
-                href="/case-studies" 
+              <a
+                href="/case-studies"
                 className="inline-flex items-center gap-3 mt-8 text-sm font-medium text-gray-200 hover:text-white transition-colors group"
                 style={{
                   padding: '10px 18px',
@@ -619,7 +619,7 @@ const HeroSection: React.FC = () => {
                   WebkitBackdropFilter: 'blur(10px)'
                 }}
               >
-                See case studies 
+                See case studies
                 <span className="group-hover:translate-x-1 transition-transform text-lg">→</span>
               </a>
             </div>
