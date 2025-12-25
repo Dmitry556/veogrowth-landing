@@ -19,7 +19,11 @@ const SectionLoader = () => (
 );
 
 const AnimatedSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  // Default to visible for Headless browsers (Prerendering) to ensure content is captured
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return /Headless/i.test(window.navigator.userAgent);
+  });
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
