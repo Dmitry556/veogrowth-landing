@@ -31,8 +31,8 @@ const PREVIEW_PORT = 4173;
 const DIST_DIR = path.join(__dirname, '../dist');
 
 async function prerenderRoutes() {
-  if (process.env.SKIP_PRERENDER || process.env.VERCEL) {
-    console.log('⚠️  Skipping prerendering in this environment (SKIP_PRERENDER/VERCEL detected).');
+  if (process.env.SKIP_PRERENDER) {
+    console.log('⚠️  Skipping prerendering (SKIP_PRERENDER detected).');
     return;
   }
 
