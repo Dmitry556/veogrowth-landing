@@ -88,8 +88,8 @@ async function prerenderRoutes() {
 
         // Go to the page
         await page.goto(url, {
-          waitUntil: ['networkidle0', 'domcontentloaded'],
-          timeout: 30000
+          waitUntil: ['networkidle2', 'domcontentloaded'],
+          timeout: 60000
         });
 
         // Wait for React to render
