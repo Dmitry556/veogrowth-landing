@@ -81,7 +81,7 @@ const faqSections: FaqSectionData[] = [
           {
             type: 'paragraph',
             content:
-              `Between $200-$600 per qualified meeting, depending on your deal size and customer LTV.`
+              `Between $200-$600 per qualified meeting, depending on your deal size and customer LTV. <strong>The price is fixed once we set it.</strong>`
           },
           {
             type: 'paragraph',
@@ -105,7 +105,7 @@ const faqSections: FaqSectionData[] = [
           },
           {
             type: 'paragraph',
-            content: `<strong>The price is fixed once we set it</strong> — no variable billing or surprises month to month.`
+            content: `No variable billing or surprises month to month.`
           }
         ]
       },
