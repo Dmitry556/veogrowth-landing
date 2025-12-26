@@ -474,10 +474,10 @@ const GrowthProcessSection: React.FC = () => {
                     fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
-                    fontWeight: 500,
+                    fontWeight: 600,
                     fontFamily: "'Inter', sans-serif"
                   }}>
-                    We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff', fontWeight: 600 }}>Zero cost. Zero commitment.</strong>
+                    We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff', fontWeight: 700 }}>Zero cost. Zero commitment.</strong>
                   </p>
                 </div>
               </div>
@@ -511,7 +511,7 @@ const GrowthProcessSection: React.FC = () => {
                     fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
-                    fontWeight: 500,
+                    fontWeight: 600,
                     fontFamily: "'Inter', sans-serif"
                   }}>
                     Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
@@ -548,10 +548,10 @@ const GrowthProcessSection: React.FC = () => {
                     fontSize: '15px',
                     lineHeight: '1.5',
                     margin: 0,
-                    fontWeight: 500,
+                    fontWeight: 600,
                     fontFamily: "'Inter', sans-serif"
                   }}>
-                    Purchase meeting credits in blocks. Credits deducted <strong style={{ color: '#fff', fontWeight: 600 }}>only</strong> when a qualified meeting is held. Credits never expire.
+                    You buy meeting credits in batches (e.g., 5 or 10). A credit is only used when a qualified meeting is held. Credits never expire.
                   </p>
                 </div>
               </div>
