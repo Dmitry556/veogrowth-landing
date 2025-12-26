@@ -115,14 +115,14 @@ const Footer: React.FC = () => {
 
       {/* Main Footer Content */}
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(36px, 8vw, 48px) clamp(20px, 6vw, 32px) clamp(24px, 6vw, 32px)' }}>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 'clamp(28px, 7vw, 48px)',
-              justifyContent: 'space-between'
-            }}
-          >
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 'clamp(28px, 7vw, 48px)',
+            justifyContent: 'space-between'
+          }}
+        >
           <div style={{ flex: '1 1 320px', minWidth: '260px' }}>
             <Link
               to="/"

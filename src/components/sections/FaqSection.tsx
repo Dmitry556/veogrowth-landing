@@ -563,12 +563,92 @@ const FaqSection: React.FC = () => {
                 fontWeight: '400',
                 lineHeight: '1.1',
                 letterSpacing: '-0.03em',
-                marginBottom: '36px',
+                marginBottom: '20px',
                 color: 'rgba(239, 246, 255, 0.96)'
               }}
             >
               Frequently Asked Questions
             </h2>
+
+            {/* TL;DR Ask AI Row */}
+            <div style={{ marginBottom: '36px' }}>
+              <p
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  color: 'rgba(226, 232, 240, 0.9)',
+                  margin: '0 0 16px 0',
+                  letterSpacing: '0.04em',
+                  textShadow: '0 0 12px rgba(255, 255, 255, 0.1)'
+                }}
+              >
+                TL;DR? Let AI summarize for you
+              </p>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '32px'
+                }}
+              >
+                {[
+                  { name: 'ChatGPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', url: 'https://chat.openai.com/' },
+                  { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', url: 'https://gemini.google.com/app' },
+                  { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', url: 'https://claude.ai/new' },
+                  { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', url: 'https://www.perplexity.ai/search/new' },
+                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', url: 'https://grok.x.ai/' }
+                ].map((ai) => (
+                  <a
+                    key={ai.name}
+                    href={`${ai.url}?q=${encodeURIComponent("I'm considering VeoGrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Ask ${ai.name}`}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '6px',
+                      textDecoration: 'none',
+                      opacity: 0.85,
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '1';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0.85';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.filter = 'none';
+                    }}
+                  >
+                    <img
+                      src={ai.icon}
+                      alt={ai.name}
+                      style={{
+                        width: '32px',
+                        height: '32px',
+                        filter: ai.name === 'Grok' ? 'none' : 'brightness(0) invert(1)'
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: '11px',
+                        fontWeight: 500,
+                        color: '#ffffff',
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      {ai.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
