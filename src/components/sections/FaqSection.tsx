@@ -597,7 +597,7 @@ const FaqSection: React.FC = () => {
                   { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', getUrl: (p: string) => `https://www.google.com/search?udm=50&aep=11&q=${p}` },
                   { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', getUrl: (p: string) => `https://claude.ai/new?q=${p}` },
                   { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', getUrl: (p: string) => `https://www.perplexity.ai/search/new?q=${p}` },
-                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', getUrl: (p: string) => `https://x.com/i/grok?text=${p}` }
+                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', getUrl: (p: string) => `https://grok.com/?q=${p}` }
                 ].map((ai) => (
                   <a
                     key={ai.name}
