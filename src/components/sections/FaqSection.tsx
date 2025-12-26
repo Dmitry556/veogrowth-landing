@@ -105,7 +105,7 @@ const faqSections: FaqSectionData[] = [
           },
           {
             type: 'paragraph',
-            content: `The price is fixed once we set it - no variable billing or surprises month to month.`
+            content: `<strong>The price is fixed once we set it</strong> — no variable billing or surprises month to month.`
           }
         ]
       },
@@ -525,163 +525,163 @@ const FaqSection: React.FC = () => {
           `
         }}
       />
-    <section
-      id="faq"
-      style={{
-        background: 'linear-gradient(180deg, #04080d 0%, #050b11 48%, #061015 100%)',
-        padding: 'clamp(48px, 9vw, 72px) 0 clamp(72px, 12vw, 120px)',
-        borderTop: '1px solid rgba(45, 212, 191, 0.06)',
-        borderBottom: '1px solid rgba(45, 212, 191, 0.08)'
-      }}
-    >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)' }}>
-        <div style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto clamp(40px, 10vw, 72px)' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'rgba(15, 23, 42, 0.52)',
-              border: '1px solid rgba(45, 212, 191, 0.28)',
-              borderRadius: '999px',
-              padding: '10px 22px',
-              marginBottom: '44px',
-              fontSize: '12px',
-              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-              color: 'rgba(209, 250, 229, 0.85)',
-              fontWeight: 600,
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase'
-            }}
-          >
-            Common Questions
+      <section
+        id="faq"
+        style={{
+          background: 'linear-gradient(180deg, #04080d 0%, #050b11 48%, #061015 100%)',
+          padding: 'clamp(48px, 9vw, 72px) 0 clamp(72px, 12vw, 120px)',
+          borderTop: '1px solid rgba(45, 212, 191, 0.06)',
+          borderBottom: '1px solid rgba(45, 212, 191, 0.08)'
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)' }}>
+          <div style={{ textAlign: 'center', maxWidth: '960px', margin: '0 auto clamp(40px, 10vw, 72px)' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'rgba(15, 23, 42, 0.52)',
+                border: '1px solid rgba(45, 212, 191, 0.28)',
+                borderRadius: '999px',
+                padding: '10px 22px',
+                marginBottom: '44px',
+                fontSize: '12px',
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                color: 'rgba(209, 250, 229, 0.85)',
+                fontWeight: 600,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase'
+              }}
+            >
+              Common Questions
+            </div>
+            <h2
+              style={{
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontSize: 'clamp(32px, 6vw, 54px)',
+                fontWeight: '400',
+                lineHeight: '1.1',
+                letterSpacing: '-0.03em',
+                marginBottom: '36px',
+                color: 'rgba(239, 246, 255, 0.96)'
+              }}
+            >
+              Frequently Asked Questions
+            </h2>
           </div>
-          <h2
-            style={{
-              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-              fontSize: 'clamp(32px, 6vw, 54px)',
-              fontWeight: '400',
-              lineHeight: '1.1',
-              letterSpacing: '-0.03em',
-              marginBottom: '36px',
-              color: 'rgba(239, 246, 255, 0.96)'
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-        </div>
 
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 3.6vw, 22px)' }}>
-            {faqSections.map((section) => (
-              <React.Fragment key={section.title}>
-                <div style={{ margin: '20px 0 4px' }}>
-                  <h3
-                    style={{
-                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                      fontSize: 'clamp(18px, 3.6vw, 22px)',
-                      fontWeight: 600,
-                      letterSpacing: '-0.012em',
-                      color: '#f8fafc',
-                      textTransform: 'none',
-                      margin: 0
-                    }}
-                  >
-                    {section.title}
-                  </h3>
-                  <div
-                    style={{
-                      marginTop: '6px',
-                      width: '48px',
-                      height: '2px',
-                      background: 'linear-gradient(90deg, rgba(94, 234, 212, 0.9), transparent)'
-                    }}
-                  />
-                </div>
-
-                {section.items.map((faq) => {
-                  globalFaqIndex += 1;
-                  const currentIndex = globalFaqIndex;
-                  const isOpen = openIndexes.includes(currentIndex);
-
-                  return (
-                    <div
-                      key={faq.question}
-                      className={`faq-card ${isOpen ? 'open' : ''}`}
+          <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(14px, 3.6vw, 22px)' }}>
+              {faqSections.map((section) => (
+                <React.Fragment key={section.title}>
+                  <div style={{ margin: '20px 0 4px' }}>
+                    <h3
                       style={{
-                        background: 'linear-gradient(135deg, rgba(11, 21, 28, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
-                        border: isOpen ? '1px solid rgba(94, 234, 212, 0.24)' : '1px solid rgba(45, 212, 191, 0.12)',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        boxShadow: isOpen ? '0 18px 36px rgba(2, 8, 12, 0.42)' : '0 8px 24px rgba(2, 8, 12, 0.3)'
+                        fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                        fontSize: 'clamp(18px, 3.6vw, 22px)',
+                        fontWeight: 600,
+                        letterSpacing: '-0.012em',
+                        color: '#f8fafc',
+                        textTransform: 'none',
+                        margin: 0
                       }}
                     >
-                      <button
-                        onClick={() => toggleFaq(currentIndex)}
-                        style={{
-                          width: '100%',
-                          padding: 'clamp(14px, 4.2vw, 20px) clamp(14px, 4.2vw, 24px)',
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                          background: 'none',
-                          border: 'none',
-                          cursor: 'pointer',
-                          textAlign: 'left',
-                          transition: 'transform 0.18s ease'
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                            fontSize: 'clamp(19px, 5vw, 22px)',
-                            fontWeight: 600,
-                            color: '#ffffff',
-                            letterSpacing: '-0.012em',
-                            flex: '1',
-                            marginRight: '24px',
-                            WebkitFontSmoothing: 'antialiased'
-                          }}
-                        >
-                          {faq.question}
-                        </span>
-                        <div
-                          style={{
-                            width: '22px',
-                            height: '22px',
-                            borderRadius: '50%',
-                            background: 'rgba(94, 234, 212, 0.16)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'all 0.3s ease',
-                            boxShadow: '0 6px 14px rgba(2, 40, 36, 0.35)'
-                          }}
-                        >
-                          {isOpen ? (
-                            <Minus style={{ width: '12px', height: '12px', color: '#f8fafc' }} />
-                          ) : (
-                            <Plus style={{ width: '12px', height: '12px', color: '#f8fafc' }} />
-                          )}
-                        </div>
-                      </button>
+                      {section.title}
+                    </h3>
+                    <div
+                      style={{
+                        marginTop: '6px',
+                        width: '48px',
+                        height: '2px',
+                        background: 'linear-gradient(90deg, rgba(94, 234, 212, 0.9), transparent)'
+                      }}
+                    />
+                  </div>
 
+                  {section.items.map((faq) => {
+                    globalFaqIndex += 1;
+                    const currentIndex = globalFaqIndex;
+                    const isOpen = openIndexes.includes(currentIndex);
+
+                    return (
                       <div
-                        className={`faq-answer ${isOpen ? 'open' : ''}`}
+                        key={faq.question}
+                        className={`faq-card ${isOpen ? 'open' : ''}`}
                         style={{
-                          borderTop: '1px solid rgba(45, 212, 191, 0.12)',
-                          marginTop: '-1px'
+                          background: 'linear-gradient(135deg, rgba(11, 21, 28, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
+                          border: isOpen ? '1px solid rgba(94, 234, 212, 0.24)' : '1px solid rgba(45, 212, 191, 0.12)',
+                          borderRadius: '12px',
+                          overflow: 'hidden',
+                          boxShadow: isOpen ? '0 18px 36px rgba(2, 8, 12, 0.42)' : '0 8px 24px rgba(2, 8, 12, 0.3)'
                         }}
                       >
-                        <div
-                          className="faq-answer__content"
+                        <button
+                          onClick={() => toggleFaq(currentIndex)}
                           style={{
+                            width: '100%',
+                            padding: 'clamp(14px, 4.2vw, 20px) clamp(14px, 4.2vw, 24px)',
                             display: 'flex',
-                            flexDirection: 'column',
-                            gap: '16px'
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                            transition: 'transform 0.18s ease'
                           }}
                         >
-                          {faq.answer.map((entry, lineIndex) => {
+                          <span
+                            style={{
+                              fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                              fontSize: 'clamp(19px, 5vw, 22px)',
+                              fontWeight: 600,
+                              color: '#ffffff',
+                              letterSpacing: '-0.012em',
+                              flex: '1',
+                              marginRight: '24px',
+                              WebkitFontSmoothing: 'antialiased'
+                            }}
+                          >
+                            {faq.question}
+                          </span>
+                          <div
+                            style={{
+                              width: '22px',
+                              height: '22px',
+                              borderRadius: '50%',
+                              background: 'rgba(94, 234, 212, 0.16)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              transition: 'all 0.3s ease',
+                              boxShadow: '0 6px 14px rgba(2, 40, 36, 0.35)'
+                            }}
+                          >
+                            {isOpen ? (
+                              <Minus style={{ width: '12px', height: '12px', color: '#f8fafc' }} />
+                            ) : (
+                              <Plus style={{ width: '12px', height: '12px', color: '#f8fafc' }} />
+                            )}
+                          </div>
+                        </button>
+
+                        <div
+                          className={`faq-answer ${isOpen ? 'open' : ''}`}
+                          style={{
+                            borderTop: '1px solid rgba(45, 212, 191, 0.12)',
+                            marginTop: '-1px'
+                          }}
+                        >
+                          <div
+                            className="faq-answer__content"
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '16px'
+                            }}
+                          >
+                            {faq.answer.map((entry, lineIndex) => {
                               if (entry.type === 'paragraph') {
                                 return (
                                   <p
@@ -760,98 +760,98 @@ const FaqSection: React.FC = () => {
                                 </ol>
                               );
                             })}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </React.Fragment>
-            ))}
-          </div>
+                    );
+                  })}
+                </React.Fragment>
+              ))}
+            </div>
 
-          <div
-            style={{
-              marginTop: 'clamp(28px, 6vw, 44px)',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '12px',
-              alignItems: 'center'
-            }}
-          >
-            <p
+            <div
               style={{
-                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                fontSize: 'clamp(17px, 4.6vw, 20px)',
-                color: '#fbfdff',
-                margin: 0,
-                WebkitFontSmoothing: 'antialiased'
+                marginTop: 'clamp(28px, 6vw, 44px)',
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px',
+                alignItems: 'center'
               }}
             >
-              Book a scoping call and we'll answer everything specific to your business.
-            </p>
-            <button
-              type="button"
-              onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                padding: '10px 22px',
-                borderRadius: '999px',
-                border: '1px solid rgba(94, 234, 212, 0.35)',
-                background: 'transparent',
-                color: '#e6f8f3',
-                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                fontSize: 'clamp(14px, 3.2vw, 17px)',
-                fontWeight: 600,
-                cursor: 'pointer',
-                boxShadow: '0 0 0 rgba(6, 95, 70, 0)',
-                transition: 'transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease',
-                width: 'fit-content',
-                maxWidth: '320px'
-              }}
-              onMouseEnter={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(-1px)';
-                target.style.boxShadow = '0 10px 24px rgba(6, 95, 70, 0.25)';
-                target.style.background = 'linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(13, 148, 136, 0.18))';
-                target.style.color = '#ffffff';
-              }}
-              onMouseLeave={(e) => {
-                const target = e.currentTarget as HTMLButtonElement;
-                target.style.transform = 'translateY(0)';
-                target.style.boxShadow = '0 0 0 rgba(6, 95, 70, 0)';
-                target.style.background = 'transparent';
-                target.style.color = '#e6f8f3';
-              }}
-            >
-              <span style={{ letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                Book Pilot Scoping Call
-              </span>
-              <span
-                aria-hidden="true"
+              <p
+                style={{
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontSize: 'clamp(17px, 4.6vw, 20px)',
+                  color: '#fbfdff',
+                  margin: 0,
+                  WebkitFontSmoothing: 'antialiased'
+                }}
+              >
+                Book a scoping call and we'll answer everything specific to your business.
+              </p>
+              <button
+                type="button"
+                onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  width: '18px',
-                  height: '18px',
+                  gap: '8px',
+                  padding: '10px 22px',
                   borderRadius: '999px',
-                  background: 'none',
-                  color: 'currentColor',
-                  fontSize: '13px',
-                  fontWeight: 600
+                  border: '1px solid rgba(94, 234, 212, 0.35)',
+                  background: 'transparent',
+                  color: '#e6f8f3',
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontSize: 'clamp(14px, 3.2vw, 17px)',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  boxShadow: '0 0 0 rgba(6, 95, 70, 0)',
+                  transition: 'transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease',
+                  width: 'fit-content',
+                  maxWidth: '320px'
+                }}
+                onMouseEnter={(e) => {
+                  const target = e.currentTarget as HTMLButtonElement;
+                  target.style.transform = 'translateY(-1px)';
+                  target.style.boxShadow = '0 10px 24px rgba(6, 95, 70, 0.25)';
+                  target.style.background = 'linear-gradient(135deg, rgba(15, 118, 110, 0.18), rgba(13, 148, 136, 0.18))';
+                  target.style.color = '#ffffff';
+                }}
+                onMouseLeave={(e) => {
+                  const target = e.currentTarget as HTMLButtonElement;
+                  target.style.transform = 'translateY(0)';
+                  target.style.boxShadow = '0 0 0 rgba(6, 95, 70, 0)';
+                  target.style.background = 'transparent';
+                  target.style.color = '#e6f8f3';
                 }}
               >
-                →
-              </span>
-            </button>
+                <span style={{ letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                  Book Pilot Scoping Call
+                </span>
+                <span
+                  aria-hidden="true"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '18px',
+                    height: '18px',
+                    borderRadius: '999px',
+                    background: 'none',
+                    color: 'currentColor',
+                    fontSize: '13px',
+                    fontWeight: 600
+                  }}
+                >
+                  →
+                </span>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };
