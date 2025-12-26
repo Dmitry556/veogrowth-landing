@@ -593,15 +593,15 @@ const FaqSection: React.FC = () => {
                 }}
               >
                 {[
-                  { name: 'ChatGPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', url: 'https://chat.openai.com/' },
-                  { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', url: 'https://gemini.google.com/app' },
-                  { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', url: 'https://claude.ai/new' },
-                  { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', url: 'https://www.perplexity.ai/search/new' },
-                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', url: 'https://grok.x.ai/' }
+                  { name: 'ChatGPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', getUrl: (p: string) => `https://chatgpt.com/?prompt=${p}` },
+                  { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', getUrl: (p: string) => `https://www.google.com/search?udm=50&aep=11&q=${p}` },
+                  { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', getUrl: (p: string) => `https://claude.ai/new?q=${p}` },
+                  { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', getUrl: (p: string) => `https://www.perplexity.ai/search/new?q=${p}` },
+                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', getUrl: (p: string) => `https://x.com/i/grok?text=${p}` }
                 ].map((ai) => (
                   <a
                     key={ai.name}
-                    href={`${ai.url}?q=${encodeURIComponent("I'm considering VeoGrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?")}`}
+                    href={ai.getUrl(encodeURIComponent("I'm considering VeoGrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?"))}
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`Ask ${ai.name}`}
