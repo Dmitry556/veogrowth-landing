@@ -382,7 +382,7 @@ const HeroSection: React.FC = () => {
               }}
             >
               <span className="ping-wrapper" />
-              <span>Limited spots left for Q4</span>
+              <span>4 spots left for Q1 (since we invest our own infrastructure & time)</span>
             </div>
 
             {/* Main Headline */}
@@ -527,7 +527,7 @@ const HeroSection: React.FC = () => {
             >
               <span className="ping-wrapper" aria-hidden="true"></span>
               <span style={{ letterSpacing: '0.16em', textTransform: 'uppercase', color: 'inherit', fontWeight: 600 }}>
-                Limited spots left for Q4
+                4 spots left for Q1 (since we invest our own infrastructure & time)
               </span>
             </div>
 
