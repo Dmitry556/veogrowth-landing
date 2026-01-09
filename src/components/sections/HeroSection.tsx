@@ -382,7 +382,7 @@ const HeroSection: React.FC = () => {
               }}
             >
               <span className="ping-wrapper" />
-              <span>4 spots left for Q1 (since we invest our own infrastructure & time)</span>
+              <span>It's not a production line — we invest our own infrastructure and time into each bespoke pilot to ensure success, so we're limiting Q1 to 5 companies. 2 are running, 3 slots open.</span>
             </div>
 
             {/* Main Headline */}
@@ -527,7 +527,7 @@ const HeroSection: React.FC = () => {
             >
               <span className="ping-wrapper" aria-hidden="true"></span>
               <span style={{ letterSpacing: '0.16em', textTransform: 'uppercase', color: 'inherit', fontWeight: 600 }}>
-                4 spots left for Q1 (since we invest our own infrastructure & time)
+                It's not a production line — we invest our own infrastructure and time into each bespoke pilot to ensure success, so we're limiting Q1 to 5 companies. 2 are running, 3 slots open.
               </span>
             </div>
 
