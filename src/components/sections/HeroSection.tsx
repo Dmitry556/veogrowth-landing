@@ -498,7 +498,7 @@ const HeroSection: React.FC = () => {
                   </span>
                   <span style={{ display: 'inline', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
                     <strong style={{ letterSpacing: '-0.01em', color: '#ffffff', fontWeight: 700 }}>Free Trial Offer:</strong>{' '}
-                    We'll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 700 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
+                    If you pass our GTM assessment, we'll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 700 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
                   </span>
                 </p>
               </div>
