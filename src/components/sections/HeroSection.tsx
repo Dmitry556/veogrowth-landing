@@ -436,7 +436,7 @@ const HeroSection: React.FC = () => {
                 position: 'relative'
               }}
             >
-              Pay only for the qualified meetings held. Engineered backwards from your unit economics.
+              Pay only for the qualified meetings held. With pricing engineered backwards from your unit economics.
               <span
                 style={{
                   display: 'block',
