@@ -504,31 +504,31 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Status Pill */}
+            {/* Status Callout */}
             <div
               className="hero-element"
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(15, 23, 42, 0.52)',
-                border: '1px solid rgba(45, 212, 191, 0.35)',
-                borderRadius: '999px',
-                padding: '10px clamp(18px, 6vw, 24px)',
+                display: 'inline-block',
+                textAlign: 'center',
                 margin: '0 auto clamp(32px, 7vw, 48px)',
-                fontSize: '12px',
-                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: 'rgba(209, 250, 229, 0.9)',
-                boxShadow: '0 12px 30px rgba(13, 148, 136, 0.18)'
+                maxWidth: 'min(95vw, 680px)',
+                padding: '14px 28px',
+                background: 'rgba(15, 23, 42, 0.65)',
+                border: '1px solid rgba(148, 163, 184, 0.2)',
+                borderRadius: '24px',
+                boxShadow: '0 8px 24px rgba(2, 8, 12, 0.3)'
               }}
             >
-              <span className="ping-wrapper" aria-hidden="true"></span>
-              <span style={{ letterSpacing: '0.16em', textTransform: 'uppercase', color: 'inherit', fontWeight: 600 }}>
-                It's not a production line — we invest our own infrastructure and time into each bespoke pilot to ensure success, so we're limiting Q1 to 5 companies. 2 are running, 3 slots open.
-              </span>
+              <p style={{
+                fontSize: '14px',
+                fontWeight: 600,
+                color: 'rgba(209, 250, 229, 0.95)',
+                lineHeight: 1.6,
+                margin: 0,
+                letterSpacing: '0.01em'
+              }}>
+                It's not a production line — we invest our own infrastructure and time into each bespoke pilot to ensure success, so we're limiting Q1 to 5 companies. <span style={{ color: '#5eead4', fontWeight: 700 }}>2 are running, 3 slots open.</span>
+              </p>
             </div>
 
             {/* Trust Section */}
