@@ -12,7 +12,7 @@ export const generateOrganizationSchema = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Veogrowth",
-    "alternateName": ["VeoGrowth", "Veo Growth"],
+    "alternateName": ["Veogrowth", "Veo Growth"],
     "url": "https://www.veogrowth.com",
     "logo": {
       "@type": "ImageObject",
@@ -76,7 +76,7 @@ export const generateProfessionalServiceSchema = () => {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "VeoGrowth",
+    "name": "Veogrowth",
     "description": "B2B lead generation agency with a pay-per-meeting model where clients only pay for qualified meetings that actually happen.",
     "serviceType": "Lead Generation",
     "priceRange": "$$",

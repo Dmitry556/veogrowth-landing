@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Indexing Progress Monitor for VeoGrowth
+ * Indexing Progress Monitor for Veogrowth
  * 
  * This script monitors the sitemap submission and indexing progress
  * after the recent deployment and sitemap submission.

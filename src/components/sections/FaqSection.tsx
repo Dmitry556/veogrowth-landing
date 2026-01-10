@@ -601,7 +601,7 @@ const FaqSection: React.FC = () => {
                 ].map((ai) => (
                   <a
                     key={ai.name}
-                    href={ai.getUrl(encodeURIComponent("I'm considering VeoGrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?"))}
+                    href={ai.getUrl(encodeURIComponent("I'm considering Veogrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?"))}
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`Ask ${ai.name}`}

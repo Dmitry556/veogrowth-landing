@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-console.log('🔍 VERIFYING INDEXABILITY - VeoGrowth SEO Check');
+console.log('🔍 VERIFYING INDEXABILITY - Veogrowth SEO Check');
 console.log('==============================================');
 
 const routes = [
@@ -45,7 +45,7 @@ function verifyIndexability() {
       // Check for critical SEO elements
       const hasTitle = content.includes('<title>');
       const hasDescription = content.includes('meta name="description"');
-      const hasContent = content.includes('VeoGrowth');
+      const hasContent = content.includes('Veogrowth');
       const hasSchema = content.includes('application/ld+json');
       
       if (hasTitle && hasDescription && hasContent && hasSchema && fileSize > 10000) {

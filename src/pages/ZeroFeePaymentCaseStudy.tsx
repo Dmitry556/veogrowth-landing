@@ -10,12 +10,12 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSq
 const ZeroFeePaymentCaseStudy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Case Study: Zero-Fee Payment Processor - 52 Meetings | VeoGrowth";
+    document.title = "Case Study: Zero-Fee Payment Processor - 52 Meetings | Veogrowth";
   }, []);
 
   const caseStudySchema = generateCaseStudySchema(
     "Zero-Fee Payment Processor: 52 Meetings, $605K Pipeline",
-    "How VeoGrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor by targeting businesses frustrated with hidden fees.",
+    "How Veogrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor by targeting businesses frustrated with hidden fees.",
     "https://www.veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings",
     "2025-06-23"
   );

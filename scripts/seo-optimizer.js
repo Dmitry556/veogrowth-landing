@@ -10,33 +10,33 @@ const __dirname = path.dirname(__filename);
 // SEO data for each route
 const seoData = {
   '/': {
-    title: 'VeoGrowth - AI-Powered B2B Lead Generation | 30+ Meetings Monthly',
+    title: 'Veogrowth - AI-Powered B2B Lead Generation | 30+ Meetings Monthly',
     description: 'Generate 30+ qualified B2B meetings monthly using AI-powered cold email campaigns. Pay only for meetings that show up. $8M+ pipeline generated.',
     canonical: 'https://www.veogrowth.com/'
   },
   '/case-studies': {
-    title: 'Case Studies - VeoGrowth Success Stories | Real Results',
-    description: 'See how VeoGrowth generated $8M+ in pipeline through 150+ successful B2B lead generation campaigns. Real case studies with verified results.',
+    title: 'Case Studies - Veogrowth Success Stories | Real Results',
+    description: 'See how Veogrowth generated $8M+ in pipeline through 150+ successful B2B lead generation campaigns. Real case studies with verified results.',
     canonical: 'https://www.veogrowth.com/case-studies'
   },
   '/case-studies/podcast-whales-25-meetings-6-clients': {
     title: 'Podcast Whales Case Study: 25 Meetings, 6 Clients in 30 Days',
-    description: 'How VeoGrowth helped a podcast booking agency generate 25 qualified meetings and 6 new clients in 30 days using AI-powered outreach.',
+    description: 'How Veogrowth helped a podcast booking agency generate 25 qualified meetings and 6 new clients in 30 days using AI-powered outreach.',
     canonical: 'https://www.veogrowth.com/case-studies/podcast-whales-25-meetings-6-clients'
   },
   '/case-studies/zero-fee-payment-processor-52-meetings': {
     title: 'Zero-Fee Payment Processor: 52 Meetings, $605K Pipeline',
-    description: 'How VeoGrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor using targeted cold email campaigns.',
+    description: 'How Veogrowth generated 52 qualified meetings and $605K in pipeline for a zero-fee payment processor using targeted cold email campaigns.',
     canonical: 'https://www.veogrowth.com/case-studies/zero-fee-payment-processor-52-meetings'
   },
   '/case-studies/api-monitoring-platform-56-meetings': {
     title: 'API Monitoring Platform: 56 Meetings in 90 Days | $554K Pipeline',
-    description: 'How VeoGrowth helped an API monitoring platform generate 56 meetings with engineering decision-makers and $554K in pipeline.',
+    description: 'How Veogrowth helped an API monitoring platform generate 56 meetings with engineering decision-makers and $554K in pipeline.',
     canonical: 'https://www.veogrowth.com/case-studies/api-monitoring-platform-56-meetings'
   },
   '/blog': {
-    title: 'B2B Cold Email Blog - VeoGrowth Strategy & Tips',
-    description: 'Learn proven B2B cold email strategies, tactics, and insights from VeoGrowth experts. Real-world examples and actionable tips.',
+    title: 'B2B Cold Email Blog - Veogrowth Strategy & Tips',
+    description: 'Learn proven B2B cold email strategies, tactics, and insights from Veogrowth experts. Real-world examples and actionable tips.',
     canonical: 'https://www.veogrowth.com/blog'
   },
   '/blog/poke-the-bear-questions-that-get-replies': {
@@ -50,27 +50,27 @@ const seoData = {
     canonical: 'https://www.veogrowth.com/blog/competitor-lookalike-insights-using-public-data'
   },
   '/blog/cold-email-campaign-that-actually-works': {
-    title: 'Cold Email Campaign That Actually Works | VeoGrowth Strategy',
+    title: 'Cold Email Campaign That Actually Works | Veogrowth Strategy',
     description: 'The exact cold email campaign framework that generates 30+ meetings monthly. Real examples and step-by-step implementation.',
     canonical: 'https://www.veogrowth.com/blog/cold-email-campaign-that-actually-works'
   },
   '/about': {
-    title: 'About VeoGrowth - AI-Powered B2B Lead Generation Experts',
-    description: 'Learn about VeoGrowth, the B2B lead generation agency that has generated $8M+ in pipeline for 150+ clients using AI-powered cold email.',
+    title: 'About Veogrowth - AI-Powered B2B Lead Generation Experts',
+    description: 'Learn about Veogrowth, the B2B lead generation agency that has generated $8M+ in pipeline for 150+ clients using AI-powered cold email.',
     canonical: 'https://www.veogrowth.com/about'
   },
   '/tech-stack': {
-    title: 'Tech Stack - VeoGrowth B2B Lead Generation Technology',
-    description: 'Explore the technology stack behind VeoGrowth\'s AI-powered B2B lead generation platform. Tools, integrations, and infrastructure.',
+    title: 'Tech Stack - Veogrowth B2B Lead Generation Technology',
+    description: 'Explore the technology stack behind Veogrowth\'s AI-powered B2B lead generation platform. Tools, integrations, and infrastructure.',
     canonical: 'https://www.veogrowth.com/tech-stack'
   },
   '/resources/true-cost-of-sdr': {
-    title: 'True Cost of SDR Whitepaper - VeoGrowth vs In-House SDR',
-    description: 'Calculate the real cost of hiring SDRs vs VeoGrowth\'s AI-powered lead generation. Comprehensive cost analysis and ROI comparison.',
+    title: 'True Cost of SDR Whitepaper - Veogrowth vs In-House SDR',
+    description: 'Calculate the real cost of hiring SDRs vs Veogrowth\'s AI-powered lead generation. Comprehensive cost analysis and ROI comparison.',
     canonical: 'https://www.veogrowth.com/resources/true-cost-of-sdr'
   },
   '/tools/microsoft-filter': {
-    title: 'Microsoft Email Filter Tool - VeoGrowth Free B2B Tool',
+    title: 'Microsoft Email Filter Tool - Veogrowth Free B2B Tool',
     description: 'Free tool to identify and filter Microsoft email addresses for better B2B cold email deliverability. Instant results.',
     canonical: 'https://www.veogrowth.com/tools/microsoft-filter'
   }

@@ -23,7 +23,7 @@ const About = () => {
         <div className="container mx-auto px-6">
           {/* Header Section */}
           <div className="max-w-3xl mx-auto mb-20 text-center">
-            <h1 className="text-h1 font-bold mb-6 tracking-tight">About VeoGrowth</h1>
+            <h1 className="text-h1 font-bold mb-6 tracking-tight">About Veogrowth</h1>
             <div className="h-1 w-20 bg-gradient-primary mx-auto mb-8 rounded-full"></div>
             <p className="text-body-large text-white/80 max-w-2xl mx-auto">
               Building scalable and predictable B2B pipeline growth systems with AI-driven strategies
@@ -41,7 +41,7 @@ const About = () => {
               </div>
               <div className="ml-16">
                 <p className="text-body text-white/80 mb-6 leading-relaxed">
-                  VeoGrowth is dedicated to helping B2B SaaS companies achieve scalable and predictable sales pipeline growth. 
+                  Veogrowth is dedicated to helping B2B SaaS companies achieve scalable and predictable sales pipeline growth. 
                   We leverage advanced AI, data-driven strategies, and a highly personalized approach to cold outbound, 
                   ensuring you connect with your ideal prospects effectively.
                 </p>
@@ -63,10 +63,10 @@ const About = () => {
               </div>
               <div className="ml-16">
                 <p className="text-body text-white/80 mb-6 leading-relaxed">
-                  Dmitry Pinchuk, founder of VeoGrowth, is a specialist in AI-driven Go-To-Market strategies. 
+                  Dmitry Pinchuk, founder of Veogrowth, is a specialist in AI-driven Go-To-Market strategies. 
                   With a strong background in successfully scaling sales operations and generating over 500 qualified leads 
                   monthly at Novaly (acquired), and now pioneering performance-based, AI-driven cold outbound systems 
-                  with VeoGrowth, Dmitry is passionate about building efficient outbound systems that deliver tangible results.
+                  with Veogrowth, Dmitry is passionate about building efficient outbound systems that deliver tangible results.
                 </p>
                 <a 
                   href="https://www.linkedin.com/in/dmitrypinchuk" 
@@ -84,7 +84,7 @@ const About = () => {
           {/* Why Partner Section */}
           <section className="mb-24">
             <div className="glass-card p-10 rounded-2xl">
-              <h2 className="text-h2 font-bold mb-10 tracking-tight">Why Partner with VeoGrowth?</h2>
+              <h2 className="text-h2 font-bold mb-10 tracking-tight">Why Partner with Veogrowth?</h2>
               
               <ul className="space-y-8">
                 <li className="flex">
@@ -143,7 +143,7 @@ const About = () => {
           <section className="text-center max-w-2xl mx-auto">
             <h2 className="text-h2 font-bold mb-6 tracking-tight">Get in Touch</h2>
             <p className="text-body text-white/80 mb-10 leading-relaxed">
-              Ready to see how VeoGrowth can transform your outbound sales?
+              Ready to see how Veogrowth can transform your outbound sales?
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">

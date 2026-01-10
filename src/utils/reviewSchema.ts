@@ -16,12 +16,12 @@ export const generateCaseStudySchema = (
     "url": url,
     "author": {
       "@type": "Organization",
-      "name": "VeoGrowth",
+      "name": "Veogrowth",
       "url": "https://www.veogrowth.com"
     },
     "publisher": {
       "@type": "Organization", 
-      "name": "VeoGrowth",
+      "name": "Veogrowth",
       "url": "https://www.veogrowth.com"
     },
     "datePublished": datePublished,
@@ -37,7 +37,7 @@ export const generateCaseStudySchema = (
       "serviceType": "Marketing",
       "provider": {
         "@type": "Organization",
-        "name": "VeoGrowth"
+        "name": "Veogrowth"
       }
     }
   };

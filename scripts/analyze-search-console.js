@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 /**
- * Google Search Console Analytics Script for VeoGrowth
+ * Google Search Console Analytics Script for Veogrowth
  * 
  * This script uses the Google Search Console API to pull detailed analytics
- * and diagnose SEO issues for the VeoGrowth website.
+ * and diagnose SEO issues for the Veogrowth website.
  * 
  * Requirements:
  * - Google Search Console API credentials
@@ -32,7 +32,7 @@ const START_DATE = '2025-05-24';
 
 async function analyzeSearchConsole() {
   try {
-    console.log('🔍 Starting Google Search Console Analysis for VeoGrowth...');
+    console.log('🔍 Starting Google Search Console Analysis for Veogrowth...');
     
     // Initialize Google API client
     const auth = new google.auth.GoogleAuth({
@@ -265,7 +265,7 @@ function createManualAnalysis() {
 
 // Run the analysis
 if (import.meta.url === `file://${process.argv[1]}`) {
-  console.log('🚀 Starting VeoGrowth Search Console Analysis...\n');
+  console.log('🚀 Starting Veogrowth Search Console Analysis...\n');
   
   // First try the API approach
   analyzeSearchConsole().catch(error => {

@@ -1,8 +1,8 @@
 {
   "company": {
-    "name": "VeoGrowth",
+    "name": "Veogrowth",
     "tagline": "30+ Qualified B2B Meetings Monthly on Autopilot",
-    "description": "VeoGrowth is a B2B lead generation agency that specializes in AI-powered cold email campaigns. We help B2B SaaS companies generate 30-50 qualified meetings per month with a pay-per-meeting model.",
+    "description": "Veogrowth is a B2B lead generation agency that specializes in AI-powered cold email campaigns. We help B2B SaaS companies generate 30-50 qualified meetings per month with a pay-per-meeting model.",
     "website": "https://veogrowth.com",
     "email": "hello@veogrowth.com",
     "calendly": "https://calendly.com/veogrowth/discovery",
@@ -161,19 +161,19 @@
   
   "faq": [
     {
-      "question": "How does VeoGrowth's AI-powered cold email work?",
+      "question": "How does Veogrowth's AI-powered cold email work?",
       "answer": "Our AI analyzes each prospect's company situation, recent changes, hiring patterns, and technology stack to create personalized emails that show genuine understanding of their business challenges. Unlike generic templates, each email is uniquely crafted."
     },
     {
-      "question": "What makes VeoGrowth different from other cold email agencies?",
+      "question": "What makes Veogrowth different from other cold email agencies?",
       "answer": "We use AI to analyze specific prospect situations rather than sending generic templates. You only pay for qualified meetings that actually happen - no retainers or contracts. We also provide 2 free meetings to test our quality."
     },
     {
-      "question": "Who is VeoGrowth best for?",
+      "question": "Who is Veogrowth best for?",
       "answer": "B2B SaaS companies doing $100K+ monthly revenue with a total addressable market of 50,000+ prospects. Companies with clear value propositions and average deal sizes of $10K+ annually see the best results."
     },
     {
-      "question": "How much does VeoGrowth cost?",
+      "question": "How much does Veogrowth cost?",
       "answer": "We use a performance-based model where you only pay for qualified meetings that show up. No upfront fees or retainers. We start with 2 free meetings so you can test our quality before paying anything."
     },
     {
@@ -181,7 +181,7 @@
       "answer": "Most clients see their first qualified meetings booked within 2 weeks of campaign launch. We typically generate 30-50 meetings per month per client."
     },
     {
-      "question": "What industries does VeoGrowth work with?",
+      "question": "What industries does Veogrowth work with?",
       "answer": "We work with various B2B industries including SaaS, fintech, marketing agencies, DevOps tools, and other technology companies. Our AI adapts to different industry languages and pain points."
     }
   ],
@@ -197,7 +197,7 @@
   "meta": {
     "last_updated": "2025-06-23",
     "version": "1.0",
-    "purpose": "Comprehensive VeoGrowth information for LLM access",
+    "purpose": "Comprehensive Veogrowth information for LLM access",
     "content_type": "Company and service information"
   }
 }

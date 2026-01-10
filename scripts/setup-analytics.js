@@ -70,7 +70,7 @@ function generateSetupUrls() {
 
 // Run the setup
 if (require.main === module) {
-  console.log('📊 VeoGrowth Analytics Setup');
+  console.log('📊 Veogrowth Analytics Setup');
   console.log('============================\n');
   
   // For now, just show manual setup info

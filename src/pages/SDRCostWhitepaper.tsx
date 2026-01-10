@@ -27,11 +27,11 @@ const SchemaMarkup = () => {
           "description": "Most companies dramatically underestimate what their SDR program actually costs. The fully-loaded cost of an in-house SDR ranges from $110,000 to nearly $200,000 annually.",
           "author": {
             "@type": "Organization",
-            "name": "VeoGrowth"
+            "name": "Veogrowth"
           },
           "publisher": {
             "@type": "Organization",
-            "name": "VeoGrowth",
+            "name": "Veogrowth",
             "logo": {
               "@type": "ImageObject",
               "url": "https://veogrowth.com/logo.png"
@@ -110,7 +110,7 @@ const SDRCostWhitepaper = () => {
     <>
       <CanonicalUrl path="/resources/true-cost-of-sdr" />
       <Helmet>
-        <title>The True Cost of an SDR: What Sales Leaders Actually Pay in 2025 | VeoGrowth</title>
+        <title>The True Cost of an SDR: What Sales Leaders Actually Pay in 2025 | Veogrowth</title>
         <meta name="description" content="Most companies dramatically underestimate what their SDR program actually costs. The fully-loaded cost of an in-house SDR ranges from $110,000 to nearly $200,000 annually." />
         <meta name="robots" content="index, follow" />
       </Helmet>

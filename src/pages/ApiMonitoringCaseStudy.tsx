@@ -10,12 +10,12 @@ import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSq
 const ApiMonitoringCaseStudy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Case Study: API Monitoring Platform - 56 Meetings | VeoGrowth";
+    document.title = "Case Study: API Monitoring Platform - 56 Meetings | Veogrowth";
   }, []);
 
   const caseStudySchema = generateCaseStudySchema(
     "API Monitoring Platform: 56 Meetings in 90 Days",
-    "How VeoGrowth generated 56 qualified meetings with engineering leaders and $554K in pipeline using technical credibility and characteristic-based qualification.",
+    "How Veogrowth generated 56 qualified meetings with engineering leaders and $554K in pipeline using technical credibility and characteristic-based qualification.",
     "https://www.veogrowth.com/case-studies/api-monitoring-platform-56-meetings",
     "2025-06-23"
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AI_PROMPT = encodeURIComponent(
-    `I'm considering VeoGrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):
+    `I'm considering Veogrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):
 - How does the pay-per-meeting model work?
 - What are the actual pricing numbers?
 - What's the pilot/trial offer?
