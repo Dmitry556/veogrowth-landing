@@ -459,7 +459,7 @@ const HeroSection: React.FC = () => {
                   window.open('https://calendly.com/veogrowth/discovery', '_blank');
                 }}
               >
-                <span className="hero-cta__label">Start Your 2 Free Sales Meetings Pilot</span>
+                <span className="hero-cta__label">Apply For Your 2 Free Sales Meetings Pilot</span>
                 <span className="hero-cta__arrow" aria-hidden="true">➜</span>
               </button>
               <div className="hero-element" style={{ marginTop: '-4px', width: '100%' }}>

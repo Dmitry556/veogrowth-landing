@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                 'linear-gradient(145deg, rgba(13, 110, 90, 0.9) 0%, rgba(12, 90, 78, 0.92) 55%, rgba(9, 71, 63, 0.94) 100%)';
             }}
           >
-            <span style={{ flex: 1, textAlign: 'left' }}>Start Your 2 Free Sales Meetings Pilot</span>
+            <span style={{ flex: 1, textAlign: 'left' }}>Apply For Your 2 Free Sales Meetings Pilot</span>
             <span
               aria-hidden="true"
               style={{
