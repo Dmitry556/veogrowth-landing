@@ -449,6 +449,35 @@ const HeroSection: React.FC = () => {
               />
             </div>
 
+            {/* Bonus Value Prop */}
+            <div
+              className="hero-element"
+              style={{
+                textAlign: 'center',
+                margin: '0 auto 24px',
+                maxWidth: '520px'
+              }}
+            >
+              <p style={{
+                fontSize: '16px',
+                fontWeight: 600,
+                color: '#5eead4',
+                margin: '0 0 6px 0',
+                letterSpacing: '-0.01em'
+              }}>
+                <span style={{ fontWeight: 700 }}>BONUS</span> We'll pay your reps $500 for every deal closed from our leads.
+              </p>
+              <p style={{
+                fontSize: '14px',
+                fontWeight: 400,
+                color: 'rgba(229, 231, 235, 0.75)',
+                margin: 0,
+                fontStyle: 'italic'
+              }}>
+                (We want to be the most profitable source in your CRM.)
+              </p>
+            </div>
+
             {/* CTA */}
             <div className="hero-element" style={{ margin: 'clamp(20px, 5vw, 32px) auto clamp(32px, 6vw, 44px)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(14px, 4vw, 18px)' }}>
               <button
