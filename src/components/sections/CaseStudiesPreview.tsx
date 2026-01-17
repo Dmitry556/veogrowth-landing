@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { trackCaseStudyClick } from '@/utils/analytics';
 
 const CaseStudiesPreview: React.FC = () => {
   const featuredCaseStudies = [
@@ -107,7 +108,7 @@ const CaseStudiesPreview: React.FC = () => {
         }} />
       </div>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)', position: 'relative', zIndex: 1 }}>
-        
+
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 9vw, 72px)' }}>
           <div style={{
@@ -142,9 +143,9 @@ const CaseStudiesPreview: React.FC = () => {
         </div>
 
         {/* Case Studies - Single Row */}
-        <div 
+        <div
           className="case-studies-scroll"
-          style={{ 
+          style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: 'clamp(20px, 5vw, 32px)',
@@ -176,6 +177,7 @@ const CaseStudiesPreview: React.FC = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
                 e.currentTarget.style.borderColor = 'rgba(45, 212, 191, 0.12)';
               }}
+              onClick={() => trackCaseStudyClick(study.id, study.title)}
             >
               <div style={{ marginBottom: '24px' }}>
                 <div style={{
@@ -194,7 +196,7 @@ const CaseStudiesPreview: React.FC = () => {
                 }}>
                   {study.industry}
                 </div>
-                
+
                 <h3 style={{
                   fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                   fontSize: '18px',
@@ -205,7 +207,7 @@ const CaseStudiesPreview: React.FC = () => {
                 }}>
                   {study.title}
                 </h3>
-                
+
                 <p style={{
                   fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                   color: 'rgba(204, 228, 241, 0.78)',
@@ -217,7 +219,7 @@ const CaseStudiesPreview: React.FC = () => {
                   {study.preview}
                 </p>
               </div>
-              
+
               {/* Results Metrics */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: 'clamp(12px, 3vw, 16px)', marginBottom: '20px' }}>
                 <div style={{
@@ -246,7 +248,7 @@ const CaseStudiesPreview: React.FC = () => {
                     Meetings
                   </div>
                 </div>
-                
+
                 <div style={{
                   background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',
@@ -273,7 +275,7 @@ const CaseStudiesPreview: React.FC = () => {
                     Pipeline
                   </div>
                 </div>
-                
+
                 <div style={{
                   background: 'rgba(15, 23, 42, 0.6)',
                   borderRadius: '8px',
@@ -301,7 +303,7 @@ const CaseStudiesPreview: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Tags */}
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
                 {study.tags.map((tag, tagIndex) => (
@@ -324,7 +326,7 @@ const CaseStudiesPreview: React.FC = () => {
                   </span>
                 ))}
               </div>
-              
+
               {/* Read More Link */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span style={{
@@ -340,7 +342,7 @@ const CaseStudiesPreview: React.FC = () => {
             </Link>
           ))}
         </div>
-        
+
       </div>
     </section>
   );

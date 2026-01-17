@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { trackFaqOpen, trackAskAiClick } from '@/utils/analytics';
 
 type FaqContent =
   | { type: 'paragraph'; content: string }
@@ -483,9 +484,16 @@ const faqSections: FaqSectionData[] = [
 
 const FaqSection: React.FC = () => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const [currentSection, setCurrentSection] = useState<string>('');
 
-  const toggleFaq = (index: number) => {
+  const toggleFaq = (index: number, question: string, section: string) => {
+    const isOpening = !openIndexes.includes(index);
     setOpenIndexes(prev => (prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]));
+
+    // Track FAQ opens (not closes)
+    if (isOpening) {
+      trackFaqOpen(question, section);
+    }
   };
 
   let globalFaqIndex = -1;
@@ -697,7 +705,7 @@ const FaqSection: React.FC = () => {
                         }}
                       >
                         <button
-                          onClick={() => toggleFaq(currentIndex)}
+                          onClick={() => toggleFaq(currentIndex, faq.question, section.title)}
                           style={{
                             width: '100%',
                             padding: 'clamp(14px, 4.2vw, 20px) clamp(14px, 4.2vw, 24px)',

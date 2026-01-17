@@ -10,6 +10,7 @@ import ResultsSection from '@/components/sections/ResultsSection';
 import FaqSection from '@/components/sections/FaqSection';
 import CaseStudiesPreview from '@/components/sections/CaseStudiesPreview';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
+import { initTimeOnPageTracking, trackSectionView } from '@/utils/analytics';
 
 // More efficient section loader
 const SectionLoader = () => (
@@ -123,6 +124,9 @@ const Index = () => {
       }
     `;
     document.head.appendChild(style);
+
+    // Initialize time on page tracking
+    initTimeOnPageTracking();
 
     return () => {
       document.head.removeChild(style);

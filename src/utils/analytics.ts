@@ -110,3 +110,71 @@ export const trackFormSubmit = (formName: string) => {
     event_label: formName,
   });
 };
+
+// Track FAQ accordion opens
+export const trackFaqOpen = (question: string, section: string) => {
+  trackEvent('faq_open', {
+    event_category: 'engagement',
+    event_label: question,
+    faq_section: section,
+  });
+};
+
+// Track case study clicks from preview
+export const trackCaseStudyClick = (caseStudyId: string, caseStudyTitle: string) => {
+  trackEvent('case_study_click', {
+    event_category: 'engagement',
+    event_label: caseStudyTitle,
+    case_study_id: caseStudyId,
+  });
+};
+
+// Track section views (when section comes into viewport)
+export const trackSectionView = (sectionId: string) => {
+  trackEvent('section_view', {
+    event_category: 'engagement',
+    event_label: sectionId,
+  });
+};
+
+// Track time on page thresholds (30s, 60s, 120s)
+let timeThresholdsTracked: number[] = [];
+
+export const initTimeOnPageTracking = () => {
+  const thresholds = [30, 60, 120, 180, 300]; // seconds
+
+  thresholds.forEach((seconds) => {
+    setTimeout(() => {
+      if (!timeThresholdsTracked.includes(seconds) && !document.hidden) {
+        timeThresholdsTracked.push(seconds);
+        trackEvent('time_on_page', {
+          event_category: 'engagement',
+          event_label: `${seconds}s`,
+          value: seconds,
+        });
+      }
+    }, seconds * 1000);
+  });
+};
+
+// Reset time tracking (for SPA navigation)
+export const resetTimeTracking = () => {
+  timeThresholdsTracked = [];
+};
+
+// Track AI link clicks in FAQ
+export const trackAskAiClick = (aiName: string) => {
+  trackEvent('ask_ai_click', {
+    event_category: 'engagement',
+    event_label: aiName,
+  });
+};
+
+// Track outbound link clicks
+export const trackOutboundClick = (url: string, linkText: string) => {
+  trackEvent('outbound_click', {
+    event_category: 'engagement',
+    event_label: linkText,
+    outbound_url: url,
+  });
+};
