@@ -139,7 +139,7 @@ const faqSections: FaqSectionData[] = [
           {
             type: 'paragraph',
             content:
-              `The setup fee is determined during the scoping call based on your TAM size and complexity. We'll give you the exact number before you commit to anything. The estimate is that it's between $1-2K.`
+              `The setup fee is determined during the scoping call based on your TAM size and complexity. We'll give you the exact number before you commit to anything. The estimate is that it's between $3-5K.`
           }
         ]
       },
