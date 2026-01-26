@@ -514,7 +514,7 @@ const GrowthProcessSection: React.FC = () => {
                     fontWeight: 600,
                     fontFamily: "'Inter', sans-serif"
                   }}>
-                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($1-3k) to build the full outreach infrastructure.
+                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5k) to build the full outreach infrastructure.
                   </p>
                 </div>
               </div>
