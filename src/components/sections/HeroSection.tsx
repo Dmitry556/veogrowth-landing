@@ -71,6 +71,24 @@ const HeroSection: React.FC = () => {
             filter: blur(0px); 
             transform: translateY(0); 
           }
+          .loaded .hero-element:nth-child(6) { 
+            transition-delay: 0.6s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(7) { 
+            transition-delay: 0.7s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
+          .loaded .hero-element:nth-child(n+8) { 
+            transition-delay: 0.8s; 
+            opacity: 1; 
+            filter: blur(0px); 
+            transform: translateY(0); 
+          }
 
           .hero-headline-primary {
             display: inline-block;
