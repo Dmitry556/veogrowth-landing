@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilot Plan – VeoGrowth x SelectHub Studios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+            background: #fff;
+            color: #1d1d1f;
+            line-height: 1.65;
+            font-weight: 400;
+        }
+
+        ::selection {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .header-brand {
+            font-size: 12px;
+            font-weight: 500;
+            color: #86868b;
+            letter-spacing: 0.01em;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 140px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            line-height: 1.1;
+        }
+
+        .intro {
+            font-size: 19px;
+            color: #424245;
+            margin-bottom: 72px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin: 72px 0 32px;
+            color: #86868b;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 48px 0 16px;
+            color: #1d1d1f;
+            line-height: 1.25;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        /* Phase list */
+        .phases {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .phase {
+            margin-bottom: 32px;
+        }
+
+        .phase-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 6px;
+        }
+
+        .phase-title span {
+            font-weight: 400;
+            color: #86868b;
+            margin-left: 8px;
+        }
+
+        .phase ul {
+            margin: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .phase li {
+            color: #424245;
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .phase li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: #86868b;
+        }
+
+        /* Callout */
+        .callout {
+            margin: 48px 0;
+            padding: 28px 0;
+            border-top: 1px solid #d2d2d7;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .callout-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #86868b;
+            margin-bottom: 16px;
+        }
+
+        .callout p {
+            font-size: 16px;
+            color: #424245;
+            margin-bottom: 12px;
+        }
+
+        .callout-highlight {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 20px 0 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        th {
+            text-align: left;
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: #86868b;
+            padding: 0 0 12px;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        td {
+            padding: 14px 0;
+            border-bottom: 1px solid #f5f5f7;
+            color: #1d1d1f;
+            vertical-align: baseline;
+        }
+
+        td:first-child {
+            color: #424245;
+            padding-right: 24px;
+        }
+
+        .muted {
+            color: #86868b;
+        }
+
+        /* Qualification */
+        .qual-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .qual-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #424245;
+            font-size: 16px;
+        }
+
+        .qual-list .icon {
+            flex-shrink: 0;
+            width: 20px;
+            text-align: center;
+        }
+
+        .qual-list .yes { color: #34c759; }
+        .qual-list .no { color: #d2d2d7; }
+
+        /* Note block */
+        .note {
+            margin: 40px 0;
+            font-size: 16px;
+            color: #424245;
+            line-height: 1.6;
+        }
+
+        .note p {
+            margin-bottom: 16px;
+        }
+
+        .note strong {
+            color: #1d1d1f;
+        }
+
+        /* Philosophy list */
+        .philosophy {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .philosophy li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+            color: #424245;
+        }
+
+        .philosophy li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #86868b;
+        }
+
+        /* Email examples */
+        .email-section {
+            margin: 56px 0;
+        }
+
+        .email-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #86868b;
+            margin-bottom: 8px;
+        }
+
+        .email-desc {
+            font-size: 15px;
+            color: #424245;
+            margin-bottom: 24px;
+        }
+
+        .email-card {
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .email-header {
+            padding: 16px 20px;
+            background: #f5f5f7;
+            border-bottom: 1px solid #d2d2d7;
+            font-size: 13px;
+        }
+
+        .email-header-row {
+            display: flex;
+            margin-bottom: 6px;
+        }
+
+        .email-header-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .email-header-label {
+            color: #86868b;
+            width: 60px;
+            flex-shrink: 0;
+        }
+
+        .email-header-value {
+            color: #1d1d1f;
+        }
+
+        .email-header-value.subject {
+            font-weight: 500;
+        }
+
+        .email-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #86868b;
+            background: #fff;
+            border: 1px solid #d2d2d7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 12px;
+        }
+
+        .email-body {
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #1d1d1f;
+        }
+
+        .email-body .content {
+            white-space: pre-wrap;
+        }
+
+        .email-body .sig {
+            margin-top: 24px;
+            color: #1d1d1f;
+            font-size: 13px;
+        }
+
+        .email-body .ps {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #1d1d1f;
+        }
+
+        /* Raw template display */
+        .template-raw {
+            margin: 24px 0;
+            padding: 24px;
+            background: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            color: #333;
+        }
+
+        .template-raw .var {
+            color: #0066cc;
+            font-weight: 500;
+        }
+
+        .template-note {
+            margin: 24px 0;
+            font-size: 15px;
+            color: #424245;
+        }
+
+        /* Prospects */
+        .prospects-section {
+            margin-top: 72px;
+        }
+
+        .prospects-count {
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 24px;
+        }
+
+        .prospects-wrapper {
+            height: 480px;
+            overflow-y: auto;
+            border: 1px solid #d2d2d7;
+            border-radius: 24px;
+        }
+
+        .prospects-table {
+            font-size: 14px;
+        }
+
+        .prospects-table th {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            box-shadow: 0 1px 0 #d2d2d7;
+        }
+
+        .prospects-table th:first-child {
+            border-top-left-radius: 23px;
+            padding-left: 20px;
+        }
+
+        .prospects-table th:last-child {
+            border-top-right-radius: 23px;
+        }
+
+        .prospects-table .num {
+            color: #86868b;
+            width: 32px;
+            padding-left: 20px;
+        }
+
+        .prospects-table .company-cell {
+            font-weight: 500;
+        }
+
+        .prospects-table .company-url {
+            font-weight: 400;
+            color: #0066cc;
+            font-size: 13px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .prospects-table .company-url:hover {
+            text-decoration: underline;
+        }
+
+        .prospects-table .title-cell {
+            color: #86868b;
+            font-size: 13px;
+        }
+
+        .prospects-table .fit-cell {
+            color: #86868b;
+            font-size: 13px;
+            max-width: 220px;
+            line-height: 1.4;
+        }
+
+        /* Action box */
+        .action-box {
+            margin: 56px 0;
+            padding: 32px;
+            background: #1d1d1f;
+            color: #fff;
+        }
+
+        .action-box h3 {
+            color: #fff;
+            margin: 0 0 20px;
+            font-size: 18px;
+        }
+
+        .action-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .action-box li {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .action-box strong {
+            color: #fff;
+        }
+
+        /* Closing */
+        .closing {
+            margin-top: 72px;
+        }
+
+        .closing p {
+            color: #424245;
+            margin-bottom: 16px;
+        }
+
+        .closing .sign {
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-top: 32px;
+        }
+
+        /* Sidebar navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            padding: 80px 20px 40px;
+            border-right: 1px solid #f0f0f0;
+            background: #fafafa;
+            overflow-y: auto;
+        }
+
+        .sidebar-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #86868b;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 4px;
+        }
+
+        .sidebar-list a {
+            display: block;
+            font-size: 13px;
+            color: #424245;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .sidebar-list a:hover {
+            background: #e8e8e8;
+            color: #1d1d1f;
+        }
+
+        .sidebar-list a.active {
+            background: #1d1d1f;
+            color: #fff;
+        }
+
+        /* Adjust layout for sidebar */
+        .header-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 24px 0 224px;
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 48px 24px 140px 224px;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                display: none;
+            }
+
+            .header-inner {
+                padding: 0 24px;
+            }
+
+            .container {
+                max-width: 680px;
+                padding: 48px 24px 140px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .container { padding: 32px 20px 100px; }
+            h1 { font-size: 32px; }
+            h2 { margin: 56px 0 24px; }
+            .email-body { padding: 20px; }
+            .prospects-table .fit-cell { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-label">Outline</div>
+        <ul class="sidebar-list">
+            <li><a href="#pilot-structure">Pilot Structure</a></li>
+            <li><a href="#targeting">Targeting</a></li>
+            <li><a href="#campaign">Campaign Approach</a></li>
+            <li><a href="#email-templates">Email Templates</a></li>
+            <li><a href="#emails">Personalized Examples</a></li>
+            <li><a href="#prospects">Sample Prospects</a></li>
+            <li><a href="#next-steps">Next Steps</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-brand">VeoGrowth × SelectHub Studios</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Pilot Plan</h1>
+        <p class="intro">Hey Devon, Taylor — here's the campaign plan we discussed. Targeting strategy, email approach, and examples showing what we'll send to your prospects.</p>
+
+        <h2 id="pilot-structure">Pilot Structure</h2>
+
+        <div class="phases">
+            <div class="phase">
+                <div class="phase-title">Free Pilot <span>Phase 1</span></div>
+                <ul>
+                    <li>2 qualified meetings booked at no cost</li>
+                    <li>Goal: prove meeting quality and list accuracy</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-title">Extended Pilot <span>Phase 2</span></div>
+                <ul>
+                    <li>Meetings 3, 4, 5: $450 each ($1,350 total)</li>
+                    <li>No setup fee yet</li>
+                    <li>Goal: give exec team enough data to see a close</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-title">Ongoing <span>Phase 3</span></div>
+                <ul>
+                    <li>Setup fee: $2,000 (one-time)</li>
+                    <li>Per qualified meeting: $450</li>
+                    <li>Qualified = Director+ marketing leader at B2B software company, shows up, engages on AI Overviews / video ranking</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="callout">
+            <div class="callout-label">Back of Napkin ROI Math</div>
+            <p>At $11.8K average deal, even at a conservative 1-in-5 close rate from cold outbound:</p>
+            <p>5 meetings × $450 = $2,250 + $2,000 setup = <strong>$4,250 total cost</strong><br>
+            1 closed deal = <strong>$11,800 revenue</strong></p>
+            <p class="callout-highlight">That's about 36% CAC. Reasonable for a new channel.</p>
+            <p class="muted" style="margin-top: 16px; font-size: 15px;">If close rate improves to 2-in-5 as you refine the pitch: $4,250 ÷ $23,600 = 18% CAC.</p>
+        </div>
+
+        <h2 id="targeting">Targeting</h2>
+
+        <h3>Company Profile</h3>
+        <table>
+            <tr><td>Company type</td><td>B2B SaaS / Software</td></tr>
+            <tr><td>Headcount</td><td>100–500 employees</td></tr>
+            <tr><td>Location</td><td>US (primary), Canada (secondary)</td></tr>
+            <tr><td class="muted">Exclude</td><td class="muted">Agencies, consultancies, hardware, marketplaces</td></tr>
+            <tr><td class="muted">Exclude</td><td class="muted">Dev tools selling only to engineers</td></tr>
+            <tr><td class="muted">Exclude</td><td class="muted">Category leaders (Salesforce, HubSpot, Workday tier)</td></tr>
+        </table>
+
+        <h3>Key Qualification</h3>
+        <p><strong>The core question:</strong> Do their buyers google before purchasing?</p>
+
+        <ul class="qual-list">
+            <li><span class="icon yes">✓</span> Software selling to desk-job personas (marketing, sales, HR, finance, ops)</li>
+            <li><span class="icon yes">✓</span> Challenger brand competing against bigger players</li>
+            <li><span class="icon no">✗</span> Sells to field workers, restaurants, dealerships (trade show buyers)</li>
+            <li><span class="icon no">✗</span> Enterprise-only / RFP-driven procurement</li>
+        </ul>
+
+        <h3>Persona</h3>
+        <table>
+            <thead><tr><th>Title</th><th>Why</th></tr></thead>
+            <tbody>
+                <tr><td>VP Marketing</td><td>Owns traffic, pipeline, has budget</td></tr>
+                <tr><td>Head of Marketing</td><td>Same</td></tr>
+                <tr><td>Director of Marketing</td><td>Decision maker at this company size</td></tr>
+                <tr><td>VP Demand Gen</td><td>Owns lead flow, cares about channels</td></tr>
+                <tr><td>Head of Growth</td><td>Owns acquisition channels</td></tr>
+                <tr><td>CMO</td><td>At 100–300 employee companies only</td></tr>
+            </tbody>
+        </table>
+
+        <h2 id="campaign">Campaign Approach</h2>
+
+        <div class="note">
+            <p><strong>This pilot: one campaign idea, tested properly.</strong></p>
+            <p>Based on market research and what's already working for you (category-specific + "you're not showing up" personalization), this is the angle most likely to resonate.</p>
+            <p>We'll send to ~1,000 prospects with minor variations (subject lines, CTAs, sentence order) swapped out for deliverability. These don't impact conversion – the core message is what matters. That's what we're testing.</p>
+            <p class="muted">If it flops, we develop a new angle. Could be category takeover pitch, different pain framing, or different proof points. But no point testing 5 angles poorly. Better to test one angle properly, get data, iterate.</p>
+        </div>
+
+        <h2 id="email-templates">Email Templates</h2>
+
+        <h3>Philosophy</h3>
+        <ul class="philosophy">
+            <li>Open with specific question about their search term</li>
+            <li>Explain mechanism simply (analysts review on your channel, Google sources from it)</li>
+            <li>Personalized video idea based on their positioning</li>
+            <li>Proof in PS, not body</li>
+            <li>No links (deliverability)</li>
+            <li>No accusations ("you're losing traffic")</li>
+        </ul>
+
+        <p class="template-note">Subject lines, CTAs, and micro-wording get swapped out for deliverability. These don't impact conversion – the core message is what matters. That's what we're testing.</p>
+
+        <h3>Raw Templates</h3>
+
+        <div class="email-section">
+            <div class="email-label">Template A: Single Video Idea</div>
+            <div class="email-desc">Lighter pitch. One idea + alternative. Lower friction.</div>
+            <div class="template-raw"><span class="var">{{FirstName}}</span> - what's your plan for showing up in Google's AI Overviews for "<span class="var">{{SearchTerm}}</span>" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+For <span class="var">{{Company}}</span>, I'm thinking "<span class="var">{{VideoIdea}}</span>." <span class="var">{{AltOption}}</span>
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.
+
+Best,
+<span class="var">{{SenderName}}</span> | Growth @SelectHub Studios
+
+PS: It typically takes 1-4 weeks to show up. Recent results:
+– "Insightly vs HubSpot" → our video is a source in AI Overview
+– Sage Intacct new product review → 11K views in 2 weeks
+– Epicor review → 78K views in first month</div>
+        </div>
+
+        <div class="email-section">
+            <div class="email-label">Template B: 3-Video Series</div>
+            <div class="email-desc">More concrete. Feels like a proposal. Matches 3-pack pricing.</div>
+            <div class="template-raw"><span class="var">{{FirstName}}</span> - what's your plan for showing up in Google's AI Overviews for "<span class="var">{{SearchTerm}}</span>" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+Here's a series idea for <span class="var">{{Company}}</span>:
+
+1. "<span class="var">{{VideoIdea1}}</span>"
+2. "<span class="var">{{VideoIdea2}}</span>"
+3. "<span class="var">{{VideoIdea3}}</span>"
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.
+
+Best,
+<span class="var">{{SenderName}}</span> | Growth @SelectHub Studios
+
+PS: It typically takes 1-4 weeks to show up. Recent results:
+– "Insightly vs HubSpot" → our video is a source in AI Overview
+– Sage Intacct new product review → 11K views in 2 weeks
+– Epicor review → 78K views in first month</div>
+        </div>
+
+        <h2 id="emails">Personalized Examples</h2>
+        <p class="muted">Preview of how emails look when sent.</p>
+
+        <div class="email-section">
+            <div class="email-label">Template A vs B – Same Prospect (Benchmark Email)</div>
+
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-header-row"><span class="email-header-label">From</span><span class="email-header-value">Amanda Reeves</span><span class="email-tag">Template A</span></div>
+                    <div class="email-header-row"><span class="email-header-label">Subject</span><span class="email-header-value subject">AI search visibility</span></div>
+                </div>
+                <div class="email-body">
+                    <div class="content">Jessica - what's your plan for showing up in Google's AI Overviews for "Mailchimp alternatives" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+For Benchmark Email, I'm thinking "Benchmark Email vs Mailchimp: Which is Right for Small Marketing Teams?" Or a "Best Email Marketing Platforms 2026" category review.
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.</div>
+                    <div class="sig">Best,<br>Amanda Reeves | Growth @SelectHub Studios</div>
+                    <div class="ps">PS: It typically takes 1-4 weeks to show up. Recent results:<br>
+– "Insightly vs HubSpot" → our video is a source in AI Overview<br>
+– Sage Intacct new product review → 11K views in 2 weeks<br>
+– Epicor review → 78K views in first month</div>
+                </div>
+            </div>
+
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-header-row"><span class="email-header-label">From</span><span class="email-header-value">Amanda Reeves</span><span class="email-tag">Template B</span></div>
+                    <div class="email-header-row"><span class="email-header-label">Subject</span><span class="email-header-value subject">AI search visibility</span></div>
+                </div>
+                <div class="email-body">
+                    <div class="content">Jessica - what's your plan for showing up in Google's AI Overviews for "Mailchimp alternatives" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+Here's a series idea for Benchmark Email:
+
+1. "Mailchimp vs Benchmark Email: Which is Right for You?"
+2. "Benchmark Email Review 2026: What Marketers Are Saying"
+3. "How Benchmark Email Helps Marketing Teams Scale Campaigns Faster"
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.</div>
+                    <div class="sig">Best,<br>Amanda Reeves | Growth @SelectHub Studios</div>
+                    <div class="ps">PS: It typically takes 1-4 weeks to show up. Recent results:<br>
+– "Insightly vs HubSpot" → our video is a source in AI Overview<br>
+– Sage Intacct new product review → 11K views in 2 weeks<br>
+– Epicor review → 78K views in first month</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="email-section">
+            <div class="email-label">More Examples (Template A style)</div>
+
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-header-row"><span class="email-header-label">From</span><span class="email-header-value">Amanda Reeves</span><span class="email-tag">Partner Ecosystem</span></div>
+                    <div class="email-header-row"><span class="email-header-label">Subject</span><span class="email-header-value subject">partner search visibility</span></div>
+                </div>
+                <div class="email-body">
+                    <div class="content">Brandyn - what's your plan for showing up in Google's AI Overviews for "partner ecosystem platform" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+For Crossbeam, I'm thinking "Best Partner Ecosystem Platforms 2026" or "How Crossbeam Helps Revenue Teams Turn Partnerships into Pipeline."
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.</div>
+                    <div class="sig">Best,<br>Amanda Reeves | Growth @SelectHub Studios</div>
+                    <div class="ps">PS: It typically takes 1-4 weeks to show up. Recent results:<br>
+– "Insightly vs HubSpot" → our video is a source in AI Overview<br>
+– Sage Intacct new product review → 11K views in 2 weeks<br>
+– Epicor review → 78K views in first month</div>
+                </div>
+            </div>
+
+            <div class="email-card">
+                <div class="email-header">
+                    <div class="email-header-row"><span class="email-header-label">From</span><span class="email-header-value">Amanda Reeves</span><span class="email-tag">Conversational Marketing</span></div>
+                    <div class="email-header-row"><span class="email-header-label">Subject</span><span class="email-header-value subject">Drift comparison results</span></div>
+                </div>
+                <div class="email-body">
+                    <div class="content">Dan - what's your plan for showing up in Google's AI Overviews for "Drift alternatives" type searches?
+
+We help companies show up there by having our analysts review them on our YouTube channel.
+
+Google directly sources info from our videos for buyer searches (SelectHub, 15 years of software reviews, 500K+ views).
+
+For Qualified, I'm thinking "Drift vs Qualified: Which Pipeline Generation Platform is Right for You?" Or a "How Qualified Helps Sales Teams Convert More Inbound" angle.
+
+I'll put more proof below my signature. Let me know if it's worth a chat next week.</div>
+                    <div class="sig">Best,<br>Amanda Reeves | Growth @SelectHub Studios</div>
+                    <div class="ps">PS: It typically takes 1-4 weeks to show up. Recent results:<br>
+– "Insightly vs HubSpot" → our video is a source in AI Overview<br>
+– Sage Intacct new product review → 11K views in 2 weeks<br>
+– Epicor review → 78K views in first month</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="prospects-section">
+            <h2 id="prospects">Sample Prospects</h2>
+            <p class="prospects-count">50 companies showing list quality</p>
+
+            <div class="prospects-wrapper">
+            <table class="prospects-table">
+                <thead>
+                    <tr>
+                        <th class="num">#</th>
+                        <th>Company</th>
+                        <th>Contact</th>
+                        <th>Title</th>
+                        <th>Why Perfect Fit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="num">1</td><td class="company-cell">Benchmark Email<a href="https://benchmarkemail.com" target="_blank" class="company-url">benchmarkemail.com</a></td><td>Jessica Lunk</td><td class="title-cell">VP of Growth Marketing</td><td class="fit-cell">Email marketing for SMBs. Positions against Mailchimp, Constant Contact.</td></tr>
+                    <tr><td class="num">2</td><td class="company-cell">Intentsify<a href="https://intentsify.io" target="_blank" class="company-url">intentsify.io</a></td><td>Allie Kelly</td><td class="title-cell">CMO</td><td class="fit-cell">Forrester Wave Leader for Intent Data. Compares to 6sense, Bombora.</td></tr>
+                    <tr><td class="num">3</td><td class="company-cell">Qualified<a href="https://qualified.com" target="_blank" class="company-url">qualified.com</a></td><td>Dan Cordisco</td><td class="title-cell">VP Marketing</td><td class="fit-cell">AI SDR platform. Positions against Drift, Clearbit, Leadfeather.</td></tr>
+                    <tr><td class="num">4</td><td class="company-cell">Ontraport<a href="https://ontraport.com" target="_blank" class="company-url">ontraport.com</a></td><td>Angela Fornelli</td><td class="title-cell">VP Marketing</td><td class="fit-cell">All-in-one CRM positioned against Salesforce and HubSpot.</td></tr>
+                    <tr><td class="num">5</td><td class="company-cell">Pitcher<a href="https://pitcher.com" target="_blank" class="company-url">pitcher.com</a></td><td>Brigid Ling</td><td class="title-cell">CMO</td><td class="fit-cell">Sales enablement. Compares to Showpad, Mediafly, Highspot.</td></tr>
+                    <tr><td class="num">6</td><td class="company-cell">Glider AI<a href="https://glider.ai" target="_blank" class="company-url">glider.ai</a></td><td>Joseph Cole</td><td class="title-cell">VP of Marketing</td><td class="fit-cell">AI skills assessment. Challenger to HireVue, Codility.</td></tr>
+                    <tr><td class="num">7</td><td class="company-cell">CodeSignal<a href="https://codesignal.com" target="_blank" class="company-url">codesignal.com</a></td><td>Brenna Lenoir</td><td class="title-cell">SVP Marketing</td><td class="fit-cell">AI-native hiring platform. 'Technical assessment tools' searches.</td></tr>
+                    <tr><td class="num">8</td><td class="company-cell">DynamicWeb<a href="https://dynamicweb.com" target="_blank" class="company-url">dynamicweb.com</a></td><td>Carmen Rosenzweig</td><td class="title-cell">CMO</td><td class="fit-cell">B2B eCommerce + PIM. Integrates with Microsoft Dynamics 365.</td></tr>
+                    <tr><td class="num">9</td><td class="company-cell">Mediafly<a href="https://mediafly.com" target="_blank" class="company-url">mediafly.com</a></td><td>Katerina Maerefat</td><td class="title-cell">VP Growth Marketing</td><td class="fit-cell">Revenue enablement. Challenger to Seismic, Highspot.</td></tr>
+                    <tr><td class="num">10</td><td class="company-cell">Rallyware<a href="https://rallyware.com" target="_blank" class="company-url">rallyware.com</a></td><td>Liza Avramenko</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">Sales performance orchestration for field sales.</td></tr>
+                    <tr><td class="num">11</td><td class="company-cell">Databook<a href="https://databook.com" target="_blank" class="company-url">databook.com</a></td><td>Sarah Close</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">Guided selling with agentic AI.</td></tr>
+                    <tr><td class="num">12</td><td class="company-cell">Namely<a href="https://namely.com" target="_blank" class="company-url">namely.com</a></td><td>Jennifer Lorenzo</td><td class="title-cell">SVP Marketing</td><td class="fit-cell">HCM platform. 'HRIS software' searches.</td></tr>
+                    <tr><td class="num">13</td><td class="company-cell">Greenshades<a href="https://greenshades.com" target="_blank" class="company-url">greenshades.com</a></td><td>Josh McCullough</td><td class="title-cell">CMO</td><td class="fit-cell">Payroll, HR, tax. Integrates with Dynamics GP, Sage Intacct.</td></tr>
+                    <tr><td class="num">14</td><td class="company-cell">Asymbl<a href="https://asymbl.com" target="_blank" class="company-url">asymbl.com</a></td><td>Lauren Esposito</td><td class="title-cell">CMO</td><td class="fit-cell">Recruiting on Salesforce.</td></tr>
+                    <tr><td class="num">15</td><td class="company-cell">PNI•HCM<a href="https://pnihcm.com" target="_blank" class="company-url">pnihcm.com</a></td><td>Sabrina Ott</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">isolved People Cloud for payroll and HR.</td></tr>
+                    <tr><td class="num">16</td><td class="company-cell">Selerix<a href="https://selerix.com" target="_blank" class="company-url">selerix.com</a></td><td>Jill Crawford</td><td class="title-cell">CMO</td><td class="fit-cell">Benefits enrollment and ACA compliance.</td></tr>
+                    <tr><td class="num">17</td><td class="company-cell">Tapcheck<a href="https://tapcheck.com" target="_blank" class="company-url">tapcheck.com</a></td><td>Katie Gibson</td><td class="title-cell">VP of Marketing</td><td class="fit-cell">Earned wage access. vs Payactiv.</td></tr>
+                    <tr><td class="num">18</td><td class="company-cell">SeekOut<a href="https://seekout.com" target="_blank" class="company-url">seekout.com</a></td><td>Bala Vishwanath</td><td class="title-cell">CMO</td><td class="fit-cell">AI recruiting. 'AI recruiting platform' searches.</td></tr>
+                    <tr><td class="num">19</td><td class="company-cell">Paytient<a href="https://paytient.com" target="_blank" class="company-url">paytient.com</a></td><td>Kristin Laughlin</td><td class="title-cell">CMO</td><td class="fit-cell">Health Payment Account—interest-free healthcare credit.</td></tr>
+                    <tr><td class="num">20</td><td class="company-cell">Bombora<a href="https://bombora.com" target="_blank" class="company-url">bombora.com</a></td><td>Joel Erickson</td><td class="title-cell">VP Marketing Ops</td><td class="fit-cell">B2B intent data pioneer. '[intent data] vs 6sense' searches.</td></tr>
+                    <tr><td class="num">21</td><td class="company-cell">Empathy<a href="https://empathy.com" target="_blank" class="company-url">empathy.com</a></td><td>Cindy Goodrich</td><td class="title-cell">CMO</td><td class="fit-cell">Loss support for employees.</td></tr>
+                    <tr><td class="num">22</td><td class="company-cell">Dominion Payroll<a href="https://dominionpayroll.com" target="_blank" class="company-url">dominionpayroll.com</a></td><td>Emily Jenkins</td><td class="title-cell">Director of Marketing</td><td class="fit-cell">Payroll and HR since 2002.</td></tr>
+                    <tr><td class="num">23</td><td class="company-cell">Close<a href="https://close.com" target="_blank" class="company-url">close.com</a></td><td>Megan Lew</td><td class="title-cell">SVP Marketing</td><td class="fit-cell">CRM for sales teams. Challenger to Salesforce, HubSpot.</td></tr>
+                    <tr><td class="num">24</td><td class="company-cell">APS Payroll<a href="https://apspayroll.com" target="_blank" class="company-url">apspayroll.com</a></td><td>Rachel Maner</td><td class="title-cell">Director of Marketing</td><td class="fit-cell">Award-winning payroll software.</td></tr>
+                    <tr><td class="num">25</td><td class="company-cell">Citation Canada<a href="https://citationcanada.com" target="_blank" class="company-url">citationcanada.com</a></td><td>Alexandra Smith</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">HR and health & safety for Canadian businesses.</td></tr>
+                    <tr><td class="num">26</td><td class="company-cell">Act-On<a href="https://act-on.com" target="_blank" class="company-url">act-on.com</a></td><td>Kathryn Geivett</td><td class="title-cell">Head of Growth</td><td class="fit-cell">Marketing automation. vs HubSpot, Marketo, Pardot.</td></tr>
+                    <tr><td class="num">27</td><td class="company-cell">Relocity<a href="https://relocity.com" target="_blank" class="company-url">relocity.com</a></td><td>Quinn Killick</td><td class="title-cell">VP Marketing</td><td class="fit-cell">Employee relocation with AI.</td></tr>
+                    <tr><td class="num">28</td><td class="company-cell">Forma<a href="https://joinforma.com" target="_blank" class="company-url">joinforma.com</a></td><td>Danielle Ross</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">AI-powered sales compensation.</td></tr>
+                    <tr><td class="num">29</td><td class="company-cell">Planhat<a href="https://planhat.com" target="_blank" class="company-url">planhat.com</a></td><td>Ambera Cruz</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">Customer platform. Gartner Leader.</td></tr>
+                    <tr><td class="num">30</td><td class="company-cell">PostPilot<a href="https://postpilot.com" target="_blank" class="company-url">postpilot.com</a></td><td>Brett Fox</td><td class="title-cell">Director of Marketing</td><td class="fit-cell">Direct mail for DTC brands.</td></tr>
+                    <tr><td class="num">31</td><td class="company-cell">Warmly<a href="https://warmly.ai" target="_blank" class="company-url">warmly.ai</a></td><td>Chris Miller</td><td class="title-cell">VP Marketing</td><td class="fit-cell">Website de-anonymization + AI outbound.</td></tr>
+                    <tr><td class="num">32</td><td class="company-cell">Beautiful.ai<a href="https://beautiful.ai" target="_blank" class="company-url">beautiful.ai</a></td><td>Dan Visnick</td><td class="title-cell">CMO</td><td class="fit-cell">AI presentation maker. 'PowerPoint alternatives' searches.</td></tr>
+                    <tr><td class="num">33</td><td class="company-cell">iPostal1<a href="https://ipostal1.com" target="_blank" class="company-url">ipostal1.com</a></td><td>Andrew Yolin</td><td class="title-cell">CMO</td><td class="fit-cell">#1 digital mailbox service.</td></tr>
+                    <tr><td class="num">34</td><td class="company-cell">Writesonic<a href="https://writesonic.com" target="_blank" class="company-url">writesonic.com</a></td><td>Francis O</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">AI content/SEO. 'AI content writer' searches.</td></tr>
+                    <tr><td class="num">35</td><td class="company-cell">ACTO<a href="https://acto.com" target="_blank" class="company-url">acto.com</a></td><td>Alison Muller</td><td class="title-cell">CMO</td><td class="fit-cell">Field excellence for Life Sciences/Pharma.</td></tr>
+                    <tr><td class="num">36</td><td class="company-cell">Proton.ai<a href="https://proton.ai" target="_blank" class="company-url">proton.ai</a></td><td>Dasha Shakov</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">AI for distributors.</td></tr>
+                    <tr><td class="num">37</td><td class="company-cell">Tuition.io<a href="https://tuition.io" target="_blank" class="company-url">tuition.io</a></td><td>Erin Clark</td><td class="title-cell">VP Marketing</td><td class="fit-cell">Student loan and education benefits.</td></tr>
+                    <tr><td class="num">38</td><td class="company-cell">Stensul<a href="https://stensul.com" target="_blank" class="company-url">stensul.com</a></td><td>Clarke Levidiotis</td><td class="title-cell">VP Product Marketing</td><td class="fit-cell">Email creation platform for enterprise.</td></tr>
+                    <tr><td class="num">39</td><td class="company-cell">Outreach<a href="https://outreach.com" target="_blank" class="company-url">outreach.com</a></td><td>Carri Gambill</td><td class="title-cell">Director of Marketing</td><td class="fit-cell">Sales engagement. 'Outreach vs Salesloft' searches.</td></tr>
+                    <tr><td class="num">40</td><td class="company-cell">Knak<a href="https://knak.com" target="_blank" class="company-url">knak.com</a></td><td>Andrea Vicic</td><td class="title-cell">Sr. Director PMM</td><td class="fit-cell">No-code email builder. Used by Meta, Google, OpenAI.</td></tr>
+                    <tr><td class="num">41</td><td class="company-cell">Tremendous<a href="https://tremendous.com" target="_blank" class="company-url">tremendous.com</a></td><td>Ashley Anderson</td><td class="title-cell">Director Marketing</td><td class="fit-cell">Rewards and incentives. 20K+ businesses.</td></tr>
+                    <tr><td class="num">42</td><td class="company-cell">Elastic Path<a href="https://elasticpath.com" target="_blank" class="company-url">elasticpath.com</a></td><td>Brianne Thomas</td><td class="title-cell">Head of Marketing</td><td class="fit-cell">API-first B2B commerce. vs commercetools.</td></tr>
+                    <tr><td class="num">43</td><td class="company-cell">Fluency<a href="https://fluency.inc" target="_blank" class="company-url">fluency.inc</a></td><td>Al Moore</td><td class="title-cell">VP of Marketing</td><td class="fit-cell">Digital advertising OS. $2.5B+ ad spend managed.</td></tr>
+                    <tr><td class="num">44</td><td class="company-cell">Thought Industries<a href="https://thoughtindustries.com" target="_blank" class="company-url">thoughtindustries.com</a></td><td>Alicia Fontaine</td><td class="title-cell">Sr. Director</td><td class="fit-cell">Learning platform. vs Docebo.</td></tr>
+                    <tr><td class="num">45</td><td class="company-cell">Dealpath<a href="https://dealpath.com" target="_blank" class="company-url">dealpath.com</a></td><td>Cindy Hustveit</td><td class="title-cell">VP of Marketing</td><td class="fit-cell">Real estate investment platform with AI.</td></tr>
+                    <tr><td class="num">46</td><td class="company-cell">SheerID<a href="https://sheerid.com" target="_blank" class="company-url">sheerid.com</a></td><td>Alison Jordan</td><td class="title-cell">Director Marketing</td><td class="fit-cell">Audience verification. Nike, Samsung, Home Depot.</td></tr>
+                    <tr><td class="num">47</td><td class="company-cell">Crossbeam<a href="https://crossbeam.com" target="_blank" class="company-url">crossbeam.com</a></td><td>Brandyn Hampton</td><td class="title-cell">Director Events</td><td class="fit-cell">Partner ecosystem platform. 30K+ companies.</td></tr>
+                    <tr><td class="num">48</td><td class="company-cell">Cognitiv<a href="https://cognitiv.ai" target="_blank" class="company-url">cognitiv.ai</a></td><td>Aileen Tobin</td><td class="title-cell">Assoc. Director PMM</td><td class="fit-cell">Deep learning advertising platform.</td></tr>
+                    <tr><td class="num">49</td><td class="company-cell">SearchStax<a href="https://searchstax.com" target="_blank" class="company-url">searchstax.com</a></td><td>Allison Miriani</td><td class="title-cell">Director Growth</td><td class="fit-cell">Managed search SaaS. vs Algolia.</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <div id="next-steps" class="action-box">
+            <h3>What We Need From You</h3>
+            <ol>
+                <li><strong>Exclusion list</strong> — existing customers, active pipeline, anyone to avoid</li>
+                <li><strong>Calendar link</strong> — for booking qualified meetings</li>
+                <li><strong>Greenlight</strong> — any tweaks to targeting or messaging before we launch</li>
+            </ol>
+        </div>
+
+        <div class="closing">
+            <p>If this looks good, we kick off the pilot. Any tweaks needed, just let me know.</p>
+            <p>Ready to get this rolling.</p>
+            <p class="sign">— Dmitry</p>
+        </div>
+    </main>
+</body>
+</html>
