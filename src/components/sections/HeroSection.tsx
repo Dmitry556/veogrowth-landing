@@ -506,49 +506,9 @@ const HeroSection: React.FC = () => {
                   window.open('https://calendly.com/veogrowth/discovery', '_blank');
                 }}
               >
-                <span className="hero-cta__label">Apply For Your 2 Free Sales Meetings Pilot</span>
+                <span className="hero-cta__label">Start Your Free 2-Meeting Pilot</span>
                 <span className="hero-cta__arrow" aria-hidden="true">➜</span>
               </button>
-              <div className="hero-element" style={{ marginTop: '-4px', width: '100%' }}>
-                <p
-                  style={{
-                    margin: '0 auto',
-                    maxWidth: 'min(95vw, 560px)',
-                    fontSize: '12px',
-                    color: '#f8fafc',
-                    lineHeight: '1.5',
-                    textAlign: 'left',
-                    display: 'grid',
-                    gridTemplateColumns: 'auto 1fr',
-                    columnGap: '8px',
-                    rowGap: '5px',
-                    alignItems: 'start'
-                  }}
-                >
-                  <span
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '4px 10px',
-                      borderRadius: '12px',
-                      background: '#ffffff',
-                      color: '#0f766e',
-                      fontWeight: 700,
-                      fontSize: '11px',
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      border: '1px solid rgba(16, 185, 129, 0.4)'
-                    }}
-                  >
-                    New
-                  </span>
-                  <span style={{ display: 'inline', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
-                    <strong style={{ letterSpacing: '-0.01em', color: '#ffffff', fontWeight: 700 }}>Free Trial Offer:</strong>{' '}
-                    If you pass our GTM assessment, we'll book your first 2 meetings for free to prove outbound works for your business <span style={{ position: 'relative', display: 'inline-block', padding: '0 2px' }}><span style={{ position: 'absolute', inset: '60% 0 0', background: 'rgba(16, 185, 129, 0.25)', borderRadius: '999px' }}></span><span style={{ position: 'relative', zIndex: 1, fontWeight: 700 }}>before you pay a dime</span></span>. <span style={{ opacity: 0.9 }}>(No obligations, no commitment)</span>
-                  </span>
-                </p>
-              </div>
             </div>
 
             {/* Status Callout */}
@@ -578,98 +538,6 @@ const HeroSection: React.FC = () => {
               </p>
             </div>
 
-            {/* Trust Section */}
-            <div style={{ marginTop: 'auto', paddingTop: '26px', paddingBottom: '0px', textAlign: 'center' }}>
-              <p style={{
-                fontSize: '16px',
-                color: '#E5E7EB',
-                marginBottom: '32px',
-                letterSpacing: '0.02em',
-                fontWeight: 500,
-                opacity: '0.9'
-              }}>
-                Companies we booked meetings for our clients with
-              </p>
-
-              {/* Logo Grid */}
-              <div style={{
-                position: 'relative',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '88vw',
-                maxWidth: '1280px',
-                margin: '0'
-              }}>
-                <div className="hero-logo-grid">
-                  {[
-                    { name: 'Apple', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg' },
-                    { name: 'Amazon', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg' },
-                    { name: 'Google', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg' },
-                    { name: 'Microsoft', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg' },
-                    { name: 'PayPal', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/paypal.svg' },
-                    { name: 'Nike', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nike.svg' },
-                    { name: 'Tesla', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tesla.svg' },
-                    { name: 'Meta', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg' },
-                    { name: 'HubSpot', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/hubspot.svg' },
-                    { name: 'Netflix', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/netflix.svg' },
-                    { name: 'Adobe', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobe.svg' },
-                    { name: 'IBM', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/ibm.svg' },
-                    { name: 'Salesforce', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/salesforce.svg' },
-                    { name: 'FedEx', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/fedex.svg' },
-                    { name: 'Samsung', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/samsung.svg' },
-                    { name: 'Intel', src: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/intel.svg' }
-                  ].map((company, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '100%',
-                        height: '62px'
-                      }}
-                    >
-                      <img
-                        src={company.src}
-                        alt={`${company.name} logo`}
-                        style={{
-                          height: '48px',
-                          width: 'auto',
-                          objectFit: 'contain',
-                          opacity: '0.7',
-                          transition: 'opacity 0.3s ease, transform 0.3s ease',
-                          filter: 'brightness(0) saturate(100%) invert(1)'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.opacity = '1';
-                          e.target.style.transform = 'scale(1.05)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.opacity = '0.7';
-                          e.target.style.transform = 'scale(1)';
-                        }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <a
-                href="/case-studies"
-                className="inline-flex items-center gap-3 mt-8 text-sm font-medium text-gray-200 hover:text-white transition-colors group"
-                style={{
-                  padding: '10px 18px',
-                  borderRadius: '12px',
-                  background: 'rgba(255, 255, 255, 0.08)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)'
-                }}
-              >
-                See case studies
-                <span className="group-hover:translate-x-1 transition-transform text-lg">→</span>
-              </a>
-            </div>
 
           </div>
         </div>

@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               lineHeight: 1.2
             }}
           >
-            Ready to Generate 30+ Meetings Per Month?
+            Ready to Get Started?
           </h2>
           <p
             style={{
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                 'linear-gradient(145deg, rgba(13, 110, 90, 0.9) 0%, rgba(12, 90, 78, 0.92) 55%, rgba(9, 71, 63, 0.94) 100%)';
             }}
           >
-            <span style={{ flex: 1, textAlign: 'left' }}>Apply For Your 2 Free Sales Meetings Pilot</span>
+            <span style={{ flex: 1, textAlign: 'left' }}>Start Your Free 2-Meeting Pilot</span>
             <span
               aria-hidden="true"
               style={{
@@ -150,7 +150,7 @@ const Footer: React.FC = () => {
                 letterSpacing: '-0.01em'
               }}
             >
-              AI-powered B2B lead generation that delivers 30+ qualified meetings per month. Pay only for results.
+              Performance-based cold email for B2B. Pay only for qualified meetings held.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <a

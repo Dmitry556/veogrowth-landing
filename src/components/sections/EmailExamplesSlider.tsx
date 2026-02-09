@@ -393,7 +393,7 @@ Ready to be the security company people actually remember?`
             textTransform: 'uppercase'
           }}>
             <Mail style={{ width: '16px', height: '16px', color: 'rgba(94, 234, 212, 0.8)' }} />
-            <span>AI-Generated Cold Emails</span>
+            <span>Cold Emails That Get Replies</span>
           </div>
 
           <h2 style={{
@@ -405,7 +405,7 @@ Ready to be the security company people actually remember?`
             marginBottom: '18px',
             color: 'rgba(239, 246, 255, 0.96)'
           }}>
-            We use AI to help us write the emails you dream your SDRs would send. But to your entire market.
+            The emails you wish your team would send. To your entire market.
           </h2>
 
           <p style={{
