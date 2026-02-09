@@ -21,7 +21,7 @@ const SimpleFinalCta: React.FC = () => {
             <div className="max-w-3xl mx-auto text-left mb-12">
               <div className="space-y-4">
                 <p className="text-lg text-gray-300 leading-relaxed">
-                  Every month you wait is <strong className="text-white">30+ meetings your competitors are taking</strong>.
+                  Every month you wait is <strong className="text-white">pipeline your competitors are taking</strong>.
                 </p>
                 <p className="text-lg text-gray-300 leading-relaxed">
                   Our inference engine could be identifying your best prospects <strong className="text-white">right now</strong>—the ones dealing with problems today, not someday.
