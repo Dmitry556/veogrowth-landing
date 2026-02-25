@@ -562,7 +562,7 @@ const FaqSection: React.FC = () => {
                 textTransform: 'uppercase'
               }}
             >
-              Common Questions
+              Honest FAQ
             </div>
             <h2
               style={{
