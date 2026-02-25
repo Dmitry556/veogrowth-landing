@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import HeroSection from '@/components/sections/HeroSection';
-import EmailExamplesSlider from '@/components/sections/EmailExamplesSlider';
 import GrowthProcessSection from '@/components/sections/GrowthProcessSection';
 import ResultsSection from '@/components/sections/ResultsSection';
 import FaqSection from '@/components/sections/FaqSection';
@@ -208,11 +207,6 @@ const Index = () => {
         {/* Case Studies Preview - New section for social proof */}
         <AnimatedSection delay={100}>
           <CaseStudiesPreview />
-        </AnimatedSection>
-
-        {/* Email Examples Section - Moved up to show work quality */}
-        <AnimatedSection delay={200}>
-          <EmailExamplesSlider />
         </AnimatedSection>
 
         {/* How It Works / Pricing / Fit */}
