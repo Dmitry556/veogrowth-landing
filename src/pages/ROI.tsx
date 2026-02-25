@@ -16,7 +16,7 @@ const ROI: React.FC = () => {
   const [industry, setIndustry] = useState('saas');
 
   // Veogrowth pricing
-  const setupFee = 1500;
+  const [setupFee, setSetupFee] = useState(4000);
   const [pricePerMeeting, setPricePerMeeting] = useState(300);
 
   // Calculate TAM-based meeting projections
@@ -93,7 +93,7 @@ const ROI: React.FC = () => {
     };
   }, [meetingsPerMonth, pricePerMeeting, closeRate, acv, salesCycle, setupFee]);
 
-  const formatCurrency = (value) => {
+  const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -266,10 +266,20 @@ const ROI: React.FC = () => {
                   </h2>
 
                   <div className="space-y-4">
-                    <div className="bg-white border border-gray-200 rounded-md p-3">
-                      <p className="text-sm text-gray-600">Setup Fee (one-time)</p>
-                      <p className="text-2xl font-bold text-gray-900">{formatCurrency(setupFee)}</p>
-                      <p className="text-xs text-gray-500 mt-1">TAM build, infrastructure, campaign dev</p>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Setup Fee (one-time): {formatCurrency(setupFee)}
+                      </label>
+                      <input
+                        type="range"
+                        min="3000"
+                        max="5000"
+                        step="500"
+                        value={setupFee}
+                        onChange={(e) => setSetupFee(Number(e.target.value))}
+                        className="w-full"
+                      />
+                      <p className="text-xs text-gray-500 mt-1">TAM build, infrastructure, campaign dev ($3-5K range)</p>
                     </div>
 
                     <div>
