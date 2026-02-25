@@ -239,7 +239,7 @@ const Header: React.FC = () => {
                 onClick={handleFaqClick}
                 className={`text-[14px] font-medium tracking-tight transition-colors ${isElevated ? 'text-slate-300 hover:text-white' : 'text-white/80 hover:text-white'}`}
               >
-                FAQ
+                Honest FAQ
               </button>
             </nav>
 
@@ -316,14 +316,14 @@ const Header: React.FC = () => {
             Pricing
           </button>
 
-          <button 
+          <button
             onClick={() => {
               handleFaqClick();
               closeMenu();
             }}
             className="block text-sm text-slate-200 hover:text-white transition-colors py-2 font-medium tracking-tight w-full text-left"
           >
-            FAQ
+            Honest FAQ
           </button>
           
           <button

@@ -575,7 +575,7 @@ const FaqSection: React.FC = () => {
                 color: 'rgba(239, 246, 255, 0.96)'
               }}
             >
-              Frequently Asked Questions
+              Honest FAQ
             </h2>
 
             {/* TL;DR Ask AI Row */}
