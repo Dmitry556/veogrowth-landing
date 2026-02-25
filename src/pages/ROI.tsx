@@ -224,7 +224,7 @@ const ROI: React.FC = () => {
                       <select
                         value={tamSize}
                         onChange={(e) => setTamSize(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900"
                       >
                         <option value="small">30-50K companies (Niche vertical/segment)</option>
                         <option value="medium">50-100K companies (Broad SMB/Mid-market)</option>
