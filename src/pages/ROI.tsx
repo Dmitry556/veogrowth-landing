@@ -144,7 +144,7 @@ const ROI: React.FC = () => {
                         type="number"
                         value={annualRevenue}
                         onChange={(e) => setAnnualRevenue(Number(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900"
                         step="100000"
                       />
                       <p className="text-xs text-gray-500 mt-1">{formatCurrency(annualRevenue)}</p>
@@ -175,7 +175,7 @@ const ROI: React.FC = () => {
                         type="number"
                         value={acv}
                         onChange={(e) => setAcv(Number(e.target.value))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900"
                         step="1000"
                       />
                       <p className="text-xs text-gray-500 mt-1">{formatCurrency(acv)}</p>
