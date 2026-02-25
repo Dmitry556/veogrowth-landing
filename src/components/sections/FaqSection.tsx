@@ -562,7 +562,7 @@ const FaqSection: React.FC = () => {
                 textTransform: 'uppercase'
               }}
             >
-              Honest FAQ
+              Common Questions
             </div>
             <h2
               style={{
@@ -575,7 +575,7 @@ const FaqSection: React.FC = () => {
                 color: 'rgba(239, 246, 255, 0.96)'
               }}
             >
-              Honest FAQ
+              Frequently Asked Questions
             </h2>
 
             {/* TL;DR Ask AI Row */}
