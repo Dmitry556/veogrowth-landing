@@ -17,7 +17,7 @@ const ROI: React.FC = () => {
 
   // Veogrowth pricing
   const [setupFee, setSetupFee] = useState(4000);
-  const [pricePerMeeting, setPricePerMeeting] = useState(300);
+  const [pricePerMeeting, setPricePerMeeting] = useState(450);
 
   // Calculate TAM-based meeting projections
   const meetingProjections = useMemo(() => {
