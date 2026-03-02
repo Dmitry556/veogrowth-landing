@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { trackCaseStudyClick } from '@/utils/analytics';
 
 const CaseStudiesPreview: React.FC = () => {
@@ -13,8 +13,8 @@ const CaseStudiesPreview: React.FC = () => {
       industry: 'B2B Podcast Production Agency',
       results: {
         meetings: '25',
-        pipeline: '$48K/mo',
-        responseRate: '90%'
+        clients: '6',
+        revenue: '$48K/mo'
       },
       challenge: 'Needed consistent pipeline of executives interested in starting podcasts',
       preview: 'Creative, personalized pitches that proposed specific podcast concepts for each prospect, not generic service pitches.',
@@ -26,12 +26,12 @@ const CaseStudiesPreview: React.FC = () => {
       industry: 'B2B SaaS - Employee Training',
       results: {
         meetings: '42',
-        pipeline: '$840K',
-        responseRate: '3.8%'
+        clients: '3',
+        revenue: '$840K'
       },
       challenge: 'Stuck at 10 demos/month from inbound, needed predictable pipeline to scale past $7M ARR',
-      preview: 'Using our three-layer intelligence approach, we identified companies with active training challenges and generated 42 meetings in just 30 days.',
-      tags: ['Employee Training', 'AI Intelligence', 'Custom Data']
+      preview: 'We identified companies with active training challenges and generated 42 meetings in just 30 days using deep research and problem-first messaging.',
+      tags: ['Employee Training', 'Custom Intelligence', 'Custom Data']
     },
     {
       id: 'zero-fee-payment-processor-52-meetings',
@@ -39,8 +39,8 @@ const CaseStudiesPreview: React.FC = () => {
       industry: 'B2B Payment Processing',
       results: {
         meetings: '52',
-        pipeline: '$605K',
-        responseRate: '3.5%'
+        clients: '22',
+        revenue: '$605K'
       },
       challenge: 'Standing out in the most commoditized industry with 500,000+ SMB retailers and restaurants as TAM',
       preview: 'Massive TAM qualification at scale using clear differentiation (zero monthly fees) and simple math that resonates with small business owners.',
@@ -132,7 +132,7 @@ const CaseStudiesPreview: React.FC = () => {
           <h2 style={{
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
             fontSize: 'clamp(32px, 4vw, 48px)',
-            fontWeight: '400',
+            fontWeight: '500',
             lineHeight: '1.2',
             letterSpacing: '-0.02em',
             marginBottom: '0',
@@ -263,7 +263,7 @@ const CaseStudiesPreview: React.FC = () => {
                     color: 'rgba(237, 244, 255, 0.96)',
                     marginBottom: '4px'
                   }}>
-                    {study.results.pipeline}
+                    {study.results.clients}
                   </div>
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -272,7 +272,7 @@ const CaseStudiesPreview: React.FC = () => {
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
-                    Pipeline
+                    Clients
                   </div>
                 </div>
 
@@ -290,7 +290,7 @@ const CaseStudiesPreview: React.FC = () => {
                     color: 'rgba(237, 244, 255, 0.96)',
                     marginBottom: '4px'
                   }}>
-                    {study.results.responseRate}
+                    {study.results.revenue}
                   </div>
                   <div style={{
                     fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -299,7 +299,7 @@ const CaseStudiesPreview: React.FC = () => {
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em'
                   }}>
-                    Response
+                    Revenue
                   </div>
                 </div>
               </div>

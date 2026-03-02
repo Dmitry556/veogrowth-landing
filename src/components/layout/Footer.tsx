@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             style={{
               fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
               fontSize: 'clamp(32px, 4vw, 48px)',
-              fontWeight: 500,
+              fontWeight: 600,
               color: 'rgba(239, 246, 255, 0.96)',
               marginBottom: '26px',
               letterSpacing: '-0.02em',

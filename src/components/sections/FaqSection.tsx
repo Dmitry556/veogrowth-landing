@@ -536,7 +536,7 @@ const FaqSection: React.FC = () => {
       <section
         id="faq"
         style={{
-          background: 'linear-gradient(180deg, #04080d 0%, #050b11 48%, #061015 100%)',
+          background: 'linear-gradient(180deg, #06090e 0%, #080c12 48%, #0a0e14 100%)',
           padding: 'clamp(48px, 9vw, 72px) 0 clamp(72px, 12vw, 120px)',
           borderTop: '1px solid rgba(45, 212, 191, 0.06)',
           borderBottom: '1px solid rgba(45, 212, 191, 0.08)'
@@ -568,7 +568,7 @@ const FaqSection: React.FC = () => {
               style={{
                 fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: 'clamp(32px, 6vw, 54px)',
-                fontWeight: '400',
+                fontWeight: '500',
                 lineHeight: '1.1',
                 letterSpacing: '-0.03em',
                 marginBottom: '20px',
@@ -578,85 +578,6 @@ const FaqSection: React.FC = () => {
               Frequently Asked Questions
             </h2>
 
-            {/* TL;DR Ask AI Row */}
-            <div style={{ marginBottom: '36px' }}>
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: '13px',
-                  fontWeight: 500,
-                  color: 'rgba(226, 232, 240, 0.9)',
-                  margin: '0 0 16px 0',
-                  letterSpacing: '0.04em',
-                  textShadow: '0 0 12px rgba(255, 255, 255, 0.1)'
-                }}
-              >
-                TL;DR? Let AI summarize for you
-              </p>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '32px'
-                }}
-              >
-                {[
-                  { name: 'ChatGPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', getUrl: (p: string) => `https://chatgpt.com/?prompt=${p}` },
-                  { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', getUrl: (p: string) => `https://www.google.com/search?udm=50&aep=11&q=${p}` },
-                  { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', getUrl: (p: string) => `https://claude.ai/new?q=${p}` },
-                  { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', getUrl: (p: string) => `https://www.perplexity.ai/search/new?q=${p}` },
-                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', getUrl: (p: string) => `https://grok.com/?q=${p}` }
-                ].map((ai) => (
-                  <a
-                    key={ai.name}
-                    href={ai.getUrl(encodeURIComponent("I'm considering Veogrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?"))}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`Ask ${ai.name}`}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      gap: '6px',
-                      textDecoration: 'none',
-                      opacity: 0.85,
-                      transition: 'all 0.2s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = '1';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.4))';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = '0.85';
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.filter = 'none';
-                    }}
-                  >
-                    <img
-                      src={ai.icon}
-                      alt={ai.name}
-                      style={{
-                        width: '32px',
-                        height: '32px',
-                        filter: ai.name === 'Grok' ? 'none' : 'brightness(0) invert(1)'
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: '11px',
-                        fontWeight: 500,
-                        color: '#ffffff',
-                        letterSpacing: '0.02em'
-                      }}
-                    >
-                      {ai.name}
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div style={{ maxWidth: '720px', margin: '0 auto' }}>
@@ -855,6 +776,84 @@ const FaqSection: React.FC = () => {
                   })}
                 </React.Fragment>
               ))}
+            </div>
+
+            {/* Ask AI - subtle, at bottom */}
+            <div style={{ marginTop: 'clamp(28px, 6vw, 36px)', textAlign: 'center' }}>
+              <p
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'rgba(148, 163, 184, 0.6)',
+                  margin: '0 0 12px 0',
+                  letterSpacing: '0.04em'
+                }}
+              >
+                Or ask AI to summarize this page for you
+              </p>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '24px'
+                }}
+              >
+                {[
+                  { name: 'ChatGPT', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', getUrl: (p: string) => `https://chatgpt.com/?prompt=${p}` },
+                  { name: 'Gemini', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlegemini.svg', getUrl: (p: string) => `https://www.google.com/search?udm=50&aep=11&q=${p}` },
+                  { name: 'Claude', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/claude.svg', getUrl: (p: string) => `https://claude.ai/new?q=${p}` },
+                  { name: 'Perplexity', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/perplexity.svg', getUrl: (p: string) => `https://www.perplexity.ai/search/new?q=${p}` },
+                  { name: 'Grok', icon: 'https://cdn.prod.website-files.com/68427c1cee8530ba022b6165/691cb5f7af82ba84ea209a73_Grok-footer.svg', getUrl: (p: string) => `https://grok.com/?q=${p}` }
+                ].map((ai) => (
+                  <a
+                    key={ai.name}
+                    href={ai.getUrl(encodeURIComponent("I'm considering Veogrowth for cold email lead gen. Answer these from their website (https://www.veogrowth.com):\n- How does the pay-per-meeting model work?\n- What are the actual pricing numbers?\n- What's the pilot/trial offer?\n- Who is this NOT for?"))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Ask ${ai.name}`}
+                    onClick={() => trackAskAiClick(ai.name)}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '4px',
+                      textDecoration: 'none',
+                      opacity: 0.5,
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.opacity = '0.85';
+                      e.currentTarget.style.transform = 'translateY(-1px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.opacity = '0.5';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    <img
+                      src={ai.icon}
+                      alt={ai.name}
+                      style={{
+                        width: '24px',
+                        height: '24px',
+                        filter: ai.name === 'Grok' ? 'none' : 'brightness(0) invert(1)'
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontSize: '10px',
+                        fontWeight: 500,
+                        color: 'rgba(148, 163, 184, 0.7)',
+                        letterSpacing: '0.02em'
+                      }}
+                    >
+                      {ai.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
             <div

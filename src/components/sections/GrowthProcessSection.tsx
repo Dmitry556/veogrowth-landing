@@ -11,21 +11,17 @@ const GrowthProcessSection: React.FC = () => {
       accentColor: 'rgba(59, 130, 246, 0.12)', // Blue
       accentBorder: 'rgba(59, 130, 246, 0.3)',
       body: [
-        'We start by mapping your entire Total Addressable Market. Not 500 prospects. Not "top accounts." Every reachable company that fits your ICP.',
-        'We combine data from Apollo, public directories, industry databases, and niche scrapers, then deduplicate and qualify at scale. Our AI analyzes each company to confirm they match your ICP before contact.',
-        'In 2-3 weeks, you get a complete, segmented list of your entire addressable market — not a sample, the whole thing.'
+        'We map your entire Total Addressable Market — not 500 "top accounts," every reachable company that fits your ICP. In 2-3 weeks, you get a complete, segmented list of your entire addressable market.'
       ],
       differentiator: 'Most agencies cherry-pick a few hundred "good fit" accounts and call it a day. We map the full market so you are not leaving pipeline on the table.'
     },
     {
       number: '02',
-      title: 'AI-Powered Email Campaigns at Scale',
+      title: 'Researched, Relevant Emails at Scale',
       accentColor: 'rgba(168, 85, 247, 0.12)', // Purple
       accentBorder: 'rgba(168, 85, 247, 0.3)',
       body: [
-        'Most agencies either spray templated garbage or cap out at 50 manual emails per day. We do neither.',
-        'Our AI researches every company — business model, public signals, recent activity — and writes contextualized cold emails that demonstrate real understanding.',
-        'Emails that are researched and relevant, delivered to thousands of prospects per month without sacrificing quality.'
+        'We research every company — business model, public signals, recent activity — and write contextualized cold emails that demonstrate real understanding. Thousands of prospects per month without sacrificing quality.'
       ],
       differentiator: 'We handle inbox infrastructure, deliverability, and monitoring. You get high-quality outreach at scale, without the risk.'
     },
@@ -35,9 +31,7 @@ const GrowthProcessSection: React.FC = () => {
       accentColor: 'rgba(16, 185, 129, 0.12)', // Green
       accentBorder: 'rgba(94, 234, 212, 0.3)',
       body: [
-        'Most agencies quit after the reply and dump it in your inbox. We stay in the loop.',
-        'We manage the back-and-forth, answer questions, address objections, and secure time on your calendar.',
-        'Every positive reply becomes a confirmed meeting with context on who they are and why they said yes.'
+        'We manage the back-and-forth — answering questions, addressing objections, and securing time on your calendar. Every positive reply becomes a confirmed meeting with context on who they are and why they said yes.'
       ],
       differentiator: 'All your team has to do is show up to the meeting. First conversations typically land within 2–4 weeks of launch.'
     }
@@ -272,7 +266,7 @@ const GrowthProcessSection: React.FC = () => {
                     {/* Phase Title */}
                     <h3
                       style={{
-                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                        fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                         fontSize: '24px',
                         fontWeight: 600,
                         color: '#FFFFFF',
@@ -290,7 +284,7 @@ const GrowthProcessSection: React.FC = () => {
                         <p
                           key={idx}
                           style={{
-                            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                             fontSize: '15.5px',
                             lineHeight: '1.6',
                             color: '#E2E8F0',
@@ -327,7 +321,7 @@ const GrowthProcessSection: React.FC = () => {
                       />
                       <p
                         style={{
-                          fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                          fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                           fontSize: '14px',
                           lineHeight: '1.6',
                           color: 'rgba(241, 245, 249, 0.95)',
@@ -376,7 +370,7 @@ const GrowthProcessSection: React.FC = () => {
             </div>
             <h3
               style={{
-                fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: '32px',
                 fontWeight: 700,
                 color: '#FFFFFF',
@@ -389,7 +383,7 @@ const GrowthProcessSection: React.FC = () => {
             </h3>
             <p
               style={{
-                fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: '16px',
                 color: 'rgba(226, 232, 240, 0.9)',
                 margin: 0,
@@ -429,7 +423,7 @@ const GrowthProcessSection: React.FC = () => {
             <div style={{ marginBottom: '32px', textAlign: 'center' }}>
               <p
                 style={{
-                  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                  fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                   fontSize: '18px',
                   color: '#FFFFFF',
                   margin: '0',
@@ -475,7 +469,7 @@ const GrowthProcessSection: React.FC = () => {
                     lineHeight: '1.5',
                     margin: 0,
                     fontWeight: 600,
-                    fontFamily: "'Inter', sans-serif"
+                    fontFamily: "'Montserrat', sans-serif"
                   }}>
                     We book your first 2 meetings to prove the channel works. <strong style={{ color: '#fff', fontWeight: 700 }}>Zero cost. Zero commitment.</strong>
                   </p>
@@ -512,7 +506,7 @@ const GrowthProcessSection: React.FC = () => {
                     lineHeight: '1.5',
                     margin: 0,
                     fontWeight: 600,
-                    fontFamily: "'Inter', sans-serif"
+                    fontFamily: "'Montserrat', sans-serif"
                   }}>
                     Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5k) to build the full outreach infrastructure.
                   </p>
@@ -549,7 +543,7 @@ const GrowthProcessSection: React.FC = () => {
                     lineHeight: '1.5',
                     margin: 0,
                     fontWeight: 600,
-                    fontFamily: "'Inter', sans-serif"
+                    fontFamily: "'Montserrat', sans-serif"
                   }}>
                     You buy meeting credits in batches (e.g., 5 or 10). A credit is only used when a qualified meeting is held. Credits never expire.
                   </p>
@@ -587,7 +581,7 @@ const GrowthProcessSection: React.FC = () => {
                   lineHeight: '1.6',
                   marginBottom: '12px',
                   fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif"
+                  fontFamily: "'Montserrat', sans-serif"
                 }}>
                   We aren't looking for a quick retainer; we want a multi-year partnership. That only happens if the <strong style={{ color: '#e2e8f0' }}>unit economics</strong> actually work for you.
                 </p>
@@ -597,7 +591,7 @@ const GrowthProcessSection: React.FC = () => {
                   lineHeight: '1.6',
                   margin: 0,
                   fontWeight: 500,
-                  fontFamily: "'Inter', sans-serif"
+                  fontFamily: "'Montserrat', sans-serif"
                 }}>
                   We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets.
                 </p>
@@ -611,7 +605,7 @@ const GrowthProcessSection: React.FC = () => {
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <h3
               style={{
-                fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                 fontSize: '28px',
                 fontWeight: 700,
                 color: '#FFFFFF',
@@ -673,7 +667,7 @@ const GrowthProcessSection: React.FC = () => {
                   >
                     <span
                       style={{
-                        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                        fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                         fontSize: '12px',
                         fontWeight: 600,
                         color: idx === 0
@@ -728,7 +722,7 @@ const GrowthProcessSection: React.FC = () => {
                         </div>
                         <span
                           style={{
-                            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+                            fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
                             fontSize: '15px',
                             fontWeight: 500,
                             color: '#E2E8F0',
@@ -908,7 +902,7 @@ const GrowthProcessSection: React.FC = () => {
                         color: 'rgba(236, 253, 245, 0.9)'
                       }}
                     >
-                      Limited availability for Q4
+                      Limited availability for Q{Math.ceil((new Date().getMonth() + 1) / 3)} {new Date().getFullYear()}
                     </span>
                   </div>
                 </div>

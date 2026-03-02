@@ -1,276 +1,322 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { Helmet } from 'react-helmet-async';
-import { ArrowRight, TrendingUp, Users, DollarSign } from 'lucide-react';
 
 const CaseStudies = () => {
   useEffect(() => {
-    document.title = "Veogrowth Case Studies | $8M+ Pipeline Generated";
+    document.title = "Veogrowth Case Studies | B2B Outbound That Works";
     window.scrollTo(0, 0);
   }, []);
 
   const caseStudies = [
     {
       id: 'podcast-whales-25-meetings-6-clients',
-      title: 'Podcast Whales: 25 Meetings, 6 Clients in 30 Days',
-      industry: 'B2B Podcast Production Agency',
+      title: 'Podcast Whales',
+      subtitle: '25 Meetings, 6 Clients in 30 Days',
+      industry: 'Creative Services',
       results: {
         meetings: '25',
-        pipeline: '$48K/mo',
-        responseRate: '90%'
+        clients: '6',
+        revenue: '$48K/mo'
       },
-      challenge: 'Needed consistent pipeline of executives interested in starting podcasts',
-      preview: 'Creative, personalized pitches that proposed specific podcast concepts for each prospect, not generic service pitches.',
-      imageUrl: '',
-      tags: ['Creative Services', 'Podcast Production', 'Custom Concepts']
+      challenge: 'Needed consistent pipeline of executives interested in starting podcasts.',
+      approach: 'Creative, personalized pitches that proposed specific podcast concepts for each prospect, not generic service pitches.',
+      companyUrl: 'https://podcastwhales.co/'
     },
     {
       id: 'employee-training-platform-42-meetings',
-      title: 'Employee Training Platform: 42 Meetings in 30 Days',
-      industry: 'B2B SaaS - Employee Training',
+      title: 'Employee Training Platform',
+      subtitle: '42 Meetings in 30 Days',
+      industry: 'B2B SaaS',
       results: {
         meetings: '42',
-        pipeline: '$840K',
-        responseRate: '3.8%'
+        clients: '3',
+        revenue: '$840K'
       },
-      challenge: 'Stuck at 10 demos/month from inbound, needed predictable pipeline to scale past $7M ARR',
-      preview: 'Using our three-layer intelligence approach, we identified companies with active training challenges and generated 42 meetings in just 30 days.',
-      imageUrl: '',
-      tags: ['Employee Training', 'AI Intelligence', 'Custom Data']
+      challenge: 'Stuck at 10 demos/month from inbound, needed predictable pipeline to scale past $7M ARR.',
+      approach: 'We identified companies with active training challenges and generated 42 meetings in just 30 days using deep research and problem-first messaging.'
     },
     {
       id: 'zero-fee-payment-processor-52-meetings',
-      title: 'Zero-Fee Payment Processor: 52 Meetings',
-      industry: 'B2B Payment Processing',
+      title: 'Zero-Fee Payment Processor',
+      subtitle: '52 Meetings, 22 Clients',
+      industry: 'Payment Processing',
       results: {
         meetings: '52',
-        pipeline: '$605K',
-        responseRate: '3.5%'
+        clients: '22',
+        revenue: '$605K'
       },
-      challenge: 'Standing out in the most commoditized industry with 500,000+ SMB retailers and restaurants as TAM',
-      preview: 'Massive TAM qualification at scale using clear differentiation (zero monthly fees) and simple math that resonates with small business owners.',
-      imageUrl: '',
-      tags: ['Payment Processing', 'SMB', 'Scale Approach']
+      challenge: 'Standing out in the most commoditized industry with 500,000+ SMB retailers as TAM.',
+      approach: 'Massive TAM qualification at scale using clear differentiation (zero monthly fees) and simple math that resonates with small business owners.'
     },
     {
       id: 'api-monitoring-platform-56-meetings',
-      title: 'API Monitoring Platform: 56 Meetings in 90 Days',
-      industry: 'Developer Tools & Infrastructure',
+      title: 'API Monitoring Platform',
+      subtitle: '56 Meetings in 90 Days',
+      industry: 'Developer Tools',
       results: {
         meetings: '56',
-        pipeline: '$554K',
-        responseRate: '2.4%'
+        clients: '22',
+        revenue: '$554K'
       },
-      challenge: 'Developers hate sales emails and ignore vendor outreach - reaching 300,000+ companies with production APIs',
-      preview: 'Technical credibility and developer empathy helped reach engineering teams at scale with characteristic-based qualification and architecture-specific messaging.',
-      imageUrl: '',
-      tags: ['Developer Tools', 'API Monitoring', 'Technical Credibility']
+      challenge: 'Developers hate sales emails and ignore vendor outreach — reaching 300,000+ companies with production APIs.',
+      approach: 'Technical credibility and developer empathy helped reach engineering teams at scale with architecture-specific messaging.'
     }
   ];
 
+  const font = "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div style={{ minHeight: '100vh', background: '#0a0a0a', color: '#EAEAEA', fontFamily: font }}>
       <CanonicalUrl path="/case-studies" />
       <Helmet>
         <title>Veogrowth Case Studies | B2B Lead Generation Success Stories</title>
-        <meta name="description" content="Veogrowth client success stories: $8M+ pipeline generated, 10,000+ meetings booked. Real case studies from B2B SaaS companies." />
+        <meta name="description" content="Real B2B outbound case studies: 175+ meetings booked, 53 clients won across 4 industries. See the campaigns and results." />
         <meta name="robots" content="index, follow" />
       </Helmet>
 
-      <div className="fixed inset-x-0 top-0 z-50">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between text-sm text-slate-300">
-          <Link to="/" className="font-semibold tracking-tight text-slate-100">
-            Veogrowth
-          </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link to="/" className="hover:text-emerald-200 transition-colors">Home</Link>
-            <Link to="/case-studies" className="text-emerald-300">Case Studies</Link>
-            <Link to="/blog" className="hover:text-emerald-200 transition-colors">Blog</Link>
-            <Link to="/tools" className="hover:text-emerald-200 transition-colors">Free Tools</Link>
-          </nav>
-          <div className="hidden md:flex items-center gap-3">
-            <span className="text-xs uppercase tracking-[0.18em] text-slate-500">Free Trial Pilot</span>
-            <button
-              onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
-              className="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200 hover:bg-emerald-500/20 transition-colors"
-            >
-              Book Strategy Call
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-16">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-x-0 top-[-20%] h-[420px] bg-[radial-gradient(circle,_rgba(45,212,191,0.18)_0%,_rgba(15,23,42,0)_70%)]" />
-          <div className="absolute right-[-25%] top-[10%] h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl" />
-        </div>
-        <div className="container relative mx-auto px-4 sm:px-6">
-          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-slate-900/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-200">
-              <TrendingUp className="h-3.5 w-3.5" />
-              $8M+ Pipeline Generated
-            </span>
+      <Header />
 
-            <h1 className="mb-5 text-4xl font-semibold leading-tight md:text-5xl">
-              B2B Outbound Case Studies
-            </h1>
-            <p className="mb-10 max-w-2xl text-base text-slate-300 md:text-lg">
-              Proof that strategic, personalized outbound creates real pipeline. Explore the campaigns and playbooks we’ve used to drive meetings across industries.
-            </p>
+      {/* Hero */}
+      <section style={{
+        position: 'relative',
+        padding: 'clamp(120px, 14vw, 160px) 0 clamp(48px, 8vw, 72px)',
+        textAlign: 'center',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: '-10%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '800px',
+            height: '400px',
+            background: 'radial-gradient(ellipse, rgba(45, 212, 191, 0.1) 0%, transparent 70%)'
+          }} />
+        </div>
 
-            <div className="grid w-full max-w-3xl grid-cols-1 gap-6 text-sm text-slate-300 sm:grid-cols-3">
-              <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 px-6 py-5">
-                <div className="text-2xl font-semibold text-slate-50 md:text-3xl">10,000+</div>
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Qualified Meetings</div>
-              </div>
-              <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 px-6 py-5">
-                <div className="text-2xl font-semibold text-slate-50 md:text-3xl">$8M+</div>
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Pipeline Created</div>
-              </div>
-              <div className="rounded-2xl border border-slate-800/60 bg-slate-950/70 px-6 py-5">
-                <div className="text-2xl font-semibold text-slate-50 md:text-3xl">150+</div>
-                <div className="text-xs uppercase tracking-[0.18em] text-slate-500">Companies Served</div>
-              </div>
-            </div>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)', position: 'relative', zIndex: 1 }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(15, 23, 42, 0.5)',
+            border: '1px solid rgba(45, 212, 191, 0.28)',
+            borderRadius: '999px',
+            padding: '10px 22px',
+            marginBottom: '32px',
+            fontSize: '12px',
+            fontFamily: font,
+            color: 'rgba(209, 250, 229, 0.85)',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase'
+          }}>
+            Case Studies
           </div>
+
+          <h1 style={{
+            fontFamily: font,
+            fontSize: 'clamp(36px, 5vw, 52px)',
+            fontWeight: 600,
+            lineHeight: 1.1,
+            letterSpacing: '-0.03em',
+            color: 'rgba(239, 246, 255, 0.96)',
+            margin: '0 0 20px'
+          }}>
+            Real Campaigns, Real Results
+          </h1>
+
         </div>
       </section>
 
-      <main className="container mx-auto px-4 sm:px-6 py-20">
-        {/* Breadcrumbs */}
-        <div className="mb-8">
-          <Breadcrumbs 
-            items={[
-              { label: 'Home', href: '/' },
-              { label: 'Case Studies', current: true }
-            ]}
-            className="text-gray-300"
-          />
-        </div>
+      {/* Breadcrumbs */}
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 clamp(20px, 6vw, 40px)' }}>
+        <Breadcrumbs
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Case Studies', current: true }
+          ]}
+          className="text-gray-300"
+        />
+      </div>
 
-        {/* Case Studies Grid */}
-        <section className="mb-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold text-slate-50 mb-4">Success Stories</h2>
-            <p className="text-base md:text-lg text-slate-300 max-w-3xl mx-auto">
-              Every campaign is different, but the results speak for themselves. Explore how we tailor our systems to each market.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
-            {caseStudies.map((study, index) => (
-              <div 
-                key={study.id}
-                className="group rounded-2xl border border-slate-800/80 bg-slate-950/80 p-8 transition-all duration-200 hover:-translate-y-1"
-              >
-                <div className="flex h-full flex-col gap-6">
-                  <div className="flex items-start justify-between gap-4 text-sm text-slate-400">
-                    <span className="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-emerald-200">
-                      {study.industry}
-                    </span>
-                    <span className="text-xs">Case {index + 1}</span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-slate-50">
-                      {study.id === 'podcast-whales-25-meetings-6-clients' ? (
-                        <>
-                          <a href="https://podcastwhales.co/" target="_blank" rel="noopener noreferrer" className="text-emerald-300 underline-offset-4 transition-colors hover:text-emerald-200">
-                            Podcast Whales
-                          </a>
-                          : 25 Meetings, 6 Clients in 30 Days
-                        </>
-                      ) : (
-                        study.title
-                      )}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-slate-300/90">
-                      {study.preview}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-xs text-slate-300">
-                    <div>
-                      <div className="text-slate-500">Meetings</div>
-                      <div className="text-base font-semibold text-slate-50">{study.results.meetings}</div>
-                    </div>
-                    <div className="h-8 w-px bg-slate-800" />
-                    <div>
-                      <div className="text-slate-500">Pipeline</div>
-                      <div className="text-base font-semibold text-slate-50">{study.results.pipeline}</div>
-                    </div>
-                    <div className="h-8 w-px bg-slate-800" />
-                    <div>
-                      <div className="text-slate-500">Response</div>
-                      <div className="text-base font-semibold text-slate-50">{study.results.responseRate}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 text-xs text-slate-400">
-                    {study.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="rounded-full border border-slate-800/80 bg-slate-950 px-2 py-1"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <Link
-                    to={`/case-studies/${study.id}`}
-                    className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-emerald-300 transition-transform duration-200 hover:translate-x-1"
-                  >
-                    Read Full Case Study
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        
-        {/* Industries We Serve */}
-        <section className="mb-20">
-          <div className="rounded-3xl border border-slate-800/80 bg-slate-950/80 p-8 md:p-10">
-            <div className="mx-auto flex max-w-4xl flex-col gap-6">
-              <div>
-                <h2 className="text-3xl font-semibold text-slate-50">Industries We've Helped Scale</h2>
-                <p className="mt-3 text-sm text-slate-300">
-                  Methodology-first outbound works across stages and verticals. Here’s where we’ve proven it most often.
-                </p>
+      {/* Case Studies */}
+      <main style={{
+        maxWidth: '1100px',
+        margin: '0 auto',
+        padding: 'clamp(32px, 6vw, 48px) clamp(20px, 6vw, 40px) clamp(64px, 10vw, 96px)'
+      }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
+          gap: 'clamp(20px, 4vw, 28px)'
+        }}>
+          {caseStudies.map((study) => (
+            <Link
+              to={`/case-studies/${study.id}`}
+              key={study.id}
+              style={{
+                display: 'block',
+                background: 'linear-gradient(135deg, rgba(11, 22, 30, 0.88) 0%, rgba(6, 18, 24, 0.86) 100%)',
+                border: '1px solid rgba(45, 212, 191, 0.12)',
+                borderRadius: '20px',
+                padding: 'clamp(24px, 5vw, 32px)',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 24px 48px rgba(2, 8, 12, 0.48)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.borderColor = 'rgba(94, 234, 212, 0.22)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = 'rgba(45, 212, 191, 0.12)';
+              }}
+            >
+              {/* Industry tag */}
+              <div style={{
+                display: 'inline-block',
+                background: 'rgba(15, 23, 42, 0.65)',
+                color: 'rgba(209, 250, 229, 0.75)',
+                fontSize: '11px',
+                fontWeight: 600,
+                padding: '5px 12px',
+                borderRadius: '999px',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                marginBottom: '20px',
+                border: '1px solid rgba(45, 212, 191, 0.18)',
+                fontFamily: font
+              }}>
+                {study.industry}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-sm text-slate-300 sm:grid-cols-3 md:grid-cols-4">
+              {/* Title */}
+              <h2 style={{
+                fontFamily: font,
+                fontSize: 'clamp(20px, 3vw, 24px)',
+                fontWeight: 600,
+                color: 'rgba(237, 244, 255, 0.94)',
+                margin: '0 0 4px',
+                letterSpacing: '-0.02em'
+              }}>
+                {study.companyUrl ? (
+                  <span style={{ color: 'rgba(94, 234, 212, 0.85)' }}>{study.title}</span>
+                ) : (
+                  study.title
+                )}
+              </h2>
+              <p style={{
+                fontFamily: font,
+                fontSize: '15px',
+                fontWeight: 500,
+                color: 'rgba(148, 163, 184, 0.8)',
+                margin: '0 0 16px',
+                letterSpacing: '-0.01em'
+              }}>
+                {study.subtitle}
+              </p>
+
+              {/* Challenge + Approach */}
+              <p style={{
+                fontFamily: font,
+                fontSize: '14px',
+                color: 'rgba(204, 228, 241, 0.7)',
+                lineHeight: 1.6,
+                margin: '0 0 8px',
+                letterSpacing: '-0.01em'
+              }}>
+                <strong style={{ color: 'rgba(237, 244, 255, 0.9)', fontWeight: 600 }}>Challenge:</strong> {study.challenge}
+              </p>
+              <p style={{
+                fontFamily: font,
+                fontSize: '14px',
+                color: 'rgba(204, 228, 241, 0.7)',
+                lineHeight: 1.6,
+                margin: '0 0 24px',
+                letterSpacing: '-0.01em'
+              }}>
+                <strong style={{ color: 'rgba(237, 244, 255, 0.9)', fontWeight: 600 }}>Approach:</strong> {study.approach}
+              </p>
+
+              {/* Metrics */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '12px',
+                marginBottom: '20px'
+              }}>
                 {[
-                  'SaaS & Software',
-                  'FinTech & Banking',
-                  'Healthcare Tech',
-                  'E-commerce Platforms',
-                  'Manufacturing',
-                  'Professional Services',
-                  'Real Estate Tech',
-                  'MarTech & AdTech'
-                ].map((industry) => (
-                  <div 
-                    key={industry}
-                    className="rounded-xl border border-slate-800/70 bg-slate-950/80 px-4 py-3 text-left"
-                  >
-                    {industry}
+                  { value: study.results.meetings, label: 'Meetings' },
+                  { value: study.results.clients, label: 'Clients' },
+                  { value: study.results.revenue, label: 'Revenue' }
+                ].map((metric) => (
+                  <div key={metric.label} style={{
+                    background: 'rgba(15, 23, 42, 0.5)',
+                    borderRadius: '10px',
+                    padding: '12px 8px',
+                    textAlign: 'center',
+                    border: '1px solid rgba(45, 212, 191, 0.1)'
+                  }}>
+                    <div style={{
+                      fontFamily: font,
+                      fontSize: '18px',
+                      fontWeight: 600,
+                      color: 'rgba(237, 244, 255, 0.96)',
+                      marginBottom: '2px'
+                    }}>
+                      {metric.value}
+                    </div>
+                    <div style={{
+                      fontFamily: font,
+                      fontSize: '11px',
+                      color: 'rgba(148, 163, 184, 0.6)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em'
+                    }}>
+                      {metric.label}
+                    </div>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-        
+
+              {/* Read more */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
+                <span style={{
+                  fontFamily: font,
+                  color: 'rgba(237, 244, 255, 0.9)',
+                  fontSize: '14px',
+                  fontWeight: 500
+                }}>
+                  Read Full Case Study
+                </span>
+                <span style={{
+                  color: 'rgba(94, 234, 212, 0.65)',
+                  fontSize: '18px'
+                }}>
+                  →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </main>
-      
+
       <Footer />
     </div>
   );

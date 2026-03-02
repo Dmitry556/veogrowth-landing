@@ -199,22 +199,24 @@ const Index = () => {
           <HeroSection />
         </div>
 
-        {/* Proof Section - Moved up for credibility */}
         <AnimatedSection delay={0}>
           <ResultsSection />
         </AnimatedSection>
 
-        {/* Case Studies Preview - New section for social proof */}
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 5%, rgba(94, 234, 212, 0.12) 50%, transparent 95%)' }} />
+
         <AnimatedSection delay={100}>
           <CaseStudiesPreview />
         </AnimatedSection>
 
-        {/* How It Works / Pricing / Fit */}
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 5%, rgba(94, 234, 212, 0.12) 50%, transparent 95%)' }} />
+
         <AnimatedSection delay={0}>
           <GrowthProcessSection />
         </AnimatedSection>
 
-        {/* FAQ Section */}
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 5%, rgba(94, 234, 212, 0.12) 50%, transparent 95%)' }} />
+
         <AnimatedSection delay={0}>
           <FaqSection />
         </AnimatedSection>

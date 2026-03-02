@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import { generateCaseStudySchema } from '@/utils/reviewSchema';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare, CreditCard, Star } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const ZeroFeePaymentCaseStudy = () => {
   useEffect(() => {
@@ -21,7 +21,7 @@ const ZeroFeePaymentCaseStudy = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white" style={{ background: '#0a0a0a', fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       <CanonicalUrl path="/case-studies/zero-fee-payment-processor-52-meetings" />
       <Helmet>
         <title>Zero-Fee Payment Processor Case Study: 52 Meetings - Veogrowth</title>
@@ -35,16 +35,16 @@ const ZeroFeePaymentCaseStudy = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900 pt-32 pb-16">
+      <section className="relative overflow-hidden pt-32 pb-16" style={{ background: 'linear-gradient(135deg, #061210 0%, #0a0a0a 50%, #060d14 100%)' }}>
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top, rgba(13, 148, 136, 0.12) 0%, transparent 60%)' }}></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             <Link 
               to="/case-studies" 
-              className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group"
+              className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Case Studies
@@ -52,8 +52,7 @@ const ZeroFeePaymentCaseStudy = () => {
             
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-green-900/30 text-green-300 rounded-full px-4 py-2 mb-6 border border-green-500/30 backdrop-blur-sm">
-                <CreditCard className="w-4 h-4 mr-2" />
-                <span className="text-sm font-medium">3.5% Response Rate • $605K Revenue</span>
+                <span className="text-sm font-medium">22 Clients Won • $605K Revenue</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
@@ -61,7 +60,7 @@ const ZeroFeePaymentCaseStudy = () => {
                   Zero-Fee Payment Processor:
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
                   52 Meetings
                 </span>
               </h1>
@@ -73,33 +72,21 @@ const ZeroFeePaymentCaseStudy = () => {
             
             {/* Results Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-green-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">52</div>
                 <div className="text-sm text-gray-400">Meetings Booked</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <DollarSign className="w-6 h-6 text-blue-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">$605K</div>
                 <div className="text-sm text-gray-400">Annual Revenue</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-6 h-6 text-purple-400" />
-                </div>
-                <div className="text-2xl font-bold text-white mb-1">3.5%</div>
-                <div className="text-sm text-gray-400">Response Rate</div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
+                <div className="text-2xl font-bold text-white mb-1">22</div>
+                <div className="text-sm text-gray-400">Clients Won</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Target className="w-6 h-6 text-indigo-400" />
-                </div>
-                <div className="text-2xl font-bold text-white mb-1">675K</div>
-                <div className="text-sm text-gray-400">TAM Prospects</div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
+                <div className="text-2xl font-bold text-white mb-1">92%</div>
+                <div className="text-sm text-gray-400">Show Rate</div>
               </div>
             </div>
           </div>
@@ -116,25 +103,25 @@ const ZeroFeePaymentCaseStudy = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Industry:</span>
+                    <span className="text-teal-400 font-medium">Industry:</span>
                     <p className="text-white">B2B Payment Processing</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Unique Offer:</span>
+                    <span className="text-teal-400 font-medium">Unique Offer:</span>
                     <p className="text-white">Zero monthly fees, zero PCI fees, zero statement fees - only 2.7% + 25¢ per transaction</p>
                   </div>
                 </div>
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Revenue:</span>
+                    <span className="text-teal-400 font-medium">Revenue:</span>
                     <p className="text-white">$12M ARR</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">TAM:</span>
+                    <span className="text-teal-400 font-medium">TAM:</span>
                     <p className="text-white">500,000+ SMB retailers and restaurants</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Challenge:</span>
+                    <span className="text-teal-400 font-medium">Challenge:</span>
                     <p className="text-white">Standing out in the most commoditized industry</p>
                   </div>
                 </div>
@@ -162,13 +149,13 @@ const ZeroFeePaymentCaseStudy = () => {
             {/* Layer 1 */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
-                  <Brain className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold text-lg">1</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 1: Build the Entire Universe</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
                   We didn't look for fancy signals. We built a list of:
                 </p>
@@ -180,13 +167,13 @@ const ZeroFeePaymentCaseStudy = () => {
                     'Every e-commerce store on Shopify (89,000)'
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                       <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 p-4 bg-purple-900/20 rounded-lg">
-                  <p className="text-purple-300 font-medium">
+                <div className="mt-6 p-4 bg-teal-900/20 rounded-lg">
+                  <p className="text-teal-300 font-medium">
                     Total potential TAM: 675,000 businesses
                   </p>
                 </div>
@@ -197,13 +184,13 @@ const ZeroFeePaymentCaseStudy = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">2</span>
                 </div>
-                <h3 className="text-xl font-bold">Layer 2: AI Qualification at Scale</h3>
+                <h3 className="text-xl font-bold">Layer 2: Qualification at Scale</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-                <p className="text-gray-300 mb-6">Our AI analyzed each business to qualify/disqualify:</p>
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
+                <p className="text-gray-300 mb-6">We analyzed each business to qualify/disqualify:</p>
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="space-y-3">
@@ -263,19 +250,19 @@ const ZeroFeePaymentCaseStudy = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                  <MessageSquare className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">3</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 3: 1:1 Personalized Messaging Around the Killer Offer</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
-                  The offer was unbeatable. Our AI made it relevant to each prospect's specific situation:
+                  The offer was unbeatable. We made it relevant to each prospect's specific situation:
                 </p>
                 
                 <div className="space-y-8">
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-purple-500">
-                    <h4 className="text-purple-400 font-medium mb-3">To a restaurant with 4.8 Yelp rating and "family-owned" in bio:</h4>
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-teal-500">
+                    <h4 className="text-teal-400 font-medium mb-3">To a restaurant with 4.8 Yelp rating and "family-owned" in bio:</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: Square charging Antonio's monthly fees?</div>
                     <blockquote className="text-gray-300 leading-relaxed">
                       <p className="mb-3">Tony,</p>
@@ -286,7 +273,7 @@ const ZeroFeePaymentCaseStudy = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-blue-500">
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-blue-500">
                     <h4 className="text-blue-400 font-medium mb-3">To a boutique posting Instagram stories about "Small Business Saturday":</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: Clover fees vs Small Business Saturday</div>
                     <blockquote className="text-gray-300 leading-relaxed">
@@ -297,7 +284,7 @@ const ZeroFeePaymentCaseStudy = () => {
                     </blockquote>
                   </div>
 
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-green-500">
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-green-500">
                     <h4 className="text-green-400 font-medium mb-3">To an e-commerce store running Facebook ads for seasonal products:</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: Ad costs + Shopify fees = ouch?</div>
                     <blockquote className="text-gray-300 leading-relaxed">
@@ -343,7 +330,7 @@ const ZeroFeePaymentCaseStudy = () => {
                 </ul>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-900/20 to-indigo-900/20 rounded-2xl p-8 border border-purple-500/20">
+              <div className="bg-gradient-to-br from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
                 <h3 className="text-xl font-bold mb-6">Conversion Results</h3>
                 <ul className="space-y-3">
                   <li className="flex justify-between">
@@ -370,7 +357,7 @@ const ZeroFeePaymentCaseStudy = () => {
               </div>
             </div>
             
-            <div className="mt-8 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
+            <div className="mt-8 bg-slate-800/30 rounded-2xl p-8 border border-gray-700/50">
               <h3 className="text-xl font-bold mb-4">Client Quote</h3>
               <blockquote className="text-gray-300 italic text-lg leading-relaxed">
                 "We tried being clever. Turns out businesses just want to save money on fees. Your system helped us reach 89,000 qualified prospects with that simple message. The 3.5% response rate shocked us."
@@ -382,14 +369,14 @@ const ZeroFeePaymentCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Why This Worked</h2>
             
-            <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
               <p className="text-gray-300 mb-6 text-lg">
                 No fancy signals. No complex inference. Just:
               </p>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-xl">1</span>
                   </div>
                   <h4 className="font-bold mb-2">Massive TAM</h4>
@@ -417,22 +404,22 @@ const ZeroFeePaymentCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Key Learning</h2>
             
-            <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+            <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
               <p className="text-lg text-gray-300 mb-6">
                 In commoditized industries with huge TAMs, you don't need fancy intelligence. You need:
               </p>
               
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300">Proper qualification at scale</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300">Clear, simple differentiation</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                   <span className="text-gray-300">Messaging that states the value clearly</span>
                 </li>
               </ul>
@@ -445,7 +432,7 @@ const ZeroFeePaymentCaseStudy = () => {
 
           {/* CTA */}
           <section className="text-center">
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-3xl p-8 md:p-12 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/50 to-emerald-900/50 rounded-3xl p-8 md:p-12 border border-teal-500/20">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready for Scale Campaigns That Convert?
               </h2>
@@ -454,7 +441,7 @@ const ZeroFeePaymentCaseStudy = () => {
               </p>
               <button 
                 onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book Your Strategy Call →
               </button>

@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import CanonicalUrl from '@/components/seo/CanonicalUrl';
 import { generateCaseStudySchema } from '@/utils/reviewSchema';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare, Code, Star } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const ApiMonitoringCaseStudy = () => {
   useEffect(() => {
@@ -21,7 +21,7 @@ const ApiMonitoringCaseStudy = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white" style={{ background: '#0a0a0a', fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       <CanonicalUrl path="/case-studies/api-monitoring-platform-56-meetings" />
       <Helmet>
         <title>API Monitoring Platform Case Study: 56 Meetings in 90 Days - Veogrowth</title>
@@ -35,16 +35,16 @@ const ApiMonitoringCaseStudy = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900 pt-32 pb-16">
+      <section className="relative overflow-hidden pt-32 pb-16" style={{ background: 'linear-gradient(135deg, #061210 0%, #0a0a0a 50%, #060d14 100%)' }}>
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top, rgba(13, 148, 136, 0.12) 0%, transparent 60%)' }}></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             <Link 
               to="/case-studies" 
-              className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group"
+              className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Case Studies
@@ -52,8 +52,7 @@ const ApiMonitoringCaseStudy = () => {
             
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-green-900/30 text-green-300 rounded-full px-4 py-2 mb-6 border border-green-500/30 backdrop-blur-sm">
-                <Code className="w-4 h-4 mr-2" />
-                <span className="text-sm font-medium">2.4% Response Rate • 93% Show Rate</span>
+                <span className="text-sm font-medium">22 Clients Won • 93% Show Rate</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
@@ -61,7 +60,7 @@ const ApiMonitoringCaseStudy = () => {
                   API Monitoring Platform:
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
                   56 Meetings in 90 Days
                 </span>
               </h1>
@@ -73,33 +72,21 @@ const ApiMonitoringCaseStudy = () => {
             
             {/* Results Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-green-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">56</div>
                 <div className="text-sm text-gray-400">Meetings Booked</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <DollarSign className="w-6 h-6 text-blue-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">$554K</div>
                 <div className="text-sm text-gray-400">Annual Revenue</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-6 h-6 text-purple-400" />
-                </div>
-                <div className="text-2xl font-bold text-white mb-1">2.4%</div>
-                <div className="text-sm text-gray-400">Response Rate</div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
+                <div className="text-2xl font-bold text-white mb-1">22</div>
+                <div className="text-sm text-gray-400">Clients Won</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Target className="w-6 h-6 text-indigo-400" />
-                </div>
-                <div className="text-2xl font-bold text-white mb-1">78K</div>
-                <div className="text-sm text-gray-400">Emails Sent</div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
+                <div className="text-2xl font-bold text-white mb-1">93%</div>
+                <div className="text-sm text-gray-400">Show Rate</div>
               </div>
             </div>
           </div>
@@ -116,25 +103,25 @@ const ApiMonitoringCaseStudy = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Product:</span>
+                    <span className="text-teal-400 font-medium">Product:</span>
                     <p className="text-white">Real-time API monitoring & debugging platform</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Target Users:</span>
+                    <span className="text-teal-400 font-medium">Target Users:</span>
                     <p className="text-white">Engineering teams at companies with 10+ APIs</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Pricing:</span>
+                    <span className="text-teal-400 font-medium">Pricing:</span>
                     <p className="text-white">$500-5,000/month based on API calls</p>
                   </div>
                 </div>
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">TAM:</span>
+                    <span className="text-teal-400 font-medium">TAM:</span>
                     <p className="text-white">300,000+ companies with production APIs</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Challenge:</span>
+                    <span className="text-teal-400 font-medium">Challenge:</span>
                     <p className="text-white">Developers hate sales emails and ignore vendor outreach</p>
                   </div>
                 </div>
@@ -167,13 +154,13 @@ const ApiMonitoringCaseStudy = () => {
             {/* Layer 1 */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
-                  <Brain className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold text-lg">1</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 1: Characteristic-Based Qualification</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
                   We built a comprehensive list based on company characteristics:
                 </p>
@@ -186,13 +173,13 @@ const ApiMonitoringCaseStudy = () => {
                     'Businesses with mobile apps (always have APIs)'
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                       <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 p-4 bg-purple-900/20 rounded-lg">
-                  <p className="text-purple-300 font-medium">
+                <div className="mt-6 p-4 bg-teal-900/20 rounded-lg">
+                  <p className="text-teal-300 font-medium">
                     Simple qualification criteria: Do they likely have 10+ production APIs? Yes = qualified.
                   </p>
                   <p className="text-gray-300 mt-2">
@@ -206,13 +193,13 @@ const ApiMonitoringCaseStudy = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">2</span>
                 </div>
-                <h3 className="text-xl font-bold">Layer 2: Inference at Email Creation</h3>
+                <h3 className="text-xl font-bold">Layer 2: Research at Email Creation</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-                <p className="text-gray-300 mb-6">For each qualified company, our AI analyzed available data to infer their situation:</p>
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
+                <p className="text-gray-300 mb-6">For each qualified company, we analyzed available data to infer their situation:</p>
                 
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start">
@@ -245,19 +232,19 @@ const ApiMonitoringCaseStudy = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                  <MessageSquare className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">3</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 3: Technical Credibility in Every Email</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
-                  Our AI wrote emails that showed we understand their actual architecture:
+                  We wrote emails that showed we understand their actual architecture:
                 </p>
                 
                 <div className="space-y-8">
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-purple-500">
-                    <h4 className="text-purple-400 font-medium mb-3">To an engineer whose team manages 50+ microservices:</h4>
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-teal-500">
+                    <h4 className="text-teal-400 font-medium mb-3">To an engineer whose team manages 50+ microservices:</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: Debugging microservices with kubectl logs?</div>
                     <blockquote className="text-gray-300 leading-relaxed">
                       <p className="mb-3">Hey Marcus,</p>
@@ -267,7 +254,7 @@ const ApiMonitoringCaseStudy = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-blue-500">
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-blue-500">
                     <h4 className="text-blue-400 font-medium mb-3">To a startup that just went from monolith to microservices:</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: First microservices timeout mystery?</div>
                     <blockquote className="text-gray-300 leading-relaxed">
@@ -279,7 +266,7 @@ const ApiMonitoringCaseStudy = () => {
                     </blockquote>
                   </div>
 
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-green-500">
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-green-500">
                     <h4 className="text-green-400 font-medium mb-3">To a team actively dealing with incidents:</h4>
                     <div className="text-gray-400 text-sm mb-2">Subject: 3 incidents this week</div>
                     <blockquote className="text-gray-300 leading-relaxed">
@@ -325,7 +312,7 @@ const ApiMonitoringCaseStudy = () => {
                 </ul>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-900/20 to-indigo-900/20 rounded-2xl p-8 border border-purple-500/20">
+              <div className="bg-gradient-to-br from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
                 <h3 className="text-xl font-bold mb-6">Conversion Metrics</h3>
                 <ul className="space-y-3">
                   <li className="flex justify-between">
@@ -352,7 +339,7 @@ const ApiMonitoringCaseStudy = () => {
               </div>
             </div>
             
-            <div className="mt-8 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
+            <div className="mt-8 bg-slate-800/30 rounded-2xl p-8 border border-gray-700/50">
               <h3 className="text-xl font-bold mb-4">Client Testimonial</h3>
               <blockquote className="text-gray-300 italic text-lg leading-relaxed mb-4">
                 "We tried everything to reach developers. Your emails were the first that didn't sound like marketing. One senior engineer forwarded it to his team saying 'finally, a vendor who gets our architecture.' That never happens."
@@ -373,17 +360,17 @@ const ApiMonitoringCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Why This Worked</h2>
             
-            <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div className="p-6 bg-red-900/20 rounded-xl border border-red-500/30">
-                  <h3 className="text-red-400 font-bold mb-4">❌ What Everyone Sends</h3>
+                  <h3 className="text-red-400 font-bold mb-4">What Everyone Sends</h3>
                   <p className="text-gray-400 italic">
                     "Our platform reduces downtime!"
                   </p>
                 </div>
                 
                 <div className="p-6 bg-green-900/20 rounded-xl border border-green-500/30">
-                  <h3 className="text-green-400 font-bold mb-4">✅ What We Sent</h3>
+                  <h3 className="text-green-400 font-bold mb-4">What We Sent</h3>
                   <p className="text-gray-400 italic">
                     "Debugging microservices with kubectl logs at 3am?"
                   </p>
@@ -394,14 +381,14 @@ const ApiMonitoringCaseStudy = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <div className="flex items-start mb-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <strong className="text-white">Technical intelligence</strong>
                       <p className="text-gray-400 text-sm">Found real architecture patterns from GitHub</p>
                     </div>
                   </div>
                   <div className="flex items-start mb-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <strong className="text-white">Developer empathy</strong>
                       <p className="text-gray-400 text-sm">Acknowledged their actual pain (3am debugging)</p>
@@ -410,14 +397,14 @@ const ApiMonitoringCaseStudy = () => {
                 </div>
                 <div>
                   <div className="flex items-start mb-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <strong className="text-white">Credible examples</strong>
                       <p className="text-gray-400 text-sm">Spotify, Stripe (companies developers respect)</p>
                     </div>
                   </div>
                   <div className="flex items-start mb-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                     <div>
                       <strong className="text-white">No BS</strong>
                       <p className="text-gray-400 text-sm">Straight technical talk, no marketing speak</p>
@@ -432,7 +419,7 @@ const ApiMonitoringCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">The Breakthrough Insight</h2>
             
-            <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+            <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
               <p className="text-lg text-gray-300 mb-6">
                 We didn't hunt for companies with problems. We emailed every company that likely had 10+ APIs, then made each email technically relevant based on what we could infer about their architecture.
               </p>
@@ -442,14 +429,14 @@ const ApiMonitoringCaseStudy = () => {
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <blockquote className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-blue-500">
+                <blockquote className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-blue-500">
                   <p className="text-blue-300 italic">
                     "This is the first vendor email I've ever forwarded to my team as actually useful."
                   </p>
                   <p className="text-gray-400 text-sm mt-2">— CTO response</p>
                 </blockquote>
                 
-                <blockquote className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-green-500">
+                <blockquote className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-green-500">
                   <p className="text-green-300 italic">
                     "Your email described our exact problem better than our internal docs."
                   </p>
@@ -457,8 +444,8 @@ const ApiMonitoringCaseStudy = () => {
                 </blockquote>
               </div>
               
-              <div className="mt-8 p-6 bg-purple-900/20 rounded-lg">
-                <h4 className="text-purple-300 font-bold mb-3">The Real Innovation:</h4>
+              <div className="mt-8 p-6 bg-teal-900/20 rounded-lg">
+                <h4 className="text-teal-300 font-bold mb-3">The Real Innovation:</h4>
                 <p className="text-gray-300">
                   Characteristic-based qualification for scale, combined with technical inference for relevance. Not hunting for needles in haystacks - emailing the entire haystack intelligently.
                 </p>
@@ -468,7 +455,7 @@ const ApiMonitoringCaseStudy = () => {
 
           {/* CTA */}
           <section className="text-center">
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-3xl p-8 md:p-12 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/50 to-emerald-900/50 rounded-3xl p-8 md:p-12 border border-teal-500/20">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready for Technical Credibility at Scale?
               </h2>
@@ -477,7 +464,7 @@ const ApiMonitoringCaseStudy = () => {
               </p>
               <button 
                 onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book Your Strategy Call →
               </button>

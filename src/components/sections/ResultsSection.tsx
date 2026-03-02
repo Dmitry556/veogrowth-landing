@@ -1,17 +1,8 @@
 
 import React from 'react';
-import CustomCard from '../ui/CustomCard';
-import { Quote, Play } from 'lucide-react';
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const ResultsSection: React.FC = () => {
-  const emailResponses = [
-    "Interesting timing with this email. We're actually dealing with this exact problem right now...",
-    "How did you know we're having issues with our reengagement sequence?",
-    "Your email caught my attention. We've been looking for a solution exactly like this..."
-  ];
-
-
   return (
     <section 
       id="results" 
@@ -48,7 +39,7 @@ const ResultsSection: React.FC = () => {
             style={{
               fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
               fontSize: 'clamp(32px, 4vw, 48px)',
-              fontWeight: '400',
+              fontWeight: '500',
               lineHeight: '1.2',
               letterSpacing: '-0.02em',
               marginBottom: '0',

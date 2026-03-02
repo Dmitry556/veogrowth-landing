@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, TrendingUp, Users, DollarSign, Target, Zap, Brain, MessageSquare } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const CaseStudyDetail = () => {
   const { id } = useParams();
@@ -50,11 +50,11 @@ const CaseStudyDetail = () => {
 
   if (!caseStudy) {
     return (
-      <div className="min-h-screen bg-gray-900 text-white">
+      <div className="min-h-screen text-white" style={{ background: '#0a0a0a', fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
         <Header />
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-2xl font-bold mb-4">Case Study Not Found</h1>
-          <Link to="/case-studies" className="text-purple-400 hover:text-purple-300">
+          <Link to="/case-studies" className="text-teal-400 hover:text-teal-300">
             ← Back to Case Studies
           </Link>
         </div>
@@ -64,7 +64,7 @@ const CaseStudyDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen text-white" style={{ background: '#0a0a0a', fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       <Helmet>
         <title>{caseStudy.title} - Veogrowth Case Study</title>
         <meta name="description" content={`Detailed case study: ${caseStudy.title}. See how we generated ${caseStudy.results.meetings} meetings in 30 days using our three-layer intelligence approach.`} />
@@ -74,16 +74,16 @@ const CaseStudyDetail = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-gray-900 to-blue-900 pt-32 pb-16">
+      <section className="relative overflow-hidden pt-32 pb-16" style={{ background: 'linear-gradient(135deg, #061210 0%, #0a0a0a 50%, #060d14 100%)' }}>
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-blue-600/20"></div>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at top, rgba(13, 148, 136, 0.12) 0%, transparent 60%)' }}></div>
         </div>
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             <Link 
               to="/case-studies" 
-              className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 group"
+              className="inline-flex items-center text-teal-400 hover:text-teal-300 mb-8 group"
             >
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Back to Case Studies
@@ -91,17 +91,16 @@ const CaseStudyDetail = () => {
             
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-green-900/30 text-green-300 rounded-full px-4 py-2 mb-6 border border-green-500/30 backdrop-blur-sm">
-                <TrendingUp className="w-4 h-4 mr-2" />
-                <span className="text-sm font-medium">3.8% Response Rate • 90% Show Rate</span>
+                <span className="text-sm font-medium">{caseStudy.results.closed} Clients Won • {caseStudy.results.showRate} Show Rate</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Employee Training Platform:
+                  {caseStudy.title.split(':')[0]}:
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                  42 Meetings in 30 Days
+                <span className="bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                  {caseStudy.title.split(':')[1]?.trim()}
                 </span>
               </h1>
               
@@ -112,31 +111,19 @@ const CaseStudyDetail = () => {
             
             {/* Results Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Users className="w-6 h-6 text-green-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">{caseStudy.results.meetings}</div>
                 <div className="text-sm text-gray-400">Meetings Booked</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <DollarSign className="w-6 h-6 text-blue-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">{caseStudy.results.pipeline}</div>
                 <div className="text-sm text-gray-400">Pipeline Generated</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <TrendingUp className="w-6 h-6 text-purple-400" />
-                </div>
-                <div className="text-2xl font-bold text-white mb-1">{caseStudy.results.responseRate}</div>
-                <div className="text-sm text-gray-400">Response Rate</div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
+                <div className="text-2xl font-bold text-white mb-1">{caseStudy.results.closed}</div>
+                <div className="text-sm text-gray-400">Clients Won</div>
               </div>
-              <div className="bg-gray-800/50 rounded-xl p-6 text-center border border-gray-700/50">
-                <div className="w-12 h-12 bg-indigo-900/30 rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Target className="w-6 h-6 text-indigo-400" />
-                </div>
+              <div className="bg-slate-800/40 rounded-xl p-6 text-center border border-gray-700/50">
                 <div className="text-2xl font-bold text-white mb-1">{caseStudy.results.showRate}</div>
                 <div className="text-sm text-gray-400">Show Rate</div>
               </div>
@@ -155,21 +142,21 @@ const CaseStudyDetail = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Industry:</span>
+                    <span className="text-teal-400 font-medium">Industry:</span>
                     <p className="text-white">{caseStudy.industry}</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Revenue:</span>
+                    <span className="text-teal-400 font-medium">Revenue:</span>
                     <p className="text-white">{caseStudy.revenue}</p>
                   </div>
                 </div>
                 <div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">TAM:</span>
+                    <span className="text-teal-400 font-medium">TAM:</span>
                     <p className="text-white">{caseStudy.tam}</p>
                   </div>
                   <div className="mb-4">
-                    <span className="text-purple-400 font-medium">Challenge:</span>
+                    <span className="text-teal-400 font-medium">Challenge:</span>
                     <p className="text-white">{caseStudy.challenge}</p>
                   </div>
                 </div>
@@ -204,13 +191,13 @@ const CaseStudyDetail = () => {
             {/* Layer 1 */}
             <div className="mb-12">
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
-                  <Brain className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white font-bold text-lg">1</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 1: Built Custom Intelligence</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
                   Instead of generic HR lists, we built custom data identifying:
                 </p>
@@ -223,13 +210,13 @@ const CaseStudyDetail = () => {
                     'Organizations using outdated LMS systems (based on job postings mentioning specific tools)'
                   ].map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                       <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 p-4 bg-purple-900/20 rounded-lg">
-                  <p className="text-purple-300 font-medium">
+                <div className="mt-6 p-4 bg-teal-900/20 rounded-lg">
+                  <p className="text-teal-300 font-medium">
                     From 75,000 companies, we identified 12,000 with active training challenges.
                   </p>
                 </div>
@@ -240,13 +227,13 @@ const CaseStudyDetail = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">2</span>
                 </div>
-                <h3 className="text-xl font-bold">Layer 2: AI Inference & Qualification</h3>
+                <h3 className="text-xl font-bold">Layer 2: Research & Qualification</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
-                <p className="text-gray-300 mb-6">Our AI analyzed each company and inferred:</p>
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
+                <p className="text-gray-300 mb-6">We analyzed each company and inferred:</p>
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="space-y-3">
@@ -302,19 +289,19 @@ const CaseStudyDetail = () => {
             <div className="mb-12">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                  <MessageSquare className="w-6 h-6 text-white" />
+                  <span className="text-white font-bold text-lg">3</span>
                 </div>
                 <h3 className="text-xl font-bold">Layer 3: Problem-First Messaging</h3>
               </div>
               
-              <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+              <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
                 <p className="text-gray-300 mb-6">
-                  Instead of generic outreach, our AI wrote emails like:
+                  Instead of generic outreach, we wrote emails like:
                 </p>
                 
                 <div className="space-y-6">
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-purple-500">
-                    <h4 className="text-purple-400 font-medium mb-3">To a company that hired 15 engineers in 2 months:</h4>
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-teal-500">
+                    <h4 className="text-teal-400 font-medium mb-3">To a company that hired 15 engineers in 2 months:</h4>
                     <blockquote className="text-gray-300 italic leading-relaxed">
                       "Hi Michael,<br/><br/>
                       With 15 engineers joining since January and another 8 postings live, I imagine your tech leads are spending more time onboarding than coding.<br/><br/>
@@ -323,7 +310,7 @@ const CaseStudyDetail = () => {
                     </blockquote>
                   </div>
                   
-                  <div className="bg-gray-900/50 rounded-lg p-6 border-l-4 border-blue-500">
+                  <div className="bg-slate-900/50 rounded-lg p-6 border-l-4 border-blue-500">
                     <h4 className="text-blue-400 font-medium mb-3">To a company with poor Glassdoor reviews about growth:</h4>
                     <blockquote className="text-gray-300 italic leading-relaxed">
                       "Hi Jennifer,<br/><br/>
@@ -359,12 +346,12 @@ const CaseStudyDetail = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-300">Never found in Apollo:</span>
-                    <span className="text-purple-400 font-medium">12 companies</span>
+                    <span className="text-teal-400 font-medium">12 companies</span>
                   </li>
                 </ul>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-900/20 to-indigo-900/20 rounded-2xl p-8 border border-purple-500/20">
+              <div className="bg-gradient-to-br from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
                 <h3 className="text-xl font-bold mb-6">Quality of Meetings</h3>
                 <ul className="space-y-3">
                   <li className="flex justify-between">
@@ -387,7 +374,7 @@ const CaseStudyDetail = () => {
               </div>
             </div>
             
-            <div className="mt-8 bg-gray-800/30 rounded-2xl p-8 border border-gray-700/50">
+            <div className="mt-8 bg-slate-800/30 rounded-2xl p-8 border border-gray-700/50">
               <h3 className="text-xl font-bold mb-4">Client Quote</h3>
               <blockquote className="text-gray-300 italic text-lg leading-relaxed">
                 "We were skeptical about cold email, but these weren't cold emails. They knew our exact challenges. One prospect asked if we'd been spying on their Slack."
@@ -399,14 +386,14 @@ const CaseStudyDetail = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">Why This Worked</h2>
             
-            <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/20 to-emerald-900/20 rounded-2xl p-8 border border-teal-500/20">
               <p className="text-gray-300 mb-6 text-lg">
                 Traditional cold email would have blasted all 75,000 companies with the same message. We:
               </p>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-xl">1</span>
                   </div>
                   <h4 className="font-bold mb-2">Built Intelligence</h4>
@@ -416,7 +403,7 @@ const CaseStudyDetail = () => {
                   <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-xl">2</span>
                   </div>
-                  <h4 className="font-bold mb-2">AI Inference</h4>
+                  <h4 className="font-bold mb-2">Deep Research</h4>
                   <p className="text-gray-400 text-sm">Inferred specific problems from patterns</p>
                 </div>
                 <div className="text-center">
@@ -440,7 +427,7 @@ const CaseStudyDetail = () => {
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-8">The Math</h2>
             
-            <div className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700/50">
+            <div className="bg-slate-800/40 rounded-2xl p-8 border border-gray-700/50">
               <div className="grid md:grid-cols-2 gap-8 text-center">
                 <div className="p-6 bg-red-900/20 rounded-xl border border-red-500/30">
                   <h3 className="text-red-400 font-bold mb-4">Traditional Approach</h3>
@@ -459,8 +446,8 @@ const CaseStudyDetail = () => {
                 </div>
               </div>
               
-              <div className="text-center mt-8 p-6 bg-purple-900/20 rounded-xl">
-                <div className="text-2xl font-bold text-purple-400 mb-2">5x More Efficient</div>
+              <div className="text-center mt-8 p-6 bg-teal-900/20 rounded-xl">
+                <div className="text-2xl font-bold text-teal-400 mb-2">5x More Efficient</div>
                 <div className="text-gray-300">Infinitely More Intelligent</div>
               </div>
             </div>
@@ -468,7 +455,7 @@ const CaseStudyDetail = () => {
 
           {/* CTA */}
           <section className="text-center">
-            <div className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-3xl p-8 md:p-12 border border-purple-500/20">
+            <div className="bg-gradient-to-r from-teal-900/50 to-emerald-900/50 rounded-3xl p-8 md:p-12 border border-teal-500/20">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Want Similar Results for Your Company?
               </h2>
@@ -477,7 +464,7 @@ const CaseStudyDetail = () => {
               </p>
               <button 
                 onClick={() => window.open('https://calendly.com/veogrowth/discovery', '_blank')}
-                className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5"
               >
                 Book Your Strategy Call →
               </button>
