@@ -888,41 +888,6 @@ const GrowthProcessSection: React.FC = () => {
                       →
                     </span>
                   </button>
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '6px 16px',
-                      borderRadius: '999px',
-                      background: 'rgba(12, 40, 36, 0.65)',
-                      border: '1px solid rgba(94, 234, 212, 0.28)',
-                      boxShadow: '0 14px 30px rgba(3, 26, 24, 0.42)'
-                    }}
-                  >
-                    <span
-                      style={{
-                        display: 'inline-flex',
-                        width: '9px',
-                        height: '9px',
-                        borderRadius: '50%',
-                        background: '#5eead4',
-                        boxShadow: '0 0 12px rgba(94, 234, 212, 0.6)'
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                        fontSize: '13px',
-                        fontWeight: 600,
-                        letterSpacing: '0.16em',
-                        textTransform: 'uppercase',
-                        color: 'rgba(236, 253, 245, 0.9)'
-                      }}
-                    >
-                      Limited availability for Q{Math.ceil((new Date().getMonth() + 1) / 3)} {new Date().getFullYear()}
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
