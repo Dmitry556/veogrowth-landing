@@ -533,6 +533,35 @@ const FaqSection: React.FC = () => {
           `
         }}
       />
+      {/* Hidden but selectable FAQ content for copy-paste */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+          whiteSpace: 'pre-wrap'
+        }}
+      >
+        {faqSections.map((section) => (
+          <div key={section.title}>
+            <h3>{section.title}</h3>
+            {section.items.map((faq) => (
+              <div key={faq.question}>
+                <p><strong>{faq.question}</strong></p>
+                {faq.answer.map((entry, i) => {
+                  if (entry.type === 'paragraph') return <p key={i}>{entry.content.replace(/<[^>]*>/g, '')}</p>;
+                  if (entry.type === 'list') return <ul key={i}>{entry.items.map((item, j) => <li key={j}>{item}</li>)}</ul>;
+                  return <ol key={i}>{entry.items.map((item, j) => <li key={j}>{item}</li>)}</ol>;
+                })}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
       <section
         id="faq"
         style={{
