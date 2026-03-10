@@ -33,7 +33,7 @@ const GrowthProcessSection: React.FC = () => {
       body: [
         'We manage the back-and-forth — answering questions, addressing objections, and securing time on your calendar. Every positive reply becomes a confirmed meeting with context on who they are and why they said yes.'
       ],
-      differentiator: 'All your team has to do is show up to the meeting. First conversations typically land within 2–4 weeks of launch.'
+      differentiator: 'All your team has to do is show up to the meeting. First meetings typically land within the first week of launch.'
     }
   ];
 
@@ -70,16 +70,21 @@ const GrowthProcessSection: React.FC = () => {
     {
       label: 'This works best for',
       items: [
-        'B2B products with $5K–$100K ACV/LTV',
+        'B2B products with $5K–$100K ACV',
         'Horizontal markets with 30,000+ reachable accounts',
-        'SMB to mid-market targets (not enterprise)'
+        'You already have closers and some pipeline but no serious outbound engine',
+        'You think in CAC/LTV, not vibes',
+        'You want operational relief, not to learn cold email',
+        "You've been burned by an agency before and you're skeptical. Good. We prefer that."
       ]
     },
     {
       label: 'This is not a fit for',
       items: [
-        'Enterprise / Fortune 500 targeting (TAM too small)',
-        'Highly niche verticals (<10,000 addressable accounts)'
+        'Enterprise / Fortune 500 targeting (TAM too small for our model)',
+        'Highly niche verticals under 10,000 addressable accounts',
+        "You're pre-PMF and have never closed a deal from cold traffic. An agency can't figure that out for you.",
+        "Your product is a commodity where buyers can find 15 alternatives on G2 with identical reviews. Cold email can't manufacture differentiation that doesn't exist."
       ]
     }
   ];
@@ -150,9 +155,10 @@ const GrowthProcessSection: React.FC = () => {
           <h2
             style={{
               fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-              fontSize: 'clamp(30px, 4vw, 44px)',
+              fontSize: 'clamp(22px, 3.2vw, 32px)',
               fontWeight: 500,
               lineHeight: '1.15',
+              letterSpacing: '-0.02em',
               color: 'rgba(239, 246, 255, 0.96)',
               margin: '0 auto',
               maxWidth: '780px'
@@ -343,7 +349,7 @@ const GrowthProcessSection: React.FC = () => {
 
         {/* Pricing Section */}
         <div id="pricing" className="growth-pricing" style={{ maxWidth: '600px', margin: '0 auto 56px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '22px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
             <div
               style={{
                 display: 'inline-flex',
@@ -401,7 +407,7 @@ const GrowthProcessSection: React.FC = () => {
               background: 'linear-gradient(135deg, rgba(6, 12, 18, 0.65) 0%, rgba(3, 8, 14, 0.7) 100%)',
               border: '2px solid rgba(16, 185, 129, 0.25)',
               borderRadius: '16px',
-              padding: 'clamp(20px, 5vw, 28px)',
+              padding: 'clamp(24px, 5vw, 36px)',
               boxShadow: '0 8px 24px rgba(0, 0, 0, 0.32)',
               position: 'relative',
               overflow: 'hidden'
@@ -436,7 +442,7 @@ const GrowthProcessSection: React.FC = () => {
             </div>
 
             {/* Phases Container */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '36px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
 
               {/* Phase 1 - Highlighted Green Card */}
               <div style={{
@@ -508,7 +514,7 @@ const GrowthProcessSection: React.FC = () => {
                     fontWeight: 600,
                     fontFamily: "'Montserrat', sans-serif"
                   }}>
-                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5k) to build the full outreach infrastructure.
+                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5k) to build the full outreach infrastructure. Covers domain infrastructure, mailbox warmup, TAM mapping, and campaign buildout. Most clients recoup this within the first 2-3 meetings.
                   </p>
                 </div>
               </div>
@@ -594,6 +600,18 @@ const GrowthProcessSection: React.FC = () => {
                   fontFamily: "'Montserrat', sans-serif"
                 }}>
                   We work backwards from your LTV and close rates to ensure the cost per meeting fits your CAC targets.
+                </p>
+                <p style={{
+                  color: 'rgba(226, 232, 240, 0.75)',
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  marginTop: '16px',
+                  marginBottom: 0,
+                  fontWeight: 500,
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontStyle: 'italic'
+                }}>
+                  We don't report reply rates. We report meetings held, meetings qualified, and deals closed.
                 </p>
               </div>
             </div>

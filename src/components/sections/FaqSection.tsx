@@ -567,10 +567,10 @@ const FaqSection: React.FC = () => {
             <h2
               style={{
                 fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-                fontSize: 'clamp(32px, 6vw, 54px)',
+                fontSize: 'clamp(22px, 3.2vw, 32px)',
                 fontWeight: '500',
                 lineHeight: '1.1',
-                letterSpacing: '-0.03em',
+                letterSpacing: '-0.02em',
                 marginBottom: '20px',
                 color: 'rgba(239, 246, 255, 0.96)'
               }}

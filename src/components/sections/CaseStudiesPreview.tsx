@@ -131,7 +131,7 @@ const CaseStudiesPreview: React.FC = () => {
           </div>
           <h2 style={{
             fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontSize: 'clamp(22px, 3.2vw, 32px)',
             fontWeight: '500',
             lineHeight: '1.2',
             letterSpacing: '-0.02em',
@@ -302,29 +302,6 @@ const CaseStudiesPreview: React.FC = () => {
                     Revenue
                   </div>
                 </div>
-              </div>
-
-              {/* Tags */}
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-                {study.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    style={{
-                      background: 'rgba(15, 23, 42, 0.65)',
-                      color: 'rgba(148, 197, 255, 0.72)',
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      padding: '4px 10px',
-                      borderRadius: '999px',
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      border: '1px solid rgba(99, 179, 237, 0.2)',
-                      fontFamily: "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
               </div>
 
               {/* Read More Link */}

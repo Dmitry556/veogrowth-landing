@@ -8,6 +8,7 @@ import GrowthProcessSection from '@/components/sections/GrowthProcessSection';
 import ResultsSection from '@/components/sections/ResultsSection';
 import FaqSection from '@/components/sections/FaqSection';
 import CaseStudiesPreview from '@/components/sections/CaseStudiesPreview';
+import MeetingHandoffSection from '@/components/sections/MeetingHandoffSection';
 import { generateHomePageSchema, schemaToString } from '@/utils/schema';
 import { initTimeOnPageTracking, trackSectionView } from '@/utils/analytics';
 
@@ -198,6 +199,12 @@ const Index = () => {
         <div className="fade-in visible">
           <HeroSection />
         </div>
+
+        <div className="fade-in visible">
+          <MeetingHandoffSection />
+        </div>
+
+        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 5%, rgba(94, 234, 212, 0.12) 50%, transparent 95%)' }} />
 
         <AnimatedSection delay={0}>
           <ResultsSection />

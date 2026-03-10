@@ -348,7 +348,7 @@ const HeroSection: React.FC = () => {
 
       {/* Hero Section */}
       <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        className="relative flex items-center justify-center overflow-hidden"
         style={{
           background: '#0a0a0a',
           color: '#EAEAEA',
@@ -377,7 +377,7 @@ const HeroSection: React.FC = () => {
             maxWidth: '1200px',
             margin: '0 auto',
             padding: 'clamp(64px, 8vw, 92px) clamp(20px, 5vw, 32px) clamp(40px, 7vw, 52px)',
-            minHeight: '88vh',
+            minHeight: '82vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -465,6 +465,20 @@ const HeroSection: React.FC = () => {
               </button>
             </div>
 
+            <p
+              className="hero-element"
+              style={{
+                fontSize: '13px',
+                fontWeight: 400,
+                color: 'rgba(229, 231, 235, 0.4)',
+                textAlign: 'center',
+                margin: '0 auto 24px',
+                letterSpacing: '-0.01em'
+              }}
+            >
+              Scoping call to first meeting on the calendar in ~7 days.
+            </p>
+
             {/* Subtle bonus line */}
             <p
               className="hero-element"
@@ -473,15 +487,13 @@ const HeroSection: React.FC = () => {
                 fontWeight: 400,
                 color: 'rgba(229, 231, 235, 0.55)',
                 textAlign: 'center',
-                margin: '0 auto 28px',
+                margin: '0 auto',
                 maxWidth: '480px',
                 letterSpacing: '-0.01em'
               }}
             >
               Plus: we pay your reps $500 for every deal they close from our leads.
             </p>
-
-
 
           </div>
         </div>
