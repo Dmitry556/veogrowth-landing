@@ -227,7 +227,7 @@ const MeetingHandoffSection: React.FC = () => {
             color: 'rgba(239, 246, 255, 0.92)',
             textAlign: 'center',
             maxWidth: '700px',
-            margin: '0 auto clamp(40px, 7vw, 64px)'
+            margin: '0 auto clamp(28px, 5vw, 40px)'
           }}>
             Your AE walks into every call knowing what most reps learn by the third meeting.
           </h2>
