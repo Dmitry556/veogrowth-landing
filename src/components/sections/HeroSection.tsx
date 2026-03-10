@@ -472,11 +472,11 @@ const HeroSection: React.FC = () => {
                 fontWeight: 400,
                 color: 'rgba(229, 231, 235, 0.4)',
                 textAlign: 'center',
-                margin: '0 auto 24px',
+                margin: '-12px auto 24px',
                 letterSpacing: '-0.01em'
               }}
             >
-              Scoping call to first meeting on the calendar in ~7 days.
+              We'll book your first 2 meetings for free. If you like what you see, we'll do the rest. Scoping call to first meeting on the calendar in ~7 days.
             </p>
 
             {/* Subtle bonus line */}
