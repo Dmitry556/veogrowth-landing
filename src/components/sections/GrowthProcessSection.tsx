@@ -21,7 +21,7 @@ const GrowthProcessSection: React.FC = () => {
       accentColor: 'rgba(168, 85, 247, 0.12)', // Purple
       accentBorder: 'rgba(168, 85, 247, 0.3)',
       body: [
-        'We research every company — business model, public signals, recent activity — and write contextualized cold emails that demonstrate real understanding. Thousands of prospects per month without sacrificing quality.'
+        'We research every company — business model, public signals, recent activity — and write contextualized cold emails that demonstrate real understanding. Tens of thousands of prospects per month. Every email reads like an A+ rep actually researched their company for 15 minutes before hitting send.'
       ],
       differentiator: 'We handle inbox infrastructure, deliverability, and monitoring. You get high-quality outreach at scale, without the risk.'
     },
@@ -514,7 +514,45 @@ const GrowthProcessSection: React.FC = () => {
                     fontWeight: 600,
                     fontFamily: "'Montserrat', sans-serif"
                   }}>
-                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5k) to build the full outreach infrastructure. Covers domain infrastructure, mailbox warmup, TAM mapping, and campaign buildout. Most clients recoup this within the first 2-3 meetings.
+                    Only if the pilot succeeds and you decide to scale: a one-time setup fee ($3-5K) to build the full outreach infrastructure. Here's what you get:
+                  </p>
+                  <ul style={{
+                    margin: '12px 0 0',
+                    padding: '0 0 0 18px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px',
+                    listStyle: 'disc'
+                  }}>
+                    {[
+                      'Your entire TAM qualified, scored, researched, with valid emails (you keep this regardless)',
+                      'Sending infrastructure: domains, mailboxes, warmup, deliverability monitoring',
+                      'Full campaign strategy with messaging, segmentation, and email copy — 10+ variants to test',
+                      'AI research pipeline built for your specific market',
+                      'Integration and enablement with your team and CRM',
+                      'Ongoing reply handling, qualification, and meeting scheduling',
+                      'Pre-call research briefs for every meeting we book'
+                    ].map((item, idx) => (
+                      <li key={idx} style={{
+                        color: '#f0fdf4',
+                        fontSize: '14px',
+                        lineHeight: '1.5',
+                        fontWeight: 500,
+                        fontFamily: "'Montserrat', sans-serif"
+                      }}>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p style={{
+                    color: '#f0fdf4',
+                    fontSize: '14px',
+                    lineHeight: '1.5',
+                    margin: '12px 0 0',
+                    fontWeight: 600,
+                    fontFamily: "'Montserrat', sans-serif"
+                  }}>
+                    Most clients recoup the setup fee within the first 2-3 meetings.
                   </p>
                 </div>
               </div>
