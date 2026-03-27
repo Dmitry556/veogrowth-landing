@@ -13,7 +13,8 @@ import PerformanceDashboard from "./components/performance/PerformanceDashboard"
 import RouteTracker from "./components/analytics/RouteTracker";
 
 // Direct imports for immediate loading
-import Index from "./pages/Index";
+// import Index from "./pages/Index"; // ORIGINAL - swap back to revert
+import Index from "./pages/IndexShort"; // SHORT VERSION
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CaseStudies from "./pages/CaseStudies";
