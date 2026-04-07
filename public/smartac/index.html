@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartAC - Cold Email Campaign</title>
+<style>
+  @font-face {
+    font-family: 'CentraNo2';
+    src: url('https://8339855.fs1.hubspotusercontent-na1.net/hubfs/8339855/assets/fonts/centra-no2-light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'CentraNo2';
+    src: url('https://8339855.fs1.hubspotusercontent-na1.net/hubfs/8339855/assets/fonts/centra-no2-book.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'CentraNo2';
+    src: url('https://8339855.fs1.hubspotusercontent-na1.net/hubfs/8339855/assets/fonts/centra-no2-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --navy: rgb(0, 15, 57);
+    --navy-secondary: rgb(20, 33, 69);
+    --muted: rgba(20, 33, 69, 0.7);
+    --accent: rgb(62, 64, 235);
+    --border: rgb(217, 217, 217);
+    --bg: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'CentraNo2', sans-serif;
+    background: var(--bg);
+    color: var(--navy-secondary);
+    font-weight: 400;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--navy);
+    padding: 80px 28px 88px;
+  }
+
+  .hero-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero-logo {
+    height: 28px;
+    margin-bottom: 48px;
+    display: block;
+  }
+
+  .hero-tag {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 1.65;
+    max-width: 540px;
+    font-weight: 400;
+  }
+
+  /* Page body */
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 72px 28px 120px;
+  }
+
+  /* Sections */
+  .section {
+    margin-top: 72px;
+  }
+
+  .section:first-child {
+    margin-top: 0;
+  }
+
+  .section-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    color: var(--navy);
+  }
+
+  p {
+    margin-bottom: 18px;
+    font-size: 18px;
+    color: var(--navy-secondary);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  /* Reply blocks */
+  .reply {
+    margin-bottom: 48px;
+  }
+
+  .reply-who {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: var(--navy);
+  }
+
+  .reply-who span {
+    font-weight: 400;
+    color: var(--navy-secondary);
+    font-size: 16px;
+    margin-left: 4px;
+  }
+
+  .reply-detail {
+    font-size: 16px;
+    color: var(--navy-secondary);
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+
+  .reply-quote {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 14px 0;
+    color: var(--navy-secondary);
+    box-shadow: 0 1px 4px rgba(0, 15, 57, 0.04);
+  }
+
+  .screenshot {
+    margin: 16px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0, 15, 57, 0.06);
+  }
+
+  .screenshot img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Email copy */
+  .email-copy {
+    background: rgba(0, 15, 57, 0.03);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin: 14px 0 32px;
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    color: var(--navy-secondary);
+  }
+
+  .copy-tag {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .tag-green { background: rgba(21, 128, 61, 0.08); color: rgb(21, 128, 61); }
+  .tag-red { background: rgba(185, 28, 28, 0.08); color: rgb(185, 28, 28); }
+
+  /* Decisions list */
+  .decisions {
+    margin: 24px 0;
+  }
+
+  .decision {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 16px;
+    color: var(--navy-secondary);
+    line-height: 1.7;
+  }
+
+  .decision:last-child { border-bottom: none; }
+
+  .decision strong {
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .sign-off {
+    margin-top: 72px;
+    font-size: 18px;
+    color: var(--navy-secondary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 56px 20px 64px; }
+    .hero h1 { font-size: 30px; }
+    .page { padding: 48px 20px 80px; }
+    h2 { font-size: 22px; }
+    p { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <img src="smartac-logo-white.svg" alt="SmartAC" class="hero-logo">
+      <div class="hero-tag">veogrowth.com</div>
+      <h1>We ran an anonymous cold email campaign for SmartAC.</h1>
+      <p class="hero-sub">480 emails to HVAC contractor owners. Within 24 hours 3 leads replied wanting to talk about SmartAC.</p>
+    </div>
+  </div>
+
+<div class="page">
+
+  <!-- REPLIES -->
+  <div class="section">
+    <div class="section-label">What came back</div>
+
+    <div class="reply">
+      <div class="reply-who">Dan Sommers <span>Advantage Heating, Salem OR</span></div>
+      <div class="reply-detail">Owner. 50+ employees. 30+ year business. Already on ServiceTitan.</div>
+      <div class="reply-quote">"I might be interested in what you have to offer. We have SOP's in place but always looking for something more efficient. Do you work with service Titan?"</div>
+      <div class="screenshot"><img src="dan-sommers.png" alt="Dan Sommers reply thread"></div>
+    </div>
+
+    <div class="reply">
+      <div class="reply-who">Jack Sutton → Jackson Sutton <span>Sutton Bros, Kernersville NC</span></div>
+      <div class="reply-detail">Owner. HVAC + plumbing + electrical. Already running a membership program ("Sutton Savings Club"). Forwarded the email to his Director of BD internally.</div>
+      <div class="reply-quote">Jack forwarded the email to his Director of Business Development with "See below..........let's discuss."<br><br>Jackson replied: "Can we set up time to discuss?"</div>
+      <div class="screenshot"><img src="sutton-bros.png" alt="Sutton Bros forwarded thread"></div>
+    </div>
+
+    <div class="reply">
+      <div class="reply-who">Thornell Hunter Jr. <span>Direct Improvements, Chicago</span></div>
+      <div class="reply-detail">Owner. Smaller but growing shop. HVAC + plumbing + appliance.</div>
+      <div class="reply-quote">"Let's schedule something for a couple weeks from now."</div>
+      <div class="screenshot"><img src="thornell-hunter.png" alt="Thornell Hunter reply thread"></div>
+    </div>
+  </div>
+
+  <!-- COPY -->
+  <div class="section">
+    <div class="section-label">The emails we sent</div>
+
+    <p>Three versions testing different angles. Subject line across all of them: <strong>maintenance plans</strong></p>
+
+    <h2>Retention beat everything.</h2>
+    <p>We expected the Iceberg growth story (1,061 → 1,380 members, price raised 33%) to be the strongest angle. It got nothing from 300 sends. The retention stat - 96% vs the 65-70% industry average - pulled 2 of the 3 replies from only 118 sends.</p>
+
+    <div class="copy-tag tag-green">Retention - ~118 sent, 2 replies</div>
+    <div class="email-copy">{{first_name}}, we just helped an HVAC company hit 96% annual membership retention. Industry average is about 65-70%.
+
+We gave their homeowners an app branded as the contractor's company that sends system health alerts between visits. Runs off a sensor that clips onto the unit in 5 minutes.
+
+Happy to run your membership numbers through our model and show you what that gap looks like over 5 years.</div>
+
+    <div class="copy-tag tag-green">App on phone - ~62 sent, 1 reply</div>
+    <div class="email-copy">{{first_name}}, we built a way to put your company's own branded app on every homeowner's phone. It sends them system health alerts, filter reminders, and lets them schedule service in a tap.
+
+It runs off a sensor kit that clips onto their AC unit in 5 minutes. Contractors using it are converting about twice as many service calls into maintenance plan members.
+
+We can run your numbers through our model in about 20 minutes if you want to see what it would do.</div>
+
+    <div class="copy-tag tag-red">Member growth - ~300 sent, 0 replies</div>
+    <div class="email-copy">{{first_name}}, we just helped an HVAC company go from 1,061 to 1,380 maintenance plan members in a year. They also raised their annual price from $225 to $300.
+
+We added a sensor kit to their membership pitch that clips onto the unit in 5 minutes and gives homeowners 24/7 monitoring on an app branded as the contractor's company.
+
+We can model what that would look like with your numbers in about 20 minutes if you're interested.</div>
+  </div>
+
+  <!-- COMPETENCE / DECISIONS -->
+  <div class="section">
+    <div class="section-label">How we built the list</div>
+
+    <p>HVAC contractors aren't on LinkedIn. They're on Google Maps at 7am and in a truck by 8. So we started there.</p>
+
+    <div class="decisions">
+      <div class="decision"><strong>81,118 HVAC contractors</strong> pulled from Google Maps listings across the US. Filtered to owners and GMs at shops with 5-50+ trucks.</div>
+      <div class="decision"><strong>Personal emails from their own websites.</strong> These owners put their email in the footer - jason@julianheatandair.com, not info@company.com.</div>
+      <div class="decision"><strong>No AI, no smart, no digital transformation</strong> in the copy. These are contractors who've been burned by tech that overpromises. The language had to sound like someone who's sat across from them, not above them.</div>
+      <div class="decision"><strong>Subject line: "maintenance plans."</strong> Not "Scale your membership program" or "Grow recurring revenue."</div>
+      <div class="decision"><strong>CTA was a 20-minute ROI review</strong>, not a demo. Contractors schedule appointments all day. "We'll run your numbers" is how they think. "Book a demo" isn't.</div>
+    </div>
+  </div>
+
+  <!-- NEXT RUN -->
+  <div class="section">
+    <div class="section-label">What a real campaign would add</div>
+    <p>This was a proof of concept with no access to SmartAC's team, CRM, or existing pipeline. Every contractor got the same email with a first name swap.</p>
+    <p>With input on which markets to hit, what's landing on sales calls, and which contractors are already in your pipeline to exclude - the targeting gets tighter and there's follow-up instead of one email.</p>
+  </div>
+
+  <div class="sign-off">
+    - Dmitry<br>
+    dmitry@veogrowth.com
+  </div>
+
+</div>
+</body>
+</html>
